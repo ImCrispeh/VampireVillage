@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour {
     [Range (0,1)]
-    public float currentTime;
+    public float currentTime, increaseGradient, decreaseGradient;
     public float secondsInFullDay, convertedTime;
     public string hours, minutes;
+    public RectTransform sunAndMoon;
+    public Image clockFace;
 
 	void Start () {
-        currentTime = 0f;
-        secondsInFullDay = 120f;
-        convertedTime = 0f;
-	}
+
+    }
 	
 	void Update () {
         currentTime += (Time.deltaTime / secondsInFullDay);
@@ -22,23 +22,37 @@ public class Timer : MonoBehaviour {
             currentTime = 0;
         }
         ConvertTime();
-        /*if (currentTime >= 0 && currentTime < 0.25) {
-            Debug.Log("Midnight from 0 to 0.25");
-        }
-        else if (currentTime > 0.25 && currentTime < 0.5) {
-            Debug.Log("Sunrise from 0.25 to 0.5");
-        }
-        else if (currentTime > 0.5 && currentTime < 0.75) {
-            Debug.Log("Midday from 0.5 to 0.75");
-        }
-        else if (currentTime > 0.75 && currentTime < 1) {
-            Debug.Log("Sunset from 0.75 to 1");
-        }*/
+        RotateClockFace();
+        ChangeClockColour();
     }
 
     public void ConvertTime() {
         hours = Mathf.Floor(currentTime * 24f).ToString("00");
         minutes = Mathf.Floor(currentTime * 1440f % 60).ToString("00");
-        Debug.Log(hours + ":" + minutes);
+        Debug.Log("24 hour time - " + hours + ":" + minutes);
+    }
+
+    public void RotateClockFace() {
+        clockFace.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0f, 0f, currentTime * 720f);
+        sunAndMoon.localRotation = Quaternion.Euler(0f, 0f, currentTime * 360f);                
+    }
+
+    public void ChangeClockColour() {
+        increaseGradient = currentTime * 2f;
+        decreaseGradient = 2f - increaseGradient;
+        if (currentTime >= 0 && currentTime < 0.25) {       //midnight to 6am
+            clockFace.color = new Color(0f, increaseGradient, 160f);
+        }
+        else if (currentTime >= 0.25 && currentTime < 0.5) {//6am to midday
+            clockFace.color = new Color(0f, increaseGradient, 160f);
+        }
+        else if (currentTime >= 0.5 && currentTime < 0.75) {//midday to 6pm
+            clockFace.color = new Color(0f, decreaseGradient, 160f);
+        }
+        else if (currentTime >= 0.75 && currentTime < 1) {//6pm to midnight
+            clockFace.color = new Color(0f, decreaseGradient, 160f);
+        }
+        //Debug.Log("Increase: " + increaseGradient);
+        //Debug.Log("Decrease: " + decreaseGradient);
     }
 }
