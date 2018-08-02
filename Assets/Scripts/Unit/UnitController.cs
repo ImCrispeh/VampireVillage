@@ -14,15 +14,16 @@ public class UnitController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // move unit to the point that was clicked on (clicking done with RMB at this point)
-		if (Input.GetMouseButtonDown(1)) {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit)) {
-                agent.destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            }
-        }
 	}
+
+    public void Move() {
+        // move unit to the point that was clicked on (clicking done with RMB at this point)
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit)) {
+            agent.destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        }
+    }
 
 }
