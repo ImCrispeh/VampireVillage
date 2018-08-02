@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class UnitController : MonoBehaviour {
     public NavMeshAgent agent;
+    public GameObject selectionIndicator;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,14 @@ public class UnitController : MonoBehaviour {
         if (Physics.Raycast(ray, out hit)) {
             agent.destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
         }
+    }
+
+    public void Select() {
+        selectionIndicator.SetActive(true);
+    }
+
+    public void Deselect() {
+        selectionIndicator.SetActive(false);
     }
 
 }

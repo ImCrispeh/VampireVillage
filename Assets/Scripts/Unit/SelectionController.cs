@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectionController : MonoBehaviour {
-    public List<GameObject> selectedUnits;
+    public List<UnitController> selectedUnits;
 
 	// Use this for initialization
 	void Start () {
-        selectedUnits = new List<GameObject>();
+        selectedUnits = new List<UnitController>();
 	}
 	
 	// Update is called once per frame
@@ -19,18 +19,28 @@ public class SelectionController : MonoBehaviour {
             // only 1 unit can be selected at a time at this current point
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.transform.tag == "Unit") {
-                    selectedUnits.Clear();
-                    selectedUnits.Add(hit.transform.gameObject);
+                    DeselectUnits();
+                    UnitController unit = hit.transform.gameObject.GetComponent<UnitController>();
+                    unit.Select();
+                    selectedUnits.Add(unit);
                 } else {
-                    selectedUnits.Clear();
+                    DeselectUnits();
                 }
             }
         }
 
         if (Input.GetMouseButtonDown(1)) {
-            foreach (GameObject unit in selectedUnits) {
+            foreach (UnitController unit in selectedUnits) {
                 unit.GetComponent<UnitController>().Move();
             }
         }
+    }
+
+    public void DeselectUnits() {
+        foreach (UnitController unit in selectedUnits) {
+            unit.Deselect();
+        }
+
+        selectedUnits.Clear();
     }
 }
