@@ -13,6 +13,8 @@ public class UnitController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        // move unit to the point that was clicked on (clicking done with RMB at this point)
 		if (Input.GetMouseButtonDown(1)) {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
