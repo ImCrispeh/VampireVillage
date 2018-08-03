@@ -8,11 +8,18 @@ public class Timer : MonoBehaviour {
     public float currentTime, increaseGradient, decreaseGradient;
     public float secondsInFullDay, convertedTime;
     public string hours, minutes;
-    public RectTransform sunAndMoon;
-    public Image clockFace;
+    private RectTransform sunAndMoon;
+    private Image clockFace;
+    private Text timeT;
 
-	void Start () {
+    void Awake() {
+        clockFace = GameObject.Find("Clock/Frame").transform.GetChild(0).GetComponent<Image>();
+        sunAndMoon = GameObject.Find("Clock/Frame").transform.GetChild(1).GetComponent<RectTransform>();
+        timeT = GameObject.Find("Clock/TimeIndicator").transform.GetChild(0).GetComponent<Text>();
+    }
 
+    void Start () {
+        timeT.text = "";
     }
 	
 	void Update () {
@@ -29,6 +36,7 @@ public class Timer : MonoBehaviour {
     public void ConvertTime() {
         hours = Mathf.Floor(currentTime * 24f).ToString("00");
         minutes = Mathf.Floor(currentTime * 1440f % 60).ToString("00");
+        timeT.text = hours + ":" + minutes;
         Debug.Log("24 hour time - " + hours + ":" + minutes);
     }
 
