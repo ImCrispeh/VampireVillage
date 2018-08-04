@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class UnitController : MonoBehaviour {
     public NavMeshAgent agent;
     public GameObject selectionIndicator;
+    public bool isCollecting;
+    public GameObject resourceToCollect;
 
 	// Use this for initialization
 	void Start () {
@@ -14,17 +16,42 @@ public class UnitController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (isCollecting) {
+            if (!agent.pathPending) {
+                if ((agent.destination - transform.position).sqrMagnitude <= agent.stoppingDistance) {
+                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
+                        resourceToCollect.GetComponent<ResourceController>().AddResource();
+                        isCollecting = false;
+                        resourceToCollect = null;
+                    }
+                }
+            }
+        }
 	}
 
-    public void Move() {
-        // move unit to the point that was clicked on (clicking done with RMB at this point)
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    // move unit to the point that was clicked on, if not moving to resource clear related variables
+    public void Move(RaycastHit hit) {
+        //if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Resource")) {
+        //    isCollecting = false;
+        //    resourceToCollect = null;
+        //}
 
-        if (Physics.Raycast(ray, out hit)) {
+        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground")) {
             agent.destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        } else {
+            agent.destination = Vector3.Lerp(hit.transform.position, transform.position, 0.05f);
         }
+    }
+
+    public void MoveToCollect(RaycastHit hit) {
+        isCollecting = true;
+        resourceToCollect = hit.transform.gameObject;
+        Debug.Log("moving to collect");
+        Move(hit);
+    }
+
+    public void Collect() {
+
     }
 
     public void Select() {
