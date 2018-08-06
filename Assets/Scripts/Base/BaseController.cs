@@ -41,6 +41,7 @@ public class BaseController : MonoBehaviour {
     public void TakeDamage(int amt) {
         int damage = Mathf.RoundToInt(amt / defense);
         health -= damage;
+        SelectionController._instance.SetObjText();
     }
 
     // Iteration through list done in reverse to safely remove any dead enemies
@@ -52,6 +53,7 @@ public class BaseController : MonoBehaviour {
                 Destroy(toDestroy);
             }
         }
+        SelectionController._instance.SetObjText();
     }
 
     private void OnTriggerEnter(Collider other) {

@@ -39,6 +39,11 @@ public class SelectionController : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
             Select();
         }
+
+        if (selectedObj == null && actionBtn.gameObject.activeInHierarchy) {
+            actionBtn.gameObject.SetActive(false);
+            selectedObjText.gameObject.SetActive(false);
+        }
 	}
     
     // Gets object that was clicked on and makes it selected
@@ -107,24 +112,33 @@ public class SelectionController : MonoBehaviour {
     }
 
     public void SetObjText() {
-        if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
-            selectedObjText.text =
-                selectedObj.tag + "\n"
-                + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
-        }
+        if (selectedObj != null) {
+            if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
+                selectedObjText.text =
+                    selectedObj.tag + "\n"
+                    + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
+            }
 
-        if (selectedObj.tag == "HumanTown") {
-            selectedObjText.text =
-                "Human Town" + "\n"
-                + "Feeding replenishes all hunger and increases threat level";
-        }
+            if (selectedObj.tag == "HumanTown") {
+                selectedObjText.text =
+                    "Human Town" + "\n"
+                    + "Feeding replenishes all hunger and increases threat level";
+            }
 
-        if (selectedObj.tag == "Base") {
-            selectedObjText.text =
-                "Main Base" + "\n"
-                + "Health: " + BaseController._instance.health + "\n"
-                + "Attack level: " + BaseController._instance.attack + "\n"
-                + "Defense level: " + BaseController._instance.defense;
+            if (selectedObj.tag == "Base") {
+                selectedObjText.text =
+                    "Main Base" + "\n"
+                    + "Health: " + BaseController._instance.health + "\n"
+                    + "Attack level: " + BaseController._instance.attack + "\n"
+                    + "Defense level: " + BaseController._instance.defense;
+            }
+
+            if (selectedObj.tag == "Enemy") {
+                selectedObjText.text =
+                    "Enemy" + "\n"
+                    + "Health: " + selectedObj.GetComponent<EnemyController>().health + "\n"
+                    + "Attack level: " + selectedObj.GetComponent<EnemyController>().attack;
+            }
         }
     }
 }
