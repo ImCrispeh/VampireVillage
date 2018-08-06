@@ -7,7 +7,7 @@ public class BaseController : MonoBehaviour {
 
     public int health;
     public int attack;
-    //public int defense;
+    public int defense;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
