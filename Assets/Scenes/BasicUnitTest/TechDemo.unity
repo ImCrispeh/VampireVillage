@@ -816,6 +816,7 @@ GameObject:
   - component: {fileID: 1294255789}
   - component: {fileID: 1294255788}
   - component: {fileID: 1294255787}
+  - component: {fileID: 1294255792}
   - component: {fileID: 1294255786}
   - component: {fileID: 1294255791}
   m_Layer: 0
@@ -921,6 +922,21 @@ MonoBehaviour:
   health: 100
   attack: 5
   defense: 5
+  attackTimer: 0
+  timeBetweenAttacks: 1
+  enemiesInRange: []
+--- !u!135 &1294255792
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1294255785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1497426699
 GameObject:
   m_ObjectHideFlags: 0
