@@ -16,15 +16,20 @@ public class ResourceController : MonoBehaviour {
 	}
 
     // Using a switch statement so it is easier to extend when adding more resources instead of multiple else if
-    public void AddResource() {
+    public void AddResource(UnitController unit) {
         switch(tag) {
             case "Wood":
-                ResourceStorage._instance.AddWood(resourceAmt);
+                unit.woodCollected += resourceAmt;
+                break;
+            case "HumanTown":
+                unit.hungerCollected += resourceAmt;
                 break;
             default:
                 break;
         }
 
-        Destroy(this.gameObject);
+        if (gameObject.tag != "HumanTown") {
+            Destroy(this.gameObject);
+        }
     }
 }
