@@ -29,37 +29,28 @@ public class UnitController : MonoBehaviour {
         }
 	}
 
-    // move unit to the point that was clicked on, if not moving to resource clear related variables
-    public void Move(RaycastHit hit) {
-        //if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Resource")) {
-        //    isCollecting = false;
-        //    resourceToCollect = null;
+    // move unit to whatever was selected
+    public void Move(GameObject dest) {
+        //if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+        //    agent.destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        //} else {
+            agent.destination = Vector3.Lerp(dest.transform.position, transform.position, 0.05f);
         //}
-
-        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-            agent.destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-        } else {
-            agent.destination = Vector3.Lerp(hit.transform.position, transform.position, 0.05f);
-        }
     }
 
-    public void MoveToCollect(RaycastHit hit) {
+    public void MoveToCollect(GameObject dest) {
         isCollecting = true;
-        resourceToCollect = hit.transform.gameObject;
+        resourceToCollect = dest;
         Debug.Log("moving to collect");
-        Move(hit);
+        Move(dest);
     }
 
-    public void Collect() {
+    //public void Select() {
+    //    selectionIndicator.SetActive(true);
+    //}
 
-    }
-
-    public void Select() {
-        selectionIndicator.SetActive(true);
-    }
-
-    public void Deselect() {
-        selectionIndicator.SetActive(false);
-    }
+    //public void Deselect() {
+    //    selectionIndicator.SetActive(false);
+    //}
 
 }
