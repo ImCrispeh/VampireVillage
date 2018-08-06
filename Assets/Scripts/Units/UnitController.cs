@@ -22,7 +22,7 @@ public class UnitController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (resourceToCollect == null) {
+        if (resourceToCollect == null && !isReturning) {
             isCollecting = false;
             ReturnFromCollection();
         }
@@ -31,10 +31,7 @@ public class UnitController : MonoBehaviour {
             if (!agent.pathPending) {
                 if ((agent.destination - transform.position).sqrMagnitude <= agent.stoppingDistance) {
                     if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                        resourceToCollect.GetComponent<ResourceController>().AddResource(this);
-                        isCollecting = false;
-                        resourceToCollect = null;
-                        ReturnFromCollection();
+                        StartCoroutine("CollectResource");
                     }
                 }
             }
@@ -62,6 +59,16 @@ public class UnitController : MonoBehaviour {
         resourceToCollect = dest;
         Debug.Log("moving to collect, " + dest);
         Move(dest);
+    }
+
+    public IEnumerator CollectResource() {
+        yield return new WaitForSeconds(2f);
+        if (resourceToCollect != null) {
+            resourceToCollect.GetComponent<ResourceController>().AddResource(this);
+        }
+        isCollecting = false;
+        resourceToCollect = null;
+        ReturnFromCollection();
     }
 
     public void ReturnFromCollection() {
