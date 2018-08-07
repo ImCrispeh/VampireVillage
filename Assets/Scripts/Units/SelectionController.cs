@@ -17,6 +17,7 @@ public class SelectionController : MonoBehaviour {
     public int totalUnits;
     public int availableUnits;
     public GameObject unitBase;
+    public Transform spawnPoint;
 
     public Button actionBtn;
     public Text actionBtnText;
@@ -97,7 +98,7 @@ public class SelectionController : MonoBehaviour {
     public void SendUnit() {
         if (availableUnits > 0) {
             availableUnits--;
-            GameObject newUnit = Instantiate(unit, unitBase.transform, true);
+            GameObject newUnit = Instantiate(unit, spawnPoint);
             newUnit.GetComponent<UnitController>().unitBase = unitBase;
             newUnit.GetComponent<UnitController>().MoveToCollect(selectedObj);
         }

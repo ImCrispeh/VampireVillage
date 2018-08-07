@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour {
 
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
+        MoveToAttack();
     }
 
     // Use this for initialization
@@ -48,6 +49,7 @@ public class EnemyController : MonoBehaviour {
 
     public void MoveToAttack() {
         agent.destination = Vector3.Lerp(BaseController._instance.transform.position, transform.position, 0.05f);
+        isMovingToAttack = true;
     }
 
     public bool IsDeadAfterDamage(int amt) {
