@@ -36,11 +36,12 @@ public class SelectionController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
 		if (Input.GetMouseButtonDown(0)) {
             Select();
         }
 
+        // Deselect object when it is destroyed (e.g. resource)
         if (selectedObj == null && actionBtn.gameObject.activeInHierarchy) {
             actionBtn.gameObject.SetActive(false);
             selectedObjText.gameObject.SetActive(false);
@@ -58,11 +59,7 @@ public class SelectionController : MonoBehaviour {
             if (EventSystem.current.IsPointerOverGameObject()) {
                 return;
             } else if (selectedObj != null) {
-                selectedObj.GetComponent<Renderer>().material = selectedObjMat;
-                selectedObj = null;
-                selectedObjMat = null;
-                actionBtn.gameObject.SetActive(false);
-                selectedObjText.text = "";
+                DeselectObj();
             }
 
             if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) {
@@ -75,6 +72,14 @@ public class SelectionController : MonoBehaviour {
                 SetObjText();
             }
         }
+    }
+
+    public void DeselectObj() {
+        selectedObj.GetComponent<Renderer>().material = selectedObjMat;
+        selectedObj = null;
+        selectedObjMat = null;
+        actionBtn.gameObject.SetActive(false);
+        selectedObjText.text = "";
     }
 
     public void HighlightSelected(RaycastHit hit) {
@@ -104,7 +109,7 @@ public class SelectionController : MonoBehaviour {
         }
     }
 
-    public void ReturnUnit(UnitController unit) {
+    public virtual void ReturnUnit(UnitController unit) {
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
         ResourceStorage._instance.UpdateResourceText();

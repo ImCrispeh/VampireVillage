@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 23595452800907962}
   - component: {fileID: 136293485395490252}
   - component: {fileID: 195830935350265516}
-  - component: {fileID: 114041194206616952}
+  - component: {fileID: 114127837667491710}
   - component: {fileID: 54364264747229348}
   m_Layer: 0
-  m_Name: Unit
+  m_Name: Tut Unit
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &114041194206616952
+--- !u!114 &114127837667491710
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1577663450091720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271e22d619f613e4fbf776cc15f33458, type: 3}
+  m_Script: {fileID: 11500000, guid: 42d925d5e19054146b5af1b7b98bf4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
