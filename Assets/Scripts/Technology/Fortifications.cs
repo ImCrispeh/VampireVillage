@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class StoneWalls : Technology {
+public class Fortifications : Technology {
 
     public Image unresearchedImage;
     public Technology requiredTechnology;
@@ -11,10 +11,10 @@ public class StoneWalls : Technology {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Stone Walls";
-        technologyDescription = "A stone wall is constructed adding to your defenses";
+        technologyName = "Fortifications";
+        technologyDescription = "Fortifications are added to your stone walls, adding to your defenses";
         researchCost = 20f; //This will need to be changed once we discuss resources
-        researchTime = 30f; //30 secs - currently not linked to the timer
+        researchTime = 45f; //45 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;
@@ -33,7 +33,7 @@ public class StoneWalls : Technology {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //something like Town.Defense += 15;
+        //something like Town.Defense += 25;
         Debug.Log("Added " + technologyName + " to the town");
     }
 
