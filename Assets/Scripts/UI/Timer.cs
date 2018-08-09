@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class Timer : MonoBehaviour {
+    public static Timer _instance;
+
     [Range (0,1)]
     public float currentTime, increaseGradient, decreaseGradient;
     public float secondsInFullDay, convertedTime;
@@ -13,6 +15,12 @@ public class Timer : MonoBehaviour {
     private Text timeT;
 
     void Awake() {
+        if (_instance != null && _instance != this) {
+            Destroy(gameObject);
+        } else {
+            _instance = this;
+        }
+
         clockFace = GameObject.Find("Clock/Frame").transform.GetChild(0).GetComponent<Image>();
         sunAndMoon = GameObject.Find("Clock/Frame").transform.GetChild(1).GetComponent<RectTransform>();
         timeT = GameObject.Find("Clock/TimeIndicator").transform.GetChild(0).GetComponent<Text>();
@@ -62,5 +70,13 @@ public class Timer : MonoBehaviour {
         }
         //Debug.Log("Increase: " + increaseGradient);
         //Debug.Log("Decrease: " + decreaseGradient);
+    }
+
+    public void PauseTimer() {
+        Time.timeScale = 0;
+    }
+
+    public void UnpauseTimer() {
+        Time.timeScale = 1;
     }
 }

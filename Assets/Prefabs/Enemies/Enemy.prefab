@@ -23,11 +23,11 @@ GameObject:
   - component: {fileID: 23595452800907962}
   - component: {fileID: 136293485395490252}
   - component: {fileID: 195830935350265516}
-  - component: {fileID: 114041194206616952}
   - component: {fileID: 54364264747229348}
+  - component: {fileID: 114909720467021538}
   m_Layer: 0
-  m_Name: Unit
-  m_TagString: Unit
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,9 +38,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577663450091720}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.25, y: 0.3, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: ab7ab2185f9fe464e8ed48377bb4a366, type: 2}
+  - {fileID: 2100000, guid: ec40dce456319de489e97354bf902ee5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,7 +102,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &114041194206616952
+--- !u!114 &114909720467021538
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,16 +110,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1577663450091720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271e22d619f613e4fbf776cc15f33458, type: 3}
+  m_Script: {fileID: 11500000, guid: ff8ac34ee588a7244b9f530c6cca2e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  isCollecting: 0
-  resourceToCollect: {fileID: 0}
-  isReturning: 0
-  unitBase: {fileID: 0}
-  woodCollected: 0
-  hungerCollected: 0
+  isMovingToAttack: 0
+  isAttacking: 0
+  health: 20
+  attack: 5
+  attackTimer: 0
+  timeBetweenAttacks: 3
 --- !u!136 &136293485395490252
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -142,7 +142,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 2
+  m_Speed: 0.75
   m_Acceleration: 5
   avoidancePriority: 75
   m_AngularSpeed: 0

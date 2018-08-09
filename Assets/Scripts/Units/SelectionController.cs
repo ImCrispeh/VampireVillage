@@ -17,6 +17,7 @@ public class SelectionController : MonoBehaviour {
     public int totalUnits;
     public int availableUnits;
     public GameObject unitBase;
+    public Transform spawnPoint;
 
     public Button actionBtn;
     public Text actionBtnText;
@@ -35,9 +36,15 @@ public class SelectionController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
 		if (Input.GetMouseButtonDown(0)) {
             Select();
+        }
+
+        // Deselect object when it is destroyed (e.g. resource)
+        if (selectedObj == null && actionBtn.gameObject.activeInHierarchy) {
+            actionBtn.gameObject.SetActive(false);
+            selectedObjText.gameObject.SetActive(false);
         }
 	}
     
@@ -52,11 +59,7 @@ public class SelectionController : MonoBehaviour {
             if (EventSystem.current.IsPointerOverGameObject()) {
                 return;
             } else if (selectedObj != null) {
-                selectedObj.GetComponent<Renderer>().material = selectedObjMat;
-                selectedObj = null;
-                selectedObjMat = null;
-                actionBtn.gameObject.SetActive(false);
-                selectedObjText.text = "";
+                DeselectObj();
             }
 
             if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) {
@@ -69,6 +72,14 @@ public class SelectionController : MonoBehaviour {
                 SetObjText();
             }
         }
+    }
+
+    public void DeselectObj() {
+        selectedObj.GetComponent<Renderer>().material = selectedObjMat;
+        selectedObj = null;
+        selectedObjMat = null;
+        actionBtn.gameObject.SetActive(false);
+        selectedObjText.text = "";
     }
 
     public void HighlightSelected(RaycastHit hit) {
@@ -92,13 +103,13 @@ public class SelectionController : MonoBehaviour {
     public void SendUnit() {
         if (availableUnits > 0) {
             availableUnits--;
-            GameObject newUnit = Instantiate(unit, unitBase.transform, true);
+            GameObject newUnit = Instantiate(unit, spawnPoint);
             newUnit.GetComponent<UnitController>().unitBase = unitBase;
             newUnit.GetComponent<UnitController>().MoveToCollect(selectedObj);
         }
     }
 
-    public void ReturnUnit(UnitController unit) {
+    public virtual void ReturnUnit(UnitController unit) {
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
         ResourceStorage._instance.UpdateResourceText();
@@ -107,24 +118,33 @@ public class SelectionController : MonoBehaviour {
     }
 
     public void SetObjText() {
-        if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
-            selectedObjText.text =
-                selectedObj.tag + "\n"
-                + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
-        }
+        if (selectedObj != null) {
+            if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
+                selectedObjText.text =
+                    selectedObj.tag + "\n"
+                    + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
+            }
 
-        if (selectedObj.tag == "HumanTown") {
-            selectedObjText.text =
-                "Human Town" + "\n"
-                + "Feeding replenishes all hunger and increases threat level";
-        }
+            if (selectedObj.tag == "HumanTown") {
+                selectedObjText.text =
+                    "Human Town" + "\n"
+                    + "Feeding replenishes all hunger and increases threat level";
+            }
 
-        if (selectedObj.tag == "Base") {
-            selectedObjText.text =
-                "Main Base" + "\n"
-                + "Health: " + BaseController._instance.health + "\n"
-                + "Attack level: " + BaseController._instance.attack + "\n"
-                + "Defense level: " + BaseController._instance.defense;
+            if (selectedObj.tag == "Base") {
+                selectedObjText.text =
+                    "Main Base" + "\n"
+                    + "Health: " + BaseController._instance.health + "\n"
+                    + "Attack level: " + BaseController._instance.attack + "\n"
+                    + "Defense level: " + BaseController._instance.defense;
+            }
+
+            if (selectedObj.tag == "Enemy") {
+                selectedObjText.text =
+                    "Enemy" + "\n"
+                    + "Health: " + selectedObj.GetComponent<EnemyController>().health + "\n"
+                    + "Attack level: " + selectedObj.GetComponent<EnemyController>().attack;
+            }
         }
     }
 }
