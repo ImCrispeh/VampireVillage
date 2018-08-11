@@ -35,12 +35,17 @@ public class ResourceStorage : MonoBehaviour {
 	}
 
     public void AddHunger(float amt) {
+        BaseController._instance.isHungerEmpty = false;
         hunger += amt;
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         hungerBar.value = HungerPercentage();
     }
 
     public void SubtractHunger(float amt) {
+        if (hunger <= 0f) {
+            BaseController._instance.isHungerEmpty = true;
+        }
+
         hunger -= amt;
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         hungerBar.value = HungerPercentage();

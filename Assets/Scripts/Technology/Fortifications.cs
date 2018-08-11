@@ -45,7 +45,7 @@ public class Fortifications : Technology {
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            if (ResourceStorage._instance.wood > researchCost) {
+            if (ResourceStorage._instance.wood >= researchCost) {
                 researchTimer = 0;
                 researching = true;
                 ResourceStorage._instance.SubtractWood(researchCost);

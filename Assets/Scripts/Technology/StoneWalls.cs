@@ -16,7 +16,7 @@ public class StoneWalls : Technology {
         technologyName = "Stone Walls";
         technologyDescription = "A stone wall is constructed adding to your defenses";
         researchCost = 100; //This will need to be changed once we discuss resources
-        researchTime = 30f; //30 secs - currently not linked to the timer
+        researchTime = 15f; //15 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;
@@ -45,7 +45,7 @@ public class StoneWalls : Technology {
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            if (ResourceStorage._instance.wood > researchCost) {
+            if (ResourceStorage._instance.wood >= researchCost) {
                 researchTimer = 0;
                 researching = true;
                 ResourceStorage._instance.SubtractWood(researchCost);

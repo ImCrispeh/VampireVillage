@@ -11,6 +11,11 @@ public class BaseController : MonoBehaviour {
     public float attackTimer;
     public float timeBetweenAttacks;
 
+    public bool isHungerEmpty;
+    public bool hasHungerMessagePopped;
+    public float noHungerTimer;
+    public float timeBetweenNoHungerDmg;
+
     public List<GameObject> enemiesInRange;
 
     private void Awake() {
@@ -34,12 +39,53 @@ public class BaseController : MonoBehaviour {
                 attackTimer -= timeBetweenAttacks;
             }
         }
+
+        if (isHungerEmpty) {
+            if (!hasHungerMessagePopped) {
+                hasHungerMessagePopped = true;
+                ErrorController._instance.SetErrorText("Your empty hunger bar causes your colony to take damage");
+            }
+
+            noHungerTimer += Time.deltaTime;
+            
+            if (noHungerTimer >= timeBetweenNoHungerDmg) {
+                TakeHungerDamage(5);
+                noHungerTimer -= timeBetweenNoHungerDmg;
+            }
+        } else {
+            hasHungerMessagePopped = false;
+        }
 	}
 
     public void TakeDamage(int amt) {
         int damage = Mathf.Clamp(Mathf.RoundToInt(amt - (defense/2)), 1, int.MaxValue);
         health -= damage;
-        SelectionController._instance.SetObjText();
+        health = Mathf.Clamp(health, 0, int.MaxValue);
+
+        if (SelectionController._instance != null) {
+            SelectionController._instance.SetObjText();
+        } else {
+            TutorialController._instance.SetObjText();
+        }
+
+        if (health == 0) {
+            GameController._instance.EndGame();
+        }
+    }
+
+    public void TakeHungerDamage(int amt) {
+        health -= amt;
+        health = Mathf.Clamp(health, 0, int.MaxValue);
+
+        if (SelectionController._instance != null) {
+            SelectionController._instance.SetObjText();
+        } else {
+            TutorialController._tutInstance.SetObjText();
+        }
+
+        if (health == 0) {
+            GameController._instance.EndGame();
+        }
     }
 
     // Iteration through list done in reverse to safely remove any dead enemies

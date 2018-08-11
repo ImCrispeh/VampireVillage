@@ -15,7 +15,7 @@ public class WoodenFence : Technology {
         technologyName = "Wooden Fence";
         technologyDescription = "A wooden fence is constructed adding to your defenses";
         researchCost = 50; //This will need to be changed once we discuss resources
-        researchTime = 5f; //55 secs - currently not linked to the timer
+        researchTime = 5f; //5 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;
@@ -46,7 +46,7 @@ public class WoodenFence : Technology {
         // Since it's the first technology, check if tutorial is running or
         // if it has been skipped (TO IMPLEMENT LATER)
         if (!researched && !researching) {
-            if (ResourceStorage._instance.wood > researchCost) {
+            if (ResourceStorage._instance.wood >= researchCost) {
                 if (TutorialController._tutInstance != null) {
                     Timer._instance.UnpauseTimer();
                 }
