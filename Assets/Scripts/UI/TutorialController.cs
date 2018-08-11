@@ -39,7 +39,7 @@ public class TutorialController : SelectionController {
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && EventSystem.current.currentSelectedGameObject == techBtn) {
+        if (Input.GetMouseButtonDown(0) && EventSystem.current.currentSelectedGameObject == techBtn && currText == tutorialTexts.Length - 2) {
             HideText();
         }
     }
@@ -50,6 +50,7 @@ public class TutorialController : SelectionController {
     }
 
     public void ChangeText() {
+        Debug.Log("change");
         if (selectedObj != null) {
             DeselectObj();
         }
@@ -60,9 +61,17 @@ public class TutorialController : SelectionController {
             currText++;
             textBackground.enabled = true;
             tutorialTexts[currText].SetActive(true);
+
+            // Keep tech button hidden until it gets to the tutorial step about it
+            if (currText == tutorialTexts.Length - 2) {
+                techBtn.SetActive(true);
+            }
+
+            // Make it so the final message does not pause the timer (since there is no action to take)
             if (currText < tutorialTexts.Length - 1) {
                 Timer._instance.PauseTimer();
             }
+
         } else {
             Timer._instance.UnpauseTimer();
             selectionCont.SetActive(true);

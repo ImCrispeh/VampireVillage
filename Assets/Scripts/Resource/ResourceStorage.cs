@@ -11,6 +11,7 @@ public class ResourceStorage : MonoBehaviour {
     public int wood;
 
     public Text resourceText;
+    public GameObject test;
     public Slider hungerBar;
 
     private void Awake() {
@@ -58,9 +59,17 @@ public class ResourceStorage : MonoBehaviour {
     }
 
     public void UpdateResourceText() {
+        int units;
+
+        if (SelectionController._instance != null) {
+            units = SelectionController._instance.availableUnits;
+        } else {
+            units = TutorialController._tutInstance.availableUnits;
+        }
+
         resourceText.text =
-            "Hunger: " + hunger + "\n"
-            + "Wood: " + wood + "\n"
-            + "Available Units: " + SelectionController._instance.availableUnits;
+        "Hunger: " + hunger + "\n"
+        + "Wood: " + wood + "\n"
+        + "Available Units: " + units;
     }
 }

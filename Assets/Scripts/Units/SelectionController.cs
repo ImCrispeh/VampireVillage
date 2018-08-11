@@ -106,17 +106,20 @@ public class SelectionController : MonoBehaviour {
                 GameObject newUnit = Instantiate(unit, spawnPoint);
                 newUnit.GetComponent<UnitController>().unitBase = unitBase;
                 newUnit.GetComponent<UnitController>().MoveToCollect(selectedObj);
+                ResourceStorage._instance.UpdateResourceText();
+            } else {
+                ErrorController._instance.SetErrorText("Cannot send units out during the day");
             }
         } else {
-
+            ErrorController._instance.SetErrorText("No units available");
         }
     }
 
     public virtual void ReturnUnit(UnitController unit) {
+        availableUnits++;
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
         ResourceStorage._instance.UpdateResourceText();
-        availableUnits++;
         Destroy(unit.gameObject);
     }
 

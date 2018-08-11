@@ -51,6 +51,8 @@ public class Fortifications : Technology {
                 ResourceStorage._instance.SubtractWood(researchCost);
                 ResourceStorage._instance.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
+            } else {
+                ErrorController._instance.SetErrorText("Not enough resources available");
             }
         }
     }

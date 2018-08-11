@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour {
 	
 	void Update () {
         currentTime += (Time.deltaTime / secondsInFullDay);
-        Debug.Log("Current time: " + currentTime);
+        //Debug.Log("Current time: " + currentTime);
         if (currentTime > 1) {
             currentTime = 0;
         }
@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour {
         hours = Mathf.Floor(currentTime * 24f).ToString("00");
         minutes = Mathf.Floor(currentTime * 1440f % 60).ToString("00");
         timeT.text = hours + ":" + minutes;
-        Debug.Log("24 hour time - " + hours + ":" + minutes);
+        //Debug.Log("24 hour time - " + hours + ":" + minutes);
     }
 
     public void RotateClockFace() {
