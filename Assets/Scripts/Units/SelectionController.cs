@@ -100,7 +100,7 @@ public class SelectionController : MonoBehaviour {
     }
 
     public void SendUnit() {
-        if (availableUnits > 0 && Timer._instance.currentTime >= 0.75 && Timer._instance.currentTime <= 0.15f) {
+        if (availableUnits > 0 && (Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.2f)) {
             availableUnits--;
             GameObject newUnit = Instantiate(unit, spawnPoint);
             newUnit.GetComponent<UnitController>().unitBase = unitBase;

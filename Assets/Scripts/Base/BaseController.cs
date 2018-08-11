@@ -37,7 +37,7 @@ public class BaseController : MonoBehaviour {
 	}
 
     public void TakeDamage(int amt) {
-        int damage = Mathf.RoundToInt(amt - (defense/2));
+        int damage = Mathf.Clamp(Mathf.RoundToInt(amt - (defense/2)), 1, int.MaxValue);
         health -= damage;
         SelectionController._instance.SetObjText();
     }
@@ -52,11 +52,5 @@ public class BaseController : MonoBehaviour {
             }
         }
         SelectionController._instance.SetObjText();
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Enemy") {
-            enemiesInRange.Add(other.gameObject);
-        }
     }
 }
