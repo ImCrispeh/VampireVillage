@@ -11,9 +11,11 @@ using UnityEngine.EventSystems;
 public class TutorialController : SelectionController {
     public static TutorialController _tutInstance;
     public int currText;
+    public Image textBackground;
     public GameObject[] tutorialTexts;
 
     public GameObject selectionCont;
+    public GameObject techBtn;
 
     private void Awake() {
         if (_tutInstance != null && _tutInstance != this) {
@@ -23,23 +25,22 @@ public class TutorialController : SelectionController {
         }
     }
 
-    // Use this for initialization
-    void Start () {
+    void Start() {
         Timer._instance.PauseTimer();
     }
-	
-	// Update is called once per frame
-	protected override void Update () {
-        base.Update();
 
-        if (Input.GetKeyDown(KeyCode.A)) {
-            ChangeText();
-        }
+    protected override void Update() {
+        base.Update();
 
         if (Input.GetMouseButtonDown(0) && EventSystem.current.currentSelectedGameObject == actionBtn.gameObject) {
             if (availableUnits > 0) {
                 Timer._instance.UnpauseTimer();
+                HideText();
             }
+        }
+
+        if (Input.GetMouseButtonDown(0) && EventSystem.current.currentSelectedGameObject == techBtn) {
+            HideText();
         }
     }
 
@@ -53,16 +54,26 @@ public class TutorialController : SelectionController {
             DeselectObj();
         }
 
-        tutorialTexts[currText].SetActive(false);
+        HideText();
 
         if (currText < tutorialTexts.Length - 1) {
             currText++;
+            textBackground.enabled = true;
             tutorialTexts[currText].SetActive(true);
-            Timer._instance.PauseTimer();
+            if (currText < tutorialTexts.Length - 1) {
+                Timer._instance.PauseTimer();
+            }
         } else {
             Timer._instance.UnpauseTimer();
             selectionCont.SetActive(true);
+            actionBtn.onClick.RemoveAllListeners();
+            actionBtn.onClick.AddListener(selectionCont.GetComponent<SelectionController>().SendUnit);
             Destroy(this.gameObject);
         }
+    }
+
+    public void HideText() {
+        textBackground.enabled = false;
+        tutorialTexts[currText].SetActive(false);
     }
 }

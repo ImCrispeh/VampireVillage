@@ -21,12 +21,10 @@ public class BaseController : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
     void Start () {
         enemiesInRange = new List<GameObject>();
     }
 	
-	// Update is called once per frame
 	void Update () {
 		if (enemiesInRange.Count > 0) {
             attackTimer += Time.deltaTime;
@@ -39,7 +37,7 @@ public class BaseController : MonoBehaviour {
 	}
 
     public void TakeDamage(int amt) {
-        int damage = Mathf.RoundToInt(amt / defense);
+        int damage = Mathf.RoundToInt(amt - (defense/2));
         health -= damage;
         SelectionController._instance.SetObjText();
     }

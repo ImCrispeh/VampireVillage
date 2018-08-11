@@ -15,12 +15,10 @@ public class UnitController : MonoBehaviour {
     public int woodCollected;
     public int hungerCollected;
 
-	// Use this for initialization
 	void Awake () {
         agent = GetComponent<NavMeshAgent>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if (resourceToCollect == null && !isReturning) {
             isCollecting = false;
@@ -49,7 +47,7 @@ public class UnitController : MonoBehaviour {
         }
 	}
 
-    // move unit to whatever was selected
+    // Move unit to whatever was selected
     public void Move(GameObject dest) {
         agent.destination = Vector3.Lerp(dest.transform.position, transform.position, 0.05f);
     }

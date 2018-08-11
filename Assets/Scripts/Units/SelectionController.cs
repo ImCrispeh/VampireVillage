@@ -30,12 +30,11 @@ public class SelectionController : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
+    // Subtracts child count so it gets the correct amount of available units when it becomes active (in place of the TutorialController)
     void Start () {
-        availableUnits = totalUnits;
+        availableUnits = totalUnits - spawnPoint.childCount;
 	}
 	
-	// Update is called once per frame
 	protected virtual void Update () {
 		if (Input.GetMouseButtonDown(0)) {
             Select();
@@ -44,7 +43,7 @@ public class SelectionController : MonoBehaviour {
         // Deselect object when it is destroyed (e.g. resource)
         if (selectedObj == null && actionBtn.gameObject.activeInHierarchy) {
             actionBtn.gameObject.SetActive(false);
-            selectedObjText.gameObject.SetActive(false);
+            selectedObjText.text = "";
         }
 	}
     
@@ -87,7 +86,7 @@ public class SelectionController : MonoBehaviour {
         selectedObjMat = hit.transform.gameObject.GetComponent<Renderer>().material;
         selectedMatColor = selectedObjMat.color;
 
-        matToUse.color = new Color32(selectedMatColor.r, selectedMatColor.g, selectedMatColor.b, 150);
+        matToUse.color = new Color32(selectedMatColor.r, selectedMatColor.g, selectedMatColor.b, 190);
         selectedObj.GetComponent<Renderer>().material = matToUse;
     }
 
@@ -101,7 +100,7 @@ public class SelectionController : MonoBehaviour {
     }
 
     public void SendUnit() {
-        if (availableUnits > 0) {
+        if (availableUnits > 0 && Timer._instance.currentTime >= 0.75 && Timer._instance.currentTime <= 0.15f) {
             availableUnits--;
             GameObject newUnit = Instantiate(unit, spawnPoint);
             newUnit.GetComponent<UnitController>().unitBase = unitBase;

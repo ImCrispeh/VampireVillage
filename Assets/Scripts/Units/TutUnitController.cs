@@ -10,7 +10,6 @@ public class TutUnitController : UnitController {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if (resourceToCollect == null && !isReturning) {
             isCollecting = false;

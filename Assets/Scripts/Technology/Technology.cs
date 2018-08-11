@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Technology : MonoBehaviour {
     public virtual string technologyName { get; set; }
     public virtual string technologyDescription { get; set; }
-    public virtual float researchCost { get; set; } //this will need to be changed once we discuss resources
+    public virtual int researchCost { get; set; } //this will need to be changed once we discuss resources
     public virtual float researchTimer { get; set; }
     public virtual float researchTime { get; set; }
     public virtual bool researched { get; set; }
@@ -14,6 +14,7 @@ public abstract class Technology : MonoBehaviour {
     public virtual bool applyTechnology { get; set; }
 
     public virtual Image technologyImage { get; set; }
+    public virtual BaseController mainBase { get; set; }
 
     protected virtual void Start() {
         technologyName = "Placeholder name";

@@ -224,6 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unresearchedImage: {fileID: 114000280013174238}
+  technologyObject: {fileID: 0}
+  requiredTechnology: {fileID: 0}
 --- !u!114 &114906709761458588
 MonoBehaviour:
   m_ObjectHideFlags: 1

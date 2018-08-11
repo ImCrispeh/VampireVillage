@@ -19,12 +19,10 @@ public class ResourceStorage : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
     void Start () {
         UpdateResourceText();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}

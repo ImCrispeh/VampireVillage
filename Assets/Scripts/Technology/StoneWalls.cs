@@ -6,6 +6,8 @@ using UnityEngine;
 public class StoneWalls : Technology {
 
     public Image unresearchedImage;
+    public GameObject technologyObject;
+    public Transform technologyPosition;
     public Technology requiredTechnology;
 
     // Use this for initialization
@@ -13,14 +15,15 @@ public class StoneWalls : Technology {
         base.Start();
         technologyName = "Stone Walls";
         technologyDescription = "A stone wall is constructed adding to your defenses";
-        researchCost = 20f; //This will need to be changed once we discuss resources
+        researchCost = 100; //This will need to be changed once we discuss resources
         researchTime = 30f; //30 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-	}
+        mainBase = BaseController._instance;
+    }
 	
 	// Update is called once per frame
 	protected override void Update () {
@@ -34,14 +37,21 @@ public class StoneWalls : Technology {
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         //something like Town.Defense += 15;
+        mainBase.defense += 5;
         Debug.Log("Added " + technologyName + " to the town");
+        Destroy(technologyPosition.GetChild(0).gameObject);
+        Instantiate(technologyObject, technologyPosition);
     }
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            researchTimer = 0;
-            researching = true;
-            Debug.Log("Researching: " + technologyName);
+            if (ResourceStorage._instance.wood > researchCost) {
+                researchTimer = 0;
+                researching = true;
+                ResourceStorage._instance.SubtractWood(researchCost);
+                ResourceStorage._instance.UpdateResourceText();
+                Debug.Log("Researching: " + technologyName);
+            }
         }
     }
 

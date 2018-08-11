@@ -19,12 +19,10 @@ public class EnemyController : MonoBehaviour {
         MoveToAttack();
     }
 
-    // Use this for initialization
     void Start () {
         
     }
-	
-	// Update is called once per frame
+
 	void Update () {
         if (isMovingToAttack) {
             if (!agent.pathPending) {

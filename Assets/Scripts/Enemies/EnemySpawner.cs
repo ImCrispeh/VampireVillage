@@ -9,22 +9,29 @@ public class EnemySpawner : MonoBehaviour {
     public float timeBetweenSpawns;
     public Transform spawnPoint;
     public bool isSpawning;
+    public bool hasSetSpawn;
 
-	// Use this for initialization
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
-        if (Timer._instance.currentTime >= 0.4 && !isSpawning && enemiesToSpawn > 0) {
+        if (Timer._instance.currentTime >= 0.375f && Timer._instance.currentTime <= 0.7f && !isSpawning && enemiesToSpawn > 0) {
             isSpawning = true;
+            hasSetSpawn = false;
         }
 
         if (isSpawning) {
             SpawnEnemies();
+        } else {
+            if (!hasSetSpawn) {
+                if (Timer._instance.currentTime >= 0.75f) {
+                    enemiesToSpawn = 2;
+                    hasSetSpawn = true;
+                }
+            }
         }
-	}
+    }
 
     public void SpawnEnemies() {
         if (enemiesToSpawn > 0) {
