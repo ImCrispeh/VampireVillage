@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void EndGame() {
-        //Timer._instance.PauseTimer();
+        Timer._instance.PauseTimer();
         gameOverScreen.SetActive(true);
     }
 }
