@@ -13,7 +13,7 @@ public class UnitController : MonoBehaviour {
     public GameObject unitBase;
 
     public int woodCollected;
-    public int hungerCollected;
+    public float hungerCollected;
 
 	void Awake () {
         agent = GetComponent<NavMeshAgent>();

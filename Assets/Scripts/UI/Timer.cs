@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour {
     [Range (0,1)]
     public float currentTime, increaseGradient, decreaseGradient;
     public float secondsInFullDay, convertedTime;
+    public bool isPaused;
     public string hours, minutes;
     private RectTransform sunAndMoon;
     private Image clockFace;
@@ -74,9 +75,11 @@ public class Timer : MonoBehaviour {
 
     public void PauseTimer() {
         Time.timeScale = 0;
+        isPaused = true;
     }
 
     public void UnpauseTimer() {
         Time.timeScale = 1;
+        isPaused = false;
     }
 }
