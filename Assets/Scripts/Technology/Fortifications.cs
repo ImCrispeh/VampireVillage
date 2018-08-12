@@ -16,7 +16,7 @@ public class Fortifications : Technology {
         technologyName = "Fortifications";
         technologyDescription = "Fortifications are added to your stone walls, adding to your defenses";
         researchCost = 150; //This will need to be changed once we discuss resources
-        researchTime = 20f; //20 secs - currently not linked to the timer
+        researchTime = 30f; //20 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;

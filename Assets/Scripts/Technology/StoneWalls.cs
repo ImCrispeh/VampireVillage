@@ -16,7 +16,7 @@ public class StoneWalls : Technology {
         technologyName = "Stone Walls";
         technologyDescription = "A stone wall is constructed adding to your defenses";
         researchCost = 100; //This will need to be changed once we discuss resources
-        researchTime = 15f; //15 secs - currently not linked to the timer
+        researchTime = 20f; //15 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;

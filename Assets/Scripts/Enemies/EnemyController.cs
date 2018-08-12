@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour {
 
     public bool IsDeadAfterDamage(int amt) {
         health -= amt;
-        return health <= 0;
+        health = Mathf.Clamp(health, 0, int.MaxValue);
+        return health == 0;
     }
 }

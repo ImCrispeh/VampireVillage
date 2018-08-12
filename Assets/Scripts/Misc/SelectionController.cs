@@ -151,6 +151,8 @@ public class SelectionController : MonoBehaviour {
                     + "Health: " + selectedObj.GetComponent<EnemyController>().health + "\n"
                     + "Attack level: " + selectedObj.GetComponent<EnemyController>().attack;
             }
+        } else {
+            selectedObjText.text = "";
         }
     }
 }

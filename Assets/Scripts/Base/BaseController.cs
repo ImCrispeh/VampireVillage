@@ -95,6 +95,7 @@ public class BaseController : MonoBehaviour {
                 GameObject toDestroy = enemiesInRange[i];
                 enemiesInRange.RemoveAt(i);
                 Destroy(toDestroy);
+                SelectionController._instance.SetObjText();
             }
         }
         SelectionController._instance.SetObjText();
