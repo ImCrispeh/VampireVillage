@@ -14,13 +14,14 @@ public class SelectionController : MonoBehaviour {
     public Text selectedObjText;
 
     public GameObject unit;
-    public int totalUnits;
     public int availableUnits;
     public GameObject unitBase;
     public Transform spawnPoint;
 
-    public Button actionBtn;
-    public Text actionBtnText;
+    public Button resourceActionBtn;
+    public GameObject townActionsContainer;
+    public List<Button> townActionBtns;
+    public enum Actions { partialFeed, fullFeed, convert, collect };
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -32,7 +33,20 @@ public class SelectionController : MonoBehaviour {
 
     // Subtracts child count so it gets the correct amount of available units when it becomes active (in place of the TutorialController)
     void Start () {
-        availableUnits = totalUnits - spawnPoint.childCount;
+        // Set buttons to work from SelectionController rather than TutorialController
+        resourceActionBtn.onClick.RemoveAllListeners();
+        resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
+
+        townActionBtns[1].onClick.RemoveAllListeners();
+        townActionBtns[0].onClick.AddListener(() => SendUnit(Actions.partialFeed));
+        townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
+        townActionBtns[2].onClick.AddListener(() => SendUnit(Actions.convert));
+        foreach (Button btn in townActionBtns) {
+            btn.interactable = true;
+        }
+
+        availableUnits = 1 - spawnPoint.childCount;
+        ResourceStorage._instance.UpdateResourceText();
 	}
 	
 	protected virtual void Update () {
@@ -41,8 +55,8 @@ public class SelectionController : MonoBehaviour {
         }
 
         // Deselect object when it is destroyed (e.g. resource)
-        if (selectedObj == null && actionBtn.gameObject.activeInHierarchy) {
-            actionBtn.gameObject.SetActive(false);
+        if (selectedObj == null && resourceActionBtn.gameObject.activeInHierarchy) {
+            resourceActionBtn.gameObject.SetActive(false);
             selectedObjText.text = "";
         }
 	}
@@ -64,7 +78,7 @@ public class SelectionController : MonoBehaviour {
             if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) {
                 HighlightSelected(hit);
 
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Resource")) {
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Resource") || hit.transform.gameObject.tag == "HumanTown") {
                     SetActionButton();
                 }
 
@@ -77,7 +91,8 @@ public class SelectionController : MonoBehaviour {
         selectedObj.GetComponent<Renderer>().material = selectedObjMat;
         selectedObj = null;
         selectedObjMat = null;
-        actionBtn.gameObject.SetActive(false);
+        resourceActionBtn.gameObject.SetActive(false);
+        townActionsContainer.SetActive(false);
         selectedObjText.text = "";
     }
 
@@ -92,20 +107,23 @@ public class SelectionController : MonoBehaviour {
 
     public void SetActionButton() {
         if (selectedObj.tag == "HumanTown") {
-            actionBtnText.text = "Feed";
+            resourceActionBtn.gameObject.SetActive(false);
+            townActionsContainer.SetActive(true);
         } else {
-            actionBtnText.text = "Collect";
+            townActionsContainer.SetActive(false);
+            resourceActionBtn.gameObject.SetActive(true);
         }
-        actionBtn.gameObject.SetActive(true);
     }
 
-    public void SendUnit() {
+    public void SendUnit(Actions action) {
         if (availableUnits > 0) {
             if (Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.2f) {
                 availableUnits--;
                 GameObject newUnit = Instantiate(unit, spawnPoint);
-                newUnit.GetComponent<UnitController>().unitBase = unitBase;
-                newUnit.GetComponent<UnitController>().MoveToCollect(selectedObj);
+                UnitController newUnitCont = newUnit.GetComponent<UnitController>();
+                newUnitCont.unitBase = unitBase;
+                newUnitCont.MoveToAction(selectedObj);
+                newUnitCont.action = action;
                 ResourceStorage._instance.UpdateResourceText();
             } else {
                 ErrorController._instance.SetErrorText("Cannot send units out during the day");
@@ -117,6 +135,7 @@ public class SelectionController : MonoBehaviour {
 
     public virtual void ReturnUnit(UnitController unit) {
         availableUnits++;
+        availableUnits += unit.humanConvertCollected;
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
         ResourceStorage._instance.UpdateResourceText();
@@ -134,7 +153,7 @@ public class SelectionController : MonoBehaviour {
             if (selectedObj.tag == "HumanTown") {
                 selectedObjText.text =
                     "Human Town" + "\n"
-                    + "Feeding replenishes all hunger and increases threat level";
+                    + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level";
             }
 
             if (selectedObj.tag == "Base") {
