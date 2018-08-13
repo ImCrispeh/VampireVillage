@@ -14,6 +14,7 @@ public abstract class Technology : MonoBehaviour {
     public virtual bool applyTechnology { get; set; }
 
     public virtual Image technologyImage { get; set; }
+    public virtual Image proceedingTechnologyBar { get; set; }
     public virtual BaseController mainBase { get; set; }
 
     protected virtual void Start() {
@@ -30,15 +31,19 @@ public abstract class Technology : MonoBehaviour {
         researchTimer += Time.deltaTime;
         if (researchTimer > researchTime && !researching && !researched) {
             technologyImage.fillAmount = 1;
+            proceedingTechnologyBar.fillAmount = 1;
         }
         else {
             technologyImage.fillAmount = ((researchTime - researchTimer) / researchTime);
+
             if (researchTimer < researchTime) { //stops you from clicking again and resetting the research
                 researching = true;
+                
             }
             else {
                 researching = false;
                 researched = true;
+                proceedingTechnologyBar.fillAmount = 0;
             }
         }
     }

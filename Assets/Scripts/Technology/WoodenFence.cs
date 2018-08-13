@@ -6,6 +6,7 @@ using UnityEngine;
 public class WoodenFence : Technology {
 
     public Image unresearchedImage;
+    public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
 
@@ -21,6 +22,7 @@ public class WoodenFence : Technology {
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
+        proceedingTechnologyBar = connectingBar;
         mainBase = BaseController._instance;
 	}
 	
@@ -46,7 +48,9 @@ public class WoodenFence : Technology {
         // Since it's the first technology, check if tutorial is running or
         // if it has been skipped (TO IMPLEMENT LATER)
         if (!researched && !researching) {
-            if (ResourceStorage._instance.wood >= researchCost) {
+            researchTimer = 0;
+            researching = true;
+            /*if (ResourceStorage._instance.wood >= researchCost) {
                 if (TutorialController._tutInstance != null) {
                     Timer._instance.UnpauseTimer();
                 }
@@ -58,7 +62,7 @@ public class WoodenFence : Technology {
                 Debug.Log("Researching: " + technologyName);
             } else {
                 ErrorController._instance.SetErrorText("Not enough resources available");
-            }
+            }*/
         }
     }
 
