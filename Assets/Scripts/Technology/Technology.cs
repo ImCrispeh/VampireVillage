@@ -17,8 +17,12 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public virtual Image technologyImage { get; set; }
     public virtual Image proceedingTechnologyBar { get; set; }
+    //ttb is tool tip box
     public virtual Text ttbName { get; set; }
+    public virtual Text ttbResearchRequirement { get; set; }
     public virtual Text ttbDescription { get; set; }
+    public virtual Text ttbCost { get; set; }
+    public virtual Text ttbResearchTime { get; set; }
     public virtual BaseController mainBase { get; set; }
 
     protected virtual void Start() {
@@ -31,6 +35,12 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         researched = false;
         researching = false;
         applyTechnology = false;
+
+        ttbName = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyName").GetComponent<Text>();
+        ttbResearchRequirement = GameObject.Find("TechnologyWindow/TooltipBox/ResearchRequirement").GetComponent<Text>();
+        ttbDescription = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyDescription").GetComponent<Text>();
+        ttbCost = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyCost").GetComponent<Text>();
+        ttbResearchTime = GameObject.Find("TechnologyWindow/TooltipBox/ResearchTime").GetComponent<Text>();
     }
     protected virtual void Update() {
         researchTimer += Time.deltaTime;

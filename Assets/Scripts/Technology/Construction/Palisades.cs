@@ -4,21 +4,22 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
     public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
+    public Technology requiredTechnology;   //add more if you need more than one pre-requiste
 
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Picket Fence";
-        technologyDescription = "A wooden fence is constructed adding to your defenses";
-        researchRequirement = "";
-        researchCost = 50; 
-        researchTime = 10f; 
+        technologyName = "Palisades";
+        technologyDescription = "A palisade is constructed adding to your defenses";
+        researchRequirement = "Picket Fence";
+        researchCost = 70; 
+        researchTime = 20f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
@@ -45,7 +46,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     }
 
     public override void StartResearch() {
-        if (!researched && !researching) {
+        if (!researched && !researching && requiredTechnology.researched) {
             researchTimer = 0;
             researching = true;
             Debug.Log("Researching: " + technologyName);
@@ -60,7 +61,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void OnPointerEnter(PointerEventData pointer) {
         Debug.Log("Mouse has entered " + technologyName);
         ttbName.text = technologyName;
-        ttbResearchRequirement.text = researchRequirement;
+        ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
         ttbCost.text = researchCost.ToString() + " wood";
         ttbResearchTime.text = researchTime.ToString() + " seconds (need to edit)";
