@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class WoodenFence : Technology {
+public class WoodenFence : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
     public Image connectingBar;
@@ -72,5 +73,13 @@ public class WoodenFence : Technology {
 
         TechnologyEffect();
         Debug.Log("Researching: " + technologyName);
+    }
+
+    public override void OnPointerEnter(PointerEventData pointer) {
+        Debug.Log("Mouse is over: " + technologyName);
+    }
+
+    public override void OnPointerExit(PointerEventData pointer) {
+        Debug.Log("Mouse is not over: " + technologyName + " anymore");
     }
 }

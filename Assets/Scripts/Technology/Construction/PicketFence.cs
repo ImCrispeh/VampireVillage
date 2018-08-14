@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class PicketFence : Technology {
+public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
     public Image connectingBar;
@@ -15,6 +16,7 @@ public class PicketFence : Technology {
         base.Start();
         technologyName = "Picket Fence";
         technologyDescription = "A wooden fence is constructed adding to your defenses";
+        researchRequirement = "";
         researchCost = 50; 
         researchTime = 10f; 
         researchTimer = researchTime;
@@ -43,23 +45,23 @@ public class PicketFence : Technology {
     }
 
     public override void StartResearch() {
-
         // Since it's the first technology, check if tutorial is running or
         // if it has been skipped (TO IMPLEMENT LATER)
         if (!researched && !researching) {
             researchTimer = 0;
             researching = true;
+            Debug.Log("Researching: " + technologyName);
             /*if (ResourceStorage._instance.wood >= researchCost) {
                 if (TutorialController._tutInstance != null) {
                     Timer._instance.UnpauseTimer();
                 }
-
                 researchTimer = 0;
                 researching = true;
                 ResourceStorage._instance.SubtractWood(researchCost);
                 ResourceStorage._instance.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
-            } else {
+            } 
+            else {
                 ErrorController._instance.SetErrorText("Not enough resources available");
             }*/
         }
@@ -69,8 +71,15 @@ public class PicketFence : Technology {
         if (TutorialController._tutInstance != null) {
             TutorialController._tutInstance.ChangeText();
         }
-
         TechnologyEffect();
-        Debug.Log("Researching: " + technologyName);
+        Debug.Log("Researched: " + technologyName);
+    }
+
+    public override void OnPointerEnter(PointerEventData pointer) {
+        Debug.Log("Mouse is over " + technologyName);
+    }
+
+    public override void OnPointerExit(PointerEventData pointer) {
+        Debug.Log("Mouse is not over " + technologyName + " anymore");
     }
 }

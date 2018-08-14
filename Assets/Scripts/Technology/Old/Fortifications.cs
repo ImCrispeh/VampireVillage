@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class StoneWalls : Technology {
+public class Fortifications : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
     public GameObject technologyObject;
@@ -13,10 +14,10 @@ public class StoneWalls : Technology {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Stone Walls";
-        technologyDescription = "A stone wall is constructed adding to your defenses";
-        researchCost = 100; //This will need to be changed once we discuss resources
-        researchTime = 20f; //15 secs - currently not linked to the timer
+        technologyName = "Fortifications";
+        technologyDescription = "Fortifications are added to your stone walls, adding to your defenses";
+        researchCost = 150; //This will need to be changed once we discuss resources
+        researchTime = 30f; //20 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;
@@ -36,8 +37,8 @@ public class StoneWalls : Technology {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //something like Town.Defense += 15;
-        mainBase.defense += 5;
+        //something like Town.Defense += 25;
+        mainBase.defense += 10;
         Debug.Log("Added " + technologyName + " to the town");
         Destroy(technologyPosition.GetChild(0).gameObject);
         Instantiate(technologyObject, technologyPosition);
@@ -60,5 +61,13 @@ public class StoneWalls : Technology {
     public override void EndResearch() {
         TechnologyEffect();
         Debug.Log("Finished researching: " + technologyName);
+    }
+
+    public override void OnPointerEnter(PointerEventData pointer) {
+        Debug.Log("Mouse is over: " + technologyName);
+    }
+
+    public override void OnPointerExit(PointerEventData pointer) {
+        Debug.Log("Mouse is not over: " + technologyName + " anymore");
     }
 }
