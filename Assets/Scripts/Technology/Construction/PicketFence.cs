@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class WoodenFence : Technology {
+public class PicketFence : Technology {
 
     public Image unresearchedImage;
     public Image connectingBar;
@@ -13,10 +13,10 @@ public class WoodenFence : Technology {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Wooden Fence";
+        technologyName = "Picket Fence";
         technologyDescription = "A wooden fence is constructed adding to your defenses";
-        researchCost = 50; //This will need to be changed once we discuss resources
-        researchTime = 10f; //10 secs - currently not linked to the timer
+        researchCost = 50; 
+        researchTime = 10f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
