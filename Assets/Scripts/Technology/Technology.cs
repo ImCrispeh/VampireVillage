@@ -16,7 +16,7 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     public virtual bool applyTechnology { get; set; }
 
     public virtual Image technologyImage { get; set; }
-    public virtual Image proceedingTechnologyBar { get; set; }
+    public virtual List<Image> proceedingTechnologyBar { get; set; }
     //ttb is tool tip box
     public virtual Text ttbName { get; set; }
     public virtual Text ttbResearchRequirement { get; set; }
@@ -35,6 +35,7 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         researched = false;
         researching = false;
         applyTechnology = false;
+        proceedingTechnologyBar = new List<Image>();
 
         ttbName = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyName").GetComponent<Text>();
         ttbResearchRequirement = GameObject.Find("TechnologyWindow/TooltipBox/ResearchRequirement").GetComponent<Text>();
@@ -46,7 +47,10 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         researchTimer += Time.deltaTime;
         if (researchTimer > researchTime && !researching && !researched) {
             technologyImage.fillAmount = 1;
-            proceedingTechnologyBar.fillAmount = 1;
+            //proceedingTechnologyBar.fillAmount = 1;
+            foreach (Image unfilled in proceedingTechnologyBar) {
+                unfilled.fillAmount = 1;
+            }
         }
         else {
             technologyImage.fillAmount = ((researchTime - researchTimer) / researchTime);
@@ -58,7 +62,10 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
             else {
                 researching = false;
                 researched = true;
-                proceedingTechnologyBar.fillAmount = 0;
+                //proceedingTechnologyBar.fillAmount = 0;
+                foreach (Image unfilled in proceedingTechnologyBar) {
+                    unfilled.fillAmount = 0;
+                }
             }
         }
     }

@@ -4,11 +4,10 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
     public Image connectingBar;
-    public Image connectingBar2;
     public GameObject technologyObject;
     public Transform technologyPosition;
     public Technology requiredTechnology;   //add more if you need more than one pre-requiste
@@ -16,10 +15,10 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Palisades";
-        technologyDescription = "A palisade is constructed adding to your defenses";
-        researchRequirement = "Picket Fence";
-        researchCost = 70; 
+        technologyName = "Moat";
+        technologyDescription = "A moat is dug adding to your defenses";
+        researchRequirement = "Palisades";
+        researchCost = 40; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -27,7 +26,6 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         applyTechnology = false;
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
-        proceedingTechnologyBar.Add(connectingBar2);
         mainBase = BaseController._instance;        
 	}
 	
@@ -61,7 +59,7 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {
-        Debug.Log("Mouse has entered " + technologyName);
+        //Debug.Log("Mouse has entered " + technologyName);
         ttbName.text = technologyName;
         ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
@@ -70,7 +68,7 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
-        Debug.Log("Mouse has exited " + technologyName);
+        //Debug.Log("Mouse has exited " + technologyName);
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";

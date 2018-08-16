@@ -18,13 +18,13 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyDescription = "A wooden fence is constructed adding to your defenses";
         researchRequirement = "";
         researchCost = 50; 
-        researchTime = 10f; 
+        researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        proceedingTechnologyBar = connectingBar;
+        proceedingTechnologyBar.Add(connectingBar);
         mainBase = BaseController._instance;        
 	}
 	

@@ -4,28 +4,27 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class WoodenFence : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class OldStoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
-    public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
+    public Technology requiredTechnology;
 
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Wooden Fence";
-        technologyDescription = "A wooden fence is constructed adding to your defenses";
-        researchCost = 50; //This will need to be changed once we discuss resources
-        researchTime = 10f; //10 secs - currently not linked to the timer
+        technologyName = "Stone Walls";
+        technologyDescription = "A stone wall is constructed adding to your defenses";
+        researchCost = 100; //This will need to be changed once we discuss resources
+        researchTime = 20f; //15 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        proceedingTechnologyBar.Add(connectingBar);
         mainBase = BaseController._instance;
-	}
+    }
 	
 	// Update is called once per frame
 	protected override void Update () {
@@ -38,23 +37,16 @@ public class WoodenFence : Technology, IPointerEnterHandler, IPointerExitHandler
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        //something like Town.Defense += 15;
+        mainBase.defense += 5;
         Debug.Log("Added " + technologyName + " to the town");
-        //Instantiate(technologyObject, technologyPosition);
+        Destroy(technologyPosition.GetChild(0).gameObject);
+        Instantiate(technologyObject, technologyPosition);
     }
 
     public override void StartResearch() {
-
-        // Since it's the first technology, check if tutorial is running or
-        // if it has been skipped (TO IMPLEMENT LATER)
-        if (!researched && !researching) {
-            researchTimer = 0;
-            researching = true;
-            /*if (ResourceStorage._instance.wood >= researchCost) {
-                if (TutorialController._tutInstance != null) {
-                    Timer._instance.UnpauseTimer();
-                }
-
+        if (!researched && !researching && requiredTechnology.researched) {
+            if (ResourceStorage._instance.wood >= researchCost) {
                 researchTimer = 0;
                 researching = true;
                 ResourceStorage._instance.SubtractWood(researchCost);
@@ -62,17 +54,13 @@ public class WoodenFence : Technology, IPointerEnterHandler, IPointerExitHandler
                 Debug.Log("Researching: " + technologyName);
             } else {
                 ErrorController._instance.SetErrorText("Not enough resources available");
-            }*/
+            }
         }
     }
 
     public override void EndResearch() {
-        if (TutorialController._tutInstance != null) {
-            TutorialController._tutInstance.ChangeText();
-        }
-
         TechnologyEffect();
-        Debug.Log("Researching: " + technologyName);
+        Debug.Log("Finished researching: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {
