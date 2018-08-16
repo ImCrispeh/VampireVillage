@@ -184,7 +184,8 @@ MonoBehaviour:
   connectingBar: {fileID: 0}
   technologyObject: {fileID: 0}
   technologyPosition: {fileID: 0}
-  requiredTechnology: {fileID: 0}
+  requiredTechnology: {fileID: 114379315623849280, guid: b94ea10ce15f4ba4d99b97c4bd973b09,
+    type: 2}
 --- !u!222 &222290389312897700
 CanvasRenderer:
   m_ObjectHideFlags: 1

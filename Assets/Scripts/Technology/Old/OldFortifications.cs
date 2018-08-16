@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class Fortifications : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class OldFortifications : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
     public GameObject technologyObject;
