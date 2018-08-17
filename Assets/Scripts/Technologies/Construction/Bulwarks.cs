@@ -4,10 +4,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class Bulwarks : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
-    public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
     public Technology requiredTechnology;   //add more if you need more than one pre-requiste
@@ -15,17 +14,16 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Fortified Walls";
-        technologyDescription = "Your stone walls are fortified increasing their effectiveness";
-        researchRequirement = "Stone Walls";
-        researchCost = 100; 
+        technologyName = "Bulwarks";
+        technologyDescription = "Bulwarks are constructed into your walls increasing your defences";
+        researchRequirement = "Fortified Walls";
+        researchCost = 150; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        //proceedingTechnologyBar.Add(connectingBar);
         mainBase = BaseController._instance;        
 	}
 	
