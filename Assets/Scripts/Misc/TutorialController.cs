@@ -27,12 +27,15 @@ public class TutorialController : SelectionController {
 
     void Start() {
         Timer._instance.PauseTimer();
+
+        resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
+        townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
     }
 
     protected override void Update() {
         base.Update();
 
-        if (Input.GetMouseButtonDown(0) && EventSystem.current.currentSelectedGameObject == actionBtn.gameObject) {
+        if (Input.GetMouseButtonDown(0) && (EventSystem.current.currentSelectedGameObject == resourceActionBtn.gameObject || EventSystem.current.currentSelectedGameObject == townActionBtns[1].gameObject)) {
             if (availableUnits > 0) {
                 Timer._instance.UnpauseTimer();
                 HideText();
@@ -41,6 +44,10 @@ public class TutorialController : SelectionController {
 
         if (Input.GetMouseButtonDown(0) && EventSystem.current.currentSelectedGameObject == techBtn && currText == tutorialTexts.Length - 2) {
             HideText();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A)) {
+            ChangeText();
         }
     }
 
@@ -75,8 +82,7 @@ public class TutorialController : SelectionController {
         } else {
             Timer._instance.UnpauseTimer();
             selectionCont.SetActive(true);
-            actionBtn.onClick.RemoveAllListeners();
-            actionBtn.onClick.AddListener(selectionCont.GetComponent<SelectionController>().SendUnit);
+
             Destroy(this.gameObject);
         }
     }

@@ -10,8 +10,9 @@ public class ResourceStorage : MonoBehaviour {
     public float hunger;
     public int wood;
 
+    public float hungerDepletionRate;
+
     public Text resourceText;
-    public GameObject test;
     public Slider hungerBar;
 
     private void Awake() {
@@ -24,13 +25,15 @@ public class ResourceStorage : MonoBehaviour {
 
     void Start () {
         maxHunger = 100f;
+        hungerDepletionRate = 0.0025f;
+        hunger = maxHunger;
         UpdateResourceText();
         hungerBar.value = HungerPercentage();
     }
 	
 	void Update () {
         if (!Timer._instance.isPaused) {
-            SubtractHunger(0.005f);
+            SubtractHunger();
         }
 	}
 
@@ -41,14 +44,19 @@ public class ResourceStorage : MonoBehaviour {
         hungerBar.value = HungerPercentage();
     }
 
-    public void SubtractHunger(float amt) {
-        if (hunger <= 0f) {
-            BaseController._instance.isHungerEmpty = true;
+    public void SubtractHunger() {
+        if (SelectionController._instance != null) {
+            hunger -= hungerDepletionRate * SelectionController._instance.maxUnits;
+        } else {
+            hunger -= hungerDepletionRate;
         }
 
-        hunger -= amt;
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         hungerBar.value = HungerPercentage();
+
+        if (hunger == 0f) {
+            BaseController._instance.isHungerEmpty = true;
+        }
     }
 
     public float HungerPercentage() {

@@ -49,7 +49,9 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
             technologyImage.fillAmount = 1;
             //proceedingTechnologyBar.fillAmount = 1;
             foreach (Image unfilled in proceedingTechnologyBar) {
-                unfilled.fillAmount = 1;
+                if (unfilled != null) {
+                    unfilled.fillAmount = 1;
+                }
             }
         }
         else {
@@ -64,7 +66,9 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
                 researched = true;
                 //proceedingTechnologyBar.fillAmount = 0;
                 foreach (Image unfilled in proceedingTechnologyBar) {
-                    unfilled.fillAmount = 0;
+                    if (unfilled != null) {
+                        unfilled.fillAmount = 0;
+                    }
                 }
             }
         }
