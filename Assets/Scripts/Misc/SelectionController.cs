@@ -14,6 +14,7 @@ public class SelectionController : MonoBehaviour {
     public Text selectedObjText;
 
     public GameObject unit;
+    public int maxUnits;
     public int availableUnits;
     public GameObject unitBase;
     public Transform spawnPoint;
@@ -117,7 +118,7 @@ public class SelectionController : MonoBehaviour {
 
     public void SendUnit(Actions action) {
         if (availableUnits > 0) {
-            if (Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.2f) {
+            if (Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) {
                 availableUnits--;
                 GameObject newUnit = Instantiate(unit, spawnPoint);
                 UnitController newUnitCont = newUnit.GetComponent<UnitController>();
@@ -135,6 +136,7 @@ public class SelectionController : MonoBehaviour {
 
     public virtual void ReturnUnit(UnitController unit) {
         availableUnits++;
+        maxUnits += unit.humanConvertCollected;
         availableUnits += unit.humanConvertCollected;
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
