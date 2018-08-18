@@ -6,30 +6,32 @@ using UnityEngine.AI;
 public class UnitController : MonoBehaviour {
     public NavMeshAgent agent;
 
-    public bool isCollecting;
-    public GameObject resourceToCollect;
+    public bool isPerformingAction;
+    public GameObject objectForAction;
+    public SelectionController.Actions action;
 
     public bool isReturning;
     public GameObject unitBase;
 
     public int woodCollected;
     public float hungerCollected;
+    public int humanConvertCollected;
 
 	void Awake () {
         agent = GetComponent<NavMeshAgent>();
 	}
 	
 	void Update () {
-        if (resourceToCollect == null && !isReturning) {
-            isCollecting = false;
-            ReturnFromCollection();
+        if (objectForAction == null && !isReturning) {
+            isPerformingAction = false;
+            ReturnFromAction();
         }
 
-        if (isCollecting) {
+        if (isPerformingAction) {
             if (!agent.pathPending) {
                 if ((agent.destination - transform.position).sqrMagnitude <= agent.stoppingDistance) {
                     if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                        StartCoroutine("CollectResource");
+                        StartCoroutine("PerformAction");
                     }
                 }
             }
@@ -52,24 +54,41 @@ public class UnitController : MonoBehaviour {
         agent.destination = Vector3.Lerp(dest.transform.position, transform.position, 0.05f);
     }
 
-    public void MoveToCollect(GameObject dest) {
-        isCollecting = true;
-        resourceToCollect = dest;
-        Debug.Log("moving to collect, " + dest);
+    public void MoveToAction(GameObject dest) {
+        isPerformingAction = true;
+        objectForAction = dest;
+        Debug.Log("moving to perform action on, " + dest);
         Move(dest);
     }
 
-    public IEnumerator CollectResource() {
+    // Perform action based on string passed in by button click
+    public IEnumerator PerformAction() {
         yield return new WaitForSeconds(2f);
-        if (resourceToCollect != null) {
-            resourceToCollect.GetComponent<ResourceController>().AddResource(this);
+
+        if (objectForAction != null) {
+            switch (action) {
+                case SelectionController.Actions.collect:
+                    objectForAction.GetComponent<ResourceController>().AddResource(this);
+                    break;
+                case SelectionController.Actions.partialFeed:
+                    objectForAction.GetComponent<HumanTownController>().PartialFeedEffect(this);
+                    break;
+                case SelectionController.Actions.fullFeed:
+                    objectForAction.GetComponent<HumanTownController>().FullFeedEffect(this);
+                    break;
+                case SelectionController.Actions.convert:
+                    objectForAction.GetComponent<HumanTownController>().ConvertEffect(this);
+                    break;
+                default:
+                    break;
+            }
         }
-        isCollecting = false;
-        resourceToCollect = null;
-        ReturnFromCollection();
+        isPerformingAction = false;
+        objectForAction = null;
+        ReturnFromAction();
     }
 
-    public void ReturnFromCollection() {
+    public void ReturnFromAction() {
         isReturning = true;
         Debug.Log("returning to base");
         Move(unitBase);
