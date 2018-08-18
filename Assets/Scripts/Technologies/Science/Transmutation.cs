@@ -19,7 +19,7 @@ public class Transmutation : Technology, IPointerEnterHandler, IPointerExitHandl
     {
         base.Start();
         technologyName = "Transmutation";
-        technologyDescription = "A sturdy cloak able to shield you from most of the sunlight";
+        technologyDescription = "Double the amount of resources you gather";
         researchRequirement = "Alchemy";
         researchCost = 70;
         researchTime = 5f;
@@ -47,7 +47,7 @@ public class Transmutation : Technology, IPointerEnterHandler, IPointerExitHandl
     public override void TechnologyEffect()
     {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        //
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

@@ -20,7 +20,7 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
         base.Start();
         technologyName = "Philospher Stone";
         technologyDescription = "Increase the thirst bar by 50";
-        researchRequirement = "Blood Rite";
+        researchRequirement = "Alchemy";
         researchCost = 100;
         researchTime = 20f;
         researchTimer = researchTime;
