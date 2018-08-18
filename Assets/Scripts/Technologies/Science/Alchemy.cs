@@ -17,7 +17,7 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
     {
         base.Start();
         technologyName = "Alchemy";
-        technologyDescription = "Discover";
+        technologyDescription = "Create a laboratory";
         researchRequirement = "";
         researchCost = 50;
         researchTime = 5f;

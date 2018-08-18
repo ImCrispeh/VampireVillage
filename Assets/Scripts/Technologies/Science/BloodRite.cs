@@ -20,7 +20,7 @@ public class BloodRite : Technology, IPointerEnterHandler, IPointerExitHandler
         base.Start();
         technologyName = "Blood Rite";
         technologyDescription = "A soft cloth which lets you perform actions during the day but you still take damage heavily";
-        researchRequirement = "Transmutation";
+        researchRequirement = "Philospher Stone";
         researchCost = 70;
         researchTime = 5f;
         researchTimer = researchTime;
