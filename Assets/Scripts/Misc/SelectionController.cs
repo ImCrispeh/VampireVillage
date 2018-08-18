@@ -11,6 +11,7 @@ public class SelectionController : MonoBehaviour {
     public Color32 selectedMatColor;
     public GameObject selectedObj;
     public Material matToUse;
+    public GameObject selectedObjectPanel;
     public Text selectedObjText;
 
     public GameObject unit;
@@ -94,7 +95,7 @@ public class SelectionController : MonoBehaviour {
         selectedObjMat = null;
         resourceActionBtn.gameObject.SetActive(false);
         townActionsContainer.SetActive(false);
-        selectedObjText.text = "";
+        SetObjText();
     }
 
     public void HighlightSelected(RaycastHit hit) {
@@ -146,6 +147,7 @@ public class SelectionController : MonoBehaviour {
 
     public void SetObjText() {
         if (selectedObj != null) {
+            selectedObjectPanel.SetActive(true);
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 selectedObjText.text =
                     selectedObj.tag + "\n"
@@ -174,6 +176,7 @@ public class SelectionController : MonoBehaviour {
             }
         } else {
             selectedObjText.text = "";
+            selectedObjectPanel.SetActive(false);
         }
     }
 }
