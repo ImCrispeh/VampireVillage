@@ -36,6 +36,7 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         researching = false;
         applyTechnology = false;
         proceedingTechnologyBar = new List<Image>();
+        mainBase = BaseController._instance;
 
         ttbName = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyName").GetComponent<Text>();
         ttbResearchRequirement = GameObject.Find("TechnologyWindow/TooltipBox/ResearchRequirement").GetComponent<Text>();

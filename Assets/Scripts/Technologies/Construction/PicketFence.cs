@@ -24,8 +24,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        proceedingTechnologyBar.Add(connectingBar);
-        mainBase = BaseController._instance;        
+        proceedingTechnologyBar.Add(connectingBar);       
 	}
 	
 	// Update is called once per frame

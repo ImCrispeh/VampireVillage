@@ -27,8 +27,7 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
         applyTechnology = false;
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
-        proceedingTechnologyBar.Add(connectingBar2);
-        mainBase = BaseController._instance;        
+        proceedingTechnologyBar.Add(connectingBar2);     
 	}
 	
 	// Update is called once per frame

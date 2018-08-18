@@ -24,8 +24,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
         researched = false;
         researching = false;
         applyTechnology = false;
-        technologyImage = unresearchedImage;
-        mainBase = BaseController._instance;        
+        technologyImage = unresearchedImage;    
 	}
 	
 	// Update is called once per frame
