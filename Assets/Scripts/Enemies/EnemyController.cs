@@ -48,15 +48,11 @@ public class EnemyController : MonoBehaviour {
         float rad;
         if (destId % 2 == 0) {
             rad = (450f - (360f / 10f * destId/2)) % 360 * Mathf.Deg2Rad;
-            Debug.Log(rad * Mathf.Rad2Deg);
         } else {
             rad = (90f + (360f / 10f * Mathf.Ceil((float)destId / 2))) % 360 * Mathf.Deg2Rad;
-            Debug.Log(rad * Mathf.Rad2Deg);
         }
-        agent.avoidancePriority = destId * 10;
         Vector3 basePos = BaseController._instance.transform.position;
         Vector3 dest = new Vector3(basePos.x + 1f * Mathf.Sin(rad), transform.position.y, basePos.z + 1f * Mathf.Cos(rad));
-        Debug.Log(dest);
         agent.destination = dest;
         isMovingToAttack = true;
     }
