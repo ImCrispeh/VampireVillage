@@ -17,7 +17,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Picket Fence";
         technologyDescription = "A wooden fence is constructed adding to your defenses";
         researchRequirement = "";
-        researchCost = 50; 
+        researchCost = 10; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -38,7 +38,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

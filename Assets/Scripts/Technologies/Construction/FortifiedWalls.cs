@@ -19,7 +19,7 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
         technologyName = "Fortified Walls";
         technologyDescription = "Your stone walls are fortified increasing their effectiveness";
         researchRequirement = "Stone Walls";
-        researchCost = 100; 
+        researchCost = 40; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -41,7 +41,7 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        mainBase.defense += 3;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

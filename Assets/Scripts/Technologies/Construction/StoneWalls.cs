@@ -18,7 +18,7 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
         technologyName = "Stone Walls";
         technologyDescription = "A stone wall is constructed adding to your defenses";
         researchRequirement = "Palisades";
-        researchCost = 80; 
+        researchCost = 30; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -39,7 +39,7 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        mainBase.defense += 2;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

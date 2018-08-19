@@ -18,7 +18,7 @@ public class Battlements : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Battlements";
         technologyDescription = "Battlements are constructed giving your defenders better capabilities";
         researchRequirement = "Fortified Walls";
-        researchCost = 80; 
+        researchCost = 60; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -39,7 +39,7 @@ public class Battlements : Technology, IPointerEnterHandler, IPointerExitHandler
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        mainBase.defense += 4;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

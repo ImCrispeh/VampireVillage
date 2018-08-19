@@ -18,7 +18,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Wider Moat";
         technologyDescription = "The moat is widened increasing its effectiveness";
         researchRequirement = "Moat";
-        researchCost = 60; 
+        researchCost = 50; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -38,7 +38,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        mainBase.defense += 3;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

@@ -19,7 +19,7 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Palisades";
         technologyDescription = "A palisade is constructed adding to your defenses";
         researchRequirement = "Picket Fence";
-        researchCost = 70; 
+        researchCost = 20; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -41,7 +41,7 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
