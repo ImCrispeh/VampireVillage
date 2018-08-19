@@ -9,6 +9,7 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
 
     public Image unresearchedImage;
     public Image connectingBar;
+    public Image connectingBar2;
     public GameObject technologyObject;
     public Transform technologyPosition;
 
@@ -27,6 +28,7 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
         applyTechnology = false;
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
+        proceedingTechnologyBar.Add(connectingBar2);
         mainBase = BaseController._instance;
     }
 
