@@ -24,6 +24,9 @@ public class SelectionController : MonoBehaviour {
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
     public enum Actions { partialFeed, fullFeed, convert, collect };
+    public List<PlannedAction> plannedActions;
+    public bool isNightActions;
+    public bool hasExecutedPlanned;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -35,17 +38,12 @@ public class SelectionController : MonoBehaviour {
 
     // Subtracts child count so it gets the correct amount of available units when it becomes active (in place of the TutorialController)
     void Start () {
-        // Set buttons to work from SelectionController rather than TutorialController
-        resourceActionBtn.onClick.RemoveAllListeners();
-        resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
 
-        townActionBtns[1].onClick.RemoveAllListeners();
-        townActionBtns[0].onClick.AddListener(() => SendUnit(Actions.partialFeed));
-        townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
-        townActionBtns[2].onClick.AddListener(() => SendUnit(Actions.convert));
         foreach (Button btn in townActionBtns) {
             btn.interactable = true;
         }
+
+        plannedActions = new List<PlannedAction>();
 
         availableUnits = 1 - spawnPoint.childCount;
         ResourceStorage._instance.UpdateResourceText();
@@ -60,6 +58,21 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj == null && resourceActionBtn.gameObject.activeInHierarchy) {
             resourceActionBtn.gameObject.SetActive(false);
             selectedObjText.text = "";
+        }
+
+        if ((Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) && !isNightActions) {
+            isNightActions = true;
+            SetActionButtonsOnClick(true);
+            
+            if (!hasExecutedPlanned) {
+                hasExecutedPlanned = true;
+                StartCoroutine("ExecutePlannedActions");
+            }
+
+        } else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions) {
+            isNightActions = false;
+            hasExecutedPlanned = false;
+            SetActionButtonsOnClick(false);
         }
 	}
     
@@ -89,6 +102,7 @@ public class SelectionController : MonoBehaviour {
         }
     }
 
+    // Revert material of previously selected object
     public void DeselectObj() {
         selectedObj.GetComponent<Renderer>().material = selectedObjMat;
         selectedObj = null;
@@ -98,6 +112,7 @@ public class SelectionController : MonoBehaviour {
         SetObjText();
     }
 
+    // Change material of object to indicate that it is selected
     public void HighlightSelected(RaycastHit hit) {
         selectedObj = hit.transform.gameObject;
         selectedObjMat = hit.transform.gameObject.GetComponent<Renderer>().material;
@@ -107,6 +122,7 @@ public class SelectionController : MonoBehaviour {
         selectedObj.GetComponent<Renderer>().material = matToUse;
     }
 
+    // Brings up action buttons based on what object is selected
     public void SetActionButton() {
         if (selectedObj.tag == "HumanTown") {
             resourceActionBtn.gameObject.SetActive(false);
@@ -117,9 +133,9 @@ public class SelectionController : MonoBehaviour {
         }
     }
 
+    // Sends unit out to execute action
     public void SendUnit(Actions action) {
         if (availableUnits > 0) {
-            if (Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) {
                 availableUnits--;
                 GameObject newUnit = Instantiate(unit, spawnPoint);
                 UnitController newUnitCont = newUnit.GetComponent<UnitController>();
@@ -127,14 +143,42 @@ public class SelectionController : MonoBehaviour {
                 newUnitCont.MoveToAction(selectedObj);
                 newUnitCont.action = action;
                 ResourceStorage._instance.UpdateResourceText();
-            } else {
-                ErrorController._instance.SetErrorText("Cannot send units out during the day");
-            }
         } else {
             ErrorController._instance.SetErrorText("No units available");
         }
     }
 
+    // Add action + specified object to the plannedActions list for execution once the night cycle comes
+    public void PlanAction(Actions action) {
+        PlannedAction planned = new PlannedAction();
+        planned.action = action;
+        planned.objectForAction = selectedObj;
+        plannedActions.Add(planned);
+        Debug.Log(planned.action + " on " + planned.objectForAction);
+    }
+
+    // Sends units to complete actions in plannedActions list with a small delay between each unit being sent out (just so they don't all spawn at the same time)
+    IEnumerator ExecutePlannedActions() {
+        while (plannedActions.Count > 0) {
+            if (availableUnits > 0) {
+                PlannedAction planned = plannedActions[0];
+                availableUnits--;
+                GameObject newUnit = Instantiate(unit, spawnPoint);
+                UnitController newUnitCont = newUnit.GetComponent<UnitController>();
+                newUnitCont.unitBase = unitBase;
+                newUnitCont.MoveToAction(planned.objectForAction);
+                newUnitCont.action = planned.action;
+                ResourceStorage._instance.UpdateResourceText();
+                plannedActions.RemoveAt(0);
+                yield return new WaitForSeconds(0.5f);
+            } else {
+                yield return null;
+            }
+        }
+        yield return null;
+    }
+
+    // Have unit come back into the base by adding all resources they collected to the resource storage and destroying
     public virtual void ReturnUnit(UnitController unit) {
         availableUnits++;
         maxUnits += unit.humanConvertCollected;
@@ -145,6 +189,7 @@ public class SelectionController : MonoBehaviour {
         Destroy(unit.gameObject);
     }
 
+    // Show description of selected object, remove description box if no item is selected
     public void SetObjText() {
         if (selectedObj != null) {
             selectedObjectPanel.SetActive(true);
@@ -178,5 +223,31 @@ public class SelectionController : MonoBehaviour {
             selectedObjText.text = "";
             selectedObjectPanel.SetActive(false);
         }
+    }
+
+    // Change the onClicks of the buttons to either sending a unit out or planning the action
+    public void SetActionButtonsOnClick(bool isNight) {
+        resourceActionBtn.onClick.RemoveAllListeners();
+
+        foreach (Button btn in townActionBtns) {
+            btn.onClick.RemoveAllListeners();
+        }
+
+        if (isNight) {
+            resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
+            townActionBtns[0].onClick.AddListener(() => SendUnit(Actions.partialFeed));
+            townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
+            townActionBtns[2].onClick.AddListener(() => SendUnit(Actions.convert));
+        } else {
+            resourceActionBtn.onClick.AddListener(() => PlanAction(Actions.collect));
+            townActionBtns[0].onClick.AddListener(() => PlanAction(Actions.partialFeed));
+            townActionBtns[1].onClick.AddListener(() => PlanAction(Actions.fullFeed));
+            townActionBtns[2].onClick.AddListener(() => PlanAction(Actions.convert));
+        }
+    }
+
+    public struct PlannedAction {
+        public Actions action;
+        public GameObject objectForAction;
     }
 }
