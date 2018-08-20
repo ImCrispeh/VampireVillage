@@ -14,7 +14,7 @@ public class DummyLightingScript : MonoBehaviour {
     void Update()
     {
         //Rotate Sun and Moon around origin 
-        transform.RotateAround(Vector3.zero, new Vector3(0, 0, 1), 20f * Time.deltaTime);
+        transform.RotateAround(Vector3.zero, new Vector3(0, 0, 1), Mathf.PI * Time.deltaTime);
         transform.LookAt(Vector3.zero);
     }
 }
