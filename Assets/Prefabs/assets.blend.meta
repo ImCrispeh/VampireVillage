@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: 57810af5f7f9e524fba23c53f0063511
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Blacksmith
+    100004: Chimney
+    100006: Door
+    100008: Door_001
+    100010: Frame
+    100012: Furnace
+    100014: Grass_Shaft
+    100016: House
+    100018: HouseGrass
+    100020: Roof
+    100022: Rope
+    100024: Struts
+    100026: Tower
+    100028: Towerlight
+    100030: Tree
+    100032: TreeGrass
+    100034: Well
+    100036: Window_Bottom_Row
+    100038: Window_Bottom_Row_001
+    100040: Window_Front_Bottom
+    100042: Window_Frount_Up
+    100044: Window_Upper_Row
+    400000: //RootNode
+    400002: Blacksmith
+    400004: Chimney
+    400006: Door
+    400008: Door_001
+    400010: Frame
+    400012: Furnace
+    400014: Grass_Shaft
+    400016: House
+    400018: HouseGrass
+    400020: Roof
+    400022: Rope
+    400024: Struts
+    400026: Tower
+    400028: Towerlight
+    400030: Tree
+    400032: TreeGrass
+    400034: Well
+    400036: Window_Bottom_Row
+    400038: Window_Bottom_Row_001
+    400040: Window_Front_Bottom
+    400042: Window_Frount_Up
+    400044: Window_Upper_Row
+    2100000: Tree_Trunk
+    2100002: Leafs
+    2100004: Material_018
+    2100006: Material_001
+    2100008: Material_002
+    2100010: Material_014
+    2100012: Material_016
+    2100014: Material_007
+    2100016: Material_004
+    2100018: Material_005
+    2100020: Material_009
+    2100022: Material_010
+    2100024: Material_011
+    2100026: Material_012
+    2100028: Material_006
+    2100030: Material_008
+    2100032: Material
+    2100034: Material_003
+    2100036: Grass
+    2300000: Blacksmith
+    2300002: Chimney
+    2300004: Door
+    2300006: Door_001
+    2300008: Frame
+    2300010: Furnace
+    2300012: Grass_Shaft
+    2300014: House
+    2300016: HouseGrass
+    2300018: Roof
+    2300020: Rope
+    2300022: Struts
+    2300024: Tower
+    2300026: Towerlight
+    2300028: Tree
+    2300030: TreeGrass
+    2300032: Well
+    2300034: Window_Bottom_Row
+    2300036: Window_Bottom_Row_001
+    2300038: Window_Front_Bottom
+    2300040: Window_Frount_Up
+    2300042: Window_Upper_Row
+    3300000: Blacksmith
+    3300002: Chimney
+    3300004: Door
+    3300006: Door_001
+    3300008: Frame
+    3300010: Furnace
+    3300012: Grass_Shaft
+    3300014: House
+    3300016: HouseGrass
+    3300018: Roof
+    3300020: Rope
+    3300022: Struts
+    3300024: Tower
+    3300026: Towerlight
+    3300028: Tree
+    3300030: TreeGrass
+    3300032: Well
+    3300034: Window_Bottom_Row
+    3300036: Window_Bottom_Row_001
+    3300038: Window_Front_Bottom
+    3300040: Window_Frount_Up
+    3300042: Window_Upper_Row
+    4300000: Tree
+    4300002: TreeGrass
+    4300004: Blacksmith
+    4300006: Furnace
+    4300008: Frame
+    4300010: Window_Bottom_Row_001
+    4300012: Door_001
+    4300014: Tower
+    4300016: Towerlight
+    4300018: Well
+    4300020: Rope
+    4300022: House
+    4300024: Struts
+    4300026: Window_Upper_Row
+    4300028: Window_Frount_Up
+    4300030: Window_Front_Bottom
+    4300032: Window_Bottom_Row
+    4300034: Roof
+    4300036: Door
+    4300038: Chimney
+    4300040: HouseGrass
+    4300042: Grass_Shaft
+    7400000: Default Take
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
