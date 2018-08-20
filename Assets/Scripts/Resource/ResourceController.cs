@@ -18,15 +18,8 @@ public class ResourceController : MonoBehaviour {
             case "Wood":
                 unit.woodCollected += resourceAmt;
                 break;
-            case "HumanTown":
-                unit.hungerCollected += resourceAmt;
-                break;
             default:
                 break;
-        }
-
-        if (gameObject.tag != "HumanTown") {
-            Destroy(this.gameObject);
         }
     }
 }

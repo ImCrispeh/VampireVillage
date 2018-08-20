@@ -11,16 +11,16 @@ public class TutUnitController : UnitController {
 	}
 	
 	void Update () {
-        if (resourceToCollect == null && !isReturning) {
-            isCollecting = false;
-            ReturnFromCollection();
+        if (objectForAction == null && !isReturning) {
+            isPerformingAction = false;
+            ReturnFromAction();
         }
 
-        if (isCollecting) {
+        if (isPerformingAction) {
             if (!agent.pathPending) {
                 if ((agent.destination - transform.position).sqrMagnitude <= agent.stoppingDistance) {
                     if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                        StartCoroutine("CollectResource");
+                        StartCoroutine("PerformAction");
                     }
                 }
             }
