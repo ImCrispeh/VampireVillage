@@ -38,7 +38,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 3;
+        mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

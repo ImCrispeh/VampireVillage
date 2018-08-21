@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class ShortSwords : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public Image unresearchedImage;
     public Image connectingBar;
@@ -15,17 +15,17 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        technologyName = "Moat";
-        technologyDescription = "A moat is dug adding to your defenses";
-        researchRequirement = "Palisades";
-        researchCost = 40; 
+        technologyName = "Short Swords";
+        technologyDescription = "You forge shorts that are relatively short";
+        researchRequirement = "Spiked Clubs";
+        researchCost = 30; 
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        proceedingTechnologyBar.Add(connectingBar);      
+        proceedingTechnologyBar.Add(connectingBar);   
 	}
 	
 	// Update is called once per frame
@@ -39,7 +39,7 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 1;
+        mainBase.attack += 1;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
@@ -58,7 +58,6 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {
-        //Debug.Log("Mouse has entered " + technologyName);
         ttbName.text = technologyName;
         ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
@@ -67,7 +66,6 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
-        //Debug.Log("Mouse has exited " + technologyName);
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";

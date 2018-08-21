@@ -4,38 +4,40 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHandler
+{
 
     public Image unresearchedImage;
     public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
-    public Technology requiredTechnology;   //add more if you need more than one pre-requiste
+    public Technology requiredTechnology;
 
     // Use this for initialization
-    protected override void Start () {
+    protected override void Start() {
         base.Start();
-        technologyName = "Moat";
-        technologyDescription = "A moat is dug adding to your defenses";
-        researchRequirement = "Palisades";
-        researchCost = 40; 
-        researchTime = 5f; 
+        technologyName = "Scalemail Armour";
+        technologyDescription = "You wear the scales of the lizards you have caught";
+        researchRequirement = "";
+        researchCost = 30;
+        researchTime = 50f;
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        proceedingTechnologyBar.Add(connectingBar);      
-	}
-	
-	// Update is called once per frame
-	protected override void Update () {
+        //proceedingTechnologyBar.Add(connectingBar);
+    }
+
+    // Update is called once per frame
+    protected override void Update() {
         base.Update();
-        if (researched && !researching && !applyTechnology) {
+        if (researched && !researching && !applyTechnology)
+        {
             EndResearch();
             applyTechnology = true;
         }
-	}
+    }
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
@@ -58,16 +60,14 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {
-        //Debug.Log("Mouse has entered " + technologyName);
         ttbName.text = technologyName;
-        ttbResearchRequirement.text = "Requirement: " + researchRequirement;
+        ttbResearchRequirement.text = researchRequirement;
         ttbDescription.text = technologyDescription;
         ttbCost.text = researchCost.ToString() + " wood";
         ttbResearchTime.text = researchTime.ToString() + " seconds (need to edit)";
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
-        //Debug.Log("Mouse has exited " + technologyName);
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";
