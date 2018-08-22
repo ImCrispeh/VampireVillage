@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class SelectionController : MonoBehaviour {
     public static SelectionController _instance;
 
-    public Material selectedObjMat;
+    private Material selectedObjMat;
     public Color32 selectedMatColor;
     public GameObject selectedObj;
     public Material matToUse;
@@ -24,9 +25,13 @@ public class SelectionController : MonoBehaviour {
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
     public enum Actions { partialFeed, fullFeed, convert, collect };
+    public List<ActionIcon> actionIconsList;
+    private Dictionary<String, GameObject> actionIcons;
     public List<PlannedAction> plannedActions;
-    public bool isNightActions;
-    public bool hasExecutedPlanned;
+    public List<GameObject> plannedActionRemovalIcons;
+    public GameObject plannedActionsPanel;
+    private bool isNightActions;
+    private bool hasExecutedPlanned;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -44,6 +49,11 @@ public class SelectionController : MonoBehaviour {
         }
 
         plannedActions = new List<PlannedAction>();
+        actionIcons = new Dictionary<string, GameObject>();
+
+        foreach (ActionIcon icon in actionIconsList) {
+            actionIcons.Add(icon.iconName, icon.icon);
+        }
 
         availableUnits = 1 - spawnPoint.childCount;
         ResourceStorage._instance.UpdateResourceText();
@@ -102,7 +112,7 @@ public class SelectionController : MonoBehaviour {
         }
     }
 
-    // Revert material of previously selected object
+    // Revert material of previously selected objectoon
     public void DeselectObj() {
         selectedObj.GetComponent<Renderer>().material = selectedObjMat;
         selectedObj = null;
@@ -154,7 +164,38 @@ public class SelectionController : MonoBehaviour {
         planned.action = action;
         planned.objectForAction = selectedObj;
         plannedActions.Add(planned);
-        Debug.Log(planned.action + " on " + planned.objectForAction);
+
+        GameObject newAction;
+        switch(action) {
+            case Actions.collect:
+                newAction = Instantiate(actionIcons["CollectWood"], plannedActionsPanel.transform);
+                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
+                plannedActionRemovalIcons.Add(newAction);
+                break;
+            case Actions.partialFeed:
+                newAction = Instantiate(actionIcons["PartialFeed"], plannedActionsPanel.transform);
+                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
+                plannedActionRemovalIcons.Add(newAction);
+                break;
+            case Actions.fullFeed:
+                newAction = Instantiate(actionIcons["FullFeed"], plannedActionsPanel.transform);
+                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
+                plannedActionRemovalIcons.Add(newAction);
+                break;
+            case Actions.convert:
+                newAction = Instantiate(actionIcons["Convert"], plannedActionsPanel.transform);
+                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
+                plannedActionRemovalIcons.Add(newAction);
+                break;
+        }
+    }
+
+    public void RemovePlannedAction() {
+        GameObject toRemove = EventSystem.current.currentSelectedGameObject;
+        int pos = plannedActionRemovalIcons.IndexOf(toRemove);
+        plannedActions.RemoveAt(pos);
+        plannedActionRemovalIcons.RemoveAt(pos);
+        Destroy(toRemove);
     }
 
     // Sends units to complete actions in plannedActions list with a small delay between each unit being sent out (just so they don't all spawn at the same time)
@@ -170,6 +211,8 @@ public class SelectionController : MonoBehaviour {
                 newUnitCont.action = planned.action;
                 ResourceStorage._instance.UpdateResourceText();
                 plannedActions.RemoveAt(0);
+                Destroy(plannedActionRemovalIcons[0]);
+                plannedActionRemovalIcons.RemoveAt(0);
                 yield return new WaitForSeconds(0.5f);
             } else {
                 yield return null;
@@ -249,5 +292,11 @@ public class SelectionController : MonoBehaviour {
     public struct PlannedAction {
         public Actions action;
         public GameObject objectForAction;
+    }
+
+    [Serializable]
+    public struct ActionIcon {
+        public String iconName;
+        public GameObject icon;
     }
 }
