@@ -25,11 +25,12 @@ public class SelectionController : MonoBehaviour {
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
     public enum Actions { partialFeed, fullFeed, convert, collect };
+    public enum ActionIconNames { collectWood, partialFeed, fullFeed, convert };
     public List<ActionIcon> actionIconsList;
-    private Dictionary<String, GameObject> actionIcons;
+    private Dictionary<ActionIconNames, GameObject> actionIcons;
     public List<PlannedAction> plannedActions;
     public List<GameObject> plannedActionRemovalIcons;
-    public GameObject plannedActionsPanel;
+    public Transform plannedActionsPanel;
     private bool isNightActions;
     private bool hasExecutedPlanned;
 
@@ -49,7 +50,7 @@ public class SelectionController : MonoBehaviour {
         }
 
         plannedActions = new List<PlannedAction>();
-        actionIcons = new Dictionary<string, GameObject>();
+        actionIcons = new Dictionary<ActionIconNames, GameObject>();
 
         foreach (ActionIcon icon in actionIconsList) {
             actionIcons.Add(icon.iconName, icon.icon);
@@ -160,34 +161,38 @@ public class SelectionController : MonoBehaviour {
 
     // Add action + specified object to the plannedActions list for execution once the night cycle comes
     public void PlanAction(Actions action) {
-        PlannedAction planned = new PlannedAction();
-        planned.action = action;
-        planned.objectForAction = selectedObj;
-        plannedActions.Add(planned);
+        if (plannedActions.Count < 30) {
+            PlannedAction planned = new PlannedAction();
+            planned.action = action;
+            planned.objectForAction = selectedObj;
+            plannedActions.Add(planned);
 
-        GameObject newAction;
-        switch(action) {
-            case Actions.collect:
-                newAction = Instantiate(actionIcons["CollectWood"], plannedActionsPanel.transform);
-                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
-                plannedActionRemovalIcons.Add(newAction);
-                break;
-            case Actions.partialFeed:
-                newAction = Instantiate(actionIcons["PartialFeed"], plannedActionsPanel.transform);
-                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
-                plannedActionRemovalIcons.Add(newAction);
-                break;
-            case Actions.fullFeed:
-                newAction = Instantiate(actionIcons["FullFeed"], plannedActionsPanel.transform);
-                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
-                plannedActionRemovalIcons.Add(newAction);
-                break;
-            case Actions.convert:
-                newAction = Instantiate(actionIcons["Convert"], plannedActionsPanel.transform);
-                newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
-                plannedActionRemovalIcons.Add(newAction);
-                break;
+            switch (action) {
+                case Actions.collect:
+                    AddPlannedAction(ActionIconNames.collectWood);
+                    break;
+                case Actions.partialFeed:
+                    AddPlannedAction(ActionIconNames.partialFeed);
+                    break;
+                case Actions.fullFeed:
+                    AddPlannedAction(ActionIconNames.fullFeed);
+                    break;
+                case Actions.convert:
+                    AddPlannedAction(ActionIconNames.convert);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            ErrorController._instance.SetErrorText("Max 30 planned actions");
         }
+    }
+
+    public void AddPlannedAction(ActionIconNames icon) {
+        GameObject newAction;
+        newAction = Instantiate(actionIcons[icon], plannedActionsPanel.GetChild(1));
+        newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
+        plannedActionRemovalIcons.Add(newAction);
     }
 
     public void RemovePlannedAction() {
@@ -201,21 +206,26 @@ public class SelectionController : MonoBehaviour {
     // Sends units to complete actions in plannedActions list with a small delay between each unit being sent out (just so they don't all spawn at the same time)
     IEnumerator ExecutePlannedActions() {
         while (plannedActions.Count > 0) {
-            if (availableUnits > 0) {
-                PlannedAction planned = plannedActions[0];
-                availableUnits--;
-                GameObject newUnit = Instantiate(unit, spawnPoint);
-                UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                newUnitCont.unitBase = unitBase;
-                newUnitCont.MoveToAction(planned.objectForAction);
-                newUnitCont.action = planned.action;
-                ResourceStorage._instance.UpdateResourceText();
-                plannedActions.RemoveAt(0);
-                Destroy(plannedActionRemovalIcons[0]);
-                plannedActionRemovalIcons.RemoveAt(0);
-                yield return new WaitForSeconds(0.5f);
+            if (isNightActions) {
+                if (availableUnits > 0) {
+                    PlannedAction planned = plannedActions[0];
+                    availableUnits--;
+                    GameObject newUnit = Instantiate(unit, spawnPoint);
+                    UnitController newUnitCont = newUnit.GetComponent<UnitController>();
+                    newUnitCont.unitBase = unitBase;
+                    newUnitCont.MoveToAction(planned.objectForAction);
+                    newUnitCont.action = planned.action;
+                    ResourceStorage._instance.UpdateResourceText();
+                    plannedActions.RemoveAt(0);
+                    Destroy(plannedActionRemovalIcons[0]);
+                    plannedActionRemovalIcons.RemoveAt(0);
+                    yield return new WaitForSeconds(0.5f);
+                } else {
+                    yield return null;
+                }
             } else {
-                yield return null;
+                ErrorController._instance.SetErrorText("Cannot sent units out during the day. Pausing remaining actions...");
+                yield break;
             }
         }
         yield return null;
@@ -296,7 +306,7 @@ public class SelectionController : MonoBehaviour {
 
     [Serializable]
     public struct ActionIcon {
-        public String iconName;
+        public ActionIconNames iconName;
         public GameObject icon;
     }
 }
