@@ -9,6 +9,10 @@ TagManager:
   - HumanTown
   - Base
   - Enemy
+  - Building
+  - Ground
+  - GroundTemplate
+  - BuildingTemplate
   layers:
   - Default
   - TransparentFX
@@ -20,7 +24,7 @@ TagManager:
   - 
   - Ground
   - Resource
-  - 
+  - Building
   - 
   - 
   - 
