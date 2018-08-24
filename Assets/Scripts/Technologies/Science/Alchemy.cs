@@ -57,9 +57,14 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
     {
         if (!researched && !researching)
         {
-            researchTimer = 0;
-            researching = true;
-            Debug.Log("Researching: " + technologyName);
+            if (ResourceStorage._instance.wood >= researchCost)
+            {
+                researchTimer = 0;
+                researching = true;
+                ResourceStorage._instance.SubtractWood(researchCost);
+                ResourceStorage._instance.UpdateResourceText();
+                Debug.Log("Researching: " + technologyName);
+            }
         }
     }
 
