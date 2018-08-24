@@ -8,10 +8,8 @@ using System;
 public class SelectionController : MonoBehaviour {
     public static SelectionController _instance;
 
-    private Material selectedObjMat;
-    public Color32 selectedMatColor;
+    public GameObject selectionIndicator;
     public GameObject selectedObj;
-    public Material matToUse;
     public GameObject selectedObjectPanel;
     public Text selectedObjText;
 
@@ -115,9 +113,12 @@ public class SelectionController : MonoBehaviour {
 
     // Revert material of previously selected objectoon
     public void DeselectObj() {
-        selectedObj.GetComponent<Renderer>().material = selectedObjMat;
+        foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
+            foreach (Material mat in rend.materials) {
+                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1f);
+            }
+        }
         selectedObj = null;
-        selectedObjMat = null;
         resourceActionBtn.gameObject.SetActive(false);
         townActionsContainer.SetActive(false);
         SetObjText();
@@ -126,11 +127,11 @@ public class SelectionController : MonoBehaviour {
     // Change material of object to indicate that it is selected
     public void HighlightSelected(RaycastHit hit) {
         selectedObj = hit.transform.gameObject;
-        selectedObjMat = hit.transform.gameObject.GetComponent<Renderer>().material;
-        selectedMatColor = selectedObjMat.color;
-
-        matToUse.color = new Color32(selectedMatColor.r, selectedMatColor.g, selectedMatColor.b, 190);
-        selectedObj.GetComponent<Renderer>().material = matToUse;
+        foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
+            foreach (Material mat in rend.materials) {
+                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0.3f);
+            }
+        }
     }
 
     // Brings up action buttons based on what object is selected
@@ -150,7 +151,7 @@ public class SelectionController : MonoBehaviour {
                 availableUnits--;
                 GameObject newUnit = Instantiate(unit, spawnPoint);
                 UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                newUnitCont.unitBase = unitBase;
+                newUnitCont.spawnPoint = spawnPoint.gameObject;
                 newUnitCont.MoveToAction(selectedObj);
                 newUnitCont.action = action;
                 ResourceStorage._instance.UpdateResourceText();
@@ -212,7 +213,7 @@ public class SelectionController : MonoBehaviour {
                     availableUnits--;
                     GameObject newUnit = Instantiate(unit, spawnPoint);
                     UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                    newUnitCont.unitBase = unitBase;
+                    newUnitCont.spawnPoint = spawnPoint.gameObject;
                     newUnitCont.MoveToAction(planned.objectForAction);
                     newUnitCont.action = planned.action;
                     ResourceStorage._instance.UpdateResourceText();
@@ -247,9 +248,9 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj != null) {
             selectedObjectPanel.SetActive(true);
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
-                selectedObjText.text =
-                    selectedObj.tag + "\n"
-                    + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
+                selectedObjText.text = "";
+                    //selectedObj.tag + "\n"
+                    //+ selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
             }
 
             if (selectedObj.tag == "HumanTown") {

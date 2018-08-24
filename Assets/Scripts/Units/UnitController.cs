@@ -11,7 +11,7 @@ public class UnitController : MonoBehaviour {
     public SelectionController.Actions action;
 
     public bool isReturning;
-    public GameObject unitBase;
+    public GameObject spawnPoint;
 
     public int woodCollected;
     public float hungerCollected;
@@ -28,30 +28,33 @@ public class UnitController : MonoBehaviour {
         }
 
         if (isPerformingAction) {
-            if (!agent.pathPending) {
-                if ((agent.destination - transform.position).sqrMagnitude <= agent.stoppingDistance) {
-                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                        StartCoroutine("PerformAction");
-                    }
-                }
+            if (HasReachedDestination()) {
+                StartCoroutine("PerformAction");
             }
         }
 
         if (isReturning) {
-            if (!agent.pathPending) {
-                if ((agent.destination - transform.position).sqrMagnitude <= agent.stoppingDistance) {
-                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                        isReturning = false;
-                        SelectionController._instance.ReturnUnit(this);
-                    }
-                }
+            if (HasReachedDestination()) {
+                isReturning = false;
+                SelectionController._instance.ReturnUnit(this);
             }
         }
 	}
 
+    public bool HasReachedDestination() {
+        if (!agent.pathPending) {
+            if (new Vector3(agent.destination.x - transform.position.x, 0f, agent.destination.z - transform.position.z).sqrMagnitude <= agent.stoppingDistance) {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     // Move unit to whatever was selected
     public void Move(GameObject dest) {
-        agent.destination = Vector3.Lerp(dest.transform.position, transform.position, 0.05f);
+        agent.destination = Vector3.Lerp(dest.transform.position, transform.position, 0.1f);
     }
 
     public void MoveToAction(GameObject dest) {
@@ -63,6 +66,7 @@ public class UnitController : MonoBehaviour {
 
     // Perform action based on string passed in by button click
     public IEnumerator PerformAction() {
+        Debug.Log("performing action");
         yield return new WaitForSeconds(2f);
 
         if (objectForAction != null) {
@@ -91,6 +95,6 @@ public class UnitController : MonoBehaviour {
     public void ReturnFromAction() {
         isReturning = true;
         Debug.Log("returning to base");
-        Move(unitBase);
+        Move(spawnPoint);
     }
 }
