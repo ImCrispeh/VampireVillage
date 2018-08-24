@@ -48,6 +48,7 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
     {
         //The effects of the technology which are active once research ends
         //mainBase.defense += 3;
+        ResourceStorage._instance.maxHunger += 50;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
@@ -56,9 +57,14 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
     {
         if (!researched && !researching && requiredTechnology.researched)
         {
-            researchTimer = 0;
-            researching = true;
-            Debug.Log("Researching: " + technologyName);
+            if (ResourceStorage._instance.wood >= researchCost)
+            {
+                researchTimer = 0;
+                researching = true;
+                ResourceStorage._instance.SubtractWood(researchCost);
+                ResourceStorage._instance.UpdateResourceText();
+                Debug.Log("Researching: " + technologyName);
+            }
         }
     }
 

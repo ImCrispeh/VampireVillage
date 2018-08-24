@@ -48,9 +48,13 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            researchTimer = 0;
-            researching = true;
-            Debug.Log("Researching: " + technologyName);
+            if (ResourceStorage._instance.wood >= researchCost) {
+                researchTimer = 0;
+                researching = true;
+                ResourceStorage._instance.SubtractWood(researchCost);
+                ResourceStorage._instance.UpdateResourceText();
+                Debug.Log("Researching: " + technologyName);
+            }
         }
     }
 

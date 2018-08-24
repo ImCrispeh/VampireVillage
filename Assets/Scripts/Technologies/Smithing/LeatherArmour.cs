@@ -31,8 +31,7 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
     // Update is called once per frame
     protected override void Update() {
         base.Update();
-        if (researched && !researching && !applyTechnology)
-        {
+        if (researched && !researching && !applyTechnology) {
             EndResearch();
             applyTechnology = true;
         }
@@ -46,11 +45,14 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
     }
 
     public override void StartResearch() {
-        if (!researched && !researching)
-        {
-            researchTimer = 0;
-            researching = true;
-            Debug.Log("Researching: " + technologyName);
+        if (!researched && !researching) {
+            if (ResourceStorage._instance.wood >= researchCost) {
+                researchTimer = 0;
+                researching = true;
+                ResourceStorage._instance.SubtractWood(researchCost);
+                ResourceStorage._instance.UpdateResourceText();
+                Debug.Log("Researching: " + technologyName);
+            }
         }
     }
 
