@@ -560,9 +560,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5397340096c724e489f075f66b32c4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partialFeedAmt: 25
-  fullFeedAmt: 50
-  convertAmt: 75
+  partialFeedAmt: 10
+  fullFeedAmt: 45
+  convertAmt: 60
   threatCont: {fileID: 2144393606}
 --- !u!1 &1678505154 stripped
 GameObject:
