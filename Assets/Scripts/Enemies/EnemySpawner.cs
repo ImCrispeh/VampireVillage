@@ -11,6 +11,13 @@ public class EnemySpawner : MonoBehaviour {
     public bool isSpawning;
     public bool hasSetSpawn;
 
+    [SerializeField]
+    private Transform[] spawnPositions;
+    [SerializeField]
+    private GameObject[] lightEnemies;
+    [SerializeField]
+    private GameObject[] heavyEnemies;
+
     public ThreatController threatCont;
 
     void Start() {
@@ -42,11 +49,14 @@ public class EnemySpawner : MonoBehaviour {
         if (enemiesToSpawn > 0) {
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {
-                GameObject newEnemy = Instantiate(enemy, spawnPoint);
-                newEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
-                newEnemy.GetComponent<EnemyController>().MoveToAttack(spawnPoint.childCount-1);
-                enemiesToSpawn--;
-                spawnTimer -= timeBetweenSpawns;
+                for(int i=0; i < spawnPositions.Length; i++){
+                        //will need to change the number to a random int based off the range of the array
+                        GameObject newEnemy = Instantiate(lightEnemies[Random.Range(0, lightEnemies.Length)], spawnPositions[i]);
+                        newEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
+                        newEnemy.GetComponent<EnemyController>().MoveToAttack(spawnPositions[i].childCount-1);
+                        enemiesToSpawn--;
+                    }
+                    spawnTimer -= timeBetweenSpawns;
             }
         } else {
             isSpawning = false;
