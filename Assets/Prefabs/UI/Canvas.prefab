@@ -6428,7 +6428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3b4843700f1f8449fda9e1a8978622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionIndicator: {fileID: 0}
   selectedObj: {fileID: 0}
   selectedObjectPanel: {fileID: 1988974879980518}
   selectedObjText: {fileID: 114430506816811918}
@@ -6446,14 +6445,18 @@ MonoBehaviour:
   actionIconsList:
   - iconName: 0
     icon: {fileID: 1802086637964466, guid: 2e535a6467f895e4ca47466c43a2599e, type: 2}
-  - iconName: 1
-    icon: {fileID: 1489341846397978, guid: dbdb7c158ecd33a4692bac45d5170ae4, type: 2}
-  - iconName: 2
-    icon: {fileID: 1099694762944038, guid: 1add648287eff4640960202ed75313cf, type: 2}
   - iconName: 3
+    icon: {fileID: 1489341846397978, guid: dbdb7c158ecd33a4692bac45d5170ae4, type: 2}
+  - iconName: 4
+    icon: {fileID: 1099694762944038, guid: 1add648287eff4640960202ed75313cf, type: 2}
+  - iconName: 5
     icon: {fileID: 1093583165788768, guid: 0cdd7a7c3912bca4686a5aa6e4027f6d, type: 2}
+  - iconName: 1
+    icon: {fileID: 1802086637964466, guid: d1e9f633cf4d3fe4eb1c2bf89583709a, type: 2}
+  - iconName: 2
+    icon: {fileID: 1802086637964466, guid: 3bcec0ba426628945bdc7f1e0218b681, type: 2}
   plannedActionRemovalIcons: []
-  plannedActionsPanel: {fileID: 0}
+  plannedActionsPanel: {fileID: 224265293752048674}
 --- !u!114 &114304557051621636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7765,8 +7768,8 @@ MonoBehaviour:
   stone: 0
   gold: 0
   hungerDepletionRate: 0.0025
-  resourceText: {fileID: 0}
-  hungerBar: {fileID: 0}
+  resourceText: {fileID: 114571698040558866}
+  hungerBar: {fileID: 114467518036838670}
 --- !u!114 &114463257830345064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9313,7 +9316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762fa4d9b0ce3e0469877cac65614931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionIndicator: {fileID: 0}
   selectedObj: {fileID: 0}
   selectedObjectPanel: {fileID: 0}
   selectedObjText: {fileID: 114430506816811918}
@@ -11460,7 +11462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114301313652754994}
         m_MethodName: ShowAndHidePlannedActions
         m_Mode: 1
         m_Arguments:

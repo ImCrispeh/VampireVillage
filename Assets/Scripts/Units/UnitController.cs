@@ -85,6 +85,9 @@ public class UnitController : MonoBehaviour {
                 case SelectionController.Actions.convert:
                     objectForAction.GetComponent<HumanTownController>().ConvertEffect(this);
                     break;
+                case SelectionController.Actions.repair:
+                    objectForAction.GetComponent<BaseController>().Repair();
+                    break;
                 default:
                     break;
             }
