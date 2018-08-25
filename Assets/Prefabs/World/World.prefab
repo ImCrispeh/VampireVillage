@@ -26,8 +26,8 @@ GameObject:
   m_Name: MT_Mountain_S_a_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1011052592884774
 GameObject:
@@ -41,12 +41,12 @@ GameObject:
   - component: {fileID: 23561573537129736}
   - component: {fileID: 64024124421688704}
   - component: {fileID: 208930461735887880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1018322127110968
 GameObject:
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4416327642711728}
   - component: {fileID: 33192746212562786}
   - component: {fileID: 23458152116514770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4438817114355172}
   - component: {fileID: 33320662261833482}
   - component: {fileID: 23495507033857214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,12 +127,13 @@ GameObject:
   - component: {fileID: 33880999874022448}
   - component: {fileID: 23458780042242424}
   - component: {fileID: 114966997181565568}
-  m_Layer: 0
+  - component: {fileID: 208177116748178278}
+  m_Layer: 8
   m_Name: Water_S_b_01
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1036286559186130
 GameObject:
@@ -159,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4049360938646102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,12 +193,12 @@ GameObject:
   - component: {fileID: 33925361491418234}
   - component: {fileID: 23741517728363010}
   - component: {fileID: 64358957740174020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_13 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1048725455868790
 GameObject:
@@ -249,7 +250,7 @@ GameObject:
   - component: {fileID: 4190269482728790}
   - component: {fileID: 33206097695156120}
   - component: {fileID: 23671343674308266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +267,7 @@ GameObject:
   - component: {fileID: 4866457691517136}
   - component: {fileID: 33626282678088002}
   - component: {fileID: 23090088074847464}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +284,7 @@ GameObject:
   - component: {fileID: 4240395747018984}
   - component: {fileID: 33710318870107394}
   - component: {fileID: 23131389214448518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +301,7 @@ GameObject:
   - component: {fileID: 4583990725687314}
   - component: {fileID: 33957348856980536}
   - component: {fileID: 23034836517709538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,9 +319,9 @@ GameObject:
   - component: {fileID: 65428476867891020}
   - component: {fileID: 208145656087954942}
   - component: {fileID: 114443377899180914}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gold (1)
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,7 +336,7 @@ GameObject:
   - component: {fileID: 4119987332758626}
   - component: {fileID: 33811456222106982}
   - component: {fileID: 23540749865789196}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +353,7 @@ GameObject:
   - component: {fileID: 4530785200521694}
   - component: {fileID: 33688339582950500}
   - component: {fileID: 23246724796863496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,12 +371,12 @@ GameObject:
   - component: {fileID: 33735981895079992}
   - component: {fileID: 23686866829370224}
   - component: {fileID: 64134671649963970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_02
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1077327045745844
 GameObject:
@@ -387,7 +388,7 @@ GameObject:
   - component: {fileID: 4440549287965276}
   - component: {fileID: 33795692795983840}
   - component: {fileID: 23441485460966716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +437,7 @@ GameObject:
   - component: {fileID: 4667921024692036}
   - component: {fileID: 33995908510358782}
   - component: {fileID: 23803871030084314}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4966107646573246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +486,7 @@ GameObject:
   - component: {fileID: 4672089546431256}
   - component: {fileID: 33454220202579012}
   - component: {fileID: 23078439691850356}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +503,7 @@ GameObject:
   - component: {fileID: 4066259490724598}
   - component: {fileID: 33340732929137516}
   - component: {fileID: 23877328883609480}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4519787042990084}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,9 +536,9 @@ GameObject:
   - component: {fileID: 65662685148348304}
   - component: {fileID: 208512972425619138}
   - component: {fileID: 114999170921525316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (9)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,9 +571,9 @@ GameObject:
   - component: {fileID: 65734081714877868}
   - component: {fileID: 208302057552514706}
   - component: {fileID: 114190912324891828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (8)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -588,9 +589,9 @@ GameObject:
   - component: {fileID: 65819141206740976}
   - component: {fileID: 208443224951867816}
   - component: {fileID: 114184711154651770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (6)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -623,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4391568826220486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Resources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4946653822394436}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,12 +657,12 @@ GameObject:
   - component: {fileID: 33530075778237852}
   - component: {fileID: 23120653007535552}
   - component: {fileID: 64398480498654542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1129702726308972
 GameObject:
@@ -674,9 +675,9 @@ GameObject:
   - component: {fileID: 65316529136156868}
   - component: {fileID: 208808067814434890}
   - component: {fileID: 114075715490301982}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (5)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,7 +722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4473111838589504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoldMountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,7 +793,7 @@ GameObject:
   - component: {fileID: 4382833649011284}
   - component: {fileID: 33304438383224512}
   - component: {fileID: 23931204649752722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4547290489198180}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4358909104779920}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,7 +894,7 @@ GameObject:
   - component: {fileID: 4684554272747924}
   - component: {fileID: 33747024274025070}
   - component: {fileID: 23516066554732250}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,9 +912,9 @@ GameObject:
   - component: {fileID: 65838766222651188}
   - component: {fileID: 208551650014843704}
   - component: {fileID: 114937532517586236}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +929,7 @@ GameObject:
   - component: {fileID: 4186327805526918}
   - component: {fileID: 33026697377914330}
   - component: {fileID: 23750016170064870}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,12 +947,12 @@ GameObject:
   - component: {fileID: 33850328997756172}
   - component: {fileID: 23313275781967156}
   - component: {fileID: 64500891821247876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_13 (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1227518509662998
 GameObject:
@@ -978,7 +979,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4278386027344970}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,9 +997,9 @@ GameObject:
   - component: {fileID: 65149568171876194}
   - component: {fileID: 208736012330595534}
   - component: {fileID: 114239187407947600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gold (3)
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1034,9 +1035,9 @@ GameObject:
   - component: {fileID: 65165953629920602}
   - component: {fileID: 208452291833890212}
   - component: {fileID: 114097367272591138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (4)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1052,12 +1053,12 @@ GameObject:
   - component: {fileID: 33360372955578126}
   - component: {fileID: 23605391817978366}
   - component: {fileID: 64263288944051380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1269858243285326
 GameObject:
@@ -1069,7 +1070,7 @@ GameObject:
   - component: {fileID: 4776500328670590}
   - component: {fileID: 33947310806790688}
   - component: {fileID: 23755706718791282}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1121,7 @@ GameObject:
   - component: {fileID: 4311228944030260}
   - component: {fileID: 33201062723448620}
   - component: {fileID: 23308361189174820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1158,7 @@ GameObject:
   - component: {fileID: 4542591094882574}
   - component: {fileID: 33564132785547628}
   - component: {fileID: 23481336976326926}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,7 +1193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4589681547998212}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1210,7 @@ GameObject:
   - component: {fileID: 4404725085787226}
   - component: {fileID: 33123656131887848}
   - component: {fileID: 23838025607136588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,9 +1245,9 @@ GameObject:
   - component: {fileID: 65147035345082990}
   - component: {fileID: 208873896978611198}
   - component: {fileID: 114082875933800728}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (3)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1259,7 +1260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4496023169849066}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forest (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,12 +1312,12 @@ GameObject:
   - component: {fileID: 33268851445140134}
   - component: {fileID: 23160224721797588}
   - component: {fileID: 64705026893885226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1321682740350684
 GameObject:
@@ -1326,7 +1327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4083267528708006}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1360,7 +1361,7 @@ GameObject:
   - component: {fileID: 4864675271654446}
   - component: {fileID: 33583972805438616}
   - component: {fileID: 23068238545285778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1394,7 +1395,7 @@ GameObject:
   - component: {fileID: 4007780015801764}
   - component: {fileID: 33018785131672114}
   - component: {fileID: 23299162340734036}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1429,7 @@ GameObject:
   - component: {fileID: 4394013229101116}
   - component: {fileID: 33199972091790306}
   - component: {fileID: 23417519093928762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1462,7 +1463,7 @@ GameObject:
   - component: {fileID: 4999297055485722}
   - component: {fileID: 33921773706757644}
   - component: {fileID: 23785278234231386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,7 +1495,7 @@ GameObject:
   - component: {fileID: 4546867549384798}
   - component: {fileID: 33365577021787732}
   - component: {fileID: 23784226496368642}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1509,7 +1510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4601714905784458}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1527,9 +1528,9 @@ GameObject:
   - component: {fileID: 65044113683624162}
   - component: {fileID: 208124072669497254}
   - component: {fileID: 114917855846500200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gold (5)
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1545,12 +1546,13 @@ GameObject:
   - component: {fileID: 33930384392712604}
   - component: {fileID: 23874077481107930}
   - component: {fileID: 64595590993577354}
-  m_Layer: 0
+  - component: {fileID: 208074592596433718}
+  m_Layer: 8
   m_Name: MT_River_End_L_b_01_R
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1364171430332960
 GameObject:
@@ -1592,7 +1594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016821295526750}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,7 +1609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4077086810599824}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1625,12 +1627,12 @@ GameObject:
   - component: {fileID: 33860223538405932}
   - component: {fileID: 23342722048715350}
   - component: {fileID: 64906095623510378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1388453298383302
 GameObject:
@@ -1657,7 +1659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4432101142539022}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1679,8 +1681,8 @@ GameObject:
   m_Name: MT_Mountain_S_a_13 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1415881353484146
 GameObject:
@@ -1693,9 +1695,9 @@ GameObject:
   - component: {fileID: 65209526170954580}
   - component: {fileID: 208541768546403866}
   - component: {fileID: 114762558747237010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gold (4)
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1711,12 +1713,12 @@ GameObject:
   - component: {fileID: 33609569292783418}
   - component: {fileID: 23832951400255108}
   - component: {fileID: 64611444464622680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_21 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1442284275409710
 GameObject:
@@ -1729,12 +1731,12 @@ GameObject:
   - component: {fileID: 33444469148609440}
   - component: {fileID: 23755478448216332}
   - component: {fileID: 64693124719400958}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1450974011693830
 GameObject:
@@ -1747,9 +1749,9 @@ GameObject:
   - component: {fileID: 65600219682537428}
   - component: {fileID: 208724966246151814}
   - component: {fileID: 114043082621949392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gold (2)
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1782,7 +1784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4674926367545100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1800,9 +1802,9 @@ GameObject:
   - component: {fileID: 65210778746517516}
   - component: {fileID: 208918131477028906}
   - component: {fileID: 114768565196880406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (7)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1817,7 +1819,7 @@ GameObject:
   - component: {fileID: 4550218386312900}
   - component: {fileID: 33174168770251650}
   - component: {fileID: 23180263141508656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1852,12 +1854,12 @@ GameObject:
   - component: {fileID: 33179309892233984}
   - component: {fileID: 23983291085337232}
   - component: {fileID: 64944191044979838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_02 (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1490242374102372
 GameObject:
@@ -1869,7 +1871,7 @@ GameObject:
   - component: {fileID: 4906146652100524}
   - component: {fileID: 33074568539428682}
   - component: {fileID: 23119778064130268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1904,12 +1906,12 @@ GameObject:
   - component: {fileID: 33065857612299714}
   - component: {fileID: 23198493623336136}
   - component: {fileID: 64259005977569804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_02 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1499406257904132
 GameObject:
@@ -1922,9 +1924,9 @@ GameObject:
   - component: {fileID: 65694988603982040}
   - component: {fileID: 208474067349894586}
   - component: {fileID: 114318561893959920}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (1)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1939,7 +1941,7 @@ GameObject:
   - component: {fileID: 4141154519743434}
   - component: {fileID: 33516115581025608}
   - component: {fileID: 23382668699495846}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1956,7 +1958,7 @@ GameObject:
   - component: {fileID: 4543925291431138}
   - component: {fileID: 33228754991457742}
   - component: {fileID: 23101425532262518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1988,7 +1990,7 @@ GameObject:
   - component: {fileID: 4860658762848720}
   - component: {fileID: 33821663608532602}
   - component: {fileID: 23854467946137140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2010,8 +2012,8 @@ GameObject:
   m_Name: MT_Mountain_S_a_13 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1535046474059538
 GameObject:
@@ -2058,9 +2060,9 @@ GameObject:
   - component: {fileID: 65747958365240364}
   - component: {fileID: 208138449040206448}
   - component: {fileID: 114513193896075502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone (2)
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2075,7 +2077,7 @@ GameObject:
   - component: {fileID: 4564980206426402}
   - component: {fileID: 33935693122185006}
   - component: {fileID: 23076154951548008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2110,12 +2112,12 @@ GameObject:
   - component: {fileID: 33023685818590580}
   - component: {fileID: 23573447943986600}
   - component: {fileID: 64472090001732418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_02 (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1578839735197084
 GameObject:
@@ -2125,7 +2127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4303638891875294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2142,7 +2144,7 @@ GameObject:
   - component: {fileID: 4660097745313002}
   - component: {fileID: 33992437182899886}
   - component: {fileID: 23092615246396340}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2159,7 +2161,7 @@ GameObject:
   - component: {fileID: 4050436221383792}
   - component: {fileID: 33546015944388822}
   - component: {fileID: 23684661442679466}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2176,7 +2178,7 @@ GameObject:
   - component: {fileID: 4249523703223446}
   - component: {fileID: 33196446787524830}
   - component: {fileID: 23125106872550940}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2193,7 +2195,7 @@ GameObject:
   - component: {fileID: 4452368219954942}
   - component: {fileID: 33764871287635936}
   - component: {fileID: 23231538676563780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2210,7 +2212,7 @@ GameObject:
   - component: {fileID: 4074737789838414}
   - component: {fileID: 33826528183489822}
   - component: {fileID: 23397077433868194}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2245,12 +2247,12 @@ GameObject:
   - component: {fileID: 33802451941217128}
   - component: {fileID: 23928377526020138}
   - component: {fileID: 64813461180986732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_02 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1620075704594010
 GameObject:
@@ -2260,7 +2262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4211338481903912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2278,9 +2280,9 @@ GameObject:
   - component: {fileID: 65341035870684006}
   - component: {fileID: 208530863784589778}
   - component: {fileID: 114548205698162318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gold (6)
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2293,7 +2295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4630721162556678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2327,7 +2329,7 @@ GameObject:
   - component: {fileID: 4042136102073216}
   - component: {fileID: 33201854427817550}
   - component: {fileID: 23129000129951270}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2344,7 +2346,7 @@ GameObject:
   - component: {fileID: 4370340526295202}
   - component: {fileID: 33617893287730194}
   - component: {fileID: 23800708729313600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2361,7 +2363,7 @@ GameObject:
   - component: {fileID: 4620281589499112}
   - component: {fileID: 33712667618802848}
   - component: {fileID: 23332771626463620}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2427,7 +2429,7 @@ GameObject:
   - component: {fileID: 4637212581871710}
   - component: {fileID: 33840999121630936}
   - component: {fileID: 23698135031816056}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2479,7 +2481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4080464878917290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2546,12 +2548,12 @@ GameObject:
   - component: {fileID: 33156694134505212}
   - component: {fileID: 23623191725480420}
   - component: {fileID: 64406546950500758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_13 (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1715360779228620
 GameObject:
@@ -2565,12 +2567,12 @@ GameObject:
   - component: {fileID: 23511222271302078}
   - component: {fileID: 64004675096901222}
   - component: {fileID: 208281625508981270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_13 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1715714986547642
 GameObject:
@@ -2601,8 +2603,8 @@ GameObject:
   - component: {fileID: 23557495636665522}
   - component: {fileID: 65144736406348214}
   - component: {fileID: 208325554917296846}
-  - component: {fileID: 114719009819926574}
   - component: {fileID: 114136223430993290}
+  - component: {fileID: 114789805875207188}
   m_Layer: 9
   m_Name: Human Town
   m_TagString: HumanTown
@@ -2655,7 +2657,7 @@ GameObject:
   - component: {fileID: 4576922449396570}
   - component: {fileID: 33662256721796966}
   - component: {fileID: 23443249195615260}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63494
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2672,7 +2674,7 @@ GameObject:
   - component: {fileID: 4736806629139508}
   - component: {fileID: 33471291936746386}
   - component: {fileID: 23641537722268330}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,12 +2712,12 @@ GameObject:
   - component: {fileID: 33999219655756498}
   - component: {fileID: 23041655199109096}
   - component: {fileID: 64122447714414100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_13 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1770946681733940
 GameObject:
@@ -2762,12 +2764,12 @@ GameObject:
   - component: {fileID: 33576242785530968}
   - component: {fileID: 23888793274792678}
   - component: {fileID: 64907422249323284}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_13 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1782282582902992
 GameObject:
@@ -2779,7 +2781,7 @@ GameObject:
   - component: {fileID: 4019833258150820}
   - component: {fileID: 33620336613954082}
   - component: {fileID: 23497087491878176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2794,7 +2796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4912296133319596}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2812,12 +2814,12 @@ GameObject:
   - component: {fileID: 33122582929460482}
   - component: {fileID: 23083171698350672}
   - component: {fileID: 64878399082961814}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_02 (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1809808766846246
 GameObject:
@@ -2830,12 +2832,12 @@ GameObject:
   - component: {fileID: 33029890075585692}
   - component: {fileID: 23603734014917606}
   - component: {fileID: 64165839917292450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_02 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1810961636699968
 GameObject:
@@ -2848,12 +2850,12 @@ GameObject:
   - component: {fileID: 33280860900725662}
   - component: {fileID: 23024663164236484}
   - component: {fileID: 64105597511209174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_13 (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1813343533767292
 GameObject:
@@ -2885,7 +2887,7 @@ GameObject:
   - component: {fileID: 4761351508705986}
   - component: {fileID: 33677987821031100}
   - component: {fileID: 23237429484244584}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2900,7 +2902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4925218195799918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3057,7 +3059,7 @@ GameObject:
   - component: {fileID: 4108047898730604}
   - component: {fileID: 33042471410424778}
   - component: {fileID: 23795369233764370}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3075,12 +3077,12 @@ GameObject:
   - component: {fileID: 33436316046158928}
   - component: {fileID: 23353204882926434}
   - component: {fileID: 64782441489813670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_c_29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1869943716857888
 GameObject:
@@ -3110,12 +3112,13 @@ GameObject:
   - component: {fileID: 33618484473506478}
   - component: {fileID: 23789473813862782}
   - component: {fileID: 64335288425326264}
-  m_Layer: 0
+  - component: {fileID: 208815094739497260}
+  m_Layer: 8
   m_Name: MT_River_End_L_a_01
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1888333904205604
 GameObject:
@@ -3147,7 +3150,7 @@ GameObject:
   - component: {fileID: 4040738336421380}
   - component: {fileID: 33715612569317276}
   - component: {fileID: 23652697895027112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3198,7 +3201,7 @@ GameObject:
   - component: {fileID: 4426817031893416}
   - component: {fileID: 33322238893439510}
   - component: {fileID: 23329514197882524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3215,7 +3218,7 @@ GameObject:
   - component: {fileID: 4431022558963958}
   - component: {fileID: 33480613056958160}
   - component: {fileID: 23181892413377272}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3265,12 +3268,12 @@ GameObject:
   - component: {fileID: 33838457752555436}
   - component: {fileID: 23511648376655834}
   - component: {fileID: 64485117425388588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_21 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1932854368671980
 GameObject:
@@ -3354,12 +3357,12 @@ GameObject:
   - component: {fileID: 33263562140441814}
   - component: {fileID: 23430752497126116}
   - component: {fileID: 64137912334815310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Terrain_S_a_13 (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1958918581981562
 GameObject:
@@ -3371,7 +3374,7 @@ GameObject:
   - component: {fileID: 4190901502376504}
   - component: {fileID: 33490828438364928}
   - component: {fileID: 23887919395820420}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group28105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3422,7 +3425,7 @@ GameObject:
   - component: {fileID: 4202329462948210}
   - component: {fileID: 33139174446298814}
   - component: {fileID: 23160864671699590}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Group63493
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3440,9 +3443,9 @@ GameObject:
   - component: {fileID: 65084575462905958}
   - component: {fileID: 208117741615231842}
   - component: {fileID: 114544528190637610}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gold
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3456,7 +3459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4500462632288108}
   - component: {fileID: 208358716494450314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stone Mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3471,7 +3474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4436860952193350}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Broadleaf_I20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3490,12 +3493,12 @@ GameObject:
   - component: {fileID: 23165330476701362}
   - component: {fileID: 64592260200289012}
   - component: {fileID: 208742044406476548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MT_Mountain_S_a_13 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1990554114106776
 GameObject:
@@ -3505,7 +3508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4622227014503082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Green Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3662,7 +3665,7 @@ Transform:
   - {fileID: 4303638891875294}
   - {fileID: 4223724508102200}
   m_Father: {fileID: 4046421096132708}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4040412223600370
 Transform:
@@ -3742,9 +3745,9 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4019865627817750}
+  - {fileID: 4034966746459462}
   - {fileID: 4944578852374488}
   - {fileID: 4391568826220486}
-  - {fileID: 4034966746459462}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4227,7 +4230,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364171430332960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0, z: -1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4019865627817750}
@@ -4559,7 +4562,7 @@ Transform:
   - {fileID: 4473111838589504}
   - {fileID: 4496023169849066}
   m_Father: {fileID: 4046421096132708}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4394013229101116
 Transform:
@@ -6208,7 +6211,7 @@ Transform:
   - {fileID: 4386024854448104}
   - {fileID: 4655519563826680}
   m_Father: {fileID: 4046421096132708}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4946653822394436
 Transform:
@@ -13837,18 +13840,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceAmt: 100
---- !u!114 &114719009819926574
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1716800064090208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceAmt: 100
 --- !u!114 &114738458690889778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13885,6 +13876,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceAmt: 100
+--- !u!114 &114789805875207188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716800064090208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5397340096c724e489f075f66b32c4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partialFeedAmt: 25
+  fullFeedAmt: 50
+  convertAmt: 75
+  threatCont: {fileID: 0}
 --- !u!114 &114817329439268770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14055,6 +14061,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!208 &208074592596433718
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361785481325532}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 50.000004, y: 1.1, z: 50.000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 50.000004, y: -0.98300004, z: 50.000004}
+  m_TimeToStationary: 0.5
 --- !u!208 &208088958851431698
 NavMeshObstacle:
   m_ObjectHideFlags: 1
@@ -14129,6 +14150,21 @@ NavMeshObstacle:
   m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.02, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208177116748178278
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036095258125238}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 12.500001, y: 0.2, z: 12.500001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 12.500001, y: 0, z: 12.500001}
   m_TimeToStationary: 0.5
 --- !u!208 &208186041646918022
 NavMeshObstacle:
@@ -14474,6 +14510,21 @@ NavMeshObstacle:
   m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.02, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208815094739497260
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877588559363062}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 50.000004, y: 2.798, z: 50.000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 50.000004, y: -2.6810002, z: 50.000004}
   m_TimeToStationary: 0.5
 --- !u!208 &208820556287241626
 NavMeshObstacle:

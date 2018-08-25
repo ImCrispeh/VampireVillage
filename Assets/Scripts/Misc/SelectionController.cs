@@ -8,7 +8,6 @@ using System;
 public class SelectionController : MonoBehaviour {
     public static SelectionController _instance;
 
-    public GameObject selectionIndicator;
     public GameObject selectedObj;
     public GameObject selectedObjectPanel;
     public Text selectedObjText;
@@ -23,7 +22,7 @@ public class SelectionController : MonoBehaviour {
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
     public enum Actions { partialFeed, fullFeed, convert, collect };
-    public enum ActionIconNames { collectWood, partialFeed, fullFeed, convert };
+    public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert };
     public List<ActionIcon> actionIconsList;
     private Dictionary<ActionIconNames, GameObject> actionIcons;
     public List<PlannedAction> plannedActions;
@@ -139,6 +138,9 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj.tag == "HumanTown") {
             resourceActionBtn.gameObject.SetActive(false);
             townActionsContainer.SetActive(true);
+        } else if (selectedObj.tag == "Base") {
+            townActionsContainer.SetActive(false);
+            resourceActionBtn.gameObject.SetActive(false);
         } else {
             townActionsContainer.SetActive(false);
             resourceActionBtn.gameObject.SetActive(true);
@@ -170,7 +172,19 @@ public class SelectionController : MonoBehaviour {
 
             switch (action) {
                 case Actions.collect:
-                    AddPlannedAction(ActionIconNames.collectWood);
+                    switch (selectedObj.tag) {
+                        case "Wood":
+                            AddPlannedAction(ActionIconNames.collectWood);
+                            break;
+                        case "Stone":
+                            AddPlannedAction(ActionIconNames.collectStone);
+                            break;
+                        case "Gold":
+                            AddPlannedAction(ActionIconNames.collectGold);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case Actions.partialFeed:
                     AddPlannedAction(ActionIconNames.partialFeed);
@@ -232,6 +246,10 @@ public class SelectionController : MonoBehaviour {
         yield return null;
     }
 
+    public void ShowAndHidePlannedActions() {
+        plannedActionsPanel.GetChild(1).gameObject.SetActive(!plannedActionsPanel.GetChild(1).gameObject.activeInHierarchy);
+    }
+
     // Have unit come back into the base by adding all resources they collected to the resource storage and destroying
     public virtual void ReturnUnit(UnitController unit) {
         availableUnits++;
@@ -239,6 +257,8 @@ public class SelectionController : MonoBehaviour {
         availableUnits += unit.humanConvertCollected;
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
+        ResourceStorage._instance.AddStone(unit.stoneCollected);
+        ResourceStorage._instance.AddGold(unit.goldCollected);
         ResourceStorage._instance.UpdateResourceText();
         Destroy(unit.gameObject);
     }
@@ -248,9 +268,9 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj != null) {
             selectedObjectPanel.SetActive(true);
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
-                selectedObjText.text = "";
-                    //selectedObj.tag + "\n"
-                    //+ selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
+                selectedObjText.text =
+                    selectedObj.tag + "\n"
+                    + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
             }
 
             if (selectedObj.tag == "HumanTown") {

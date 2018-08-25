@@ -14,6 +14,8 @@ public class UnitController : MonoBehaviour {
     public GameObject spawnPoint;
 
     public int woodCollected;
+    public int stoneCollected;
+    public int goldCollected;
     public float hungerCollected;
     public int humanConvertCollected;
 
