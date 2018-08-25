@@ -18,6 +18,12 @@ public class ResourceController : MonoBehaviour {
             case "Wood":
                 unit.woodCollected += resourceAmt;
                 break;
+            case "Stone":
+                unit.stoneCollected += resourceAmt;
+                break;
+            case "Gold":
+                unit.goldCollected += resourceAmt;
+                break;
             default:
                 break;
         }

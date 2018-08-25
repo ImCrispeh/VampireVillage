@@ -139,6 +139,9 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj.tag == "HumanTown") {
             resourceActionBtn.gameObject.SetActive(false);
             townActionsContainer.SetActive(true);
+        } else if (selectedObj.tag == "Base") {
+            townActionsContainer.SetActive(false);
+            resourceActionBtn.gameObject.SetActive(false);
         } else {
             townActionsContainer.SetActive(false);
             resourceActionBtn.gameObject.SetActive(true);
@@ -232,6 +235,10 @@ public class SelectionController : MonoBehaviour {
         yield return null;
     }
 
+    public void ShowAndHidePlannedActions() {
+        plannedActionsPanel.GetChild(1).gameObject.SetActive(!plannedActionsPanel.GetChild(1).gameObject.activeInHierarchy);
+    }
+
     // Have unit come back into the base by adding all resources they collected to the resource storage and destroying
     public virtual void ReturnUnit(UnitController unit) {
         availableUnits++;
@@ -239,6 +246,8 @@ public class SelectionController : MonoBehaviour {
         availableUnits += unit.humanConvertCollected;
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
+        ResourceStorage._instance.AddStone(unit.stoneCollected);
+        ResourceStorage._instance.AddGold(unit.goldCollected);
         ResourceStorage._instance.UpdateResourceText();
         Destroy(unit.gameObject);
     }
@@ -248,9 +257,9 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj != null) {
             selectedObjectPanel.SetActive(true);
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
-                selectedObjText.text = "";
-                    //selectedObj.tag + "\n"
-                    //+ selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
+                selectedObjText.text =
+                    selectedObj.tag + "\n"
+                    + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
             }
 
             if (selectedObj.tag == "HumanTown") {
