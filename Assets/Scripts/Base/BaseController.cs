@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseController : MonoBehaviour {
     public static BaseController _instance;
 
+    public int maxHealth;
     public int health;
     public int attack;
     public int defense;
@@ -27,6 +28,8 @@ public class BaseController : MonoBehaviour {
     }
 
     void Start () {
+        maxHealth = 100;
+        health = maxHealth;
         enemiesInRange = new List<GameObject>();
     }
 	
@@ -57,10 +60,27 @@ public class BaseController : MonoBehaviour {
         }
 	}
 
+    public void Repair() {
+        int amountToRepair = maxHealth - health;
+
+        if (ResourceStorage._instance.wood > amountToRepair * 3 && ResourceStorage._instance.stone > amountToRepair * 3) {
+            health = maxHealth;
+            ResourceStorage._instance.SubtractWood(amountToRepair * 3);
+            ResourceStorage._instance.SubtractStone(amountToRepair * 3);
+        } else {
+            amountToRepair = (int)Mathf.Floor((Mathf.Min(ResourceStorage._instance.wood, ResourceStorage._instance.stone) / 3));
+            health += amountToRepair;
+            ResourceStorage._instance.SubtractWood(amountToRepair * 3);
+            ResourceStorage._instance.SubtractStone(amountToRepair * 3);
+        }
+
+        SelectionController._instance.SetObjText();
+    }
+
     public void TakeDamage(int amt) {
         int damage = Mathf.Clamp(Mathf.RoundToInt(amt - (defense/2)), 1, int.MaxValue);
         health -= damage;
-        health = Mathf.Clamp(health, 0, int.MaxValue);
+        health = Mathf.Clamp(health, 0, maxHealth);
 
         if (SelectionController._instance != null) {
             SelectionController._instance.SetObjText();
@@ -75,7 +95,7 @@ public class BaseController : MonoBehaviour {
 
     public void TakeHungerDamage(int amt) {
         health -= amt;
-        health = Mathf.Clamp(health, 0, int.MaxValue);
+        health = Mathf.Clamp(health, 0, maxHealth);
 
         if (SelectionController._instance != null) {
             SelectionController._instance.SetObjText();
@@ -86,6 +106,10 @@ public class BaseController : MonoBehaviour {
         if (health == 0) {
             GameController._instance.EndGame();
         }
+    }
+
+    public bool IsFullHealth() {
+        return health == maxHealth;
     }
 
     // Iteration through list done in reverse to safely remove any dead enemies
