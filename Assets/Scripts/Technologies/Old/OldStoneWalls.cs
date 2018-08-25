@@ -16,7 +16,7 @@ public class OldStoneWalls : Technology, IPointerEnterHandler, IPointerExitHandl
         base.Start();
         technologyName = "Stone Walls";
         technologyDescription = "A stone wall is constructed adding to your defenses";
-        researchCost = 100; //This will need to be changed once we discuss resources
+        woodCost = 100; //This will need to be changed once we discuss resources
         researchTime = 20f; //15 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
@@ -46,10 +46,10 @@ public class OldStoneWalls : Technology, IPointerEnterHandler, IPointerExitHandl
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            if (ResourceStorage._instance.wood >= researchCost) {
+            if (ResourceStorage._instance.wood >= woodCost) {
                 researchTimer = 0;
                 researching = true;
-                ResourceStorage._instance.SubtractWood(researchCost);
+                ResourceStorage._instance.SubtractWood(woodCost);
                 ResourceStorage._instance.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             } else {

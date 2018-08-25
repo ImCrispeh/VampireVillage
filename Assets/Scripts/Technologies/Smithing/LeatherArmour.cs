@@ -18,7 +18,9 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
         technologyName = "Leather Armour";
         technologyDescription = "You wear the skin of dead enemies to protect yourself";
         researchRequirement = "";
-        researchCost = 10;
+        woodCost = 20;
+        stoneCost = 0;
+        goldCost = 10;
         researchTime = 5f;
         researchTimer = researchTime;
         researched = false;
@@ -46,11 +48,13 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
 
     public override void StartResearch() {
         if (!researched && !researching) {
-            if (ResourceStorage._instance.wood >= researchCost) {
+            if (resources.wood >= woodCost && resources.stone >= stoneCost && resources.gold >= goldCost) {
                 researchTimer = 0;
                 researching = true;
-                ResourceStorage._instance.SubtractWood(researchCost);
-                ResourceStorage._instance.UpdateResourceText();
+                resources.SubtractWood(woodCost);
+                resources.SubtractStone(stoneCost);
+                resources.SubtractGold(goldCost);
+                resources.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             }
         }
@@ -63,17 +67,21 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
 
     public override void OnPointerEnter(PointerEventData pointer) {
         ttbName.text = technologyName;
-        ttbResearchRequirement.text = researchRequirement;
+        ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
-        ttbCost.text = researchCost.ToString() + " wood";
-        ttbResearchTime.text = researchTime.ToString() + " seconds (need to edit)";
+        ttbWoodCost.text = woodCost.ToString();
+        ttbStoneCost.text = stoneCost.ToString();
+        ttbGoldCost.text = goldCost.ToString();
+        ttbResearchTime.text = researchTime.ToString() + " s";
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";
-        ttbCost.text = "";
+        ttbWoodCost.text = "";
+        ttbStoneCost.text = "";
+        ttbGoldCost.text = "";
         ttbResearchTime.text = "";
     }
 }

@@ -19,7 +19,9 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Palisades";
         technologyDescription = "A palisade is constructed adding to your defenses";
         researchRequirement = "Picket Fence";
-        researchCost = 20; 
+        woodCost = 20;
+        stoneCost = 0;
+        goldCost = 0;
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -48,11 +50,11 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            if (ResourceStorage._instance.wood >= researchCost) {
+            if (resources.wood >= woodCost) {
                 researchTimer = 0;
                 researching = true;
-                ResourceStorage._instance.SubtractWood(researchCost);
-                ResourceStorage._instance.UpdateResourceText();
+                resources.SubtractWood(woodCost);
+                resources.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             }            
         }
@@ -68,8 +70,10 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         ttbName.text = technologyName;
         ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
-        ttbCost.text = researchCost.ToString() + " wood";
-        ttbResearchTime.text = researchTime.ToString() + " seconds (need to edit)";
+        ttbWoodCost.text = woodCost.ToString();
+        ttbStoneCost.text = stoneCost.ToString();
+        ttbGoldCost.text = goldCost.ToString();
+        ttbResearchTime.text = researchTime.ToString() + " s";
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
@@ -77,7 +81,9 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";
-        ttbCost.text = "";
+        ttbWoodCost.text = "";
+        ttbStoneCost.text = "";
+        ttbGoldCost.text = "";
         ttbResearchTime.text = "";
     }
 }

@@ -16,7 +16,7 @@ public class WoodenFence : Technology, IPointerEnterHandler, IPointerExitHandler
         base.Start();
         technologyName = "Wooden Fence";
         technologyDescription = "A wooden fence is constructed adding to your defenses";
-        researchCost = 50; //This will need to be changed once we discuss resources
+        woodCost = 50; //This will need to be changed once we discuss resources
         researchTime = 10f; //10 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;

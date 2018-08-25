@@ -16,7 +16,7 @@ public class OldFortifications : Technology, IPointerEnterHandler, IPointerExitH
         base.Start();
         technologyName = "Fortifications";
         technologyDescription = "Fortifications are added to your stone walls, adding to your defenses";
-        researchCost = 150; //This will need to be changed once we discuss resources
+        woodCost = 150; //This will need to be changed once we discuss resources
         researchTime = 30f; //20 secs - currently not linked to the timer
         researchTimer = researchTime;
         researched = false;
@@ -46,10 +46,10 @@ public class OldFortifications : Technology, IPointerEnterHandler, IPointerExitH
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            if (ResourceStorage._instance.wood >= researchCost) {
+            if (ResourceStorage._instance.wood >= woodCost) {
                 researchTimer = 0;
                 researching = true;
-                ResourceStorage._instance.SubtractWood(researchCost);
+                ResourceStorage._instance.SubtractWood(woodCost);
                 ResourceStorage._instance.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             } else {

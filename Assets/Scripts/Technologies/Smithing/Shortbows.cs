@@ -18,7 +18,9 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Shortbows";
         technologyDescription = "You can now create bows with relatively short range";
         researchRequirement = "Slings";
-        researchCost = 40; 
+        woodCost = 40;
+        stoneCost = 0;
+        goldCost = 20;
         researchTime = 5f; 
         researchTimer = researchTime;
         researched = false;
@@ -46,11 +48,13 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void StartResearch() {
         if (!researched && !researching && requiredTechnology.researched) {
-            if (ResourceStorage._instance.wood >= researchCost) {
+            if (resources.wood >= woodCost && resources.stone >= stoneCost && resources.gold >= goldCost) {
                 researchTimer = 0;
                 researching = true;
-                ResourceStorage._instance.SubtractWood(researchCost);
-                ResourceStorage._instance.UpdateResourceText();
+                resources.SubtractWood(woodCost);
+                resources.SubtractStone(stoneCost);
+                resources.SubtractGold(goldCost);
+                resources.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             }
         }
@@ -65,15 +69,19 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
         ttbName.text = technologyName;
         ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
-        ttbCost.text = researchCost.ToString() + " wood";
-        ttbResearchTime.text = researchTime.ToString() + " seconds (need to edit)";
+        ttbWoodCost.text = woodCost.ToString();
+        ttbStoneCost.text = stoneCost.ToString();
+        ttbGoldCost.text = goldCost.ToString();
+        ttbResearchTime.text = researchTime.ToString() + " s";
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";
-        ttbCost.text = "";
+        ttbWoodCost.text = "";
+        ttbStoneCost.text = "";
+        ttbGoldCost.text = "";
         ttbResearchTime.text = "";
     }
 }

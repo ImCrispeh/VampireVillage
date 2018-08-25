@@ -8,7 +8,9 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     public virtual string technologyName { get; set; }
     public virtual string technologyDescription { get; set; }
     public virtual string researchRequirement { get; set; }
-    public virtual int researchCost { get; set; } //this will need to be changed once we discuss resources
+    public virtual int woodCost { get; set; }
+    public virtual int stoneCost { get; set; }
+    public virtual int goldCost { get; set; }
     public virtual float researchTimer { get; set; }
     public virtual float researchTime { get; set; }
     public virtual bool researched { get; set; }
@@ -21,9 +23,12 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     public virtual Text ttbName { get; set; }
     public virtual Text ttbResearchRequirement { get; set; }
     public virtual Text ttbDescription { get; set; }
-    public virtual Text ttbCost { get; set; }
+    public virtual Text ttbWoodCost { get; set; }
+    public virtual Text ttbStoneCost { get; set; }
+    public virtual Text ttbGoldCost { get; set; }
     public virtual Text ttbResearchTime { get; set; }
     public virtual BaseController mainBase { get; set; }
+    public virtual ResourceStorage resources { get; set; }
 
     protected virtual void Start() {
         technologyName = "Placeholder name";
@@ -31,17 +36,22 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         researchRequirement = "Placeholder research requirement";
         researchTimer = 0;
         researchTime = 0;
-        researchCost = 0;
+        woodCost = 0;
+        stoneCost = 0;
+        goldCost = 0;
         researched = false;
         researching = false;
         applyTechnology = false;
         proceedingTechnologyBar = new List<Image>();
         mainBase = BaseController._instance;
+        resources = ResourceStorage._instance;
 
         ttbName = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyName").GetComponent<Text>();
         ttbResearchRequirement = GameObject.Find("TechnologyWindow/TooltipBox/ResearchRequirement").GetComponent<Text>();
         ttbDescription = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyDescription").GetComponent<Text>();
-        ttbCost = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyCost").GetComponent<Text>();
+        ttbWoodCost = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyWoodCost").GetComponent<Text>();
+        ttbStoneCost = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyStoneCost").GetComponent<Text>();
+        ttbGoldCost = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyGoldCost").GetComponent<Text>();
         ttbResearchTime = GameObject.Find("TechnologyWindow/TooltipBox/ResearchTime").GetComponent<Text>();
     }
     protected virtual void Update() {
@@ -57,7 +67,6 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         }
         else {
             technologyImage.fillAmount = ((researchTime - researchTimer) / researchTime);
-
             if (researchTimer < researchTime) { //stops you from clicking again and resetting the research
                 researching = true;
                 
