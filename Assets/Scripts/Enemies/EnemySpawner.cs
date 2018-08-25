@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
     public int enemiesToSpawn;
+    public int heavyEnemiesToSpawn;
     public GameObject enemy;
     public float spawnTimer;
     public float timeBetweenSpawns;
@@ -46,27 +47,50 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void SpawnEnemies() {
-        if (enemiesToSpawn > 0) {
+
+        if(heavyEnemiesToSpawn > 0){
+            Debug.Log("heavy: "+heavyEnemiesToSpawn);
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {
                 for(int i=0; i < spawnPositions.Length; i++){
-                        //will need to change the number to a random int based off the range of the array
+                        GameObject newHeavyEnemy = Instantiate(heavyEnemies[Random.Range(0, heavyEnemies.Length)], spawnPositions[i]);
+                        newHeavyEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
+                        newHeavyEnemy.GetComponent<EnemyController>().MoveToAttack(spawnPositions[i].childCount-1);
+                        heavyEnemiesToSpawn--;
+                        if(heavyEnemiesToSpawn == 0){
+                            break;
+                        }
+                    }
+                    spawnTimer -= timeBetweenSpawns;
+            }
+
+        }
+
+        if (enemiesToSpawn > 0) {
+            Debug.Log("Enemies: "+enemiesToSpawn);
+            spawnTimer += Time.deltaTime;
+            if (spawnTimer >= timeBetweenSpawns) {
+                for(int i=0; i < spawnPositions.Length; i++){
                         GameObject newEnemy = Instantiate(lightEnemies[Random.Range(0, lightEnemies.Length)], spawnPositions[i]);
                         newEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
                         newEnemy.GetComponent<EnemyController>().MoveToAttack(spawnPositions[i].childCount-1);
                         enemiesToSpawn--;
+                        if(enemiesToSpawn == 0){
+                            break;
+                        }
                     }
                     spawnTimer -= timeBetweenSpawns;
             }
         } else {
             isSpawning = false;
             threatCont.SubtractThreat();
-        }
+         }
     }
 
     public void SetSpawn() {
         if (Timer._instance.currentTime >= 0.3f && Timer._instance.currentTime <= 0.375f) {
             enemiesToSpawn = 2 * threatCont.threatLevel;
+            heavyEnemiesToSpawn = threatCont.threatLevel / 2;
             hasSetSpawn = true;
         }
     }

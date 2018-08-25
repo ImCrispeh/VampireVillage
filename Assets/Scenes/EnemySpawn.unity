@@ -11825,9 +11825,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesToSpawn: 2
+  heavyEnemiesToSpawn: 0
   enemy: {fileID: 1577663450091720, guid: badbe2470d2dd574dbc85bbdd69d9d80, type: 2}
   spawnTimer: 0
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 1.5
   spawnPoint: {fileID: 0}
   isSpawning: 0
   hasSetSpawn: 0
@@ -11839,7 +11840,8 @@ MonoBehaviour:
   - {fileID: 1577663450091720, guid: badbe2470d2dd574dbc85bbdd69d9d80, type: 2}
   - {fileID: 1785151789520706, guid: d6a5065e71fc3f647876a68c3171fb4b, type: 2}
   - {fileID: 1344429183929708, guid: 9a43cb1a449ad764bac8475ef2aa7ce8, type: 2}
-  heavyEnemies: []
+  heavyEnemies:
+  - {fileID: 1481414325751418, guid: 325d0ec8d6742cb45bea649522b45ca9, type: 2}
   threatCont: {fileID: 2144393606}
 --- !u!114 &1666093031
 MonoBehaviour:
