@@ -13,8 +13,6 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
     public GameObject technologyObject;
     public Transform technologyPosition;
 
-    public PlacementController placementController;
-
     // Use this for initialization
     protected override void Start()
     {
