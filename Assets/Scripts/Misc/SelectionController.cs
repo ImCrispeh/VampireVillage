@@ -32,6 +32,8 @@ public class SelectionController : MonoBehaviour {
     private bool isNightActions;
     private bool hasExecutedPlanned;
 
+    public GameObject planningIndicatorPanel;
+
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
@@ -71,6 +73,7 @@ public class SelectionController : MonoBehaviour {
 
         if ((Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) && !isNightActions) {
             isNightActions = true;
+            planningIndicatorPanel.SetActive(false);
             SetActionButtonsOnClick(true);
             
             if (!hasExecutedPlanned) {
@@ -80,6 +83,7 @@ public class SelectionController : MonoBehaviour {
 
         } else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions) {
             isNightActions = false;
+            planningIndicatorPanel.SetActive(true);
             hasExecutedPlanned = false;
             SetActionButtonsOnClick(false);
         }
@@ -141,7 +145,6 @@ public class SelectionController : MonoBehaviour {
             repairActionBtn.gameObject.SetActive(false);
             townActionsContainer.SetActive(true);
         } else if (selectedObj.tag == "Base") {
-            Debug.Log("base selected");
             townActionsContainer.SetActive(false);
             resourceActionBtn.gameObject.SetActive(false);
             repairActionBtn.gameObject.SetActive(true);
@@ -157,7 +160,7 @@ public class SelectionController : MonoBehaviour {
         if (availableUnits > 0) {
             if (action == Actions.repair && selectedObj.GetComponent<BaseController>().IsFullHealth()) {
                 ErrorController._instance.SetErrorText("Structure already at full health");
-            } else if (action == Actions.repair && ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3) {
+            } else if (action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
                 ErrorController._instance.SetErrorText("Not enough resources to repair");
             } else {
                 availableUnits--;
@@ -243,7 +246,7 @@ public class SelectionController : MonoBehaviour {
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
                         plannedActionRemovalIcons.RemoveAt(0);
-                    } else if (planned.action == Actions.repair && ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3) {
+                    } else if (planned.action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
                         ErrorController._instance.SetErrorText("Not enough resources to repair. Skipping...");
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);

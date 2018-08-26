@@ -32,9 +32,10 @@ public class EnemySpawner : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.S)) {
+            heavyEnemiesToSpawn = 2;
+            enemiesToSpawn = 6;
             isSpawning = true;
             hasSetSpawn = false;
-            enemiesToSpawn = 10;
         }
 
         if (isSpawning) {
@@ -48,43 +49,43 @@ public class EnemySpawner : MonoBehaviour {
 
     public void SpawnEnemies() {
 
-        if(heavyEnemiesToSpawn > 0){
-            Debug.Log("heavy: "+heavyEnemiesToSpawn);
+        if (heavyEnemiesToSpawn > 0) {
+            Debug.Log("heavy: " + heavyEnemiesToSpawn);
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {
-                for(int i=0; i < spawnPositions.Length; i++){
-                        GameObject newHeavyEnemy = Instantiate(heavyEnemies[Random.Range(0, heavyEnemies.Length)], spawnPositions[i]);
-                        newHeavyEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
-                        newHeavyEnemy.GetComponent<EnemyController>().MoveToAttack(spawnPositions[i].childCount-1);
-                        heavyEnemiesToSpawn--;
-                        if(heavyEnemiesToSpawn == 0){
-                            break;
-                        }
+                for (int i = 0; i < spawnPositions.Length; i++) {
+                    GameObject newHeavyEnemy = Instantiate(heavyEnemies[Random.Range(0, heavyEnemies.Length)], spawnPositions[i]);
+                    newHeavyEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
+                    newHeavyEnemy.GetComponent<EnemyController>().MoveToAttack(heavyEnemiesToSpawn);
+                    heavyEnemiesToSpawn--;
+                    if (heavyEnemiesToSpawn == 0) {
+                        break;
                     }
-                    spawnTimer -= timeBetweenSpawns;
+                }
+                spawnTimer -= timeBetweenSpawns;
             }
 
         }
 
         if (enemiesToSpawn > 0) {
-            Debug.Log("Enemies: "+enemiesToSpawn);
+            Debug.Log("Enemies: " + enemiesToSpawn);
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {
-                for(int i=0; i < spawnPositions.Length; i++){
-                        GameObject newEnemy = Instantiate(lightEnemies[Random.Range(0, lightEnemies.Length)], spawnPositions[i]);
-                        newEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
-                        newEnemy.GetComponent<EnemyController>().MoveToAttack(spawnPositions[i].childCount-1);
-                        enemiesToSpawn--;
-                        if(enemiesToSpawn == 0){
-                            break;
-                        }
+                for (int i = 0; i < spawnPositions.Length; i++) {
+                    GameObject newEnemy = Instantiate(lightEnemies[Random.Range(0, lightEnemies.Length)], spawnPositions[i]);
+                    newEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
+                    newEnemy.GetComponent<EnemyController>().MoveToAttack(enemiesToSpawn);
+                    enemiesToSpawn--;
+                    if (enemiesToSpawn == 0) {
+                        break;
                     }
-                    spawnTimer -= timeBetweenSpawns;
+                }
+                spawnTimer -= timeBetweenSpawns;
             }
         } else {
             isSpawning = false;
             threatCont.SubtractThreat();
-         }
+        }
     }
 
     public void SetSpawn() {

@@ -26,8 +26,9 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        proceedingTechnologyBar.Add(connectingBar);       
-	}
+        proceedingTechnologyBar.Add(connectingBar);
+        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name + "/Walls").transform;
+    }
 	
 	// Update is called once per frame
 	protected override void Update () {
@@ -42,7 +43,8 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
-        //Instantiate(technologyObject, technologyPosition);
+        GameObject tech = Instantiate(technologyObject);
+        tech.transform.SetParent(technologyPosition);
     }
 
     public override void StartResearch() {

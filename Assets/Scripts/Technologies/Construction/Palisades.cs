@@ -29,8 +29,9 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         applyTechnology = false;
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
-        proceedingTechnologyBar.Add(connectingBar2);       
-	}
+        proceedingTechnologyBar.Add(connectingBar2);
+        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name + "/Walls").transform;
+    }
 	
 	// Update is called once per frame
 	protected override void Update () {

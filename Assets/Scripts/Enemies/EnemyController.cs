@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
         if (isMovingToAttack) {
             if (!agent.pathPending) {
-                if ((agent.destination - transform.position).sqrMagnitude <= agent.stoppingDistance) {
+                if (new Vector3(agent.destination.x - transform.position.x, 0f, agent.destination.z - transform.position.z).sqrMagnitude <= agent.stoppingDistance) {
                     if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
                         isMovingToAttack = false;
                         isAttacking = true;
@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour {
             rad = (90f + (360f / 10f * Mathf.Ceil((float)destId / 2))) % 360 * Mathf.Deg2Rad;
         }
         Vector3 basePos = BaseController._instance.transform.position;
-        Vector3 dest = new Vector3(basePos.x + 1f * Mathf.Sin(rad), transform.position.y, basePos.z + 1f * Mathf.Cos(rad));
+        Vector3 dest = new Vector3(basePos.x + 5f * Mathf.Sin(rad), transform.position.y, basePos.z + 5f * Mathf.Cos(rad));
         agent.destination = dest;
         isMovingToAttack = true;
     }
