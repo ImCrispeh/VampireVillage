@@ -232,26 +232,6 @@ Prefab:
       propertyPath: fullFeedAmt
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 114789805875207188, guid: 95abd6142c89b254cb4a105d92dd5b4b,
-        type: 2}
-      propertyPath: partialFeedAmt
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114789805875207188, guid: 95abd6142c89b254cb4a105d92dd5b4b,
-        type: 2}
-      propertyPath: partialFeedThreat
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114789805875207188, guid: 95abd6142c89b254cb4a105d92dd5b4b,
-        type: 2}
-      propertyPath: fullFeedThreat
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114789805875207188, guid: 95abd6142c89b254cb4a105d92dd5b4b,
-        type: 2}
-      propertyPath: convertThreat
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95abd6142c89b254cb4a105d92dd5b4b, type: 2}
   m_IsPrefabAsset: 0

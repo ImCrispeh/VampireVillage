@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject enemy;
     public float spawnTimer;
     public float timeBetweenSpawns;
-    public Transform spawnPoint;
     public bool isSpawning;
     public bool hasSetSpawn;
 
@@ -41,8 +40,10 @@ public class EnemySpawner : MonoBehaviour {
         if (isSpawning) {
             SpawnEnemies();
         } else {
-            if (!hasSetSpawn) {
-                SetSpawn();
+            if (!hasSetSpawn && threatCont.threatLevel > 0) {
+                if (Timer._instance.currentTime >= 0.3f && Timer._instance.currentTime <= 0.375f) {
+                    SetSpawn();
+                }
             }
         }
     }
@@ -89,10 +90,8 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void SetSpawn() {
-        if (Timer._instance.currentTime >= 0.3f && Timer._instance.currentTime <= 0.375f) {
-            enemiesToSpawn = 2 * threatCont.threatLevel;
-            heavyEnemiesToSpawn = threatCont.threatLevel / 2;
-            hasSetSpawn = true;
-        }
+        enemiesToSpawn = 2 * threatCont.threatLevel;
+        heavyEnemiesToSpawn = threatCont.threatLevel / 2;
+        hasSetSpawn = true;
     }
 }

@@ -5,7 +5,10 @@ using UnityEngine;
 public class HumanTownController : MonoBehaviour {
     public float partialFeedAmt;
     public float fullFeedAmt;
-    public float convertAmt;
+
+    public float partialFeedThreat;
+    public float fullFeedThreat;
+    public float convertThreat;
 
     public ThreatController threatCont;
 
@@ -21,16 +24,16 @@ public class HumanTownController : MonoBehaviour {
 
     public void PartialFeedEffect(UnitController unit) {
         unit.hungerCollected += partialFeedAmt;
-        threatCont.AddThreat(partialFeedAmt / 2);
+        threatCont.AddThreat(partialFeedThreat);
     }
 
     public void FullFeedEffect(UnitController unit) {
         unit.hungerCollected += fullFeedAmt;
-        threatCont.AddThreat(fullFeedAmt / 2);
+        threatCont.AddThreat(fullFeedThreat);
     }
 
     public void ConvertEffect(UnitController unit) {
         unit.humanConvertCollected++;
-        threatCont.AddThreat(convertAmt);
+        threatCont.AddThreat(convertThreat);
     }
 }
