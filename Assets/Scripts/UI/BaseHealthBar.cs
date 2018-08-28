@@ -16,6 +16,7 @@ public class BaseHealthBar : MonoBehaviour {
         UpdateHealthBar();
 	}
 
+    //sets the image fill by dividing the current health by the maximum health for a value between 0 and 1
     public void UpdateHealthBar() {
         float currentHealth = _base.health;
         currentHealth = currentHealth / _base.maxHealth;
