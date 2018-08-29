@@ -172,7 +172,9 @@ public class SelectionController : MonoBehaviour {
                 ResourceStorage._instance.UpdateResourceText();
             }
         } else {
-            ErrorController._instance.SetErrorText("No units available");
+            PlanAction(action);
+            StopAllCoroutines();
+            StartCoroutine("ExecutePlannedActions");
         }
     }
 
