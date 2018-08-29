@@ -232,6 +232,11 @@ Prefab:
       propertyPath: fullFeedAmt
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114136223430993290, guid: 95abd6142c89b254cb4a105d92dd5b4b,
+        type: 2}
+      propertyPath: enemiesToSpawn
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95abd6142c89b254cb4a105d92dd5b4b, type: 2}
   m_IsPrefabAsset: 0
