@@ -227,12 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3b4843700f1f8449fda9e1a8978622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedObjMat: {fileID: 0}
-  selectedMatColor:
-    serializedVersion: 2
-    rgba: 0
   selectedObj: {fileID: 0}
-  matToUse: {fileID: 2100000, guid: 549c4753a5a20c64db25323e9cfd9c47, type: 2}
   selectedObjectPanel: {fileID: 0}
   selectedObjText: {fileID: 713879306}
   unit: {fileID: 1577663450091720, guid: 6faaae25ba7e784448abf24eed9c641e, type: 2}
@@ -241,8 +236,13 @@ MonoBehaviour:
   unitBase: {fileID: 1294255785}
   spawnPoint: {fileID: 1497048404}
   resourceActionBtn: {fileID: 0}
+  repairActionBtn: {fileID: 0}
   townActionsContainer: {fileID: 0}
   townActionBtns: []
+  actionIconsList: []
+  plannedActionRemovalIcons: []
+  plannedActionsPanel: {fileID: 0}
+  planningIndicatorPanel: {fileID: 0}
 --- !u!1 &117081449
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,12 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762fa4d9b0ce3e0469877cac65614931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedObjMat: {fileID: 0}
-  selectedMatColor:
-    serializedVersion: 2
-    rgba: 0
   selectedObj: {fileID: 0}
-  matToUse: {fileID: 2100000, guid: 549c4753a5a20c64db25323e9cfd9c47, type: 2}
   selectedObjectPanel: {fileID: 0}
   selectedObjText: {fileID: 713879306}
   unit: {fileID: 1577663450091720, guid: 2ebd4eded1ca52f48926492efa15c33c, type: 2}
@@ -647,8 +642,13 @@ MonoBehaviour:
   unitBase: {fileID: 1294255785}
   spawnPoint: {fileID: 1497048404}
   resourceActionBtn: {fileID: 0}
+  repairActionBtn: {fileID: 0}
   townActionsContainer: {fileID: 0}
   townActionBtns: []
+  actionIconsList: []
+  plannedActionRemovalIcons: []
+  plannedActionsPanel: {fileID: 0}
+  planningIndicatorPanel: {fileID: 0}
   currText: 0
   textBackground: {fileID: 187315922}
   tutorialTexts:
@@ -2697,6 +2697,8 @@ MonoBehaviour:
   maxHunger: 0
   hunger: 10
   wood: 0
+  stone: 0
+  gold: 0
   hungerDepletionRate: 0
   resourceText: {fileID: 1812395159}
   hungerBar: {fileID: 309022554}
@@ -4126,6 +4128,26 @@ Prefab:
     - target: {fileID: 4242701909318894, guid: 9b05bc81c91863e4ab98b52273478ef8, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 108519811280535518, guid: 9b05bc81c91863e4ab98b52273478ef8,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108519811280535518, guid: 9b05bc81c91863e4ab98b52273478ef8,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 108519811280535518, guid: 9b05bc81c91863e4ab98b52273478ef8,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 108169682629100628, guid: 9b05bc81c91863e4ab98b52273478ef8,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b05bc81c91863e4ab98b52273478ef8, type: 2}
