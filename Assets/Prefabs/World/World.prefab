@@ -4275,7 +4275,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364171430332960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: -1.21}
+  m_LocalPosition: {x: -0.06, y: 0, z: -1.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4019865627817750}
@@ -13735,7 +13735,6 @@ MonoBehaviour:
   enemy: {fileID: 1577663450091720, guid: badbe2470d2dd574dbc85bbdd69d9d80, type: 2}
   spawnTimer: 0
   timeBetweenSpawns: 1
-  spawnPoint: {fileID: 0}
   isSpawning: 0
   hasSetSpawn: 0
   spawnPositions:
@@ -13986,9 +13985,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5397340096c724e489f075f66b32c4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partialFeedAmt: 25
-  fullFeedAmt: 50
-  convertAmt: 75
+  partialFeedAmt: 30
+  fullFeedAmt: 100
+  partialFeedThreat: 10
+  fullFeedThreat: 40
+  convertThreat: 50
   threatCont: {fileID: 0}
 --- !u!114 &114817329439268770
 MonoBehaviour:
@@ -14726,7 +14727,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
