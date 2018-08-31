@@ -162,6 +162,21 @@ Prefab:
       propertyPath: currentTime
       value: 0.875
       objectReference: {fileID: 0}
+    - target: {fileID: 114492747139713820, guid: e211945d79ab05549963cf8752818676,
+        type: 2}
+      propertyPath: secondsInFullDay
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114492747139713820, guid: e211945d79ab05549963cf8752818676,
+        type: 2}
+      propertyPath: currentDay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114492747139713820, guid: e211945d79ab05549963cf8752818676,
+        type: 2}
+      propertyPath: decreaseGradient
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e211945d79ab05549963cf8752818676, type: 2}
   m_IsPrefabAsset: 0
@@ -588,6 +603,16 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 13.274338
+      objectReference: {fileID: 0}
+    - target: {fileID: 224664962098652358, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506807641063042, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6bf538e8dbcde8468259fad167dd0af, type: 2}

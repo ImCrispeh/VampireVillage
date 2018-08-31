@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,6 +43,11 @@ public class EnemyController : MonoBehaviour {
                 attackTimer -= timeBetweenAttacks;
             }
         }
+    }
+
+    public void SetStats(float threatLevel, float difficulty) {
+        attack = (int)Math.Round((attack * threatLevel * difficulty), MidpointRounding.AwayFromZero);
+        health = (int)Math.Round((health * threatLevel * difficulty), MidpointRounding.AwayFromZero);
     }
 
     public void MoveToAttack(int destId) {

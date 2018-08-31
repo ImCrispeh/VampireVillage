@@ -11,6 +11,8 @@ public class Timer : MonoBehaviour {
     public float secondsInFullDay, convertedTime;
     public bool isPaused;
     public string hours, minutes;
+    public int currentDay;
+    private float currentDayTimer;
     private RectTransform sunAndMoon;
     private Image clockFace;
     private Text timeT;
@@ -37,6 +39,16 @@ public class Timer : MonoBehaviour {
         if (currentTime > 1) {
             currentTime = 0;
         }
+
+        currentDayTimer += Time.deltaTime;
+        if (currentDayTimer >= secondsInFullDay) {
+            currentDay++;
+            currentDayTimer -= secondsInFullDay;
+            if (currentDay % 5 == 0) {
+                EnemySpawner._instance.IncreaseDifficulty();
+            }
+        }
+
         ConvertTime();
         RotateClockFace();
         ChangeClockColour();
@@ -45,7 +57,7 @@ public class Timer : MonoBehaviour {
     public void ConvertTime() {
         hours = Mathf.Floor(currentTime * 24f).ToString("00");
         minutes = Mathf.Floor(currentTime * 1440f % 60).ToString("00");
-        timeT.text = hours + ":" + minutes;
+        timeT.text = "Day " + (currentDay+1) + " | " + hours + ":" + minutes;
         //Debug.Log("24 hour time - " + hours + ":" + minutes);
     }
 
