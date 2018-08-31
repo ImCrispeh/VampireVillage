@@ -18,7 +18,7 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         base.Start();
         technologyName = "Scalemail Armour";
         technologyDescription = "You wear the scales of the lizards you have caught";
-        researchRequirement = "";
+        researchRequirement = "Chainmail Armour";
         woodCost = 80;
         stoneCost = 10;
         goldCost = 40;
@@ -75,6 +75,10 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         ttbStoneCost.text = stoneCost.ToString();
         ttbGoldCost.text = goldCost.ToString();
         ttbResearchTime.text = researchTime.ToString() + " s";
+        ttbWoodIcon.localScale = shownScale;
+        ttbStoneIcon.localScale = shownScale;
+        ttbGoldIcon.localScale = shownScale;
+        ttbResearchTimeIcon.localScale = shownScale;
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
@@ -85,5 +89,9 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         ttbStoneCost.text = "";
         ttbGoldCost.text = "";
         ttbResearchTime.text = "";
+        ttbWoodIcon.localScale = hiddenScale;
+        ttbStoneIcon.localScale = hiddenScale;
+        ttbGoldIcon.localScale = hiddenScale;
+        ttbResearchTimeIcon.localScale = hiddenScale;
     }
 }

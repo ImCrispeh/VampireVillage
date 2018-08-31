@@ -72,6 +72,10 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
         ttbStoneCost.text = stoneCost.ToString();
         ttbGoldCost.text = goldCost.ToString();
         ttbResearchTime.text = researchTime.ToString() + " s";
+        ttbWoodIcon.localScale = shownScale;
+        ttbStoneIcon.localScale = shownScale;
+        ttbGoldIcon.localScale = shownScale;
+        ttbResearchTimeIcon.localScale = shownScale;
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
@@ -82,5 +86,9 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
         ttbStoneCost.text = "";
         ttbGoldCost.text = "";
         ttbResearchTime.text = "";
+        ttbWoodIcon.localScale = hiddenScale;
+        ttbStoneIcon.localScale = hiddenScale;
+        ttbGoldIcon.localScale = hiddenScale;
+        ttbResearchTimeIcon.localScale = hiddenScale;
     }
 }
