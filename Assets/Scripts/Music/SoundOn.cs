@@ -15,6 +15,7 @@ public class SoundOn : MonoBehaviour
     public AudioMixer mixer;
     public AudioMixerSnapshot[] snapshots;
     public float[] weights;
+    private bool isNight = true;
 
     void OnTriggerExit(Collider other)
     {
@@ -22,14 +23,17 @@ public class SoundOn : MonoBehaviour
 
         if (other.name == "Moon")
         {
-            SoundManager.instance.RandomMusic(nightTrack1);
+            isNight = true;
+            SoundManager.instance.RandomMusic(isNight, nightTrack1);
             weights[0] = 1.0f;
             weights[1] = 0.0f;
             mixer.TransitionToSnapshots(snapshots, weights, 0.5f);
         }
         if (other.name == "Sun")
         {
-            SoundManager.instance.RandomMusic(dayTrack1);
+            isNight = false;
+            //add any tracks as a parameter (ie RandomMusic(isNight, dayTrack1, dayTrack2))
+            SoundManager.instance.RandomMusic(isNight, dayTrack1);
             weights[0] = 0.0f;
             weights[1] = 1.0f;
             mixer.TransitionToSnapshots(snapshots, weights, 0.5f);

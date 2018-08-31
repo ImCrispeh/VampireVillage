@@ -33,7 +33,7 @@ AudioMixerController:
     - edea1e56faa7215438e44ceba1f3a1a7
     - 5b01a5258ef4ddf4b9cbf7a5f9e0f2b7
     name: Music
-  m_CurrentViewIndex: 0
+  m_CurrentViewIndex: 1
   m_TargetSnapshot: {fileID: 245213867381406066}
 --- !u!243 &24300002
 AudioMixerGroupController:
@@ -125,6 +125,8 @@ AudioMixerGroupController:
   m_Pitch: cc8d0a1047c00dc47afccf2c0f39225f
   m_Effects:
   - {fileID: 244567139977675618}
+  - {fileID: 244459549652760224}
+  - {fileID: 244957233288593430}
   m_UserColorIndex: 4
   m_Mute: 0
   m_Solo: 0
@@ -145,8 +147,6 @@ AudioMixerGroupController:
   m_Pitch: 008862a3a8a0e8d4a8b07fd77d9e2f6e
   m_Effects:
   - {fileID: 244894254567861580}
-  - {fileID: 244349335136137706}
-  - {fileID: 244825057776219902}
   m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
@@ -168,24 +168,18 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &244349335136137706
+--- !u!244 &244459549652760224
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: ac2f91bb105d04240b594eb014b6dd15
-  m_EffectName: Pitch Shifter
-  m_MixLevel: 3a96c28a40b40f34680f04afd7e2a04e
+  m_EffectID: 4b0a4037211e1d547973e1adf5e89db9
+  m_EffectName: Distortion
+  m_MixLevel: e48f65dadcce92c43b4c3e10289fef41
   m_Parameters:
-  - m_ParameterName: Pitch
-    m_GUID: 463b3147206c02648abe5b8656e638af
-  - m_ParameterName: FFT size
-    m_GUID: bc5a56284ae060648aa29f15a7991df4
-  - m_ParameterName: Overlap
-    m_GUID: ea072aa62b7dbc14fb2b86be4d6cb580
-  - m_ParameterName: Max channels
-    m_GUID: 212200770d6ae4948863532a234f3a85
+  - m_ParameterName: Level
+    m_GUID: 83bbf674dc682374d8ff12f8ddfa3632
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
@@ -228,21 +222,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &244825057776219902
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_EffectID: a54807136a8bcee40b5554849e248c3c
-  m_EffectName: Distortion
-  m_MixLevel: 107d31e37d306a44ca9d61c67d919d09
-  m_Parameters:
-  - m_ParameterName: Level
-    m_GUID: 62117fc44c932634a9d2e59d23e11da1
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!244 &244894254567861580
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -253,6 +232,23 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 36d87b2ddc3580a4fb82e2095b407368
   m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244957233288593430
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: f1a034977c4518445a6dcade93b8d037
+  m_EffectName: Lowpass
+  m_MixLevel: 91cbf9f7bd845d1459fdc6ef6a0bcffd
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 9203a8c2f1311734996a3d92a5119763
+  - m_ParameterName: Resonance
+    m_GUID: 7999393f8cfbd8a45a191c047ec8c955
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
@@ -278,8 +274,11 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: e0e84dfa0fe340941a211a408e40e5f3
   m_FloatValues:
+    9203a8c2f1311734996a3d92a5119763: 1017
+    83bbf674dc682374d8ff12f8ddfa3632: 0.375
     62117fc44c932634a9d2e59d23e11da1: 0.749
-    44972996130b4554d9d2434f1ba1f8dc: -17.694454
+    8586194597b2cb140ad37352f08257f3: -9.833286
+    44972996130b4554d9d2434f1ba1f8dc: -0.34794685
     ea072aa62b7dbc14fb2b86be4d6cb580: 6.5
     463b3147206c02648abe5b8656e638af: 0.66
     bc5a56284ae060648aa29f15a7991df4: 713
@@ -297,6 +296,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     62117fc44c932634a9d2e59d23e11da1: 0.301
     44972996130b4554d9d2434f1ba1f8dc: 4.4
+    b996c4b6845ca39499449b0b9d011733: 5000
     463b3147206c02648abe5b8656e638af: 0.96
     d6466d09ea375fd4fa3513ddb1499a78: 1033
   m_TransitionOverrides: {}

@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class SoundOff : MonoBehaviour {
 
+    private bool isNight = true;
+
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("SoundOnTrigger");
 
-        if (other.name == "Moon" || other.name == "Sun")
+        if (other.name == "Moon")
         {
-            SoundManager.instance.StopMusic();
+            isNight = false;
+            SoundManager.instance.StopMusic(isNight);
+        }
+        if (other.name == "Sun")
+        {
+            isNight = true;
+            SoundManager.instance.StopMusic(isNight);
         }
     }
 }
