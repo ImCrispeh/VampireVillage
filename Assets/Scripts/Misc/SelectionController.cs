@@ -33,6 +33,7 @@ public class SelectionController : MonoBehaviour {
     private bool hasExecutedPlanned;
 
     public GameObject planningIndicatorPanel;
+    public Image portraitPlaceholder;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -58,6 +59,8 @@ public class SelectionController : MonoBehaviour {
 
         availableUnits = 1 - spawnPoint.childCount;
         ResourceStorage._instance.UpdateResourceText();
+        portraitPlaceholder = GameObject.Find("Canvas/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<Image>();
+        portraitPlaceholder.enabled = false;
 	}
 	
 	protected virtual void Update () {
@@ -111,6 +114,7 @@ public class SelectionController : MonoBehaviour {
                 }
 
                 SetObjText();
+                SetObjPortrait();
             }
         }
     }
@@ -123,6 +127,7 @@ public class SelectionController : MonoBehaviour {
             }
         }
         selectedObj = null;
+        repairActionBtn.gameObject.SetActive(false);
         resourceActionBtn.gameObject.SetActive(false);
         townActionsContainer.SetActive(false);
         SetObjText();
@@ -327,6 +332,35 @@ public class SelectionController : MonoBehaviour {
         } else {
             selectedObjText.text = "";
             selectedObjectPanel.SetActive(false);
+            portraitPlaceholder.enabled = false;
+            Debug.Log("remove text");
+        }
+    }
+
+    //sets the portrait in the bottombar depending on what is clicked, currently only uses a placeholder portrait
+    public void SetObjPortrait() {
+        portraitPlaceholder.enabled = !portraitPlaceholder.enabled;
+        if (selectedObj != null) {
+            if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
+                if (selectedObj.tag == "Wood") {
+                    portraitPlaceholder.enabled = true;
+                }
+                if (selectedObj.tag == "Stone") {
+                    portraitPlaceholder.enabled = true;
+                }
+                if (selectedObj.tag == "Gold") {
+                    portraitPlaceholder.enabled = true;
+                }
+            }
+            if (selectedObj.tag == "HumanTown") {
+                portraitPlaceholder.enabled = true;
+            }
+            if (selectedObj.tag == "Base") {
+                portraitPlaceholder.enabled = true;
+            }
+            if (selectedObj.tag == "Enemy") {
+                portraitPlaceholder.enabled = true;
+            }
         }
     }
 

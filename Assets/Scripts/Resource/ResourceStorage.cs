@@ -99,10 +99,11 @@ public class ResourceStorage : MonoBehaviour {
         }
 
         resourceText.text =
-        "Hunger: " + hunger + "\n"
-        + "Wood: " + wood + "\n"
-        + "Stone: " + stone + "\n"
-        + "Gold: " + gold + "\n"
-        + "Available Units: " + units;
+        //"Hunger: " + hunger + "\n"
+        //+ "Wood: " + wood + "\n"
+        //+ "Stone: " + stone + "\n"
+        //+ "Gold: " + gold + "\n"
+        //+ "Available Units: " + units;
+        "Available Units: " + units;
     }
 }
