@@ -13,6 +13,13 @@ public class CameraController : MonoBehaviour {
     public float scrollMin;
     public float scrollMax;
 
+    public Vector3 orginalCameraPos;
+
+    private void Start()
+    {
+        orginalCameraPos = Camera.main.transform.position;
+    }
+
     // Update is called once per frame
     void Update () {
 
@@ -47,5 +54,10 @@ public class CameraController : MonoBehaviour {
         //pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
         transform.position = pos;   
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            transform.position = orginalCameraPos;
+        }
     }
 }
