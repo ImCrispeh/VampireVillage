@@ -46,7 +46,7 @@ public class BaseController : MonoBehaviour {
         if (isHungerEmpty) {
             if (!hasHungerMessagePopped) {
                 hasHungerMessagePopped = true;
-                ErrorController._instance.SetErrorText("Your empty hunger bar causes your colony to take damage");
+                PopupController._instance.SetPopupText("Your empty hunger bar causes your colony to take damage");
             }
 
             noHungerTimer += Time.deltaTime;

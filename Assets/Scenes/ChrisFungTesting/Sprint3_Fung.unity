@@ -118,6 +118,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1048725455868790, guid: 95abd6142c89b254cb4a105d92dd5b4b,
     type: 2}
   m_PrefabInternal: {fileID: 813522269}
+--- !u!114 &115573129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114331218689488194, guid: b6bf538e8dbcde8468259fad167dd0af,
+    type: 2}
+  m_PrefabInternal: {fileID: 1509832944}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &245744835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1337038834896552, guid: b6bf538e8dbcde8468259fad167dd0af,
+    type: 2}
+  m_PrefabInternal: {fileID: 1509832944}
 --- !u!1001 &593167065
 Prefab:
   m_ObjectHideFlags: 0
@@ -255,6 +266,40 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95abd6142c89b254cb4a105d92dd5b4b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &829152730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1928126475605596, guid: b6bf538e8dbcde8468259fad167dd0af,
+    type: 2}
+  m_PrefabInternal: {fileID: 1509832944}
+--- !u!111 &829152732
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 829152730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 671506c116cdd6544855e420d7c5f21a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 671506c116cdd6544855e420d7c5f21a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &829152734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 829152730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.9624374, g: 1, b: 0, a: 0}
+  m_EffectDistance: {x: 7, y: 6}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1243383244
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +659,48 @@ Prefab:
       propertyPath: m_FontData.m_HorizontalOverflow
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1970897752995800, guid: b6bf538e8dbcde8468259fad167dd0af, type: 2}
+      propertyPath: m_Name
+      value: Popup Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337038834896552, guid: b6bf538e8dbcde8468259fad167dd0af, type: 2}
+      propertyPath: m_Name
+      value: PopupPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441270775491636, guid: b6bf538e8dbcde8468259fad167dd0af, type: 2}
+      propertyPath: m_Name
+      value: Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 114186886392211092, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: popupPanel
+      value: 
+      objectReference: {fileID: 245744835}
+    - target: {fileID: 114186886392211092, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: popupText
+      value: 
+      objectReference: {fileID: 115573129}
+    - target: {fileID: 114467518036838670, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224707883223224468, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114461817058397672, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: hungerBarOutline
+      value: 
+      objectReference: {fileID: 829152734}
+    - target: {fileID: 114461817058397672, guid: b6bf538e8dbcde8468259fad167dd0af,
+        type: 2}
+      propertyPath: hungerBarOutlineAnimation
+      value: 
+      objectReference: {fileID: 829152732}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6bf538e8dbcde8468259fad167dd0af, type: 2}
   m_IsPrefabAsset: 0

@@ -53,7 +53,7 @@ public class OldStoneWalls : Technology, IPointerEnterHandler, IPointerExitHandl
                 ResourceStorage._instance.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             } else {
-                ErrorController._instance.SetErrorText("Not enough resources available");
+                PopupController._instance.SetPopupText("Not enough resources available");
             }
         }
     }

@@ -159,9 +159,9 @@ public class SelectionController : MonoBehaviour {
     public void SendUnit(Actions action) {
         if (availableUnits > 0) {
             if (action == Actions.repair && selectedObj.GetComponent<BaseController>().IsFullHealth()) {
-                ErrorController._instance.SetErrorText("Structure already at full health");
+                PopupController._instance.SetPopupText("Structure already at full health");
             } else if (action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
-                ErrorController._instance.SetErrorText("Not enough resources to repair");
+                PopupController._instance.SetPopupText("Not enough resources to repair");
             } else {
                 availableUnits--;
                 GameObject newUnit = Instantiate(unit, spawnPoint);
@@ -218,7 +218,7 @@ public class SelectionController : MonoBehaviour {
                     break;
             }
         } else {
-            ErrorController._instance.SetErrorText("Max 30 planned actions");
+            PopupController._instance.SetPopupText("Max 30 planned actions");
         }
     }
 
@@ -244,12 +244,12 @@ public class SelectionController : MonoBehaviour {
                 if (availableUnits > 0) {
                     PlannedAction planned = plannedActions[0];
                     if (planned.action == Actions.repair && planned.objectForAction.GetComponent<BaseController>().IsFullHealth()) {
-                        ErrorController._instance.SetErrorText("Structure already at full health. Skipping...");
+                        PopupController._instance.SetPopupText("Structure already at full health. Skipping...");
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
                         plannedActionRemovalIcons.RemoveAt(0);
                     } else if (planned.action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
-                        ErrorController._instance.SetErrorText("Not enough resources to repair. Skipping...");
+                        PopupController._instance.SetPopupText("Not enough resources to repair. Skipping...");
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
                         plannedActionRemovalIcons.RemoveAt(0);
@@ -270,7 +270,7 @@ public class SelectionController : MonoBehaviour {
                     yield return null;
                 }
             } else {
-                ErrorController._instance.SetErrorText("Cannot sent units out during the day. Pausing remaining actions...");
+                PopupController._instance.SetPopupText("Cannot sent units out during the day. Pausing remaining actions...");
                 yield break;
             }
         }

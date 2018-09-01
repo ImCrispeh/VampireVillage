@@ -17,6 +17,9 @@ public class ResourceStorage : MonoBehaviour {
     public Text resourceText;
     public Slider hungerBar;
 
+    public bool hasHungerWarningShown;
+    public Animation hungerBarOutlineAnimation;
+
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
@@ -43,6 +46,9 @@ public class ResourceStorage : MonoBehaviour {
         BaseController._instance.isHungerEmpty = false;
         hunger += amt;
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
+        if (hunger > 25f) {
+            hasHungerWarningShown = false;
+        }
         hungerBar.value = HungerPercentage();
     }
 
@@ -55,6 +61,14 @@ public class ResourceStorage : MonoBehaviour {
 
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         hungerBar.value = HungerPercentage();
+
+        if (hunger <= 25f && !hasHungerWarningShown) {
+            hasHungerWarningShown = true;
+            PopupController._instance.SetPopupText("Your hunger is getting low. You will start taking damage if it reaches 0.");
+            for (int i = 0; i < 5; i++) {
+                hungerBarOutlineAnimation.PlayQueued("HungerBarWarning");
+            }
+        }
 
         if (hunger == 0f) {
             BaseController._instance.isHungerEmpty = true;

@@ -53,7 +53,7 @@ public class OldFortifications : Technology, IPointerEnterHandler, IPointerExitH
                 ResourceStorage._instance.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             } else {
-                ErrorController._instance.SetErrorText("Not enough resources available");
+                PopupController._instance.SetPopupText("Not enough resources available");
             }
         }
     }
