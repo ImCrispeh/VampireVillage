@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour {
     public string hours, minutes;
     public int currentDay;
     private float currentDayTimer;
+    public Text speedText;
     private RectTransform sunAndMoon;
     private Image clockFace;
     private Text timeT;
@@ -93,5 +94,17 @@ public class Timer : MonoBehaviour {
     public void UnpauseTimer() {
         Time.timeScale = 1;
         isPaused = false;
+    }
+
+    public void ToggleSpeed() {
+        if (Time.timeScale == 1) {
+            Time.timeScale = 2;
+        } else if (Time.timeScale == 2) {
+            Time.timeScale = 3;
+        } else {
+            Time.timeScale = 1;
+        }
+
+        speedText.text = "x" + Time.timeScale;
     }
 }
