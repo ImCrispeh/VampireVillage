@@ -33,7 +33,7 @@ public class SelectionController : MonoBehaviour {
     private bool hasExecutedPlanned;
 
     public GameObject planningIndicatorPanel;
-    public Image portraitPlaceholder;
+    public RawImage portraitPlaceholder;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -59,7 +59,7 @@ public class SelectionController : MonoBehaviour {
 
         availableUnits = 1 - spawnPoint.childCount;
         ResourceStorage._instance.UpdateResourceText();
-        portraitPlaceholder = GameObject.Find("Canvas/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<Image>();
+        portraitPlaceholder = GameObject.Find("Canvas/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
         portraitPlaceholder.enabled = false;
 	}
 	
@@ -333,6 +333,8 @@ public class SelectionController : MonoBehaviour {
             selectedObjText.text = "";
             selectedObjectPanel.SetActive(false);
             portraitPlaceholder.enabled = false;
+            PortraitCameraController._instance.following = false;
+            PortraitCameraController._instance.target = null;
             Debug.Log("remove text");
         }
     }
@@ -344,23 +346,39 @@ public class SelectionController : MonoBehaviour {
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 if (selectedObj.tag == "Wood") {
                     portraitPlaceholder.enabled = true;
+                    PortraitCameraController._instance.following = false;
+                    PortraitCameraController._instance.SetPosition(selectedObj.transform);
                 }
                 if (selectedObj.tag == "Stone") {
                     portraitPlaceholder.enabled = true;
+                    PortraitCameraController._instance.following = false;
+                    PortraitCameraController._instance.SetPosition(selectedObj.transform);
                 }
                 if (selectedObj.tag == "Gold") {
                     portraitPlaceholder.enabled = true;
+                    PortraitCameraController._instance.following = false;
+                    PortraitCameraController._instance.SetPosition(selectedObj.transform);
                 }
             }
             if (selectedObj.tag == "HumanTown") {
                 portraitPlaceholder.enabled = true;
+                PortraitCameraController._instance.following = false;
+                PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
             if (selectedObj.tag == "Base") {
                 portraitPlaceholder.enabled = true;
+                PortraitCameraController._instance.following = false;
+                PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
             if (selectedObj.tag == "Enemy") {
                 portraitPlaceholder.enabled = true;
+                PortraitCameraController._instance.following = true;
+                PortraitCameraController._instance.target = selectedObj.transform;
+                PortraitCameraController._instance.Update();
             }
+        }
+        else {
+            Debug.Log("fucking work please");
         }
     }
 

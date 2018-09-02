@@ -22,6 +22,12 @@ public class TechnologyToggle : MonoBehaviour {
 	}
 
     public void Toggle() {
+        SelectionController._instance.selectedObj = null;
+        SelectionController._instance.repairActionBtn.gameObject.SetActive(false);
+        SelectionController._instance.resourceActionBtn.gameObject.SetActive(false);
+        SelectionController._instance.townActionsContainer.SetActive(false);
+        SelectionController._instance.SetObjText();
+
         clicked = !clicked;
         if (!clicked) {
             rect.localScale = new Vector3(0, 0, 0);
