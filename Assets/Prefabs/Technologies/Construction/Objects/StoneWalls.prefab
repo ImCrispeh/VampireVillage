@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23328948690801012}
   - component: {fileID: 65207788075598902}
   - component: {fileID: 208779209571445810}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 23305398323830494}
   - component: {fileID: 65014768202527690}
   - component: {fileID: 208777613755520474}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4587609098654920}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: StoneWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 23642921080212136}
   - component: {fileID: 65568203781978474}
   - component: {fileID: 208256567247751550}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 23287594428007942}
   - component: {fileID: 65704044307545688}
   - component: {fileID: 208204539210190666}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
