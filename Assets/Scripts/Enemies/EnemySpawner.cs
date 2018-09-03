@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
+    public static EnemySpawner _instance;
+
     public int enemiesToSpawn;
     public int heavyEnemiesToSpawn;
     public GameObject enemy;
@@ -10,6 +12,7 @@ public class EnemySpawner : MonoBehaviour {
     public float timeBetweenSpawns;
     public bool isSpawning;
     public bool hasSetSpawn;
+    public float difficultyMultiplier;
 
     [SerializeField]
     private Transform[] spawnPositions;
@@ -18,10 +21,16 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField]
     private GameObject[] heavyEnemies;
 
-    public ThreatController threatCont;
+    private void Awake() {
+        if (_instance != null && _instance != this) {
+            Destroy(gameObject);
+        } else {
+            _instance = this;
+        }
+    }
 
     void Start() {
-
+        difficultyMultiplier = 1;
     }
 
     void Update() {
@@ -40,7 +49,7 @@ public class EnemySpawner : MonoBehaviour {
         if (isSpawning) {
             SpawnEnemies();
         } else {
-            if (!hasSetSpawn && threatCont.threatLevel > 0) {
+            if (!hasSetSpawn && ThreatController._instance.threatLevel > 0) {
                 if (Timer._instance.currentTime >= 0.3f && Timer._instance.currentTime <= 0.375f) {
                     SetSpawn();
                 }
@@ -56,7 +65,8 @@ public class EnemySpawner : MonoBehaviour {
             if (spawnTimer >= timeBetweenSpawns) {
                 for (int i = 0; i < spawnPositions.Length; i++) {
                     GameObject newHeavyEnemy = Instantiate(heavyEnemies[Random.Range(0, heavyEnemies.Length)], spawnPositions[i]);
-                    newHeavyEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
+                    EnemyController enemy = newHeavyEnemy.GetComponent<EnemyController>();
+                    enemy.SetStats(ThreatController._instance.threatLevel, difficultyMultiplier);
                     newHeavyEnemy.GetComponent<EnemyController>().MoveToAttack(heavyEnemiesToSpawn);
                     heavyEnemiesToSpawn--;
                     if (heavyEnemiesToSpawn == 0) {
@@ -74,7 +84,8 @@ public class EnemySpawner : MonoBehaviour {
             if (spawnTimer >= timeBetweenSpawns) {
                 for (int i = 0; i < spawnPositions.Length; i++) {
                     GameObject newEnemy = Instantiate(lightEnemies[Random.Range(0, lightEnemies.Length)], spawnPositions[i]);
-                    newEnemy.GetComponent<EnemyController>().attack *= threatCont.threatLevel;
+                    EnemyController enemy = newEnemy.GetComponent<EnemyController>();
+                    enemy.SetStats(ThreatController._instance.threatLevel, difficultyMultiplier);
                     newEnemy.GetComponent<EnemyController>().MoveToAttack(enemiesToSpawn);
                     enemiesToSpawn--;
                     if (enemiesToSpawn == 0) {
@@ -85,13 +96,17 @@ public class EnemySpawner : MonoBehaviour {
             }
         } else {
             isSpawning = false;
-            threatCont.SubtractThreat();
+            ThreatController._instance.SubtractThreat();
         }
     }
 
     public void SetSpawn() {
-        enemiesToSpawn = 2 * threatCont.threatLevel;
-        heavyEnemiesToSpawn = threatCont.threatLevel / 2;
+        enemiesToSpawn = 2 * ThreatController._instance.threatLevel;
+        heavyEnemiesToSpawn = ThreatController._instance.threatLevel / 2;
         hasSetSpawn = true;
+    }
+
+    public void IncreaseDifficulty() {
+        difficultyMultiplier += 0.25f;
     }
 }
