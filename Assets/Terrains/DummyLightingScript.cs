@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DummyLightingScript : MonoBehaviour {
 
+
     // Use this for initialization
     void Start()
     {
@@ -14,7 +15,9 @@ public class DummyLightingScript : MonoBehaviour {
     void Update()
     {
         //Rotate Sun and Moon around origin 
-        transform.RotateAround(Vector3.zero, new Vector3(0, 0, 1), Mathf.PI * Time.deltaTime);
+        transform.RotateAround(Vector3.zero, new Vector3(0, 0, 1), Mathf.PI * Time.deltaTime * 2);
         transform.LookAt(Vector3.zero);
     }
+
+  
 }
