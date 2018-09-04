@@ -14662,6 +14662,9 @@ MonoBehaviour:
   partialFeedThreat: 0
   fullFeedThreat: 0
   convertThreat: 0
+  subjugationLevel: 0
+  subjugationLimit: 100
+  units: []
   threatCont: {fileID: 2144393606}
 --- !u!114 &1792582211
 MonoBehaviour:

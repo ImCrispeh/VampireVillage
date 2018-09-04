@@ -171,7 +171,18 @@ public class SelectionController : MonoBehaviour {
                 PopupController._instance.SetPopupText("Structure already at full health");
             } else if (action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
                 PopupController._instance.SetPopupText("Not enough resources to repair");
-            } else {
+            }
+            else if (action == Actions.subjugate) {
+                //Delete this else if - might not need it
+                availableUnits--;
+                GameObject newUnit = Instantiate(unit, spawnPoint);
+                UnitController newUnitCont = newUnit.GetComponent<UnitController>();
+                newUnitCont.spawnPoint = spawnPoint.gameObject;
+                newUnitCont.MoveToAction(selectedObj);
+                newUnitCont.action = action;
+                ResourceStorage._instance.UpdateResourceText();
+            }
+            else {
                 availableUnits--;
                 GameObject newUnit = Instantiate(unit, spawnPoint);
                 UnitController newUnitCont = newUnit.GetComponent<UnitController>();
@@ -265,7 +276,22 @@ public class SelectionController : MonoBehaviour {
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
                         plannedActionRemovalIcons.RemoveAt(0);
-                    } else {
+                    }
+                    else if (planned.action == Actions.subjugate){
+                        //Delete this else if - might not need it
+                        availableUnits--;
+                        GameObject newUnit = Instantiate(unit, spawnPoint);
+                        UnitController newUnitCont = newUnit.GetComponent<UnitController>();
+                        newUnitCont.spawnPoint = spawnPoint.gameObject;
+                        newUnitCont.MoveToAction(planned.objectForAction);
+                        newUnitCont.action = planned.action;
+                        ResourceStorage._instance.UpdateResourceText();
+                        plannedActions.RemoveAt(0);
+                        Destroy(plannedActionRemovalIcons[0]);
+                        plannedActionRemovalIcons.RemoveAt(0);
+                        yield return new WaitForSeconds(0.5f);
+                    }
+                    else {
                         availableUnits--;
                         GameObject newUnit = Instantiate(unit, spawnPoint);
                         UnitController newUnitCont = newUnit.GetComponent<UnitController>();
@@ -403,7 +429,7 @@ public class SelectionController : MonoBehaviour {
             townActionBtns[0].onClick.AddListener(() => SendUnit(Actions.partialFeed));
             townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
             townActionBtns[2].onClick.AddListener(() => SendUnit(Actions.convert));
-            townActionBtns[3].onClick.AddListener(() => PlanAction(Actions.subjugate));
+            townActionBtns[3].onClick.AddListener(() => SendUnit(Actions.subjugate));
         } else {
             resourceActionBtn.onClick.AddListener(() => PlanAction(Actions.collect));
             repairActionBtn.onClick.AddListener(() => PlanAction(Actions.repair));

@@ -5,21 +5,34 @@ using UnityEngine;
 public class HumanTownController : MonoBehaviour {
     public float partialFeedAmt;
     public float fullFeedAmt;
-
     public float partialFeedThreat;
     public float fullFeedThreat;
     public float convertThreat;
-
+    public float subjugationBaseSpeed;
+    public float subjugationCalculatedSpeed;
+    public float subjugationLevel;
+    public float subjugationLimit;
+    public List<UnitController> units;
     public ThreatController threatCont;
+    public bool cancelled;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        cancelled = false;
+        subjugationBaseSpeed = 1f;
+        units = new List<UnitController>();        
+        InvokeRepeating("CalculateSubjugationSpeed", 2, 1);
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () {        
+        if (subjugationLevel >= subjugationLimit && !cancelled) {
+            Invoke("EndSubjugation", 1);
+            CancelInvoke("CalculateSubjugationSpeed");
+            cancelled = true;
+        }
+        //Debug.Log("Subjugation level: " + subjugationLevel);
+        //Debug.Log("Units: " + units.Count);
 	}
 
     public void PartialFeedEffect(UnitController unit) {
@@ -38,6 +51,23 @@ public class HumanTownController : MonoBehaviour {
     }
 
     public void Subjugate(UnitController unit) {
-        Debug.Log("Should be subjugating except its not implemented");
+        Debug.Log("disabling unit");
+        units.Add(unit);
+        unit.gameObject.SetActive(false);        
+    }
+
+    //the speed the subjugation takes place depends on the number of units at the town
+    public void CalculateSubjugationSpeed() {
+        subjugationCalculatedSpeed = units.Count * subjugationBaseSpeed;
+        subjugationLevel += subjugationCalculatedSpeed;
+    }
+
+    //once the subjugation limit has been reached, subjugation ends and the units are sent back home
+    public void EndSubjugation() {
+        foreach (UnitController unit in units) {
+            Debug.Log("reactivating unit");
+            unit.gameObject.SetActive(true);
+            unit.ReturnFromAction();            
+        }
     }
 }
