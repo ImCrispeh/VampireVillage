@@ -313,6 +313,12 @@ public class SelectionController : MonoBehaviour {
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level";
             }
 
+            if (selectedObj.tag == "HumanBase") {
+                selectedObjText.text =
+                    "Main Human Base" + "\n"
+                    + "Will send out attacks against you based on your level of threat";
+            }
+
             if (selectedObj.tag == "Base") {
                 selectedObjText.text =
                     "Main Base" + "\n"

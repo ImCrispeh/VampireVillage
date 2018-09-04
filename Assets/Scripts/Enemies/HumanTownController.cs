@@ -10,8 +10,6 @@ public class HumanTownController : MonoBehaviour {
     public float fullFeedThreat;
     public float convertThreat;
 
-    public ThreatController threatCont;
-
 	// Use this for initialization
 	void Start () {
 		
@@ -24,16 +22,16 @@ public class HumanTownController : MonoBehaviour {
 
     public void PartialFeedEffect(UnitController unit) {
         unit.hungerCollected += partialFeedAmt;
-        threatCont.AddThreat(partialFeedThreat);
+        ThreatController._instance.AddThreat(partialFeedThreat);
     }
 
     public void FullFeedEffect(UnitController unit) {
         unit.hungerCollected += fullFeedAmt;
-        threatCont.AddThreat(fullFeedThreat);
+        ThreatController._instance.AddThreat(fullFeedThreat);
     }
 
     public void ConvertEffect(UnitController unit) {
         unit.humanConvertCollected++;
-        threatCont.AddThreat(convertThreat);
+        ThreatController._instance.AddThreat(convertThreat);
     }
 }

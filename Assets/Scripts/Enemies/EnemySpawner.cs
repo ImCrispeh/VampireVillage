@@ -7,7 +7,6 @@ public class EnemySpawner : MonoBehaviour {
 
     public int enemiesToSpawn;
     public int heavyEnemiesToSpawn;
-    public GameObject enemy;
     public float spawnTimer;
     public float timeBetweenSpawns;
     public bool isSpawning;
@@ -64,7 +63,9 @@ public class EnemySpawner : MonoBehaviour {
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {
                 for (int i = 0; i < spawnPositions.Length; i++) {
-                    GameObject newHeavyEnemy = Instantiate(heavyEnemies[Random.Range(0, heavyEnemies.Length)], spawnPositions[i]);
+                    GameObject newHeavyEnemy = Instantiate(heavyEnemies[Random.Range(0, heavyEnemies.Length)]);
+                    newHeavyEnemy.transform.position = spawnPositions[i].position;
+                    newHeavyEnemy.transform.SetParent(spawnPositions[i]);
                     EnemyController enemy = newHeavyEnemy.GetComponent<EnemyController>();
                     enemy.SetStats(ThreatController._instance.threatLevel, difficultyMultiplier);
                     newHeavyEnemy.GetComponent<EnemyController>().MoveToAttack(heavyEnemiesToSpawn);
@@ -83,7 +84,9 @@ public class EnemySpawner : MonoBehaviour {
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {
                 for (int i = 0; i < spawnPositions.Length; i++) {
-                    GameObject newEnemy = Instantiate(lightEnemies[Random.Range(0, lightEnemies.Length)], spawnPositions[i]);
+                    GameObject newEnemy = Instantiate(lightEnemies[Random.Range(0, lightEnemies.Length)]);
+                    newEnemy.transform.position = spawnPositions[i].position;
+                    newEnemy.transform.SetParent(spawnPositions[i]);
                     EnemyController enemy = newEnemy.GetComponent<EnemyController>();
                     enemy.SetStats(ThreatController._instance.threatLevel, difficultyMultiplier);
                     newEnemy.GetComponent<EnemyController>().MoveToAttack(enemiesToSpawn);
