@@ -36,4 +36,8 @@ public class HumanTownController : MonoBehaviour {
         unit.humanConvertCollected++;
         threatCont.AddThreat(convertThreat);
     }
+
+    public void Subjugate(UnitController unit) {
+        Debug.Log("Should be subjugating except its not implemented");
+    }
 }

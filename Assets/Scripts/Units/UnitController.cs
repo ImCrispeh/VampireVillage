@@ -88,6 +88,9 @@ public class UnitController : MonoBehaviour {
                 case SelectionController.Actions.repair:
                     objectForAction.GetComponent<BaseController>().Repair();
                     break;
+                case SelectionController.Actions.subjugate:
+                    objectForAction.GetComponent<HumanTownController>().Subjugate(this);
+                    break;
                 default:
                     break;
             }
