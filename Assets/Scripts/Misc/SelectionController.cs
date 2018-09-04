@@ -23,8 +23,8 @@ public class SelectionController : MonoBehaviour {
     public Button repairActionBtn;
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
-    public enum Actions { partialFeed, fullFeed, convert, collect, repair };
-    public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert, repair };
+    public enum Actions { partialFeed, fullFeed, convert, collect, repair, subjugate };
+    public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert, repair, subjugate };
     public List<ActionIcon> actionIconsList;
     private Dictionary<ActionIconNames, GameObject> actionIcons;
     public List<PlannedAction> plannedActions;
@@ -132,6 +132,7 @@ public class SelectionController : MonoBehaviour {
         resourceActionBtn.gameObject.SetActive(false);
         townActionsContainer.SetActive(false);
         SetObjText();
+        SetObjPortrait();
     }
 
     // Change material of object to indicate that it is selected
@@ -221,6 +222,9 @@ public class SelectionController : MonoBehaviour {
                     break;
                 case Actions.repair:
                     AddPlannedAction(ActionIconNames.repair);
+                    break;
+                case Actions.subjugate:
+                    AddPlannedAction(ActionIconNames.subjugate);
                     break;
                 default:
                     break;
@@ -334,10 +338,7 @@ public class SelectionController : MonoBehaviour {
             }
         } else {
             selectedObjText.text = "";
-            selectedObjectPanel.SetActive(false);
-            portraitPlaceholder.enabled = false;
-            PortraitCameraController._instance.following = false;
-            PortraitCameraController._instance.target = null;
+            selectedObjectPanel.SetActive(false);            
             Debug.Log("remove text");
         }
     }
@@ -381,7 +382,9 @@ public class SelectionController : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("fucking work please");
+            portraitPlaceholder.enabled = false;
+            PortraitCameraController._instance.following = false;
+            PortraitCameraController._instance.target = null;
         }
     }
 
@@ -400,12 +403,14 @@ public class SelectionController : MonoBehaviour {
             townActionBtns[0].onClick.AddListener(() => SendUnit(Actions.partialFeed));
             townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
             townActionBtns[2].onClick.AddListener(() => SendUnit(Actions.convert));
+            townActionBtns[3].onClick.AddListener(() => PlanAction(Actions.subjugate));
         } else {
             resourceActionBtn.onClick.AddListener(() => PlanAction(Actions.collect));
             repairActionBtn.onClick.AddListener(() => PlanAction(Actions.repair));
             townActionBtns[0].onClick.AddListener(() => PlanAction(Actions.partialFeed));
             townActionBtns[1].onClick.AddListener(() => PlanAction(Actions.fullFeed));
             townActionBtns[2].onClick.AddListener(() => PlanAction(Actions.convert));
+            townActionBtns[3].onClick.AddListener(() => PlanAction(Actions.subjugate));
         }
     }
 

@@ -5314,8 +5314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a7724280e1c974a94c94f1d509248e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  errorPanel: {fileID: 1634742163816346}
-  errorText: {fileID: 114549574084244436}
+  popupPanel: {fileID: 0}
+  popupText: {fileID: 0}
 --- !u!114 &114101259195858714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10677,6 +10677,8 @@ MonoBehaviour:
   hungerDepletionRate: 0.0025
   resourceText: {fileID: 114059518616319292}
   hungerBar: {fileID: 114289235098366520}
+  hasHungerWarningShown: 0
+  hungerBarOutlineAnimation: {fileID: 0}
 --- !u!114 &114706995233363056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15798,7 +15800,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 60, y: 30}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224130887595516436
 RectTransform:
@@ -18294,7 +18296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 130}
+  m_AnchoredPosition: {x: 0, y: 116.6}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224703190719367746
@@ -18451,8 +18453,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 458.1, y: 219}
+  m_AnchoredPosition: {x: 0.0001632, y: 0}
+  m_SizeDelta: {x: 1000, y: 219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224717705691204364
 RectTransform:
