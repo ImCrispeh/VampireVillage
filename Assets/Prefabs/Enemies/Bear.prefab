@@ -155,13 +155,16 @@ GameObject:
   m_Component:
   - component: {fileID: 4610160951927776}
   - component: {fileID: 95666838922922924}
+  - component: {fileID: 195711382054848338}
+  - component: {fileID: 65628468796288832}
+  - component: {fileID: 114789845201052830}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1325909835945834
 GameObject:
   m_ObjectHideFlags: 1
@@ -807,8 +810,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256468794660234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4262223534382888}
   - {fileID: 4288871765384438}
@@ -940,6 +943,18 @@ Transform:
   m_Father: {fileID: 4434423110913266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65628468796288832
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1256468794660234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95666838922922924
 Animator:
   serializedVersion: 3
@@ -958,6 +973,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114789845201052830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1256468794660234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ac34ee588a7244b9f530c6cca2e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 195711382054848338}
+  isMovingToAttack: 0
+  isAttacking: 0
+  health: 23
+  attack: 5
+  attackTimer: 0
+  timeBetweenAttacks: 8
+  town: {fileID: 1278006990840236, guid: 657d388d82cc1764ca9a7cdef0db62b5, type: 2}
 --- !u!137 &137843051359861186
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1028,3 +1062,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00000011920929, y: 0.49363065, z: -0.8434906}
     m_Extent: {x: 3.5932288, y: 5.046818, z: 3.9974504}
   m_DirtyAABB: 0
+--- !u!195 &195711382054848338
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1256468794660234}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 5
+  m_Acceleration: 10
+  avoidancePriority: 75
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0.3
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

@@ -713,7 +713,6 @@ GameObject:
   - component: {fileID: 95895391800955892}
   - component: {fileID: 195140687706890084}
   - component: {fileID: 136540762822764984}
-  - component: {fileID: 54643220517606014}
   - component: {fileID: 114995744343002726}
   m_Layer: 0
   m_Name: AxeEnemy
@@ -2207,21 +2206,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1757118988103996}
   m_Mesh: {fileID: 4300000, guid: 61da24911837e5c43b9f191bfe21081f, type: 3}
---- !u!54 &54643220517606014
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1698443035412092}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!95 &95054256034425326
 Animator:
   serializedVersion: 3
@@ -2273,7 +2257,7 @@ MonoBehaviour:
   isMovingToAttack: 0
   isAttacking: 0
   health: 23
-  attack: 5
+  attack: 2
   attackTimer: 0
   timeBetweenAttacks: 4
   town: {fileID: 1278006990840236, guid: 657d388d82cc1764ca9a7cdef0db62b5, type: 2}
