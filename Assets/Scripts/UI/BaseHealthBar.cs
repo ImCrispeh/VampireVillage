@@ -18,8 +18,6 @@ public class BaseHealthBar : MonoBehaviour {
 	
 	void Update () {
         UpdateHealthBar();
-        //miniCanvas.transform.LookAt(mainCamera.transform);
-        //miniCanvas.transform.forward = mainCamera.transform.forward;
 	}
 
     private void LateUpdate() {

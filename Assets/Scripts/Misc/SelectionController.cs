@@ -65,6 +65,9 @@ public class SelectionController : MonoBehaviour {
 	}
 	
 	protected virtual void Update () {
+        //calling this to continuously update the subjugation level and button for a town
+        SetObjText();
+        SetActionButton();
 		if (Input.GetMouseButtonDown(0)) {
             Select();
         }
@@ -150,20 +153,33 @@ public class SelectionController : MonoBehaviour {
 
     // Brings up action buttons based on what object is selected
     public void SetActionButton() {
-        if (selectedObj.tag == "HumanTown") {
-            resourceActionBtn.gameObject.SetActive(false);
-            repairActionBtn.gameObject.SetActive(false);
-            townActionsContainer.SetActive(true);
-            BaseController._instance.HideCanvas();
-        } else if (selectedObj.tag == "Base") {
+        if (selectedObj != null) {
+            if (selectedObj.tag == "HumanTown") {
+                resourceActionBtn.gameObject.SetActive(false);
+                repairActionBtn.gameObject.SetActive(false);
+                townActionsContainer.SetActive(true);
+                if (selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
+                    GameObject.Find("Canvas/BottomBar/InformationWindow/Town Actions/Subjugate Btn").GetComponent<Button>().interactable = false;
+                }
+                BaseController._instance.HideCanvas();
+            }
+            else if (selectedObj.tag == "Base") {
+                townActionsContainer.SetActive(false);
+                resourceActionBtn.gameObject.SetActive(false);
+                repairActionBtn.gameObject.SetActive(true);
+                BaseController._instance.ShowCanvas();
+            }
+            else {
+                townActionsContainer.SetActive(false);
+                repairActionBtn.gameObject.SetActive(false);
+                resourceActionBtn.gameObject.SetActive(true);
+                BaseController._instance.HideCanvas();
+            }
+        }
+        else {
             townActionsContainer.SetActive(false);
-            resourceActionBtn.gameObject.SetActive(false);
-            repairActionBtn.gameObject.SetActive(true);
-            BaseController._instance.ShowCanvas();
-        } else {
-            townActionsContainer.SetActive(false);
             repairActionBtn.gameObject.SetActive(false);
-            resourceActionBtn.gameObject.SetActive(true);
+            resourceActionBtn.gameObject.SetActive(false);
             BaseController._instance.HideCanvas();
         }
     }
@@ -346,7 +362,22 @@ public class SelectionController : MonoBehaviour {
                     + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
             }
 
-            if (selectedObj.tag == "HumanTown") {
+            if (selectedObj.tag == "HumanTown" && selectedObj.GetComponent<HumanTownController>().beingSubjugated) {
+                Debug.Log("Town selected, yes subjugation");
+                selectedObjText.text =
+                    "Human Town" + "\n"
+                    + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
+                    + "Subjugation level: " + selectedObj.GetComponent<HumanTownController>().subjugationLevel + "/" + selectedObj.GetComponent<HumanTownController>().subjugationLimit;
+            }
+            else if (selectedObj.tag == "HumanTown" && selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
+                Debug.Log("Town selected, yes subjugation");
+                selectedObjText.text =
+                    "Human Town" + "\n"
+                    + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
+                    + "Subjugated: provides small regeneration to your hunger";
+            }
+            else {
+                Debug.Log("Town selected, no subjugation");
                 selectedObjText.text =
                     "Human Town" + "\n"
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level";
