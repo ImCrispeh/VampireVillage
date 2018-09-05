@@ -133,6 +133,7 @@ public class SelectionController : MonoBehaviour {
         townActionsContainer.SetActive(false);
         SetObjText();
         SetObjPortrait();
+        BaseController._instance.HideCanvas();
     }
 
     // Change material of object to indicate that it is selected
@@ -153,14 +154,17 @@ public class SelectionController : MonoBehaviour {
             resourceActionBtn.gameObject.SetActive(false);
             repairActionBtn.gameObject.SetActive(false);
             townActionsContainer.SetActive(true);
+            BaseController._instance.HideCanvas();
         } else if (selectedObj.tag == "Base") {
             townActionsContainer.SetActive(false);
             resourceActionBtn.gameObject.SetActive(false);
             repairActionBtn.gameObject.SetActive(true);
+            BaseController._instance.ShowCanvas();
         } else {
             townActionsContainer.SetActive(false);
             repairActionBtn.gameObject.SetActive(false);
             resourceActionBtn.gameObject.SetActive(true);
+            BaseController._instance.HideCanvas();
         }
     }
 

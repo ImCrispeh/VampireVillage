@@ -15,12 +15,14 @@ public class HumanTownController : MonoBehaviour {
     public List<UnitController> units;
     public ThreatController threatCont;
     public bool cancelled;
+    public EnemySpawner enemySpawner;
 
 	// Use this for initialization
 	void Start () {
         cancelled = false;
         subjugationBaseSpeed = 1f;
-        units = new List<UnitController>();        
+        units = new List<UnitController>();
+        enemySpawner = gameObject.GetComponent<EnemySpawner>();
         InvokeRepeating("CalculateSubjugationSpeed", 2, 1);
     }
 	
@@ -31,8 +33,6 @@ public class HumanTownController : MonoBehaviour {
             CancelInvoke("CalculateSubjugationSpeed");
             cancelled = true;
         }
-        //Debug.Log("Subjugation level: " + subjugationLevel);
-        //Debug.Log("Units: " + units.Count);
 	}
 
     public void PartialFeedEffect(UnitController unit) {
@@ -64,10 +64,17 @@ public class HumanTownController : MonoBehaviour {
 
     //once the subjugation limit has been reached, subjugation ends and the units are sent back home
     public void EndSubjugation() {
+        SubjugatedBonuses();
         foreach (UnitController unit in units) {
             Debug.Log("reactivating unit");
             unit.gameObject.SetActive(true);
             unit.ReturnFromAction();            
         }
+    }
+
+    //get reduced hunger depletion and the town stops spawning enemies for subjugation
+    public void SubjugatedBonuses() {
+        ResourceStorage._instance.hungerDepletionRateModifier -= 0.1f;
+        enemySpawner.canSpawn = false;
     }
 }

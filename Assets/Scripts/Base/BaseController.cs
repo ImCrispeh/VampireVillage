@@ -18,6 +18,7 @@ public class BaseController : MonoBehaviour {
     public float timeBetweenNoHungerDmg;
 
     public List<GameObject> enemiesInRange;
+    public GameObject miniCanvas;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -31,6 +32,8 @@ public class BaseController : MonoBehaviour {
         maxHealth = 100;
         health = maxHealth;
         enemiesInRange = new List<GameObject>();
+        miniCanvas = GameObject.Find("MiniCanvas");
+        miniCanvas.SetActive(false);
     }
 	
 	void Update () {
@@ -123,5 +126,13 @@ public class BaseController : MonoBehaviour {
             }
         }
         SelectionController._instance.SetObjText();
+    }
+
+    public void HideCanvas() {
+        miniCanvas.SetActive(false);
+    }
+
+    public void ShowCanvas() {
+        miniCanvas.SetActive(true);
     }
 }

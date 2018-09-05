@@ -13,6 +13,7 @@ public class ResourceStorage : MonoBehaviour {
     public int gold;
 
     public float hungerDepletionRate;
+    public float hungerDepletionRateModifier;
 
     public Text resourceText;
     public Slider hungerBar;
@@ -31,6 +32,7 @@ public class ResourceStorage : MonoBehaviour {
     void Start () {
         maxHunger = 100f;
         hungerDepletionRate = 0.0025f;
+        hungerDepletionRateModifier = 1f;
         hunger = maxHunger;
         UpdateResourceText();
         hungerBar.value = HungerPercentage();
@@ -54,9 +56,9 @@ public class ResourceStorage : MonoBehaviour {
 
     public void SubtractHunger() {
         if (SelectionController._instance != null) {
-            hunger -= hungerDepletionRate * SelectionController._instance.maxUnits;
+            hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits;
         } else {
-            hunger -= hungerDepletionRate;
+            hunger -= hungerDepletionRate * hungerDepletionRateModifier;
         }
 
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);

@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour {
     public float timeBetweenSpawns;
     public bool isSpawning;
     public bool hasSetSpawn;
+    public bool canSpawn;
     public float difficultyMultiplier;
 
     [SerializeField]
@@ -31,6 +32,7 @@ public class EnemySpawner : MonoBehaviour {
 
     void Start() {
         difficultyMultiplier = 1;
+        canSpawn = true;
     }
 
     void Update() {
@@ -45,13 +47,15 @@ public class EnemySpawner : MonoBehaviour {
             isSpawning = true;
             hasSetSpawn = false;
         }
-
-        if (isSpawning) {
-            SpawnEnemies();
-        } else {
-            if (!hasSetSpawn && ThreatController._instance.threatLevel > 0) {
-                if (Timer._instance.currentTime >= 0.3f && Timer._instance.currentTime <= 0.375f) {
-                    SetSpawn();
+        if (canSpawn) {
+            if (isSpawning) {
+                SpawnEnemies();
+            }
+            else {
+                if (!hasSetSpawn && ThreatController._instance.threatLevel > 0) {
+                    if (Timer._instance.currentTime >= 0.3f && Timer._instance.currentTime <= 0.375f) {
+                        SetSpawn();
+                    }
                 }
             }
         }
