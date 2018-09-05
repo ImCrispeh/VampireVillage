@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour {
     public int attack;
     public float attackTimer;
     public float timeBetweenAttacks;
+    public GameObject town;
 
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
@@ -24,6 +25,7 @@ public class EnemyController : MonoBehaviour {
 
 	void Update () {
         if (isMovingToAttack) {
+            this.transform.LookAt(town.transform);
             if (!agent.pathPending) {
                 if (new Vector3(agent.destination.x - transform.position.x, 0f, agent.destination.z - transform.position.z).sqrMagnitude <= agent.stoppingDistance) {
                     if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
