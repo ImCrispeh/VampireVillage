@@ -27,6 +27,7 @@ public class TechnologyToggle : MonoBehaviour {
         SelectionController._instance.resourceActionBtn.gameObject.SetActive(false);
         SelectionController._instance.townActionsContainer.SetActive(false);
         SelectionController._instance.SetObjText();
+        SelectionController._instance.SetObjPortrait();
 
         clicked = !clicked;
         if (!clicked) {

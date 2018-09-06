@@ -158,7 +158,13 @@ public class SelectionController : MonoBehaviour {
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionBtn.gameObject.SetActive(false);
                 townActionsContainer.SetActive(true);
-                if (selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
+                if (!Subjugation._instance.researched) {
+                    GameObject.Find("Canvas/BottomBar/InformationWindow/Town Actions/Subjugate Btn").GetComponent<Button>().interactable = false;
+                }
+                else if (Subjugation._instance.researched && !selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
+                    GameObject.Find("Canvas/BottomBar/InformationWindow/Town Actions/Subjugate Btn").GetComponent<Button>().interactable = true;
+                }
+                else if (Subjugation._instance.researched && selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
                     GameObject.Find("Canvas/BottomBar/InformationWindow/Town Actions/Subjugate Btn").GetComponent<Button>().interactable = false;
                 }
                 BaseController._instance.HideCanvas();
