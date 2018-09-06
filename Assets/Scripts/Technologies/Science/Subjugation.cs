@@ -4,66 +4,79 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler {
+public class Subjugation : Technology, IPointerEnterHandler, IPointerExitHandler {
+    public static Subjugation _instance;
 
     public Image unresearchedImage;
-    public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
+    public Technology requiredTechnology;   //add more if you need more than one pre-requiste
+
+    private void Awake() {
+        if (_instance != null && _instance != this) {
+            Destroy(gameObject);
+        }
+        else {
+            _instance = this;
+        }
+    }
 
     // Use this for initialization
-    protected override void Start () {
+    protected override void Start() {
         base.Start();
-        technologyName = "Picket Fence";
-        technologyDescription = "A wooden fence is constructed adding to your defenses";
-        researchRequirement = "";
-        woodCost = 10;
-        stoneCost = 0;
-        goldCost = 0;
-        researchTime = 5f; 
+        technologyName = "Subjugation";
+        technologyDescription = "Enables the subjugation action on towns. Subjugated towns provide passive hunger regeneration";
+        researchRequirement = "Cloak of darkness";
+        woodCost = 5;
+        stoneCost = 5;
+        goldCost = 5;
+        researchTime = 5f;
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        proceedingTechnologyBar.Add(connectingBar);
-        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name + "/Walls").transform;
+        mainBase = BaseController._instance;
     }
-	
-	// Update is called once per frame
-	protected override void Update () {
+
+    // Update is called once per frame
+    protected override void Update() {
         base.Update();
         if (researched && !researching && !applyTechnology) {
             EndResearch();
             applyTechnology = true;
         }
-	}
+    }
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 1;
-        GameObject tech = Instantiate(technologyObject);
-        tech.transform.SetParent(technologyPosition);
+        //mainBase.defense += 3;
+        Debug.Log("Added " + technologyName + " to the town");
+        //Instantiate(technologyObject, technologyPosition);
     }
 
     public override void StartResearch() {
-        if (!researched && !researching) {
-            if (resources.wood >= woodCost) {
+        if (!researched && !researching && requiredTechnology.researched) {
+            if (resources.wood >= woodCost && resources.stone >= stoneCost && resources.gold >= goldCost) {
                 researchTimer = 0;
                 researching = true;
                 resources.SubtractWood(woodCost);
+                resources.SubtractStone(stoneCost);
+                resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-            }            
+                Debug.Log("Researching: " + technologyName);
+            }
         }
     }
 
     public override void EndResearch() {
         TechnologyEffect();
+        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {
         ttbName.text = technologyName;
-        ttbResearchRequirement.text = researchRequirement;
+        ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
         ttbWoodCost.text = woodCost.ToString();
         ttbStoneCost.text = stoneCost.ToString();
@@ -89,3 +102,4 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
         ttbResearchTimeIcon.localScale = hiddenScale;
     }
 }
+

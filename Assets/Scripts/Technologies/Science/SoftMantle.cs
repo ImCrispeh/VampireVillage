@@ -21,9 +21,9 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Soft Mantle";
         technologyDescription = "A soft cloth which lets you perform actions during the day but you still take damage heavily";
         researchRequirement = "Transmutation";
-        woodCost = 0;
-        stoneCost = 0;
-        goldCost = 150;
+        woodCost = 5;
+        stoneCost = 5;
+        goldCost = 5;
         researchTime = 10f;
         researchTimer = researchTime;
         researched = false;

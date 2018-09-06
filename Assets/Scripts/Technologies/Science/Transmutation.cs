@@ -21,9 +21,9 @@ public class Transmutation : Technology, IPointerEnterHandler, IPointerExitHandl
         technologyName = "Transmutation";
         technologyDescription = "Double the amount of resources you gather";
         researchRequirement = "Alchemy";
-        woodCost = 300;
-        stoneCost = 300;
-        goldCost = 300;
+        woodCost = 5;
+        stoneCost = 5;
+        goldCost = 5;
         researchTime = 5f;
         researchTimer = researchTime;
         researched = false;

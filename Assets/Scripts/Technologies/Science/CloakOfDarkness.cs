@@ -9,7 +9,6 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
 
     public Image unresearchedImage;
     public Image connectingBar;
-    public Image connectingBar2;
     public GameObject technologyObject;
     public Transform technologyPosition;
     public Technology requiredTechnology;   //add more if you need more than one pre-requiste
@@ -21,9 +20,9 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
         technologyName = "Cloak of Darkness";
         technologyDescription = "A sturdy cloak able to shield you from most of the sunlight";
         researchRequirement = "Soft Mantle";
-        woodCost = 0;
-        stoneCost = 0;
-        goldCost = 100;
+        woodCost = 5;
+        stoneCost = 5;
+        goldCost = 5;
         researchTime = 5f;
         researchTimer = researchTime;
         researched = false;
@@ -31,7 +30,6 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
         applyTechnology = false;
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
-        proceedingTechnologyBar.Add(connectingBar2);
         mainBase = BaseController._instance;
     }
 

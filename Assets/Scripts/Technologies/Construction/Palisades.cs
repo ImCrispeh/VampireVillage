@@ -45,7 +45,6 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
-        Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
 
@@ -56,18 +55,15 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
                 researching = true;
                 resources.SubtractWood(woodCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
             }            
         }
     }
 
     public override void EndResearch() {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {
-        Debug.Log("Mouse has entered " + technologyName);
         ttbName.text = technologyName;
         ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
@@ -82,7 +78,6 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
-        Debug.Log("Mouse has exited " + technologyName);
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";

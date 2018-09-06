@@ -52,7 +52,7 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         mainBase = BaseController._instance;
         resources = ResourceStorage._instance;
         hiddenScale = new Vector3(0, 0, 0);
-        shownScale = new Vector3(1, 1, 1);
+        shownScale = new Vector3(0.6f, 0.6f, 0.6f);
 
         ttbName = GameObject.Find("TechnologyWindow/TooltipBox/TechnologyName").GetComponent<Text>();
         ttbResearchRequirement = GameObject.Find("TechnologyWindow/TooltipBox/ResearchRequirement").GetComponent<Text>();
