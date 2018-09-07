@@ -32,6 +32,7 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
         proceedingTechnologyBar.Add(connectingBar);
         proceedingTechnologyBar.Add(connectingBar2);
         mainBase = BaseController._instance;
+        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name + "/Walls").transform;
     }
 
     // Update is called once per frame
@@ -50,7 +51,8 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
         //The effects of the technology which are active once research ends
         //mainBase.defense += 3;
         Debug.Log("Added " + technologyName + " to the town");
-        //Instantiate(technologyObject, technologyPosition);
+        GameObject tech = Instantiate(technologyObject);
+        tech.transform.SetParent(technologyPosition);
     }
 
     public override void StartResearch()
