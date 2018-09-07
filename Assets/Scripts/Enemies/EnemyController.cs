@@ -53,16 +53,12 @@ public class EnemyController : MonoBehaviour {
         health = (int)Math.Round((health * threatLevel * difficulty), MidpointRounding.AwayFromZero);
     }
 
-    public void MoveToAttack(int destId) {
-        float rad;
-        if (destId % 2 == 0) {
-            rad = (450f - (360f / 10f * destId/2)) % 360 * Mathf.Deg2Rad;
-        } else {
-            rad = (90f + (360f / 10f * Mathf.Ceil((float)destId / 2))) % 360 * Mathf.Deg2Rad;
-        }
+    public void MoveToAttack() {
         Vector3 basePos = BaseController._instance.transform.position;
-        Vector3 dest = new Vector3(basePos.x + 5f * Mathf.Sin(rad), transform.position.y, basePos.z + 5f * Mathf.Cos(rad));
-        agent.destination = dest;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(Vector3.Lerp(basePos, transform.position, 0.05f), out hit, 4f, NavMesh.AllAreas)) {
+            agent.destination = hit.position;
+        }
         isMovingToAttack = true;
     }
 

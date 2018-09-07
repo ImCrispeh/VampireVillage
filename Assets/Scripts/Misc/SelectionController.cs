@@ -210,12 +210,10 @@ public class SelectionController : MonoBehaviour {
             }
             else {
                 availableUnits--;
-                GameObject newUnit = Instantiate(unit, spawnPoint);
-                UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                newUnitCont.spawnPoint = spawnPoint.gameObject;
-                newUnitCont.MoveToAction(selectedObj);
-                newUnitCont.action = action;
-                ResourceStorage._instance.UpdateResourceText();
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                    SpawnUnit(hit.position, selectedObj, action);
+                }
             }
         } else {
             PlanAction(action);
@@ -319,16 +317,14 @@ public class SelectionController : MonoBehaviour {
                     }
                     else {
                         availableUnits--;
-                        GameObject newUnit = Instantiate(unit, spawnPoint);
-                        UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                        newUnitCont.spawnPoint = spawnPoint.gameObject;
-                        newUnitCont.MoveToAction(planned.objectForAction);
-                        newUnitCont.action = planned.action;
-                        ResourceStorage._instance.UpdateResourceText();
-                        plannedActions.RemoveAt(0);
-                        Destroy(plannedActionRemovalIcons[0]);
-                        plannedActionRemovalIcons.RemoveAt(0);
-                        yield return new WaitForSeconds(0.5f);
+                        NavMeshHit hit;
+                        if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                            SpawnUnit(hit.position, planned.objectForAction, planned.action);
+                            plannedActions.RemoveAt(0);
+                            Destroy(plannedActionRemovalIcons[0]);
+                            plannedActionRemovalIcons.RemoveAt(0);
+                            yield return new WaitForSeconds(0.5f);
+                        }
                     }
                 } else {
                     yield return null;
@@ -339,6 +335,16 @@ public class SelectionController : MonoBehaviour {
             }
         }
         yield return null;
+    }
+
+    public void SpawnUnit(Vector3 spawnPos, GameObject objectForAction, Actions action) {
+        spawnPoint.position = spawnPos;
+        GameObject newUnit = Instantiate(unit, spawnPoint);
+        UnitController newUnitCont = newUnit.GetComponent<UnitController>();
+        newUnitCont.spawnPoint = spawnPoint.gameObject;
+        newUnitCont.MoveToAction(objectForAction);
+        newUnitCont.action = action;
+        ResourceStorage._instance.UpdateResourceText();
     }
 
     public void ShowAndHidePlannedActions() {
@@ -387,6 +393,12 @@ public class SelectionController : MonoBehaviour {
                 selectedObjText.text =
                     "Human Town" + "\n"
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level";
+            }
+
+            if (selectedObj.tag == "HumanBase") {
+                selectedObjText.text =
+                    "Main Human Base" + "\n"
+                    + "Will send out attacks against you based on your level of threat";
             }
 
             if (selectedObj.tag == "Base") {

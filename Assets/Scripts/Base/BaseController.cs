@@ -118,11 +118,13 @@ public class BaseController : MonoBehaviour {
     // Iteration through list done in reverse to safely remove any dead enemies
     public void DealDamage() {
         for (int i = enemiesInRange.Count - 1; i >= 0; i--) {
-            if (enemiesInRange[i].GetComponent<EnemyController>().IsDeadAfterDamage(attack)) {
-                GameObject toDestroy = enemiesInRange[i];
-                enemiesInRange.RemoveAt(i);
-                Destroy(toDestroy);
-                SelectionController._instance.SetObjText();
+            if (enemiesInRange[i] != null) {
+                if (enemiesInRange[i].GetComponent<EnemyController>().IsDeadAfterDamage(attack)) {
+                    GameObject toDestroy = enemiesInRange[i];
+                    enemiesInRange.RemoveAt(i);
+                    Destroy(toDestroy);
+                    SelectionController._instance.SetObjText();
+                }
             }
         }
         SelectionController._instance.SetObjText();

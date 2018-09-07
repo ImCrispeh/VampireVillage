@@ -9,10 +9,14 @@ public class HumanTownController : MonoBehaviour {
     public float partialFeedThreat;
     public float fullFeedThreat;
     public float convertThreat;
+
+    public int population;
+
     public float subjugationBaseSpeed;
     public float subjugationCalculatedSpeed;
     public float subjugationLevel;
     public float subjugationLimit;
+
     public List<UnitController> units;
     public ThreatController threatCont;
     public bool beingSubjugated;
@@ -25,6 +29,13 @@ public class HumanTownController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        partialFeedAmt = 25f;
+        fullFeedAmt = 100f;
+
+        partialFeedThreat = 7.5f;
+        fullFeedThreat = 25f;
+        convertThreat = 35f;
+
         subjugationFinished = false;
         beingSubjugated = false;
         subjugationBaseSpeed = 1f;
@@ -55,17 +66,17 @@ public class HumanTownController : MonoBehaviour {
 
     public void PartialFeedEffect(UnitController unit) {
         unit.hungerCollected += partialFeedAmt;
-        threatCont.AddThreat(partialFeedThreat);
+        ThreatController._instance.AddThreat(partialFeedThreat);
     }
 
     public void FullFeedEffect(UnitController unit) {
         unit.hungerCollected += fullFeedAmt;
-        threatCont.AddThreat(fullFeedThreat);
+        ThreatController._instance.AddThreat(fullFeedThreat);
     }
 
     public void ConvertEffect(UnitController unit) {
         unit.humanConvertCollected++;
-        threatCont.AddThreat(convertThreat);
+        ThreatController._instance.AddThreat(convertThreat);
     }
 
     //disables the unit and they're added to a list, the canvas for the subjugation level is then activated
