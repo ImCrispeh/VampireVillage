@@ -10,9 +10,16 @@ public class HumanTownController : MonoBehaviour {
     public float fullFeedThreat;
     public float convertThreat;
 
+    public int population;
+
 	// Use this for initialization
 	void Start () {
-		
+        partialFeedAmt = 25f;
+        fullFeedAmt = 100f;
+
+        partialFeedThreat = 7.5f;
+        fullFeedThreat = 25f;
+        convertThreat = 35f;
 	}
 	
 	// Update is called once per frame

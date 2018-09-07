@@ -12003,10 +12003,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5397340096c724e489f075f66b32c4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partialFeedAmt: 30
+  partialFeedAmt: 25
   fullFeedAmt: 100
-  partialFeedThreat: 5
-  fullFeedThreat: 20
+  partialFeedThreat: 7.5
+  fullFeedThreat: 25
   convertThreat: 35
 --- !u!208 &1033439023
 NavMeshObstacle:
@@ -16715,22 +16715,22 @@ Prefab:
     - target: {fileID: 224534444776252712, guid: b6bf538e8dbcde8468259fad167dd0af,
         type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 224446140897364168, guid: b6bf538e8dbcde8468259fad167dd0af,
         type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224915802141082788, guid: b6bf538e8dbcde8468259fad167dd0af,
         type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 224843345086256964, guid: b6bf538e8dbcde8468259fad167dd0af,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114087898897206516, guid: b6bf538e8dbcde8468259fad167dd0af,
         type: 2}
