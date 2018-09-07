@@ -114,12 +114,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  obstacle: {fileID: 0}
   isPerformingAction: 0
   objectForAction: {fileID: 0}
   action: 0
   isReturning: 0
-  unitBase: {fileID: 0}
+  spawnPoint: {fileID: 0}
   woodCollected: 0
+  stoneCollected: 0
+  goldCollected: 0
   hungerCollected: 0
   humanConvertCollected: 0
 --- !u!136 &136293485395490252
@@ -143,7 +146,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1577663450091720}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5000001
+  m_Radius: 0.1
   m_Speed: 10
   m_Acceleration: 15
   avoidancePriority: 75

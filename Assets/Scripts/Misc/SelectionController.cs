@@ -167,12 +167,10 @@ public class SelectionController : MonoBehaviour {
                 PopupController._instance.SetPopupText("Not enough resources to repair");
             } else {
                 availableUnits--;
-                GameObject newUnit = Instantiate(unit, spawnPoint);
-                UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                newUnitCont.spawnPoint = spawnPoint.gameObject;
-                newUnitCont.MoveToAction(selectedObj);
-                newUnitCont.action = action;
-                ResourceStorage._instance.UpdateResourceText();
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                    SpawnUnit(hit.position, selectedObj, action);
+                }
             }
         } else {
             PlanAction(action);
@@ -258,16 +256,14 @@ public class SelectionController : MonoBehaviour {
                         plannedActionRemovalIcons.RemoveAt(0);
                     } else {
                         availableUnits--;
-                        GameObject newUnit = Instantiate(unit, spawnPoint);
-                        UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                        newUnitCont.spawnPoint = spawnPoint.gameObject;
-                        newUnitCont.MoveToAction(planned.objectForAction);
-                        newUnitCont.action = planned.action;
-                        ResourceStorage._instance.UpdateResourceText();
-                        plannedActions.RemoveAt(0);
-                        Destroy(plannedActionRemovalIcons[0]);
-                        plannedActionRemovalIcons.RemoveAt(0);
-                        yield return new WaitForSeconds(0.5f);
+                        NavMeshHit hit;
+                        if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                            SpawnUnit(hit.position, planned.objectForAction, planned.action);
+                            plannedActions.RemoveAt(0);
+                            Destroy(plannedActionRemovalIcons[0]);
+                            plannedActionRemovalIcons.RemoveAt(0);
+                            yield return new WaitForSeconds(0.5f);
+                        }
                     }
                 } else {
                     yield return null;
@@ -278,6 +274,16 @@ public class SelectionController : MonoBehaviour {
             }
         }
         yield return null;
+    }
+
+    public void SpawnUnit(Vector3 spawnPos, GameObject objectForAction, Actions action) {
+        spawnPoint.position = spawnPos;
+        GameObject newUnit = Instantiate(unit, spawnPoint);
+        UnitController newUnitCont = newUnit.GetComponent<UnitController>();
+        newUnitCont.spawnPoint = spawnPoint.gameObject;
+        newUnitCont.MoveToAction(objectForAction);
+        newUnitCont.action = action;
+        ResourceStorage._instance.UpdateResourceText();
     }
 
     public void ShowAndHidePlannedActions() {

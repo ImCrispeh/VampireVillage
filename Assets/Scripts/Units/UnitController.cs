@@ -56,7 +56,10 @@ public class UnitController : MonoBehaviour {
 
     // Move unit to whatever was selected
     public void Move(GameObject dest) {
-        agent.destination = Vector3.Lerp(dest.transform.position, transform.position, 0.1f);
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(Vector3.Lerp(dest.transform.position, transform.position, 0.05f), out hit, 4f, NavMesh.AllAreas)) {
+            agent.destination = hit.position;
+        }
     }
 
     public void MoveToAction(GameObject dest) {
