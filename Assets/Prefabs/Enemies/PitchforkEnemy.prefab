@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 195173034790144322}
   - component: {fileID: 136090913601127676}
   - component: {fileID: 114258459830299448}
+  - component: {fileID: 54417392328039464}
   m_Layer: 0
   m_Name: PitchforkEnemy
   m_TagString: Enemy
@@ -1581,7 +1582,7 @@ Transform:
   m_GameObject: {fileID: 1106703014128388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4952493179234658}
   - {fileID: 4325651424560122}
@@ -2108,7 +2109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897791854041360}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.0312524, z: 0.018636022}
+  m_LocalPosition: {x: -0, y: 0, z: 0.018636022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4832598823355480}
@@ -2205,6 +2206,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211197559977488}
   m_Mesh: {fileID: 4300000, guid: f978158b8430a294580055a2a2f17f2e, type: 3}
+--- !u!54 &54417392328039464
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106703014128388}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!95 &95064837922764360
 Animator:
   serializedVersion: 3
@@ -2212,7 +2228,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106703014128388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 7d65bfb43485f504e8b63ee949f1f6bf, type: 3}
   m_Controller: {fileID: 9100000, guid: 335d00590e7347b4aa2a7a727d92c5fd, type: 2}
   m_CullingMode: 1
@@ -2371,7 +2387,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1106703014128388}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.1
+  m_Radius: 0.5
   m_Speed: 5
   m_Acceleration: 10
   avoidancePriority: 75
