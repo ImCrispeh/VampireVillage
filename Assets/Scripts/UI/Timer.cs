@@ -64,7 +64,16 @@ public class Timer : MonoBehaviour {
 
     public void RotateClockFace() {
         clockFace.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0f, 0f, currentTime * 720f);
-        sunAndMoon.localRotation = Quaternion.Euler(0f, 0f, currentTime * 360f);                
+        sunAndMoon.localRotation = Quaternion.Euler(0f, 0f, currentTime * 360f);
+
+        foreach (Transform child in transform)
+        {
+            if (secondsInFullDay != 0)
+            {
+                child.transform.RotateAround(Vector3.zero, new Vector3(0, 0, 1), Mathf.PI * Time.deltaTime * 1 / (secondsInFullDay / 120));
+                child.transform.LookAt(Vector3.zero);
+            }
+        }
     }
 
     public void ChangeClockColour() {
