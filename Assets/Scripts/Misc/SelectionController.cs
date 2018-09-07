@@ -382,7 +382,7 @@ public class SelectionController : MonoBehaviour {
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
                     + "Subjugated: provides small regeneration to your hunger";
             }
-            else {
+            else if (selectedObj.tag == "HumanTown" && !selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
                 Debug.Log("Town selected, no subjugation");
                 selectedObjText.text =
                     "Human Town" + "\n"

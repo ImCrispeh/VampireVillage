@@ -82,8 +82,6 @@ public class Timer : MonoBehaviour {
         else if (currentTime >= 0.75 && currentTime < 1) {//6pm to midnight
             clockFace.color = new Color(0f, decreaseGradient, 160f);
         }
-        //Debug.Log("Increase: " + increaseGradient);
-        //Debug.Log("Decrease: " + decreaseGradient);
     }
 
     public void PauseTimer() {
