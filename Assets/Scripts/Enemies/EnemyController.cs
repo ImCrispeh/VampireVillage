@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour {
     public int attack;
     public float attackTimer;
     public float timeBetweenAttacks;
+    public GameObject town;
 
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
@@ -43,6 +44,8 @@ public class EnemyController : MonoBehaviour {
                 attackTimer -= timeBetweenAttacks;
             }
         }
+
+        this.transform.LookAt(new Vector3(town.transform.position.x, 0.5f, town.transform.position.z));
     }
 
     public void SetStats(float threatLevel, float difficulty) {
