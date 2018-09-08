@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour {
             }
         }
 
-        this.transform.LookAt(new Vector3(town.transform.position.x, 0.5f, town.transform.position.z));
+        this.transform.LookAt(new Vector3(BaseController._instance.transform.position.x, 0.5f, BaseController._instance.transform.position.z));
     }
 
     public void SetStats(float threatLevel, float difficulty) {

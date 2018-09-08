@@ -10,7 +10,8 @@ public class HumanTownController : MonoBehaviour {
     public float fullFeedThreat;
     public float convertThreat;
 
-    public int population;
+    public float population;
+    public float populationBaseRegenRate;
 
     public float subjugationBaseSpeed;
     public float subjugationCalculatedSpeed;
@@ -35,6 +36,8 @@ public class HumanTownController : MonoBehaviour {
         partialFeedThreat = 7.5f;
         fullFeedThreat = 25f;
         convertThreat = 35f;
+
+        populationBaseRegenRate = 0.5f;
 
         subjugationFinished = false;
         beingSubjugated = false;
@@ -67,16 +70,22 @@ public class HumanTownController : MonoBehaviour {
     public void PartialFeedEffect(UnitController unit) {
         unit.hungerCollected += partialFeedAmt;
         ThreatController._instance.AddThreat(partialFeedThreat);
+        population -= 0.25f;
+        population = Mathf.Clamp(population, 0, float.MaxValue);
     }
 
     public void FullFeedEffect(UnitController unit) {
         unit.hungerCollected += fullFeedAmt;
         ThreatController._instance.AddThreat(fullFeedThreat);
+        population--;
+        population = Mathf.Clamp(population, 0, float.MaxValue);
     }
 
     public void ConvertEffect(UnitController unit) {
         unit.humanConvertCollected++;
         ThreatController._instance.AddThreat(convertThreat);
+        population--;
+        population = Mathf.Clamp(population, 0, float.MaxValue);
     }
 
     //disables the unit and they're added to a list, the canvas for the subjugation level is then activated
@@ -116,5 +125,9 @@ public class HumanTownController : MonoBehaviour {
     public void SubjugatedBonuses() {
         ResourceStorage._instance.hungerDepletionRateModifier -= 0.1f;
         enemySpawner.canSpawn = false;
+    }
+
+    public void RegenPopulation() {
+        population += populationBaseRegenRate * (population / 20f);
     }
 }

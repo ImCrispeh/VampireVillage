@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour {
     private RectTransform sunAndMoon;
     private Image clockFace;
     private Text timeT;
+    private List<HumanTownController> humanTowns;
 
     void Awake() {
         if (_instance != null && _instance != this) {
@@ -32,6 +33,11 @@ public class Timer : MonoBehaviour {
 
     void Start () {
         timeT.text = "";
+
+        humanTowns = new List<HumanTownController>();
+        foreach (HumanTownController town in FindObjectsOfType<HumanTownController>()) {
+            humanTowns.Add(town);
+        }
     }
 	
 	void Update () {
@@ -47,6 +53,10 @@ public class Timer : MonoBehaviour {
             currentDayTimer -= secondsInFullDay;
             if (currentDay % 5 == 0) {
                 EnemySpawner._instance.IncreaseDifficulty();
+            }
+
+            foreach (HumanTownController town in humanTowns) {
+                town.RegenPopulation();
             }
         }
 
