@@ -17,7 +17,7 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
     protected override void Start() {
         base.Start();
         technologyName = "Scalemail Armour";
-        technologyDescription = "You wear the scales of the lizards you have caught";
+        technologyDescription = "Defense + 1" + "\n" + "You wear the scales of the lizards you have caught";
         researchRequirement = "Chainmail Armour";
         woodCost = 80;
         stoneCost = 10;

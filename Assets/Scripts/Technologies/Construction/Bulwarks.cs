@@ -15,7 +15,7 @@ public class Bulwarks : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Bulwarks";
-        technologyDescription = "Bulwarks are constructed into your walls increasing your defences";
+        technologyDescription = "Defense + 1" + "\n" + "Bulwarks are constructed into your walls increasing your defences";
         researchRequirement = "Fortified Walls";
         woodCost = 70;
         stoneCost = 100;

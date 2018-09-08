@@ -155,17 +155,26 @@ public class SelectionController : MonoBehaviour {
     public void SetActionButton() {
         if (selectedObj != null) {
             if (selectedObj.tag == "HumanTown") {
+                HumanTownController town = selectedObj.GetComponent<HumanTownController>();
+                foreach (Button btn in townActionBtns) {
+                    btn.interactable = (town.population > 0);
+                }
+
+                if (town.population <= 0) {
+                    PopupController._instance.SetPopupText("No population to perform actions on");
+                }
+
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionBtn.gameObject.SetActive(false);
                 townActionsContainer.SetActive(true);
                 if (!Subjugation._instance.researched) {
-                    GameObject.Find("Canvas/BottomBar/InformationWindow/Town Actions/Subjugate Btn").GetComponent<Button>().interactable = false;
+                    townActionBtns[3].interactable = false;
                 }
-                else if (Subjugation._instance.researched && !selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
-                    GameObject.Find("Canvas/BottomBar/InformationWindow/Town Actions/Subjugate Btn").GetComponent<Button>().interactable = true;
+                else if (Subjugation._instance.researched && !town.subjugationFinished) {
+                    townActionBtns[3].interactable = true;
                 }
-                else if (Subjugation._instance.researched && selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
-                    GameObject.Find("Canvas/BottomBar/InformationWindow/Town Actions/Subjugate Btn").GetComponent<Button>().interactable = false;
+                else if (Subjugation._instance.researched && town.subjugationFinished) {
+                    townActionBtns[3].interactable = false;
                 }
                 BaseController._instance.HideCanvas();
             }
@@ -174,15 +183,13 @@ public class SelectionController : MonoBehaviour {
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionBtn.gameObject.SetActive(true);
                 BaseController._instance.ShowCanvas();
-            }
-            else {
+            } else {
                 townActionsContainer.SetActive(false);
                 repairActionBtn.gameObject.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(true);
                 BaseController._instance.HideCanvas();
             }
-        }
-        else {
+        } else {
             townActionsContainer.SetActive(false);
             repairActionBtn.gameObject.SetActive(false);
             resourceActionBtn.gameObject.SetActive(false);
@@ -197,18 +204,7 @@ public class SelectionController : MonoBehaviour {
                 PopupController._instance.SetPopupText("Structure already at full health");
             } else if (action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
                 PopupController._instance.SetPopupText("Not enough resources to repair");
-            }
-            else if (action == Actions.subjugate) {
-                //Delete this else if - might not need it
-                availableUnits--;
-                GameObject newUnit = Instantiate(unit, spawnPoint);
-                UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                newUnitCont.spawnPoint = spawnPoint.gameObject;
-                newUnitCont.MoveToAction(selectedObj);
-                newUnitCont.action = action;
-                ResourceStorage._instance.UpdateResourceText();
-            }
-            else {
+            } else {
                 availableUnits--;
                 NavMeshHit hit;
                 if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
@@ -300,22 +296,7 @@ public class SelectionController : MonoBehaviour {
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
                         plannedActionRemovalIcons.RemoveAt(0);
-                    }
-                    else if (planned.action == Actions.subjugate){
-                        //Delete this else if - might not need it
-                        availableUnits--;
-                        GameObject newUnit = Instantiate(unit, spawnPoint);
-                        UnitController newUnitCont = newUnit.GetComponent<UnitController>();
-                        newUnitCont.spawnPoint = spawnPoint.gameObject;
-                        newUnitCont.MoveToAction(planned.objectForAction);
-                        newUnitCont.action = planned.action;
-                        ResourceStorage._instance.UpdateResourceText();
-                        plannedActions.RemoveAt(0);
-                        Destroy(plannedActionRemovalIcons[0]);
-                        plannedActionRemovalIcons.RemoveAt(0);
-                        yield return new WaitForSeconds(0.5f);
-                    }
-                    else {
+                    } else {
                         availableUnits--;
                         NavMeshHit hit;
                         if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
@@ -385,6 +366,7 @@ public class SelectionController : MonoBehaviour {
                 Debug.Log("Town selected, yes subjugation");
                 selectedObjText.text =
                     "Human Town" + "\n"
+                    + "Population: " + selectedObj.GetComponent<HumanTownController>().population + "\n"
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
                     + "Subjugated: provides small regeneration to your hunger";
             }
@@ -392,6 +374,7 @@ public class SelectionController : MonoBehaviour {
                 Debug.Log("Town selected, no subjugation");
                 selectedObjText.text =
                     "Human Town" + "\n"
+                    + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level";
             }
 

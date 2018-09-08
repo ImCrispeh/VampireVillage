@@ -611,6 +611,7 @@ MonoBehaviour:
   noHungerTimer: 0
   timeBetweenNoHungerDmg: 1
   enemiesInRange: []
+  miniCanvas: {fileID: 0}
 --- !u!208 &35907228
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6806,6 +6807,18 @@ MonoBehaviour:
   fullFeedThreat: 20
   convertThreat: 35
   population: 0
+  subjugationBaseSpeed: 0
+  subjugationCalculatedSpeed: 0
+  subjugationLevel: 0
+  subjugationLimit: 0
+  units: []
+  threatCont: {fileID: 0}
+  beingSubjugated: 0
+  subjugationFinished: 0
+  enemySpawner: {fileID: 0}
+  subjugationCanvas: {fileID: 0}
+  subjugationBar: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!208 &522035115
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -12010,6 +12023,18 @@ MonoBehaviour:
   fullFeedThreat: 25
   convertThreat: 35
   population: 0
+  subjugationBaseSpeed: 0
+  subjugationCalculatedSpeed: 0
+  subjugationLevel: 0
+  subjugationLimit: 0
+  units: []
+  threatCont: {fileID: 0}
+  beingSubjugated: 0
+  subjugationFinished: 0
+  enemySpawner: {fileID: 0}
+  subjugationCanvas: {fileID: 0}
+  subjugationBar: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!208 &1033439023
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13901,6 +13926,7 @@ MonoBehaviour:
   timeBetweenSpawns: 1
   isSpawning: 0
   hasSetSpawn: 0
+  canSpawn: 0
   difficultyMultiplier: 0
   spawnPositions:
   - {fileID: 855596718}
@@ -15182,6 +15208,18 @@ MonoBehaviour:
   fullFeedThreat: 20
   convertThreat: 35
   population: 0
+  subjugationBaseSpeed: 0
+  subjugationCalculatedSpeed: 0
+  subjugationLevel: 0
+  subjugationLimit: 0
+  units: []
+  threatCont: {fileID: 0}
+  beingSubjugated: 0
+  subjugationFinished: 0
+  enemySpawner: {fileID: 0}
+  subjugationCanvas: {fileID: 0}
+  subjugationBar: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!208 &1405807400
 NavMeshObstacle:
   m_ObjectHideFlags: 0

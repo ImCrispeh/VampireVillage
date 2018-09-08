@@ -15,7 +15,7 @@ public class Longbows : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Longbows";
-        technologyDescription = "You can now forge longer bows to camp further back";
+        technologyDescription = "Attack + 1" + "\n" + "You can now forge longer bows to camp further back";
         researchRequirement = "Shortbows";
         woodCost = 80;
         stoneCost = 0;
