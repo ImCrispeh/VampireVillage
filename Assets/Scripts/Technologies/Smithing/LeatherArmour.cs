@@ -16,7 +16,7 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
     protected override void Start() {
         base.Start();
         technologyName = "Leather Armour";
-        technologyDescription = "You wear the skin of dead enemies to protect yourself";
+        technologyDescription = "Defense + 1" + "\n" + "You wear the skin of dead enemies to protect yourself";
         researchRequirement = "";
         woodCost = 20;
         stoneCost = 0;

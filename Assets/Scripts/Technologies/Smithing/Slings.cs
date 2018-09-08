@@ -16,7 +16,7 @@ public class Slings : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Slings";
-        technologyDescription = "You make a thing to throw rocks at people";
+        technologyDescription = "Attack + 1" + "\n" + "You make a thing to throw rocks at people";
         researchRequirement = "Spiked Clubs";
         woodCost = 30;
         stoneCost = 10;

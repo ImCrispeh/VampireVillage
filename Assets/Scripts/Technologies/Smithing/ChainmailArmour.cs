@@ -17,7 +17,7 @@ public class ChainmailArmour : Technology, IPointerEnterHandler, IPointerExitHan
     protected override void Start() {
         base.Start();
         technologyName = "Chainmail Armour";
-        technologyDescription = "You wear the engagement rings of rejected men around the world";
+        technologyDescription = "Defense + 1" + "\n" + "You wear the engagement rings of rejected men around the world";
         researchRequirement = "Leather Armour";
         woodCost = 20;
         stoneCost = 0;

@@ -15,7 +15,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     protected override void Start () {
         base.Start();
         technologyName = "Picket Fence";
-        technologyDescription = "A wooden fence is constructed adding to your defenses";
+        technologyDescription = "Defense + 1" + "\n" + "A wooden fence is constructed adding to your defenses";
         researchRequirement = "";
         woodCost = 10;
         stoneCost = 0;

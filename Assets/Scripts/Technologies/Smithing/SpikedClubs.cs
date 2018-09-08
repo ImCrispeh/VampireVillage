@@ -17,7 +17,7 @@ public class SpikedClubs : Technology, IPointerEnterHandler, IPointerExitHandler
     protected override void Start () {
         base.Start();
         technologyName = "Spiked Clubs";
-        technologyDescription = "You stick sharp sticks into your clubs increasing their deadliness";
+        technologyDescription = "Attack + 1" + "\n" + "You stick sharp sticks into your clubs increasing their deadliness";
         researchRequirement = "Wooden Clubs";
         woodCost = 30;
         stoneCost = 10;

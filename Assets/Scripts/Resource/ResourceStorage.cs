@@ -11,6 +11,7 @@ public class ResourceStorage : MonoBehaviour {
     public int wood;
     public int stone;
     public int gold;
+    public int collectionModifier;
 
     public float hungerDepletionRate;
     public float hungerDepletionRateModifier;
@@ -36,6 +37,7 @@ public class ResourceStorage : MonoBehaviour {
         hunger = maxHunger;
         UpdateResourceText();
         hungerBar.value = HungerPercentage();
+        collectionModifier = 1;
     }
 	
 	void Update () {
@@ -82,7 +84,7 @@ public class ResourceStorage : MonoBehaviour {
     }
 
     public void AddWood(int amt) {
-        wood += amt;
+        wood += amt * collectionModifier;
     }
 
     public void SubtractWood(int amt) {
@@ -90,7 +92,7 @@ public class ResourceStorage : MonoBehaviour {
     }
 
     public void AddStone(int amt) {
-        stone += amt;
+        stone += amt * collectionModifier;
     }
 
     public void SubtractStone(int amt) {
@@ -98,7 +100,7 @@ public class ResourceStorage : MonoBehaviour {
     }
 
     public void AddGold(int amt) {
-        gold += amt;
+        gold += amt * collectionModifier;
     }
 
     public void SubtractGold(int amt) {

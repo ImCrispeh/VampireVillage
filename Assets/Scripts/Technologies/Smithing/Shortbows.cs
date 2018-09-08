@@ -16,7 +16,7 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Shortbows";
-        technologyDescription = "You can now create bows with relatively short range";
+        technologyDescription = "Attack + 1" + "\n" + "You can now create bows with relatively short range";
         researchRequirement = "Slings";
         woodCost = 40;
         stoneCost = 0;

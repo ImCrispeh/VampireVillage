@@ -16,7 +16,7 @@ public class ShortSwords : Technology, IPointerEnterHandler, IPointerExitHandler
     protected override void Start () {
         base.Start();
         technologyName = "Short Swords";
-        technologyDescription = "You forge shorts that are relatively short";
+        technologyDescription = "Attack + 1" + "\n" + "You forge shorts that are relatively short";
         researchRequirement = "Spiked Clubs";
         woodCost = 20;
         stoneCost = 20;

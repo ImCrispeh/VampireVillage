@@ -22,12 +22,15 @@ public class TechnologyToggle : MonoBehaviour {
 	}
 
     public void Toggle() {
-        SelectionController._instance.selectedObj = null;
-        SelectionController._instance.repairActionBtn.gameObject.SetActive(false);
-        SelectionController._instance.resourceActionBtn.gameObject.SetActive(false);
-        SelectionController._instance.townActionsContainer.SetActive(false);
-        SelectionController._instance.SetObjText();
-        SelectionController._instance.SetObjPortrait();
+        if (SelectionController._instance.selectedObj != null) {
+            SelectionController._instance.DeselectObj();
+            SelectionController._instance.selectedObj = null;
+            SelectionController._instance.repairActionBtn.gameObject.SetActive(false);
+            SelectionController._instance.resourceActionBtn.gameObject.SetActive(false);
+            SelectionController._instance.townActionsContainer.SetActive(false);
+            SelectionController._instance.SetObjText();
+            SelectionController._instance.SetObjPortrait();
+        }
 
         clicked = !clicked;
         if (!clicked) {

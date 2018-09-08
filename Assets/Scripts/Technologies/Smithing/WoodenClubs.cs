@@ -16,7 +16,7 @@ public class WoodenClubs : Technology, IPointerEnterHandler, IPointerExitHandler
     protected override void Start() {
         base.Start();
         technologyName = "Wooden Clubs";
-        technologyDescription = "You're able to pick the best sticks to use as clubs";
+        technologyDescription = "Attack + 1" + "\n" + "You're able to pick the best sticks to use as clubs";
         researchRequirement = "";
         woodCost = 20;
         stoneCost = 0;

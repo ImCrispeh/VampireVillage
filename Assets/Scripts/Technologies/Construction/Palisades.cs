@@ -17,7 +17,7 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Palisades";
-        technologyDescription = "A palisade is constructed adding to your defenses";
+        technologyDescription = "Defense +1" + "\n" + "A palisade is constructed adding to your defenses";
         researchRequirement = "Picket Fence";
         woodCost = 20;
         stoneCost = 0;

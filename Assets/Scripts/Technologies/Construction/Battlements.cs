@@ -16,7 +16,7 @@ public class Battlements : Technology, IPointerEnterHandler, IPointerExitHandler
     protected override void Start () {
         base.Start();
         technologyName = "Battlements";
-        technologyDescription = "Battlements are constructed giving your defenders better capabilities";
+        technologyDescription = "Defense + 1" + "\n" + "Battlements are constructed giving your defenders better capabilities";
         researchRequirement = "Fortified Walls";
         woodCost = 10;
         stoneCost = 70;

@@ -16,7 +16,7 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
     protected override void Start () {
         base.Start();
         technologyName = "Stone Walls";
-        technologyDescription = "A stone wall is constructed adding to your defenses";
+        technologyDescription = "Defense + 1" + "\n" + "A stone wall is constructed adding to your defenses";
         researchRequirement = "Palisades";
         woodCost = 20;
         stoneCost = 30;

@@ -17,7 +17,7 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
     protected override void Start () {
         base.Start();
         technologyName = "Fortified Walls";
-        technologyDescription = "Your stone walls are fortified increasing their effectiveness";
+        technologyDescription = "Defense + 1" + "\n" + "Your stone walls are fortified increasing their effectiveness";
         researchRequirement = "Stone Walls";
         woodCost = 20;
         stoneCost = 60;

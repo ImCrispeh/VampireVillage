@@ -16,7 +16,7 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Moat";
-        technologyDescription = "A moat is dug adding to your defenses";
+        technologyDescription = "Defense + 1" + "\n" + "A moat is dug adding to your defenses";
         researchRequirement = "Palisades";
         woodCost = 40;
         stoneCost = 0;

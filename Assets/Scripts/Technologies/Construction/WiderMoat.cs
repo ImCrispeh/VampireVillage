@@ -16,7 +16,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Wider Moat";
-        technologyDescription = "The moat is widened increasing its effectiveness";
+        technologyDescription = "Defense + 1" + "\n" + "The moat is widened increasing its effectiveness";
         researchRequirement = "Moat";
         woodCost = 50;
         stoneCost = 0;

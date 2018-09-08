@@ -15,7 +15,7 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
     protected override void Start () {
         base.Start();
         technologyName = "Long Swords";
-        technologyDescription = "You can now forge longer swords for short people";
+        technologyDescription = "Attack + 1" + "\n" + "You can now forge longer swords for short people";
         researchRequirement = "Spiked Clubs";
         woodCost = 80;
         stoneCost = 0;
