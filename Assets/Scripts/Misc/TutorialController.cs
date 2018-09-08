@@ -13,6 +13,8 @@ public class TutorialController : SelectionController {
     public int currText;
     public Image textBackground;
     public GameObject[] tutorialTexts;
+    public GameObject[] feedTutIndicators;
+    public GameObject[] woodTutIndicators;
 
     public GameObject selectionCont;
     public GameObject techBtn;
@@ -28,14 +30,54 @@ public class TutorialController : SelectionController {
     void Start() {
         Timer._instance.PauseTimer();
         techBtn.SetActive(false);
+        SetActionButtonsOnClick(true);
     }
 
-    protected override void Update() {
-        base.Update();
+    void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            Select();
+        }
 
-        if (Input.GetMouseButtonDown(0) && (EventSystem.current.currentSelectedGameObject == resourceActionBtn.gameObject 
-            || EventSystem.current.currentSelectedGameObject == townActionBtns[0].gameObject
-            || EventSystem.current.currentSelectedGameObject == townActionBtns[1].gameObject)) {
+        if (currText == 0 && availableUnits > 0) {
+            townActionBtns[0].interactable = false;
+            townActionBtns[1].interactable = true;
+            townActionBtns[2].interactable = false;
+            townActionBtns[3].interactable = false;
+        } else {
+            foreach (Button btn in townActionBtns) {
+                btn.interactable = false;
+            }
+        }
+
+        if (currText == 2 && availableUnits > 0) {
+            if (selectedObj != null) {
+                if (selectedObj.tag == "Wood") {
+                    resourceActionBtn.interactable = true;
+                }
+            }
+        } else {
+            resourceActionBtn.interactable = false;
+        }
+
+        repairActionBtn.interactable = false;
+
+        // Deselect object when it is destroyed (e.g. resource)
+        if (selectedObj == null && resourceActionBtn.gameObject.activeInHierarchy) {
+            resourceActionBtn.gameObject.SetActive(false);
+            selectedObjText.text = "";
+        }
+
+        if (Input.GetMouseButtonDown(0)) {
+            Select();
+        }
+
+        // Deselect object when it is destroyed (e.g. resource)
+        if (selectedObj == null && resourceActionBtn.gameObject.activeInHierarchy) {
+            resourceActionBtn.gameObject.SetActive(false);
+            selectedObjText.text = "";
+        }
+
+        if (Input.GetMouseButtonDown(0) && (EventSystem.current.currentSelectedGameObject == resourceActionBtn.gameObject || EventSystem.current.currentSelectedGameObject == townActionBtns[1].gameObject)) {
             if (availableUnits > 0) {
                 Timer._instance.UnpauseTimer();
                 HideText();
@@ -63,6 +105,13 @@ public class TutorialController : SelectionController {
         townActionsContainer = cont.townActionsContainer;
         townActionBtns = cont.townActionBtns;
         actionIconsList = cont.actionIconsList;
+
+        actionIcons = new Dictionary<ActionIconNames, GameObject>();
+
+        foreach (ActionIcon icon in actionIconsList) {
+            actionIcons.Add(icon.iconName, icon.icon);
+        }
+
         plannedActions = cont.plannedActions;
         plannedActionRemovalIcons = cont.plannedActionRemovalIcons;
         plannedActionsPanel = cont.plannedActionsPanel;
@@ -93,15 +142,19 @@ public class TutorialController : SelectionController {
             textBackground.enabled = true;
             tutorialTexts[currText].SetActive(true);
 
+            if (currText == 2) {
+                foreach (GameObject obj in woodTutIndicators) {
+                    obj.SetActive(true);
+                }
+            }
+
             // Keep tech button hidden until it gets to the tutorial step about it
-            if (currText == tutorialTexts.Length - 2) {
+            if (currText == 3) {
                 techBtn.SetActive(true);
             }
 
             // Make it so the final message does not pause the timer (since there is no action to take)
-            if (currText < tutorialTexts.Length - 1) {
-                Timer._instance.PauseTimer();
-            }
+            Timer._instance.PauseTimer();
 
         } else {
             Timer._instance.UnpauseTimer();
@@ -112,6 +165,17 @@ public class TutorialController : SelectionController {
     }
 
     public void HideText() {
+        if (currText == 0) {
+            foreach (GameObject obj in feedTutIndicators) {
+                obj.SetActive(false);
+            }
+        }
+
+        if (currText == 2) {
+            foreach (GameObject obj in woodTutIndicators) {
+                obj.SetActive(false);
+            }
+        }
         textBackground.enabled = false;
         tutorialTexts[currText].SetActive(false);
     }

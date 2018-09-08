@@ -26,7 +26,7 @@ public class SelectionController : MonoBehaviour {
     public enum Actions { partialFeed, fullFeed, convert, collect, repair, subjugate };
     public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert, repair, subjugate };
     public List<ActionIcon> actionIconsList;
-    private Dictionary<ActionIconNames, GameObject> actionIcons;
+    public Dictionary<ActionIconNames, GameObject> actionIcons;
     public List<PlannedAction> plannedActions;
     public List<GameObject> plannedActionRemovalIcons;
     public Transform plannedActionsPanel;
@@ -68,7 +68,7 @@ public class SelectionController : MonoBehaviour {
         }
 	}
 	
-	protected virtual void Update () {
+	void Update () {
         //calling this to continuously update the subjugation level and button for a town
         SetObjText();
         SetActionButton();

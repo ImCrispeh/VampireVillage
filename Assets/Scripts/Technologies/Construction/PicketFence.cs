@@ -61,6 +61,9 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     }
 
     public override void EndResearch() {
+        if (TutorialController._tutInstance != null) {
+            TutorialController._tutInstance.ChangeText();
+        }
         TechnologyEffect(); 
     }
 
