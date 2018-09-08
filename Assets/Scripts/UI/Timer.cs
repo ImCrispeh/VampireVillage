@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour {
     public int currentDay;
     private float currentDayTimer;
     public Text speedText;
+    private int speed;
     private RectTransform sunAndMoon;
     private Image clockFace;
     private Text timeT;
@@ -34,6 +35,8 @@ public class Timer : MonoBehaviour {
     void Start () {
         timeT.text = "";
 
+        speed = 1;
+
         humanTowns = new List<HumanTownController>();
         foreach (HumanTownController town in FindObjectsOfType<HumanTownController>()) {
             humanTowns.Add(town);
@@ -41,13 +44,13 @@ public class Timer : MonoBehaviour {
     }
 	
 	void Update () {
-        currentTime += (Time.deltaTime / secondsInFullDay);
+        currentTime += (Time.deltaTime / secondsInFullDay) * speed;
         //Debug.Log("Current time: " + currentTime);
         if (currentTime > 1) {
             currentTime = 0;
         }
 
-        currentDayTimer += Time.deltaTime;
+        currentDayTimer += Time.deltaTime * speed;
         if (currentDayTimer >= secondsInFullDay) {
             currentDay++;
             currentDayTimer -= secondsInFullDay;
@@ -104,12 +107,12 @@ public class Timer : MonoBehaviour {
     }
 
     public void PauseTimer() {
-        Time.timeScale = 0;
+        speed = 0;
         isPaused = true;
     }
 
     public void UnpauseTimer() {
-        Time.timeScale = 1;
+        speed = 1;
         isPaused = false;
     }
 

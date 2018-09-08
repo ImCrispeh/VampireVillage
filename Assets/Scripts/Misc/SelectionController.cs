@@ -62,6 +62,10 @@ public class SelectionController : MonoBehaviour {
         ResourceStorage._instance.UpdateResourceText();
         portraitPlaceholder = GameObject.Find("Canvas/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
         portraitPlaceholder.enabled = false;
+
+        if (TutorialController._tutInstance != null) {
+            TutorialController._tutInstance.SetVariables();
+        }
 	}
 	
 	protected virtual void Update () {
@@ -400,7 +404,7 @@ public class SelectionController : MonoBehaviour {
             }
         } else {
             selectedObjText.text = "";
-            selectedObjectPanel.SetActive(false);            
+            selectedObjectPanel.SetActive(false);
             Debug.Log("remove text");
         }
     }
