@@ -13,6 +13,8 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
     public GameObject technologyObject;
     public Transform technologyPosition;
 
+    private bool hasResearched = false;
+
     // Use this for initialization
     protected override void Start()
     {
@@ -55,6 +57,16 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
         tech.transform.SetParent(technologyPosition);
     }
 
+    public bool CheckIfResearched()
+    {
+        if (hasResearched == true)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public override void StartResearch()
     {
         if (!researched && !researching)
@@ -75,7 +87,7 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void EndResearch()
     {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
+        hasResearched = true;
     }
 
     public override void OnPointerEnter(PointerEventData pointer)

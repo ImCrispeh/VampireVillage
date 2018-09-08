@@ -19,7 +19,7 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
     {
         base.Start();
         technologyName = "Elixer of Life";
-        technologyDescription = "A soft cloth which lets you perform actions during the day but you still take damage heavily";
+        technologyDescription = "Reduce the hunger rate by half";
         researchRequirement = "Philospher Stone";
         woodCost = 100;
         stoneCost = 100;
@@ -49,7 +49,7 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
     public override void TechnologyEffect()
     {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
