@@ -27,15 +27,15 @@ public class TutorialController : SelectionController {
 
     void Start() {
         Timer._instance.PauseTimer();
-
-        resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
-        townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
+        techBtn.SetActive(false);
     }
 
     protected override void Update() {
         base.Update();
 
-        if (Input.GetMouseButtonDown(0) && (EventSystem.current.currentSelectedGameObject == resourceActionBtn.gameObject || EventSystem.current.currentSelectedGameObject == townActionBtns[1].gameObject)) {
+        if (Input.GetMouseButtonDown(0) && (EventSystem.current.currentSelectedGameObject == resourceActionBtn.gameObject 
+            || EventSystem.current.currentSelectedGameObject == townActionBtns[0].gameObject
+            || EventSystem.current.currentSelectedGameObject == townActionBtns[1].gameObject)) {
             if (availableUnits > 0) {
                 Timer._instance.UnpauseTimer();
                 HideText();
@@ -49,6 +49,30 @@ public class TutorialController : SelectionController {
         if (Input.GetKeyDown(KeyCode.A)) {
             ChangeText();
         }
+    }
+
+    public void SetVariables() {
+        SelectionController cont = selectionCont.GetComponent<SelectionController>();
+
+        selectedObjectPanel = cont.selectedObjectPanel;
+        selectedObjText = cont.selectedObjText;
+        unitBase = cont.unitBase;
+        spawnPoint = cont.spawnPoint;
+        resourceActionBtn = cont.resourceActionBtn;
+        repairActionBtn = cont.repairActionBtn;
+        townActionsContainer = cont.townActionsContainer;
+        townActionBtns = cont.townActionBtns;
+        actionIconsList = cont.actionIconsList;
+        plannedActions = cont.plannedActions;
+        plannedActionRemovalIcons = cont.plannedActionRemovalIcons;
+        plannedActionsPanel = cont.plannedActionsPanel;
+        planningIndicatorPanel = cont.planningIndicatorPanel;
+        portraitPlaceholder = cont.portraitPlaceholder;
+
+        selectionCont.SetActive(false);
+
+        resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
+        townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
     }
 
     public override void ReturnUnit(UnitController unit) {

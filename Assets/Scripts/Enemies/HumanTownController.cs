@@ -42,12 +42,13 @@ public class HumanTownController : MonoBehaviour {
         subjugationFinished = false;
         beingSubjugated = false;
         subjugationBaseSpeed = 1f;
+        subjugationLimit = 100f;
         units = new List<UnitController>();
         enemySpawner = gameObject.GetComponent<EnemySpawner>();
 
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        subjugationCanvas = GameObject.Find("World/Human Town/SubjugationCanvas").GetComponent<Canvas>();
-        subjugationBar = GameObject.Find("World/Human Town/SubjugationCanvas/SubjugationBar").GetComponent<Image>();
+        subjugationCanvas = transform.Find("SubjugationCanvas").gameObject.GetComponent<Canvas>();
+        subjugationBar = transform.Find("SubjugationCanvas/SubjugationBar").GetComponent<Image>();
         subjugationCanvas.gameObject.SetActive(false);            
         
         InvokeRepeating("CalculateSubjugationSpeed", 2, 1);

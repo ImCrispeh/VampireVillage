@@ -49,6 +49,9 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void StartResearch() {
         if (!researched && !researching) {
             if (resources.wood >= woodCost) {
+                if (TutorialController._tutInstance != null) {
+                    Timer._instance.UnpauseTimer();
+                }
                 researchTimer = 0;
                 researching = true;
                 resources.SubtractWood(woodCost);
