@@ -123,7 +123,7 @@ public class HumanTownController : MonoBehaviour {
 
     //get reduced hunger depletion and the town stops spawning enemies for subjugation
     public void SubjugatedBonuses() {
-        ResourceStorage._instance.hungerDepletionRateModifier -= 0.1f;
+        ResourceStorage._instance.hungerDepletionRateModifier *= 0.9f;
         enemySpawner.canSpawn = false;
     }
 

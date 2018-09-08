@@ -78,17 +78,44 @@ public class SelectionController : MonoBehaviour {
             selectedObjText.text = "";
         }
 
-        if ((Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) && !isNightActions) {
+        if ((Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) && !isNightActions) {//actual sending - night time
             isNightActions = true;
             planningIndicatorPanel.SetActive(false);
             SetActionButtonsOnClick(true);
-            
+
             if (!hasExecutedPlanned) {
                 hasExecutedPlanned = true;
                 StartCoroutine("ExecutePlannedActions");
             }
+        }
+        else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions && SoftMantle._instance.researched && !CloakOfDarkness._instance.researched) {
+            if (availableUnits < maxUnits) {
+                ResourceStorage._instance.hungerDepletionRate = 0.005f;
+            }
+            else if (availableUnits == maxUnits) {
+                ResourceStorage._instance.hungerDepletionRate = 0.0025f;
+            }
+            isNightActions = true;
+            planningIndicatorPanel.SetActive(false);
+            SetActionButtonsOnClick(true);
 
-        } else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions) {
+            if (!hasExecutedPlanned) {
+                hasExecutedPlanned = true;
+                StartCoroutine("ExecutePlannedActions");
+            }
+        }
+        else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions && SoftMantle._instance.researched && CloakOfDarkness._instance.researched) {
+            ResourceStorage._instance.hungerDepletionRate = 0.0025f;
+            isNightActions = true;
+            planningIndicatorPanel.SetActive(false);
+            SetActionButtonsOnClick(true);
+
+            if (!hasExecutedPlanned) {
+                hasExecutedPlanned = true;
+                StartCoroutine("ExecutePlannedActions");
+            }
+        }
+        else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions && !SoftMantle._instance.researched && !CloakOfDarkness._instance.researched) {//actual planning - day time
             isNightActions = false;
             planningIndicatorPanel.SetActive(true);
             hasExecutedPlanned = false;
@@ -401,7 +428,7 @@ public class SelectionController : MonoBehaviour {
         } else {
             selectedObjText.text = "";
             selectedObjectPanel.SetActive(false);            
-            Debug.Log("remove text");
+            //Debug.Log("remove text");
         }
     }
 

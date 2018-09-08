@@ -14160,11 +14160,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114362546243117572, guid: 746b79c574071ab45b8ab4df0658e47d,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1858465710}
     - target: {fileID: 114397287577026832, guid: 746b79c574071ab45b8ab4df0658e47d,
         type: 2}
       propertyPath: unitBase
@@ -14175,14 +14170,14 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 611509061}
+    - target: {fileID: 114362546243117572, guid: 746b79c574071ab45b8ab4df0658e47d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1858465710}
     - target: {fileID: 1863954080589778, guid: 746b79c574071ab45b8ab4df0658e47d, type: 2}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 224014616861691016, guid: 746b79c574071ab45b8ab4df0658e47d,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 6.5999756
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 746b79c574071ab45b8ab4df0658e47d, type: 2}
@@ -14656,6 +14651,8 @@ MonoBehaviour:
   partialFeedThreat: 10
   fullFeedThreat: 20
   convertThreat: 30
+  population: 0
+  populationBaseRegenRate: 0
   subjugationBaseSpeed: 0
   subjugationCalculatedSpeed: 0
   subjugationLevel: 0
@@ -14682,7 +14679,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesToSpawn: 2
   heavyEnemiesToSpawn: 0
-  enemy: {fileID: 1577663450091720, guid: badbe2470d2dd574dbc85bbdd69d9d80, type: 2}
   spawnTimer: 0
   timeBetweenSpawns: 1
   isSpawning: 0

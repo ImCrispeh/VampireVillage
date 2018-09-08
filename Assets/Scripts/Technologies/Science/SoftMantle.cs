@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
 {
+    public static SoftMantle _instance;
 
     public Image unresearchedImage;
     public Image connectingBar;
@@ -13,6 +14,15 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
     public GameObject technologyObject;
     public Transform technologyPosition;
     public Technology requiredTechnology;   //add more if you need more than one pre-requiste
+
+    private void Awake() {
+        if (_instance != null && _instance != this) {
+            Destroy(gameObject);
+        }
+        else {
+            _instance = this;
+        }
+    }
 
     // Use this for initialization
     protected override void Start()
@@ -50,6 +60,7 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
     {
         //The effects of the technology which are active once research ends
         //Allows player to send units out during the day but the thirst rate is increased (0.0025f to 0.0050f)
+        //resources.hungerDepletionRate = 0.005f; - this is set in selection controller which checks if this tech has been researched first
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

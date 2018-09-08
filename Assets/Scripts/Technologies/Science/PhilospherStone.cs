@@ -51,7 +51,6 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
         //The effects of the technology which are active once research ends
         //mainBase.defense += 3;
         ResourceStorage._instance.maxHunger += 50;
-        Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
 
@@ -67,7 +66,6 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
                 resources.SubtractStone(stoneCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
             }
         }
     }
@@ -75,7 +73,6 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
     public override void EndResearch()
     {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer)

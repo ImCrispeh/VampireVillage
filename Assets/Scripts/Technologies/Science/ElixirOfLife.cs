@@ -49,7 +49,7 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
     public override void TechnologyEffect()
     {
         //The effects of the technology which are active once research ends
-        
+        resources.hungerDepletionRateModifier *= 0.5f;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }

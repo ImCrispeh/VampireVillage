@@ -6,12 +6,22 @@ using UnityEngine;
 
 public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHandler
 {
+    public static CloakOfDarkness _instance;
 
     public Image unresearchedImage;
     public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
     public Technology requiredTechnology;   //add more if you need more than one pre-requiste
+
+    private void Awake() {
+        if (_instance != null && _instance != this) {
+            Destroy(gameObject);
+        }
+        else {
+            _instance = this;
+        }
+    }
 
     // Use this for initialization
     protected override void Start()
@@ -48,6 +58,7 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
     {
         //The effects of the technology which are active once research ends
         //Allows player to send units out during the day but the thirst rate stay as the default rate (hungerDepletionRate = 0.0025f;)
+        resources.hungerDepletionRate = 0.0025f;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
