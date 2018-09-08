@@ -27,6 +27,7 @@ public class TutorialController : SelectionController {
 
     void Start() {
         Timer._instance.PauseTimer();
+        techBtn.SetActive(false);
     }
 
     protected override void Update() {

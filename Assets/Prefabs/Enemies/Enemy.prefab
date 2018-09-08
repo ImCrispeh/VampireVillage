@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 54750650272564832}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   attack: 3
   attackTimer: 0
   timeBetweenAttacks: 3
+  town: {fileID: 0}
 --- !u!136 &136293485395490252
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -142,7 +143,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 5
+  m_Speed: 12.5
   m_Acceleration: 10
   avoidancePriority: 75
   m_AngularSpeed: 0

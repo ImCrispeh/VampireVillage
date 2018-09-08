@@ -187,7 +187,7 @@ public class SelectionController : MonoBehaviour {
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionBtn.gameObject.SetActive(true);
                 BaseController._instance.ShowCanvas();
-            } else {
+            } else if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 townActionsContainer.SetActive(false);
                 repairActionBtn.gameObject.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(true);

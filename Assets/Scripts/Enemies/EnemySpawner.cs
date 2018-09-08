@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
-        if (Timer._instance.currentTime >= 0.375f && Timer._instance.currentTime <= 0.7f && !isSpawning && enemiesToSpawn > 0) {
+        if (Timer._instance.currentTime >= 0.325f && Timer._instance.currentTime <= 0.6f && !isSpawning && enemiesToSpawn > 0) {
             isSpawning = true;
             hasSetSpawn = false;
         }
