@@ -48,9 +48,9 @@ public class Transmutation : Technology, IPointerEnterHandler, IPointerExitHandl
 
     public override void TechnologyEffect()
     {
-        resources.collectionModifier = 2;
+        //The effects of the technology which are active once research ends
+        // Add a multiplier variable to that it would be resource += (amt * multiplier) in which case multiplier = 2
         Debug.Log("Added " + technologyName + " to the town");
-        //Instantiate(technologyObject, technologyPosition);
     }
 
     public override void StartResearch()

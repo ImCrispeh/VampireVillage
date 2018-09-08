@@ -58,7 +58,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     }
 
     public override void EndResearch() {
-        TechnologyEffect();
+        TechnologyEffect(); 
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {

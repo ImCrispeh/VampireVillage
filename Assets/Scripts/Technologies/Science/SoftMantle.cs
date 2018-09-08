@@ -19,7 +19,7 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
     {
         base.Start();
         technologyName = "Soft Mantle";
-        technologyDescription = "A soft cloth which lets you perform actions during the day but you still take damage heavily";
+        technologyDescription = "A soft cloth which lets you perform actions during the day but you still take damage";
         researchRequirement = "Transmutation";
         woodCost = 5;
         stoneCost = 5;
@@ -49,7 +49,7 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void TechnologyEffect()
     {
         //The effects of the technology which are active once research ends
-        //mainBase.defense += 3;
+        //Allows player to send units out during the day but the thirst rate is increased (0.0025f to 0.0050f)
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
