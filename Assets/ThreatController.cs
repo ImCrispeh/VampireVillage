@@ -8,6 +8,7 @@ public class ThreatController : MonoBehaviour {
 
     public Slider threatBar;
     public float maxThreat;
+    public float minThreat;
     public float threat;
     public int threatLevel;
     public float threatToDeplete;
@@ -23,6 +24,7 @@ public class ThreatController : MonoBehaviour {
     void Start () {
         maxThreat = 100f;
         threat = 0f;
+        minThreat = 0f;
         threatBar = GetComponent<Slider>();
 	}
 	
@@ -32,7 +34,7 @@ public class ThreatController : MonoBehaviour {
 
     public void AddThreat(float amt) {
         threat += amt;
-        threat = Mathf.Clamp(threat, 0f, maxThreat);
+        threat = Mathf.Clamp(threat, minThreat, maxThreat);
         SetThreatLevel();
         threatBar.value = HungerPercentage();
     }
@@ -42,7 +44,7 @@ public class ThreatController : MonoBehaviour {
             threat -= threatToDeplete / threatLevel;
         }
 
-        threat = Mathf.Clamp(threat, 0f, maxThreat);
+        threat = Mathf.Clamp(threat, minThreat, maxThreat);
         SetThreatLevel();
         threatBar.value = HungerPercentage();
     }

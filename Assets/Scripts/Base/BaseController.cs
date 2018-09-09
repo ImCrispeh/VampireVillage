@@ -97,7 +97,7 @@ public class BaseController : MonoBehaviour {
         }
 
         if (health == 0) {
-            GameController._instance.EndGame();
+            SceneController.Instance.EndGame(false, "Your colony lost all of its health");
         }
 
         healthBar.fillAmount = (float)health / (float)maxHealth;
@@ -114,7 +114,7 @@ public class BaseController : MonoBehaviour {
         }
 
         if (health == 0) {
-            GameController._instance.EndGame();
+            SceneController.Instance.EndGame(false, "Your colony lost all of its health");
         }
 
         healthBar.fillAmount = (float)health / (float)maxHealth;

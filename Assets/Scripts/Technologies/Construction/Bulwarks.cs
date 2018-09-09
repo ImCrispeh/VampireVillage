@@ -15,7 +15,7 @@ public class Bulwarks : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Bulwarks";
-        technologyDescription = "Defense + 1" + "\n" + "Bulwarks are constructed into your walls increasing your defences";
+        technologyDescription = "Defense + 2" + "\n" + "Bulwarks are constructed into your walls increasing your defences";
         researchRequirement = "Fortified Walls";
         woodCost = 70;
         stoneCost = 100;
@@ -40,7 +40,7 @@ public class Bulwarks : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 1;
+        mainBase.defense += 2;
         Debug.Log("Added " + technologyName + " to the town");
         Destroy(technologyPosition.Find(requiredTechnology.technologyName).gameObject);
         GameObject tech = Instantiate(technologyObject);

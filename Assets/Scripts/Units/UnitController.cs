@@ -92,7 +92,11 @@ public class UnitController : MonoBehaviour {
                     objectForAction.GetComponent<BaseController>().Repair();
                     break;
                 case SelectionController.Actions.subjugate:
-                    objectForAction.GetComponent<HumanTownController>().Subjugate(this);
+                    if (objectForAction.GetComponent<HumanTownController>() != null) {
+                        objectForAction.GetComponent<HumanTownController>().Subjugate(this);
+                    } else {
+                        objectForAction.GetComponent<EnemySpawner>().Subjugate(this);
+                    }
                     break;
                 default:
                     break;
