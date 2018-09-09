@@ -21038,6 +21038,10 @@ MonoBehaviour:
   portraitPlaceholder: {fileID: 0}
   totalHumanTowns: 0
   subjugatedHumanTowns: 0
+  isTechnologyOpen: 0
+  unitCommons: {fileID: 1158452659557608, guid: cdce56abcbe4bd94d88e0ccb407aaabb,
+    type: 2}
+  isUnitCommonsBuilt: 0
 --- !u!4 &900965605
 Transform:
   m_ObjectHideFlags: 0
@@ -34977,6 +34981,9 @@ MonoBehaviour:
   portraitPlaceholder: {fileID: 0}
   totalHumanTowns: 0
   subjugatedHumanTowns: 0
+  isTechnologyOpen: 0
+  unitCommons: {fileID: 0}
+  isUnitCommonsBuilt: 0
   currText: 0
   textBackground: {fileID: 1435078091}
   tutorialTexts:

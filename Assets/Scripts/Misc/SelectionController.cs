@@ -42,6 +42,9 @@ public class SelectionController : MonoBehaviour {
 
     public bool isTechnologyOpen;
 
+    public GameObject unitCommons;
+    public bool isUnitCommonsBuilt;
+
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
@@ -382,6 +385,13 @@ public class SelectionController : MonoBehaviour {
         availableUnits++;
         maxUnits += unit.humanConvertCollected;
         availableUnits += unit.humanConvertCollected;
+
+        if (maxUnits >= 5 && !isUnitCommonsBuilt) {
+            isUnitCommonsBuilt = true;
+            GameObject commons = Instantiate(unitCommons);
+            commons.transform.SetParent(BaseController._instance.transform);
+        }
+
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
         ResourceStorage._instance.AddStone(unit.stoneCollected);
