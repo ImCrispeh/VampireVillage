@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour {
     public int currentDay;
     private float currentDayTimer;
     public Text speedText;
-    private int speed;
+    public int speed;
     private RectTransform sunAndMoon;
     private Image clockFace;
     private Text timeT;

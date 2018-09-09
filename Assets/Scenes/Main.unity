@@ -447,7 +447,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &5292118
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -829,7 +834,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &19904087
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5087,7 +5097,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &268242438
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7770,7 +7785,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &406547000
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -9633,7 +9653,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &485369811
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -10645,7 +10670,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &535309592
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -10801,7 +10831,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &546406016
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13691,7 +13726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &690334361
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13809,7 +13849,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &711869661
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -15408,7 +15453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &797270994
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -15528,7 +15578,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &806555506
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -15844,7 +15899,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &823166402
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -16402,7 +16462,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &850520130
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -16803,7 +16868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &878783511
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -18728,7 +18798,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &981489608
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -19089,7 +19164,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &999850921
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -24576,7 +24656,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1232476599
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -25008,7 +25093,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1254333617
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -25139,7 +25229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1262900537
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -26559,7 +26654,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1331071075
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -28368,7 +28468,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1418708699
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -29394,7 +29499,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1457238032
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -30908,7 +31018,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1518933133
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -32376,7 +32491,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1583045771
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -33508,7 +33628,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1638224710
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -34024,7 +34149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1661082512
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -34742,7 +34872,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1692115974
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -36058,7 +36193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1762796476
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -38512,7 +38652,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1887541517
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -39099,7 +39244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1906059641
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -39447,7 +39597,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1925388468
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -40857,7 +41012,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &1996958017
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -41588,7 +41748,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &2017101158
 NavMeshObstacle:
   m_ObjectHideFlags: 0

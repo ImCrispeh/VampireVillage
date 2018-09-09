@@ -24,9 +24,14 @@ public class UnitController : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (objectForAction == null && !isReturning) {
-            isPerformingAction = false;
-            ReturnFromAction();
+        // Stop action and return if resource runs out
+        if (objectForAction != null) {
+            if (objectForAction.GetComponent<ResourceController>() != null) {
+                if (objectForAction.GetComponent<ResourceController>().isRespawning && !isReturning) {
+                    isPerformingAction = false;
+                    ReturnFromAction();
+                }
+            }
         }
 
         if (isPerformingAction) {
@@ -83,7 +88,9 @@ public class UnitController : MonoBehaviour {
         if (objectForAction != null) {
             switch (action) {
                 case SelectionController.Actions.collect:
-                    objectForAction.GetComponent<ResourceController>().AddResource(this);
+                    if (!objectForAction.GetComponent<ResourceController>().isRespawning) {
+                        objectForAction.GetComponent<ResourceController>().AddResource(this);
+                    }
                     break;
                 case SelectionController.Actions.partialFeed:
                     objectForAction.GetComponent<HumanTownController>().PartialFeedEffect(this);

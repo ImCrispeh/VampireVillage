@@ -3,29 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceController : MonoBehaviour {
-    public int resourceAmt;
+    public int maxResourceAmt;
+    public int currentResourceAmt;
+    public int resourceCollectionAmt;
+
+    public float respawnTimer;
+    public float timeToRespawn;
+
+    public bool isRespawning;
 
 	void Start () {
-		
+        timeToRespawn = Timer._instance.secondsInFullDay * 5;
+        resourceCollectionAmt = 50;
+        maxResourceAmt = 150;
+        currentResourceAmt = maxResourceAmt;
 	}
 	
 	void Update () {
-		
+		if (isRespawning) {
+            respawnTimer += Time.deltaTime * Timer._instance.speed;
+            if (respawnTimer >= timeToRespawn) {
+                isRespawning = false;
+
+                foreach (Transform child in transform) {
+                    child.gameObject.SetActive(true);
+                }
+
+                gameObject.layer = LayerMask.NameToLayer("Resource");
+                currentResourceAmt = maxResourceAmt;
+                respawnTimer = 0;
+            }
+        }
 	}
 
     public void AddResource(UnitController unit) {
         switch(tag) {
             case "Wood":
-                unit.woodCollected += resourceAmt;
+                unit.woodCollected += resourceCollectionAmt;
                 break;
             case "Stone":
-                unit.stoneCollected += resourceAmt;
+                unit.stoneCollected += resourceCollectionAmt;
                 break;
             case "Gold":
-                unit.goldCollected += resourceAmt;
+                unit.goldCollected += resourceCollectionAmt;
                 break;
             default:
                 break;
+        }
+
+        currentResourceAmt -= resourceCollectionAmt;
+
+        if (currentResourceAmt <= 0) {
+            isRespawning = true;
+
+            foreach (Transform child in transform) {
+                child.gameObject.SetActive(false);
+            }
+
+            gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
     }
 }

@@ -407,7 +407,7 @@ public class SelectionController : MonoBehaviour {
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 selectedObjText.text =
                     selectedObj.tag + "\n"
-                    + selectedObj.GetComponent<ResourceController>().resourceAmt + " " + selectedObj.tag + " available";
+                    + selectedObj.GetComponent<ResourceController>().currentResourceAmt + " " + selectedObj.tag + " available";
             }
 
             if (selectedObj.tag == "HumanTown" && selectedObj.GetComponent<HumanTownController>().beingSubjugated) {
