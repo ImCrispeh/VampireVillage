@@ -67,12 +67,12 @@ public class SelectionController : MonoBehaviour {
             TutorialController._tutInstance.SetVariables();
         }
 	}
-	
-	void Update () {
+
+    void Update() {
         //calling this to continuously update the subjugation level and button for a town
         SetObjText();
         SetActionButton();
-		if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             Select();
         }
 
@@ -82,23 +82,37 @@ public class SelectionController : MonoBehaviour {
             selectedObjText.text = "";
         }
 
-        if ((Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) && !isNightActions) {
-            isNightActions = true;
-            planningIndicatorPanel.SetActive(false);
-            SetActionButtonsOnClick(true);
-            
-            if (!hasExecutedPlanned) {
-                hasExecutedPlanned = true;
-                StartCoroutine("ExecutePlannedActions");
-            }
+        // Allows units to be sent out during the day if technology is researched, else restrict actions to night cycles
+        if (SoftMantle._instance.applyTechnology || CloakOfDarkness._instance.applyTechnology) {
+            if (!isNightActions) {
+                isNightActions = true;
+                planningIndicatorPanel.SetActive(false);
+                SetActionButtonsOnClick(true);
 
-        } else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions) {
-            isNightActions = false;
-            planningIndicatorPanel.SetActive(true);
-            hasExecutedPlanned = false;
-            SetActionButtonsOnClick(false);
+                if (!hasExecutedPlanned) {
+                    hasExecutedPlanned = true;
+                    StartCoroutine("ExecutePlannedActions");
+                }
+            }
+        } else {
+            if ((Timer._instance.currentTime >= 0.75f || Timer._instance.currentTime <= 0.25f) && !isNightActions) {
+                isNightActions = true;
+                planningIndicatorPanel.SetActive(false);
+                SetActionButtonsOnClick(true);
+
+                if (!hasExecutedPlanned) {
+                    hasExecutedPlanned = true;
+                    StartCoroutine("ExecutePlannedActions");
+                }
+
+            } else if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && isNightActions) {
+                isNightActions = false;
+                planningIndicatorPanel.SetActive(true);
+                hasExecutedPlanned = false;
+                SetActionButtonsOnClick(false);
+            }
         }
-	}
+    }
     
     // Gets object that was clicked on and makes it selected
     public void Select() {

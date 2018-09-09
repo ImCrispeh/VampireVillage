@@ -45,6 +45,7 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
         mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
         GameObject tech = Instantiate(technologyObject);
+        tech.name = technologyName;
         tech.transform.SetParent(technologyPosition);
     }
 

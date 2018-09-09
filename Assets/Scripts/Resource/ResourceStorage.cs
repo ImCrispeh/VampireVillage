@@ -58,7 +58,15 @@ public class ResourceStorage : MonoBehaviour {
 
     public void SubtractHunger() {
         if (SelectionController._instance != null) {
-            hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits;
+            if (SoftMantle._instance.applyTechnology && !CloakOfDarkness._instance.applyTechnology) {
+                if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && SelectionController._instance.availableUnits < SelectionController._instance.maxUnits) {
+                    hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits * 2;
+                } else {
+                    hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits;
+                }
+            } else {
+                hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits;
+            }
         } else {
             hunger -= hungerDepletionRate * hungerDepletionRateModifier;
         }

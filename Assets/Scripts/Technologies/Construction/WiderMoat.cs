@@ -26,8 +26,9 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
         researched = false;
         researching = false;
         applyTechnology = false;
-        technologyImage = unresearchedImage;    
-	}
+        technologyImage = unresearchedImage;
+        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name + "/Walls").transform;
+    }
 	
 	// Update is called once per frame
 	protected override void Update () {
@@ -42,7 +43,10 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
-        //Instantiate(technologyObject, technologyPosition);
+        Destroy(technologyPosition.Find(requiredTechnology.technologyName).gameObject);
+        GameObject tech = Instantiate(technologyObject);
+        tech.name = technologyName;
+        tech.transform.SetParent(technologyPosition);
     }
 
     public override void StartResearch() {

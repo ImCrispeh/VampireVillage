@@ -29,8 +29,9 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
         applyTechnology = false;
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
-        proceedingTechnologyBar.Add(connectingBar2);     
-	}
+        proceedingTechnologyBar.Add(connectingBar2);
+        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name + "/Walls").transform;
+    }
 	
 	// Update is called once per frame
 	protected override void Update () {
@@ -45,7 +46,7 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
-        //Instantiate(technologyObject, technologyPosition);
+        technologyPosition.Find(requiredTechnology.technologyName).gameObject.name = technologyName;
     }
 
     public override void StartResearch() {

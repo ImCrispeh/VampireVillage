@@ -42,10 +42,11 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 1;
+        mainBase.defense += 3;
         Debug.Log("Added " + technologyName + " to the town");
-        Destroy(technologyPosition.GetChild(0).gameObject);
+        Destroy(technologyPosition.Find(requiredTechnology.technologyName).gameObject);
         GameObject tech = Instantiate(technologyObject);
+        tech.name = technologyName;
         tech.transform.SetParent(technologyPosition);
     }
 

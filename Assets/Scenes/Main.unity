@@ -315,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unresearchedImage: {fileID: 1842714873}
   connectingBar: {fileID: 1224401280}
-  technologyObject: {fileID: 1226979132176396, guid: 2cea1c6966cb7574982696cc7e43b6b3,
+  technologyObject: {fileID: 1816066130965526, guid: 97e06dcc8e7d40e4d824ceee713658ad,
     type: 2}
   technologyPosition: {fileID: 0}
   requiredTechnology: {fileID: 13567990}
@@ -621,7 +621,7 @@ MonoBehaviour:
   unresearchedImage: {fileID: 736678818}
   connectingBar: {fileID: 1792666211}
   connectingBar2: {fileID: 1722145545}
-  technologyObject: {fileID: 1226979132176396, guid: c3f7e625546ac424188957ee69a3660b,
+  technologyObject: {fileID: 1774494645561372, guid: 027dca2bce0304d4dbaf1c99440018f4,
     type: 2}
   technologyPosition: {fileID: 0}
   requiredTechnology: {fileID: 283602277}
@@ -6268,7 +6268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unresearchedImage: {fileID: 1355949149}
   connectingBar: {fileID: 1927271924}
-  technologyObject: {fileID: 1226979132176396, guid: c3f7e625546ac424188957ee69a3660b,
+  technologyObject: {fileID: 1313446932810858, guid: c1ac6b655f6cca348ae0887ba857e936,
     type: 2}
   technologyPosition: {fileID: 0}
 --- !u!114 &283602278
@@ -31019,7 +31019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unresearchedImage: {fileID: 1054550721}
   connectingBar: {fileID: 0}
-  technologyObject: {fileID: 0}
+  technologyObject: {fileID: 1310428878384118, guid: 38ae3c2ec0213554eafec2b2cc344c71,
+    type: 2}
   technologyPosition: {fileID: 0}
   requiredTechnology: {fileID: 648434254}
 --- !u!114 &1308761158
@@ -31209,7 +31210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unresearchedImage: {fileID: 1974132918}
-  technologyObject: {fileID: 0}
+  technologyObject: {fileID: 1474823736742730, guid: 3bb27a2eb458c944d8287e421fc088b5,
+    type: 2}
   technologyPosition: {fileID: 0}
   requiredTechnology: {fileID: 1334128205}
 --- !u!114 &1312231523
@@ -31800,7 +31802,8 @@ MonoBehaviour:
   unresearchedImage: {fileID: 653837633}
   connectingBar: {fileID: 1739297558}
   connectingBar2: {fileID: 2026206316}
-  technologyObject: {fileID: 0}
+  technologyObject: {fileID: 1816066130965526, guid: 97e06dcc8e7d40e4d824ceee713658ad,
+    type: 2}
   technologyPosition: {fileID: 0}
   requiredTechnology: {fileID: 5057337}
 --- !u!114 &1334128206
@@ -33460,7 +33463,8 @@ MonoBehaviour:
   unresearchedImage: {fileID: 590469183}
   connectingBar: {fileID: 1013253935}
   connectingBar2: {fileID: 1329748836}
-  technologyObject: {fileID: 0}
+  technologyObject: {fileID: 1772613400613648, guid: c82c0f18c6953144d9852b367cf8dbe4,
+    type: 2}
   technologyPosition: {fileID: 0}
 --- !u!114 &1399254495
 MonoBehaviour:
@@ -44099,6 +44103,7 @@ MonoBehaviour:
   timeBetweenNoHungerDmg: 1
   enemiesInRange: []
   miniCanvas: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!208 &1791219392
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -44109,7 +44114,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1.25, y: 0.5, z: 1.375}
+  m_Extents: {x: 1.5, y: 0.5, z: 1.425}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

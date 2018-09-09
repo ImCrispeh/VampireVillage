@@ -58,7 +58,7 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
     {
         //The effects of the technology which are active once research ends
         //Allows player to send units out during the day but the thirst rate stay as the default rate (hungerDepletionRate = 0.0025f;)
-        resources.hungerDepletionRate = 0.0025f;
+        //resources.hungerDepletionRate = 0.0025f;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
