@@ -30,19 +30,12 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Start() {
-        difficultyMultiplier = 1;
+        difficultyMultiplier = 0.5f;
         canSpawn = true;
     }
 
     void Update() {
         if (Timer._instance.currentTime >= 0.325f && Timer._instance.currentTime <= 0.6f && !isSpawning && enemiesToSpawn > 0) {
-            isSpawning = true;
-            hasSetSpawn = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.S)) {
-            heavyEnemiesToSpawn = 2;
-            enemiesToSpawn = 6;
             isSpawning = true;
             hasSetSpawn = false;
         }
@@ -107,7 +100,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void SetEnemiesToSpawn() {
-        enemiesToSpawn = 2 * ThreatController._instance.threatLevel;
+        enemiesToSpawn = (int)(1.5 * ThreatController._instance.threatLevel);
         heavyEnemiesToSpawn = ThreatController._instance.threatLevel / 2;
         hasSetSpawn = true;
     }

@@ -159,7 +159,8 @@ public class TutorialController : SelectionController {
         } else {
             Timer._instance.UnpauseTimer();
             selectionCont.SetActive(true);
-
+            resourceActionBtn.interactable = true;
+            repairActionBtn.interactable = true;
             Destroy(this.gameObject);
         }
     }

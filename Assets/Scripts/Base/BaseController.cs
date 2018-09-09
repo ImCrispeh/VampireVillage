@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseController : MonoBehaviour {
     public static BaseController _instance;
@@ -19,6 +20,7 @@ public class BaseController : MonoBehaviour {
 
     public List<GameObject> enemiesInRange;
     public GameObject miniCanvas;
+    public Image healthBar;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -33,7 +35,8 @@ public class BaseController : MonoBehaviour {
         health = maxHealth;
         enemiesInRange = new List<GameObject>();
         miniCanvas = GameObject.Find("MiniCanvas");
-        miniCanvas.SetActive(false);
+        healthBar = miniCanvas.transform.Find("HealthBar").GetComponent<Image>();
+        //miniCanvas.SetActive(false);
     }
 	
 	void Update () {
@@ -78,6 +81,8 @@ public class BaseController : MonoBehaviour {
         }
 
         SelectionController._instance.SetObjText();
+
+        healthBar.fillAmount = (float)health / (float)maxHealth;
     }
 
     public void TakeDamage(int amt) {
@@ -94,6 +99,8 @@ public class BaseController : MonoBehaviour {
         if (health == 0) {
             GameController._instance.EndGame();
         }
+
+        healthBar.fillAmount = (float)health / (float)maxHealth;
     }
 
     public void TakeHungerDamage(int amt) {
@@ -109,6 +116,8 @@ public class BaseController : MonoBehaviour {
         if (health == 0) {
             GameController._instance.EndGame();
         }
+
+        healthBar.fillAmount = (float)health / (float)maxHealth;
     }
 
     public bool IsFullHealth() {
