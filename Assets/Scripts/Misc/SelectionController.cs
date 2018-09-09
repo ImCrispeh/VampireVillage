@@ -36,6 +36,8 @@ public class SelectionController : MonoBehaviour {
     public GameObject planningIndicatorPanel;
     public RawImage portraitPlaceholder;
 
+    public GameObject unitCommons;
+
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
@@ -111,6 +113,15 @@ public class SelectionController : MonoBehaviour {
                 hasExecutedPlanned = false;
                 SetActionButtonsOnClick(false);
             }
+        }
+
+        if (maxUnits >= 5)
+        {
+            Instantiate(unitCommons);
+        }
+        else
+        {
+            Destroy(unitCommons);
         }
     }
     
