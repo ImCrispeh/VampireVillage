@@ -18,6 +18,7 @@ public class TutorialController : SelectionController {
 
     public GameObject selectionCont;
     public GameObject techBtn;
+    public GameObject skipBtn;
 
     private void Awake() {
         if (_tutInstance != null && _tutInstance != this) {
@@ -102,6 +103,7 @@ public class TutorialController : SelectionController {
         spawnPoint = cont.spawnPoint;
         resourceActionBtn = cont.resourceActionBtn;
         repairActionBtn = cont.repairActionBtn;
+        mainHumanBaseSubjugateBtn = cont.mainHumanBaseSubjugateBtn;
         townActionsContainer = cont.townActionsContainer;
         townActionBtns = cont.townActionBtns;
         actionIconsList = cont.actionIconsList;
@@ -117,6 +119,8 @@ public class TutorialController : SelectionController {
         plannedActionsPanel = cont.plannedActionsPanel;
         planningIndicatorPanel = cont.planningIndicatorPanel;
         portraitPlaceholder = cont.portraitPlaceholder;
+
+        totalHumanTowns = cont.totalHumanTowns;
 
         selectionCont.SetActive(false);
 
@@ -140,6 +144,7 @@ public class TutorialController : SelectionController {
         if (currText < tutorialTexts.Length - 1) {
             currText++;
             textBackground.enabled = true;
+            skipBtn.SetActive(true);
             tutorialTexts[currText].SetActive(true);
 
             if (currText == 2) {
@@ -178,6 +183,24 @@ public class TutorialController : SelectionController {
             }
         }
         textBackground.enabled = false;
+        skipBtn.SetActive(false);
         tutorialTexts[currText].SetActive(false);
+    }
+
+    public void SkipTutorial() {
+        foreach (GameObject obj in feedTutIndicators) {
+            obj.SetActive(false);
+        }
+
+        foreach (GameObject obj in woodTutIndicators) {
+            obj.SetActive(false);
+        }
+
+        Timer._instance.UnpauseTimer();
+        selectionCont.SetActive(true);
+        techBtn.SetActive(true);
+        resourceActionBtn.interactable = true;
+        repairActionBtn.interactable = true;
+        Destroy(this.gameObject);
     }
 }

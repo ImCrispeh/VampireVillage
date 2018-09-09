@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 54656552277300222}
   m_Layer: 0
   m_Name: HeavyKnight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -499,8 +499,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908478582480332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.4, z: 0.5}
+  m_LocalPosition: {x: -1.2, y: 1.09, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.3, z: 1.4}
   m_Children:
   - {fileID: 4841073973668348}
   - {fileID: 4585211128057138}
@@ -813,7 +813,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!95 &95757366576905406
 Animator:
@@ -844,13 +844,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ac34ee588a7244b9f530c6cca2e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 195535296201665754}
+  agent: {fileID: 195728907484304394, guid: 325d0ec8d6742cb45bea649522b45ca9, type: 2}
   isMovingToAttack: 0
   isAttacking: 0
   health: 23
-  attack: 3
+  attack: 5
   attackTimer: 0
-  timeBetweenAttacks: 4
+  timeBetweenAttacks: 8
   town: {fileID: 1278006990840236, guid: 657d388d82cc1764ca9a7cdef0db62b5, type: 2}
 --- !u!136 &136675106789909474
 CapsuleCollider:
@@ -939,7 +939,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 5
+  m_Speed: 12.5
   m_Acceleration: 10
   avoidancePriority: 75
   m_AngularSpeed: 0

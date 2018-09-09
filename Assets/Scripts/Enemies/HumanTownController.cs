@@ -19,10 +19,8 @@ public class HumanTownController : MonoBehaviour {
     public float subjugationLimit;
 
     public List<UnitController> units;
-    public ThreatController threatCont;
     public bool beingSubjugated;
     public bool subjugationFinished;
-    public EnemySpawner enemySpawner;
 
     public Canvas subjugationCanvas;
     public Image subjugationBar;
@@ -44,7 +42,6 @@ public class HumanTownController : MonoBehaviour {
         subjugationBaseSpeed = 1f;
         subjugationLimit = 100f;
         units = new List<UnitController>();
-        enemySpawner = gameObject.GetComponent<EnemySpawner>();
 
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         subjugationCanvas = transform.Find("SubjugationCanvas").gameObject.GetComponent<Canvas>();
@@ -125,7 +122,11 @@ public class HumanTownController : MonoBehaviour {
     //get reduced hunger depletion and the town stops spawning enemies for subjugation
     public void SubjugatedBonuses() {
         ResourceStorage._instance.hungerDepletionRateModifier *= 0.9f;
-        enemySpawner.canSpawn = false;
+        SelectionController._instance.subjugatedHumanTowns++;
+
+        // Set minimum threat
+        ThreatController._instance.minThreat += 20f;
+        ThreatController._instance.AddThreat(0);
     }
 
     public void RegenPopulation() {

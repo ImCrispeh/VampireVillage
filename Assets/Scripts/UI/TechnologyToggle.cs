@@ -34,9 +34,11 @@ public class TechnologyToggle : MonoBehaviour {
 
         clicked = !clicked;
         if (!clicked) {
+            SelectionController._instance.isTechnologyOpen = false;
             rect.localScale = new Vector3(0, 0, 0);
         }
         else {
+            SelectionController._instance.isTechnologyOpen = true;
             rect.localScale = scale;
         }
     }

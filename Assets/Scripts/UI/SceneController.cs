@@ -9,6 +9,10 @@ public class SceneController : MonoBehaviour {
     public GameObject pauseMenu;
     public bool togglePause;
 
+    public bool isGameOver;
+    public GameObject gameOverScreen;
+    public Text gameOverText;
+
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
     }
@@ -28,7 +32,7 @@ public class SceneController : MonoBehaviour {
 	
 	void Update () {
         //checks if we're in the game scene then pauses the game by flipping the bool
-        if (SceneManager.GetActiveScene().buildIndex == 1 && Input.GetKeyDown(KeyCode.Escape)) {
+        if (SceneManager.GetActiveScene().buildIndex == 1 && Input.GetKeyDown(KeyCode.Escape) && !isGameOver) {
             if (!togglePause) {
                 Time.timeScale = 0;
                 pauseMenu.SetActive(true);                
@@ -49,6 +53,8 @@ public class SceneController : MonoBehaviour {
     public void ResumeGame() {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
+        gameOverScreen.SetActive(false);
         togglePause = !togglePause;
     }
 
@@ -56,10 +62,39 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadSceneAsync(0);
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
+        gameOverScreen.SetActive(false);
         togglePause = !togglePause;
+        isGameOver = false;
     }
 
     public void QuitGame() {
         Application.Quit();
+    }
+
+    public void RestartGame() {
+        Timer._instance.UnpauseTimer();
+        isGameOver = false;
+        pauseMenu.SetActive(false);
+        pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
+        gameOverScreen.SetActive(false);
+        SceneManager.LoadScene(1);
+    }
+
+    public void EndGame(bool isWin, string message) {
+        isGameOver = true;
+        Timer._instance.PauseTimer();
+        pauseMenu.SetActive(true);
+        pauseMenu.transform.GetChild(0).gameObject.SetActive(false);
+        if (isWin) {
+            gameOverText.text =
+                "You Win" + "\n"
+                + message;
+        } else {
+            gameOverText.text =
+                "You Lose" + "\n"
+                + message;
+        }
+        gameOverScreen.SetActive(true);
     }
 }

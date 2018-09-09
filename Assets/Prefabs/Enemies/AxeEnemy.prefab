@@ -1663,8 +1663,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698443035412092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4531262821184106}
   - {fileID: 4179906424208590}
@@ -2220,7 +2220,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!95 &95054256034425326
 Animator:
@@ -2269,14 +2269,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ac34ee588a7244b9f530c6cca2e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 195140687706890084}
+  agent: {fileID: 0}
   isMovingToAttack: 0
   isAttacking: 0
-  health: 23
-  attack: 2
+  health: 20
+  attack: 3
   attackTimer: 0
-  timeBetweenAttacks: 4
-  town: {fileID: 1278006990840236, guid: 657d388d82cc1764ca9a7cdef0db62b5, type: 2}
+  timeBetweenAttacks: 3
+  town: {fileID: 0}
 --- !u!136 &136540762822764984
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2406,8 +2406,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1698443035412092}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 5
+  m_Radius: 0.1
+  m_Speed: 12.5
   m_Acceleration: 10
   avoidancePriority: 75
   m_AngularSpeed: 0

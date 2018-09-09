@@ -41,7 +41,9 @@ public class UnitController : MonoBehaviour {
                 SelectionController._instance.ReturnUnit(this);
             }
         }
-	}
+
+        this.transform.LookAt(new Vector3(agent.destination.x, transform.position.y, agent.destination.z));
+    }
 
     public bool HasReachedDestination() {
         if (!agent.pathPending) {
@@ -57,7 +59,7 @@ public class UnitController : MonoBehaviour {
     // Move unit to whatever was selected
     public void Move(GameObject dest) {
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(Vector3.Lerp(dest.transform.position, transform.position, 0.05f), out hit, 4f, NavMesh.AllAreas)) {
+        if (NavMesh.SamplePosition(Vector3.Lerp(dest.transform.position, transform.position, 0.05f), out hit, 10f, NavMesh.AllAreas)) {
             agent.destination = hit.position;
         }
     }
@@ -72,6 +74,10 @@ public class UnitController : MonoBehaviour {
     // Perform action based on string passed in by button click
     public IEnumerator PerformAction() {
         Debug.Log("performing action");
+        if(objectForAction.ToString().Contains("Wood")){
+            Debug.Log("YUREEKA");
+        }
+        Debug.Log(objectForAction);
         yield return new WaitForSeconds(2f);
 
         if (objectForAction != null) {
@@ -92,7 +98,11 @@ public class UnitController : MonoBehaviour {
                     objectForAction.GetComponent<BaseController>().Repair();
                     break;
                 case SelectionController.Actions.subjugate:
-                    objectForAction.GetComponent<HumanTownController>().Subjugate(this);
+                    if (objectForAction.GetComponent<HumanTownController>() != null) {
+                        objectForAction.GetComponent<HumanTownController>().Subjugate(this);
+                    } else {
+                        objectForAction.GetComponent<EnemySpawner>().Subjugate(this);
+                    }
                     break;
                 default:
                     break;

@@ -25,7 +25,7 @@ public class Subjugation : Technology, IPointerEnterHandler, IPointerExitHandler
     protected override void Start() {
         base.Start();
         technologyName = "Subjugation";
-        technologyDescription = "Enables the subjugation action on towns. Subjugated towns provide passive hunger regeneration";
+        technologyDescription = "Enables the subjugation action on towns. Subjugated towns provide passive hunger regeneration but also increase minimum threat";
         researchRequirement = "Cloak of darkness";
         woodCost = 100;
         stoneCost = 100;

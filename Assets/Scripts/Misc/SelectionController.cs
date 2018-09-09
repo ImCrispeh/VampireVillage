@@ -21,6 +21,7 @@ public class SelectionController : MonoBehaviour {
 
     public Button resourceActionBtn;
     public Button repairActionBtn;
+    public Button mainHumanBaseSubjugateBtn;
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
     public enum Actions { partialFeed, fullFeed, convert, collect, repair, subjugate };
@@ -36,7 +37,13 @@ public class SelectionController : MonoBehaviour {
     public GameObject planningIndicatorPanel;
     public RawImage portraitPlaceholder;
 
+    public int totalHumanTowns;
+    public int subjugatedHumanTowns;
+
+    public bool isTechnologyOpen;
+
     public GameObject unitCommons;
+    public bool isUnitCommonsBuilt;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -64,6 +71,8 @@ public class SelectionController : MonoBehaviour {
         ResourceStorage._instance.UpdateResourceText();
         portraitPlaceholder = GameObject.Find("Canvas/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
         portraitPlaceholder.enabled = false;
+
+        totalHumanTowns = FindObjectsOfType<HumanTownController>().Length;
 
         if (TutorialController._tutInstance != null) {
             TutorialController._tutInstance.SetVariables();
@@ -115,39 +124,40 @@ public class SelectionController : MonoBehaviour {
             }
         }
 
-        if (maxUnits >= 5)
-        {
-            Instantiate(unitCommons);
+        if (Input.GetKeyDown(KeyCode.O)) {
+            BaseController._instance.TakeDamage(100);
         }
-        else
-        {
-            Destroy(unitCommons);
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            Subjugation._instance.researched = true;
         }
     }
     
     // Gets object that was clicked on and makes it selected
     public void Select() {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!isTechnologyOpen) {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit)) {
+            if (Physics.Raycast(ray, out hit)) {
 
-            // Remove highlight from previously selected object and deselect object (only if not cliking on the UI)
-            if (EventSystem.current.IsPointerOverGameObject()) {
-                return;
-            } else if (selectedObj != null) {
-                DeselectObj();
-            }
-
-            if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) {
-                HighlightSelected(hit);
-
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Resource") || hit.transform.gameObject.tag == "HumanTown" || hit.transform.gameObject.tag == "Base") {
-                    SetActionButton();
+                // Remove highlight from previously selected object and deselect object (only if not cliking on the UI)
+                if (EventSystem.current.IsPointerOverGameObject()) {
+                    return;
+                } else if (selectedObj != null) {
+                    DeselectObj();
                 }
 
-                SetObjText();
-                SetObjPortrait();
+                if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) {
+                    HighlightSelected(hit);
+
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Resource") || hit.transform.gameObject.tag == "HumanTown" || hit.transform.gameObject.tag == "Base" || hit.transform.gameObject.tag == "HumanBase") {
+                        SetActionButton();
+                    }
+
+                    SetObjText();
+                    SetObjPortrait();
+                }
             }
         }
     }
@@ -195,33 +205,42 @@ public class SelectionController : MonoBehaviour {
 
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionBtn.gameObject.SetActive(false);
+                mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
                 townActionsContainer.SetActive(true);
                 if (!Subjugation._instance.researched) {
                     townActionBtns[3].interactable = false;
-                }
-                else if (Subjugation._instance.researched && !town.subjugationFinished) {
+                } else if (Subjugation._instance.researched && !town.subjugationFinished) {
                     townActionBtns[3].interactable = true;
-                }
-                else if (Subjugation._instance.researched && town.subjugationFinished) {
+                } else if (Subjugation._instance.researched && town.subjugationFinished) {
                     townActionBtns[3].interactable = false;
                 }
                 //BaseController._instance.HideCanvas();
-            }
-            else if (selectedObj.tag == "Base") {
+            } else if (selectedObj.tag == "HumanBase") {
+                Debug.Log("blah");
+                townActionsContainer.SetActive(false);
+                resourceActionBtn.gameObject.SetActive(false);
+                repairActionBtn.gameObject.SetActive(false);
+                mainHumanBaseSubjugateBtn.gameObject.SetActive(true);
+                mainHumanBaseSubjugateBtn.interactable = (subjugatedHumanTowns == totalHumanTowns);
+
+            } else if (selectedObj.tag == "Base") {
                 townActionsContainer.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionBtn.gameObject.SetActive(true);
-                BaseController._instance.ShowCanvas();
+                mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
+                //BaseController._instance.ShowCanvas();
             } else if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 townActionsContainer.SetActive(false);
                 repairActionBtn.gameObject.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(true);
+                mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
                 //BaseController._instance.HideCanvas();
             }
         } else {
             townActionsContainer.SetActive(false);
             repairActionBtn.gameObject.SetActive(false);
             resourceActionBtn.gameObject.SetActive(false);
+            mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
             //BaseController._instance.HideCanvas();
         }
     }
@@ -236,7 +255,7 @@ public class SelectionController : MonoBehaviour {
             } else {
                 availableUnits--;
                 NavMeshHit hit;
-                if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
                     SpawnUnit(hit.position, selectedObj, action);
                 }
             }
@@ -328,7 +347,7 @@ public class SelectionController : MonoBehaviour {
                     } else {
                         availableUnits--;
                         NavMeshHit hit;
-                        if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                        if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
                             SpawnUnit(hit.position, planned.objectForAction, planned.action);
                             plannedActions.RemoveAt(0);
                             Destroy(plannedActionRemovalIcons[0]);
@@ -366,6 +385,13 @@ public class SelectionController : MonoBehaviour {
         availableUnits++;
         maxUnits += unit.humanConvertCollected;
         availableUnits += unit.humanConvertCollected;
+
+        if (maxUnits >= 5 && !isUnitCommonsBuilt) {
+            isUnitCommonsBuilt = true;
+            GameObject commons = Instantiate(unitCommons);
+            commons.transform.SetParent(BaseController._instance.transform);
+        }
+
         ResourceStorage._instance.AddWood(unit.woodCollected);
         ResourceStorage._instance.AddHunger(unit.hungerCollected);
         ResourceStorage._instance.AddStone(unit.stoneCollected);
@@ -388,6 +414,7 @@ public class SelectionController : MonoBehaviour {
                 Debug.Log("Town selected, yes subjugation");
                 selectedObjText.text =
                     "Human Town" + "\n"
+                    + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
                     + "Subjugation level: " + selectedObj.GetComponent<HumanTownController>().subjugationLevel + "/" + selectedObj.GetComponent<HumanTownController>().subjugationLimit;
             }
@@ -395,7 +422,7 @@ public class SelectionController : MonoBehaviour {
                 Debug.Log("Town selected, yes subjugation");
                 selectedObjText.text =
                     "Human Town" + "\n"
-                    + "Population: " + selectedObj.GetComponent<HumanTownController>().population + "\n"
+                    + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
                     + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
                     + "Subjugated: provides small regeneration to your hunger";
             }
@@ -410,7 +437,8 @@ public class SelectionController : MonoBehaviour {
             if (selectedObj.tag == "HumanBase") {
                 selectedObjText.text =
                     "Main Human Base" + "\n"
-                    + "Will send out attacks against you based on your level of threat";
+                    + "Will send out attacks against you based on your level of threat" + "\n"
+                    + "Can be subjugated after all towns are subjugated";
             }
 
             if (selectedObj.tag == "Base") {
@@ -488,6 +516,8 @@ public class SelectionController : MonoBehaviour {
     public void SetActionButtonsOnClick(bool isNight) {
         resourceActionBtn.onClick.RemoveAllListeners();
         repairActionBtn.onClick.RemoveAllListeners();
+        mainHumanBaseSubjugateBtn.onClick.RemoveAllListeners();
+
 
         foreach (Button btn in townActionBtns) {
             btn.onClick.RemoveAllListeners();
@@ -496,6 +526,7 @@ public class SelectionController : MonoBehaviour {
         if (isNight) {
             resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
             repairActionBtn.onClick.AddListener(() => SendUnit(Actions.repair));
+            mainHumanBaseSubjugateBtn.onClick.AddListener(() => SendUnit(Actions.subjugate));
             townActionBtns[0].onClick.AddListener(() => SendUnit(Actions.partialFeed));
             townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
             townActionBtns[2].onClick.AddListener(() => SendUnit(Actions.convert));
@@ -503,6 +534,7 @@ public class SelectionController : MonoBehaviour {
         } else {
             resourceActionBtn.onClick.AddListener(() => PlanAction(Actions.collect));
             repairActionBtn.onClick.AddListener(() => PlanAction(Actions.repair));
+            mainHumanBaseSubjugateBtn.onClick.AddListener(() => PlanAction(Actions.subjugate));
             townActionBtns[0].onClick.AddListener(() => PlanAction(Actions.partialFeed));
             townActionBtns[1].onClick.AddListener(() => PlanAction(Actions.fullFeed));
             townActionBtns[2].onClick.AddListener(() => PlanAction(Actions.convert));

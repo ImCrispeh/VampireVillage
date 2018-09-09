@@ -16,6 +16,13 @@ public class EnemyController : MonoBehaviour {
     public float timeBetweenAttacks;
     public GameObject town;
 
+    public AudioClip battle1;
+    public AudioClip battle2;
+    public AudioClip battle3;
+    public AudioClip battle4;
+    public AudioClip battle5;
+    public AudioClip battle6;
+
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
     }
@@ -42,10 +49,12 @@ public class EnemyController : MonoBehaviour {
             if (attackTimer >= timeBetweenAttacks) {
                 BaseController._instance.TakeDamage(attack);
                 attackTimer -= timeBetweenAttacks;
+                Debug.Log("Frequency");
+                SoundManager.instance.RandomizeSfx(battle1, battle2, battle3, battle4, battle5, battle6);
             }
         }
 
-        this.transform.LookAt(new Vector3(BaseController._instance.transform.position.x, 0.5f, BaseController._instance.transform.position.z));
+        this.transform.LookAt(new Vector3(BaseController._instance.transform.position.x, transform.position.y, BaseController._instance.transform.position.z));
     }
 
     public void SetStats(float threatLevel, float difficulty) {
@@ -56,7 +65,7 @@ public class EnemyController : MonoBehaviour {
     public void MoveToAttack() {
         Vector3 basePos = BaseController._instance.transform.position;
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(Vector3.Lerp(basePos, transform.position, 0.05f), out hit, 4f, NavMesh.AllAreas)) {
+        if (NavMesh.SamplePosition(Vector3.Lerp(basePos, transform.position, 0.05f), out hit, 10f, NavMesh.AllAreas)) {
             agent.destination = hit.position;
         }
         isMovingToAttack = true;
