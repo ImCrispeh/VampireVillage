@@ -32,9 +32,9 @@ public class ResourceStorage : MonoBehaviour {
 
     void Start () {
         maxHunger = 100f;
-        hungerDepletionRate = 0.0025f;
+        hungerDepletionRate = 0.01f;
         hungerDepletionRateModifier = 1f;
-        hunger = 20f;
+        hunger = 15f;
         UpdateResourceText();
         hungerBar.value = HungerPercentage();
         collectionModifier = 1;

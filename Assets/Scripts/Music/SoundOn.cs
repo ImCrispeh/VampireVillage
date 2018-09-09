@@ -24,7 +24,7 @@ public class SoundOn : MonoBehaviour
         if (other.name == "Moon")
         {
             isNight = true;
-            SoundManager.instance.RandomMusic(isNight, nightTrack1);
+            SoundManager.instance.RandomMusic(isNight, nightTrack1, nightTrack2);
             weights[0] = 1.0f;
             weights[1] = 0.0f;
             mixer.TransitionToSnapshots(snapshots, weights, 0.5f);
@@ -33,7 +33,7 @@ public class SoundOn : MonoBehaviour
         {
             isNight = false;
             //add any tracks as a parameter (ie RandomMusic(isNight, dayTrack1, dayTrack2))
-            SoundManager.instance.RandomMusic(isNight, dayTrack1);
+            SoundManager.instance.RandomMusic(isNight, dayTrack1, dayTrack2);
             weights[0] = 0.0f;
             weights[1] = 1.0f;
             mixer.TransitionToSnapshots(snapshots, weights, 0.5f);
