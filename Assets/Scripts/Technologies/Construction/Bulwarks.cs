@@ -20,7 +20,7 @@ public class Bulwarks : Technology, IPointerEnterHandler, IPointerExitHandler {
         woodCost = 70;
         stoneCost = 100;
         goldCost = 50;
-        researchTime = 15f; 
+        researchTime = 60f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

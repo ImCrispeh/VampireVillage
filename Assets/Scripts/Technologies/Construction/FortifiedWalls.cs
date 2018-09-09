@@ -20,9 +20,9 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
         technologyDescription = "Defense + 1" + "\n" + "Your stone walls are fortified increasing their effectiveness";
         researchRequirement = "Stone Walls";
         woodCost = 20;
-        stoneCost = 60;
+        stoneCost = 80;
         goldCost = 10;
-        researchTime = 5f; 
+        researchTime = 40f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

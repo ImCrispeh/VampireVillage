@@ -21,7 +21,7 @@ public class ShortSwords : Technology, IPointerEnterHandler, IPointerExitHandler
         woodCost = 20;
         stoneCost = 20;
         goldCost = 20;
-        researchTime = 5f; 
+        researchTime = 15f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

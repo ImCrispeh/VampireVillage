@@ -21,7 +21,7 @@ public class Battlements : Technology, IPointerEnterHandler, IPointerExitHandler
         woodCost = 10;
         stoneCost = 70;
         goldCost = 20;
-        researchTime = 5f; 
+        researchTime = 30f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

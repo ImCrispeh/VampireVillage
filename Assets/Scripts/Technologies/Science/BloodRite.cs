@@ -21,10 +21,10 @@ public class BloodRite : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Blood Rite";
         technologyDescription = "Increase the thirst bar by 100";
         researchRequirement = "Philospher Stone";
-        woodCost = 10;
-        stoneCost = 10;
-        goldCost = 50;
-        researchTime = 5f;
+        woodCost = 80;
+        stoneCost = 80;
+        goldCost = 100;
+        researchTime = 60f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

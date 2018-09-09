@@ -22,7 +22,7 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         woodCost = 20;
         stoneCost = 0;
         goldCost = 0;
-        researchTime = 5f; 
+        researchTime = 10f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

@@ -24,7 +24,7 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
         woodCost = 100;
         stoneCost = 100;
         goldCost = 500;
-        researchTime = 300f;
+        researchTime = 120f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

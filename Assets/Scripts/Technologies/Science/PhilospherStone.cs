@@ -24,7 +24,7 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
         woodCost = 200;
         stoneCost = 200;
         goldCost = 200;
-        researchTime = 20f;
+        researchTime = 120f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

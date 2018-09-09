@@ -21,7 +21,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
         woodCost = 50;
         stoneCost = 0;
         goldCost = 30;
-        researchTime = 5f; 
+        researchTime = 40f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

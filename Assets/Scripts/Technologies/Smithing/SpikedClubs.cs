@@ -22,7 +22,7 @@ public class SpikedClubs : Technology, IPointerEnterHandler, IPointerExitHandler
         woodCost = 30;
         stoneCost = 10;
         goldCost = 0;
-        researchTime = 5f; 
+        researchTime = 10f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

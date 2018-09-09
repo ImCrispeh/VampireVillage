@@ -21,7 +21,7 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
         woodCost = 20;
         stoneCost = 30;
         goldCost = 0;
-        researchTime = 5f; 
+        researchTime = 15f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
