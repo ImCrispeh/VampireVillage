@@ -4,37 +4,39 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandler
+public class Armory : Technology, IPointerEnterHandler, IPointerExitHandler
 {
 
     public Image unresearchedImage;
     public Image connectingBar;
+    public Image connectingBar2;
     public GameObject technologyObject;
     public Transform technologyPosition;
-    public Technology requiredTechnology;
 
     // Use this for initialization
     protected override void Start() {
         base.Start();
-        technologyName = "Leather Armour";
-        technologyDescription = "Defense + 1" + "\n" + "You wear the skin of dead enemies to protect yourself";
-        researchRequirement = "Armoury";
-        woodCost = 20;
-        stoneCost = 0;
-        goldCost = 10;
-        researchTime = 10f;
+        technologyName = "Armoury";
+        technologyDescription = "An armoury is constructed allowing you to create new armours and weapons";
+        researchRequirement = "";
+        woodCost = 60;
+        stoneCost = 20;
+        goldCost = 0;
+        researchTime = 15f;
         researchTimer = researchTime;
         researched = false;
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
+        proceedingTechnologyBar.Add(connectingBar2);
     }
 
     // Update is called once per frame
     protected override void Update() {
         base.Update();
-        if (researched && !researching && !applyTechnology) {
+        if (researched && !researching && !applyTechnology)
+        {
             EndResearch();
             applyTechnology = true;
         }
@@ -42,13 +44,12 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 1;
         Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
 
     public override void StartResearch() {
-        if (!researched && !researching && requiredTechnology.researched) {
+        if (!researched && !researching) {
             if (resources.wood >= woodCost && resources.stone >= stoneCost && resources.gold >= goldCost) {
                 researchTimer = 0;
                 researching = true;

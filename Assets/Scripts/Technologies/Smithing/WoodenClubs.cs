@@ -11,13 +11,14 @@ public class WoodenClubs : Technology, IPointerEnterHandler, IPointerExitHandler
     public Image connectingBar;
     public GameObject technologyObject;
     public Transform technologyPosition;
+    public Technology requiredTechnology;
 
     // Use this for initialization
     protected override void Start() {
         base.Start();
         technologyName = "Wooden Clubs";
         technologyDescription = "Attack + 1" + "\n" + "You're able to pick the best sticks to use as clubs";
-        researchRequirement = "";
+        researchRequirement = "Armoury";
         woodCost = 20;
         stoneCost = 0;
         goldCost = 0;
@@ -48,7 +49,7 @@ public class WoodenClubs : Technology, IPointerEnterHandler, IPointerExitHandler
     }
 
     public override void StartResearch() {
-        if (!researched && !researching) {
+        if (!researched && !researching && requiredTechnology.researched) {
             if (resources.wood >= woodCost && resources.stone >= stoneCost && resources.gold >= goldCost) {
                 researchTimer = 0;
                 researching = true;
