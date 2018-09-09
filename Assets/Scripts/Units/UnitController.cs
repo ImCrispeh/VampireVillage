@@ -74,6 +74,10 @@ public class UnitController : MonoBehaviour {
     // Perform action based on string passed in by button click
     public IEnumerator PerformAction() {
         Debug.Log("performing action");
+        if(objectForAction.ToString().Contains("Wood")){
+            Debug.Log("YUREEKA");
+        }
+        Debug.Log(objectForAction);
         yield return new WaitForSeconds(2f);
 
         if (objectForAction != null) {

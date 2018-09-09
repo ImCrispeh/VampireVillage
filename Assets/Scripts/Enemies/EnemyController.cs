@@ -16,6 +16,13 @@ public class EnemyController : MonoBehaviour {
     public float timeBetweenAttacks;
     public GameObject town;
 
+    public AudioClip battle1;
+    public AudioClip battle2;
+    public AudioClip battle3;
+    public AudioClip battle4;
+    public AudioClip battle5;
+    public AudioClip battle6;
+
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
     }
@@ -42,6 +49,8 @@ public class EnemyController : MonoBehaviour {
             if (attackTimer >= timeBetweenAttacks) {
                 BaseController._instance.TakeDamage(attack);
                 attackTimer -= timeBetweenAttacks;
+                Debug.Log("Frequency");
+                SoundManager.instance.RandomizeSfx(battle1, battle2, battle3, battle4, battle5, battle6);
             }
         }
 
