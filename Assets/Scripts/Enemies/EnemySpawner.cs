@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour {
     public bool hasSetSpawn;
     public bool canSpawn;
     public float difficultyMultiplier;
+    public bool isFirstDay = true;
 
     [SerializeField]
     private Transform[] spawnPositions;
@@ -62,6 +63,12 @@ public class EnemySpawner : MonoBehaviour {
 
     public void SpawnEnemies() {
 
+        // if(isFirstDay){
+        //     enemiesToSpawn = 1;
+        //     heavyEnemiesToSpawn = 0;
+        //     isFirstDay = false;
+        // }
+
         if (heavyEnemiesToSpawn > 0) {
             Debug.Log("heavy: " + heavyEnemiesToSpawn);
             spawnTimer += Time.deltaTime;
@@ -107,9 +114,16 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void SetEnemiesToSpawn() {
+        if(isFirstDay){
+            enemiesToSpawn = 1;
+            heavyEnemiesToSpawn = 0;
+            hasSetSpawn = true;
+            isFirstDay = false;
+        }else{
         enemiesToSpawn = 2 * ThreatController._instance.threatLevel;
         heavyEnemiesToSpawn = ThreatController._instance.threatLevel / 2;
         hasSetSpawn = true;
+        }
     }
 
     public void IncreaseDifficulty() {
