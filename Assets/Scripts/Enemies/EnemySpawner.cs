@@ -13,6 +13,9 @@ public class EnemySpawner : MonoBehaviour {
     public bool hasSetSpawn;
     public bool canSpawn;
     public float difficultyMultiplier;
+    public AudioClip callToArms;
+
+    private bool bellSounded = true;
 
     [SerializeField]
     private Transform[] spawnPositions;
@@ -72,6 +75,10 @@ public class EnemySpawner : MonoBehaviour {
         }
 
         if (enemiesToSpawn > 0) {
+            if(!bellSounded){
+                SoundManager.instance.RandomizeSfx(callToArms);
+                bellSounded = true;
+            }
             Debug.Log("Enemies: " + enemiesToSpawn);
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {
@@ -86,6 +93,7 @@ public class EnemySpawner : MonoBehaviour {
             }
         } else {
             isSpawning = false;
+            bellSounded = false;
             ThreatController._instance.SubtractThreat();
         }
     }
