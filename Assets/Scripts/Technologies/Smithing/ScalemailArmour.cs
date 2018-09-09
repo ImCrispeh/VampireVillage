@@ -22,7 +22,7 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         woodCost = 80;
         stoneCost = 10;
         goldCost = 40;
-        researchTime = 50f;
+        researchTime = 30f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

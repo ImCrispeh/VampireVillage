@@ -449,7 +449,12 @@ public class SelectionController : MonoBehaviour {
                 PortraitCameraController._instance.following = false;
                 PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
-            if (selectedObj.tag == "Base") {
+            if (selectedObj.tag == "HumanBase") {
+                portraitPlaceholder.enabled = true;
+                PortraitCameraController._instance.following = false;
+                PortraitCameraController._instance.SetPosition(selectedObj.transform);
+            }
+            if (selectedObj.tag == "Base") {//is this supposed to be HumanBase? if so, replace it with the if-rule above
                 portraitPlaceholder.enabled = true;
                 PortraitCameraController._instance.following = false;
                 PortraitCameraController._instance.SetPosition(selectedObj.transform);

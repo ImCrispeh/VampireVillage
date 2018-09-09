@@ -19,10 +19,10 @@ public class ChainmailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         technologyName = "Chainmail Armour";
         technologyDescription = "Defense + 1" + "\n" + "You wear the engagement rings of rejected men around the world";
         researchRequirement = "Leather Armour";
-        woodCost = 20;
+        woodCost = 50;
         stoneCost = 0;
         goldCost = 20;
-        researchTime = 5f;
+        researchTime = 30f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

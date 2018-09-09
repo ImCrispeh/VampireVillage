@@ -21,7 +21,7 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
         woodCost = 20;
         stoneCost = 0;
         goldCost = 10;
-        researchTime = 5f;
+        researchTime = 10f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

@@ -21,7 +21,7 @@ public class Slings : Technology, IPointerEnterHandler, IPointerExitHandler {
         woodCost = 30;
         stoneCost = 10;
         goldCost = 10;
-        researchTime = 5f; 
+        researchTime = 15f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
