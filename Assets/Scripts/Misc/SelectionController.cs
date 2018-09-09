@@ -40,6 +40,8 @@ public class SelectionController : MonoBehaviour {
     public int totalHumanTowns;
     public int subjugatedHumanTowns;
 
+    public bool isTechnologyOpen;
+
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
@@ -130,27 +132,29 @@ public class SelectionController : MonoBehaviour {
     
     // Gets object that was clicked on and makes it selected
     public void Select() {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!isTechnologyOpen) {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit)) {
+            if (Physics.Raycast(ray, out hit)) {
 
-            // Remove highlight from previously selected object and deselect object (only if not cliking on the UI)
-            if (EventSystem.current.IsPointerOverGameObject()) {
-                return;
-            } else if (selectedObj != null) {
-                DeselectObj();
-            }
-
-            if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) {
-                HighlightSelected(hit);
-
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Resource") || hit.transform.gameObject.tag == "HumanTown" || hit.transform.gameObject.tag == "Base" || hit.transform.gameObject.tag == "HumanBase") {
-                    SetActionButton();
+                // Remove highlight from previously selected object and deselect object (only if not cliking on the UI)
+                if (EventSystem.current.IsPointerOverGameObject()) {
+                    return;
+                } else if (selectedObj != null) {
+                    DeselectObj();
                 }
 
-                SetObjText();
-                SetObjPortrait();
+                if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) {
+                    HighlightSelected(hit);
+
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Resource") || hit.transform.gameObject.tag == "HumanTown" || hit.transform.gameObject.tag == "Base" || hit.transform.gameObject.tag == "HumanBase") {
+                        SetActionButton();
+                    }
+
+                    SetObjText();
+                    SetObjPortrait();
+                }
             }
         }
     }
@@ -248,7 +252,7 @@ public class SelectionController : MonoBehaviour {
             } else {
                 availableUnits--;
                 NavMeshHit hit;
-                if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
                     SpawnUnit(hit.position, selectedObj, action);
                 }
             }
@@ -340,7 +344,7 @@ public class SelectionController : MonoBehaviour {
                     } else {
                         availableUnits--;
                         NavMeshHit hit;
-                        if (NavMesh.SamplePosition(spawnPoint.position, out hit, 4f, NavMesh.AllAreas)) {
+                        if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
                             SpawnUnit(hit.position, planned.objectForAction, planned.action);
                             plannedActions.RemoveAt(0);
                             Destroy(plannedActionRemovalIcons[0]);

@@ -18,6 +18,7 @@ public class TutorialController : SelectionController {
 
     public GameObject selectionCont;
     public GameObject techBtn;
+    public GameObject skipBtn;
 
     private void Awake() {
         if (_tutInstance != null && _tutInstance != this) {
@@ -143,6 +144,7 @@ public class TutorialController : SelectionController {
         if (currText < tutorialTexts.Length - 1) {
             currText++;
             textBackground.enabled = true;
+            skipBtn.SetActive(true);
             tutorialTexts[currText].SetActive(true);
 
             if (currText == 2) {
@@ -181,6 +183,7 @@ public class TutorialController : SelectionController {
             }
         }
         textBackground.enabled = false;
+        skipBtn.SetActive(false);
         tutorialTexts[currText].SetActive(false);
     }
 

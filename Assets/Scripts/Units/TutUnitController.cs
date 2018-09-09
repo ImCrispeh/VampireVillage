@@ -28,5 +28,7 @@ public class TutUnitController : UnitController {
                 TutorialController._tutInstance.ReturnUnit(this);
             }
         }
+
+        this.transform.LookAt(new Vector3(agent.destination.x, transform.position.y, agent.destination.z));
     }
 }
