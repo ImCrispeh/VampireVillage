@@ -124,13 +124,13 @@ public class SelectionController : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.O)) {
-            BaseController._instance.TakeDamage(100);
-        }
+        //if (Input.GetKeyDown(KeyCode.O)) {
+        //    BaseController._instance.TakeDamage(100);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.P)) {
-            Subjugation._instance.researched = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.P)) {
+        //    Subjugation._instance.researched = true;
+        //}
     }
     
     // Gets object that was clicked on and makes it selected
