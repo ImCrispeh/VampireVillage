@@ -34,7 +34,7 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
         proceedingTechnologyBar.Add(connectingBar);
         proceedingTechnologyBar.Add(connectingBar2);
         mainBase = BaseController._instance;
-        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name + "/Walls").transform;
+        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name).transform;
     }
 
     // Update is called once per frame

@@ -30,6 +30,7 @@ public class Armory : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyImage = unresearchedImage;
         proceedingTechnologyBar.Add(connectingBar);
         proceedingTechnologyBar.Add(connectingBar2);
+        technologyPosition = GameObject.Find(BaseController._instance.gameObject.name).transform;
     }
 
     // Update is called once per frame
@@ -45,7 +46,8 @@ public class Armory : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         Debug.Log("Added " + technologyName + " to the town");
-        //Instantiate(technologyObject, technologyPosition);
+        GameObject tech = Instantiate(technologyObject);
+        tech.transform.SetParent(technologyPosition);
     }
 
     public override void StartResearch() {
