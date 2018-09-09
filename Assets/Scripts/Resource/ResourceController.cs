@@ -61,6 +61,9 @@ public class ResourceController : MonoBehaviour {
             }
 
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+            if (SelectionController._instance.selectedObj == gameObject) {
+                SelectionController._instance.DeselectObj();
+            }
         }
     }
 }
