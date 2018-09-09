@@ -81,7 +81,7 @@ public class Timer : MonoBehaviour {
 
         foreach (Transform child in transform)
         {
-            if (secondsInFullDay != 0)
+            if (secondsInFullDay != 0 && !isPaused)
             {
                 child.transform.RotateAround(Vector3.zero, new Vector3(0, 0, 1), Mathf.PI * Time.deltaTime * 1 / (secondsInFullDay / 120));
                 child.transform.LookAt(Vector3.zero);
