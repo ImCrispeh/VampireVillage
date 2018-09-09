@@ -93,6 +93,10 @@ public class EnemySpawner : MonoBehaviour {
     public void SpawnEnemies() {
 
         if (heavyEnemiesToSpawn > 0) {
+            if(!bellSounded){
+                SoundManager.instance.RandomizeSfx(callToArms);
+                bellSounded = true;
+            }
             Debug.Log("heavy: " + heavyEnemiesToSpawn);
             spawnTimer += Time.deltaTime;
             if (spawnTimer >= timeBetweenSpawns) {

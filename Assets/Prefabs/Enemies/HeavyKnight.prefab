@@ -852,6 +852,12 @@ MonoBehaviour:
   attackTimer: 0
   timeBetweenAttacks: 8
   town: {fileID: 1278006990840236, guid: 657d388d82cc1764ca9a7cdef0db62b5, type: 2}
+  battle1: {fileID: 8300000, guid: 1c5c30d98e9054a4b9067181c1843e0e, type: 3}
+  battle2: {fileID: 8300000, guid: 15b6f3881c50cda4e8eed5678c98db24, type: 3}
+  battle3: {fileID: 8300000, guid: 30e09d98423f4fb4b94a2662d4d1c28e, type: 3}
+  battle4: {fileID: 8300000, guid: 3729c16a3526eaa46ae4230b308247e5, type: 3}
+  battle5: {fileID: 8300000, guid: 1d13ea55ca2ea0e479ea6cf37716d9fb, type: 3}
+  battle6: {fileID: 8300000, guid: 8f6801a76a0583044905bce95b9ca0b6, type: 3}
 --- !u!136 &136675106789909474
 CapsuleCollider:
   m_ObjectHideFlags: 1

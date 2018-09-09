@@ -49,7 +49,6 @@ public class EnemyController : MonoBehaviour {
             if (attackTimer >= timeBetweenAttacks) {
                 BaseController._instance.TakeDamage(attack);
                 attackTimer -= timeBetweenAttacks;
-                Debug.Log("Frequency");
                 SoundManager.instance.RandomizeSfx(battle1, battle2, battle3, battle4, battle5, battle6);
             }
         }
