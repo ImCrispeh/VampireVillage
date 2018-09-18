@@ -7915,6 +7915,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   resourceActionBtn: {fileID: 114859973584148518}
   repairActionBtn: {fileID: 0}
+  mainHumanBaseSubjugateBtn: {fileID: 0}
   townActionsContainer: {fileID: 1088994968902402}
   townActionBtns:
   - {fileID: 114173199264267294}
@@ -7925,6 +7926,11 @@ MonoBehaviour:
   plannedActionsPanel: {fileID: 0}
   planningIndicatorPanel: {fileID: 0}
   portraitPlaceholder: {fileID: 0}
+  totalHumanTowns: 0
+  subjugatedHumanTowns: 0
+  isTechnologyOpen: 0
+  unitCommons: {fileID: 0}
+  isUnitCommonsBuilt: 0
   currText: 0
   textBackground: {fileID: 114968055197385988}
   tutorialTexts:
@@ -7933,8 +7939,11 @@ MonoBehaviour:
   - {fileID: 1093633426127998}
   - {fileID: 1790655822170974}
   - {fileID: 1056116707928770}
+  feedTutIndicators: []
+  woodTutIndicators: []
   selectionCont: {fileID: 1688627073627630}
   techBtn: {fileID: 0}
+  skipBtn: {fileID: 0}
 --- !u!114 &114350486663018796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8412,6 +8421,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   resourceActionBtn: {fileID: 114859973584148518}
   repairActionBtn: {fileID: 114592871624602190}
+  mainHumanBaseSubjugateBtn: {fileID: 0}
   townActionsContainer: {fileID: 1088994968902402}
   townActionBtns:
   - {fileID: 114173199264267294}
@@ -8439,6 +8449,11 @@ MonoBehaviour:
   plannedActionsPanel: {fileID: 224555609714523026}
   planningIndicatorPanel: {fileID: 1995564087160288}
   portraitPlaceholder: {fileID: 0}
+  totalHumanTowns: 0
+  subjugatedHumanTowns: 0
+  isTechnologyOpen: 0
+  unitCommons: {fileID: 0}
+  isUnitCommonsBuilt: 0
 --- !u!114 &114397742113427764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9217,6 +9232,7 @@ MonoBehaviour:
   connectingBar: {fileID: 114673248008806572}
   technologyObject: {fileID: 0}
   technologyPosition: {fileID: 0}
+  requiredTechnology: {fileID: 0}
 --- !u!114 &114468699203981234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11023,6 +11039,7 @@ MonoBehaviour:
   connectingBar: {fileID: 114561916259059764}
   technologyObject: {fileID: 0}
   technologyPosition: {fileID: 0}
+  requiredTechnology: {fileID: 0}
 --- !u!114 &114671964386473086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12662,6 +12679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threatBar: {fileID: 0}
   maxThreat: 0
+  minThreat: 0
   threat: 0
   threatLevel: 0
   threatToDeplete: 25
@@ -13144,15 +13162,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 80eadf00f50a2214482152f64781daa7, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
