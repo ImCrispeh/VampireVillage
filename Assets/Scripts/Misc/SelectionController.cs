@@ -229,17 +229,9 @@ public class SelectionController : MonoBehaviour {
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionsContainer.SetActive(true);
 
-                //Set repair buttons as interactable based on health and resources
-                BaseController baseCont = selectedObj.GetComponent<BaseController>();
-
-                //Interactable if missing health is above 20 and enough resources to repair
-                repairActionBtns[0].interactable = (((baseCont.maxHealth - baseCont.health) > 20) && (ResourceStorage._instance.wood > 60 && ResourceStorage._instance.stone > 60));
-
-                //Interactable if missing health is above 50 and enough resources to repair
-                repairActionBtns[1].interactable = (((baseCont.maxHealth - baseCont.health) > 50) && (ResourceStorage._instance.wood > 150 && ResourceStorage._instance.stone > 150));
-
-                //Interactable if any missing and enough resources to repair at least 1 health
-                repairActionBtns[2].interactable = (!baseCont.IsFullHealth() && (ResourceStorage._instance.wood > 3 && ResourceStorage._instance.stone > 3));
+                foreach (Button btn in repairActionBtns) {
+                    btn.interactable = (!selectedObj.GetComponent<BaseController>().IsFullHealth() && (ResourceStorage._instance.wood >= 3 && ResourceStorage._instance.stone >= 3));
+                }
 
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
                 //BaseController._instance.ShowCanvas();
@@ -344,14 +336,13 @@ public class SelectionController : MonoBehaviour {
             if (isNightActions) {
                 if (availableUnits > 0) {
                     PlannedAction planned = plannedActions[0];
-                    if ((planned.action == Actions.repair20 || planned.action == Actions.repair50 || planned.action == Actions.repairFull) && planned.objectForAction.GetComponent<BaseController>().IsFullHealth()) {
+                    BaseController baseCont = planned.objectForAction.GetComponent<BaseController>();
+                    if ((planned.action == Actions.repair20 || planned.action == Actions.repair50 || planned.action == Actions.repairFull) && baseCont.IsFullHealth()) {
                         PopupController._instance.SetPopupText("Structure already at full health. Skipping...");
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
                         plannedActionRemovalIcons.RemoveAt(0);
-                    } else if ((planned.action == Actions.repair20 && (ResourceStorage._instance.wood < 60 || ResourceStorage._instance.stone < 60))
-                        || (planned.action == Actions.repair50 && (ResourceStorage._instance.wood < 150 || ResourceStorage._instance.stone < 150))
-                        || (planned.action == Actions.repairFull && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3))) {
+                    } else if ((planned.action == Actions.repair20 || planned.action == Actions.repair50 || planned.action == Actions.repairFull) && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
                         PopupController._instance.SetPopupText("Not enough resources to repair. Skipping...");
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
@@ -427,7 +418,7 @@ public class SelectionController : MonoBehaviour {
                 selectedObjText.text =
                     "Human Town" + "\n"
                     + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
-                    + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
+                    + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>" + "\n"
                     + "Subjugation level: " + selectedObj.GetComponent<HumanTownController>().subjugationLevel + "/" + selectedObj.GetComponent<HumanTownController>().subjugationLimit;
             }
             else if (selectedObj.tag == "HumanTown" && selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
@@ -435,22 +426,22 @@ public class SelectionController : MonoBehaviour {
                 selectedObjText.text =
                     "Human Town" + "\n"
                     + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
-                    + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level" + "\n"
-                    + "Subjugated: provides small regeneration to your hunger";
+                    + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>" + "\n"
+                    + "<b>Subjugated: provides small regeneration to your hunger</b>";
             }
             else if (selectedObj.tag == "HumanTown" && !selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
                 Debug.Log("Town selected, no subjugation");
                 selectedObjText.text =
                     "Human Town" + "\n"
                     + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
-                    + "Can feed to restore hunger or kidnap and convert a human. All actions increase threat level";
+                    + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>";
             }
 
             if (selectedObj.tag == "HumanBase") {
                 selectedObjText.text =
                     "Main Human Base" + "\n"
                     + "Will send out attacks against you based on your level of threat" + "\n"
-                    + "Can be subjugated after all towns are subjugated";
+                    + "<b>Can be subjugated after all towns are subjugated</b>";
             }
 
             if (selectedObj.tag == "Base") {
@@ -459,7 +450,7 @@ public class SelectionController : MonoBehaviour {
                     + "Health: " + BaseController._instance.health + "\n"
                     + "Attack level: " + BaseController._instance.attack + "\n"
                     + "Defense level: " + BaseController._instance.defense + "\n"
-                    + "Repairing costs 3 wood and 3 stone per health point";
+                    + "<b>Repairing costs 3 wood and 3 stone per health point</b>";
             }
 
             if (selectedObj.tag == "Enemy") {
