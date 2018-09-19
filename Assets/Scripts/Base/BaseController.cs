@@ -66,7 +66,21 @@ public class BaseController : MonoBehaviour {
         }
 	}
 
-    public void Repair() {
+    public void RepairTwenty() {
+        int amountToRepair = 20;
+        health += amountToRepair;
+        ResourceStorage._instance.SubtractWood(amountToRepair * 3);
+        ResourceStorage._instance.SubtractStone(amountToRepair * 3);
+    }
+
+    public void RepairFifty() {
+        int amountToRepair = 50;
+        health += amountToRepair;
+        ResourceStorage._instance.SubtractWood(amountToRepair * 3);
+        ResourceStorage._instance.SubtractStone(amountToRepair * 3);
+    }
+
+    public void RepairFull() {
         int amountToRepair = maxHealth - health;
 
         if (ResourceStorage._instance.wood > amountToRepair * 3 && ResourceStorage._instance.stone > amountToRepair * 3) {

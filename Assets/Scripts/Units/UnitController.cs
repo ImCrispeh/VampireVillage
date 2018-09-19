@@ -101,8 +101,14 @@ public class UnitController : MonoBehaviour {
                 case SelectionController.Actions.convert:
                     objectForAction.GetComponent<HumanTownController>().ConvertEffect(this);
                     break;
-                case SelectionController.Actions.repair:
-                    objectForAction.GetComponent<BaseController>().Repair();
+                case SelectionController.Actions.repair20:
+                    objectForAction.GetComponent<BaseController>().RepairTwenty();
+                    break;
+                case SelectionController.Actions.repair50:
+                    objectForAction.GetComponent<BaseController>().RepairFifty();
+                    break;
+                case SelectionController.Actions.repairFull:
+                    objectForAction.GetComponent<BaseController>().RepairFull();
                     break;
                 case SelectionController.Actions.subjugate:
                     if (objectForAction.GetComponent<HumanTownController>() != null) {

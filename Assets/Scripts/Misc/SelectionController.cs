@@ -20,11 +20,12 @@ public class SelectionController : MonoBehaviour {
     public Transform spawnPoint;
 
     public Button resourceActionBtn;
-    public Button repairActionBtn;
+    public GameObject repairActionsContainer;
+    public List<Button> repairActionBtns;
     public Button mainHumanBaseSubjugateBtn;
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
-    public enum Actions { partialFeed, fullFeed, convert, collect, repair, subjugate };
+    public enum Actions { partialFeed, fullFeed, convert, collect, repair20, repair50, repairFull, subjugate };
     public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert, repair, subjugate };
     public List<ActionIcon> actionIconsList;
     public Dictionary<ActionIconNames, GameObject> actionIcons;
@@ -170,7 +171,7 @@ public class SelectionController : MonoBehaviour {
             }
         }
         selectedObj = null;
-        repairActionBtn.gameObject.SetActive(false);
+        repairActionsContainer.SetActive(false);
         resourceActionBtn.gameObject.SetActive(false);
         townActionsContainer.SetActive(false);
         SetObjText();
@@ -204,7 +205,7 @@ public class SelectionController : MonoBehaviour {
                 }
 
                 resourceActionBtn.gameObject.SetActive(false);
-                repairActionBtn.gameObject.SetActive(false);
+                repairActionsContainer.SetActive(false);
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
                 townActionsContainer.SetActive(true);
                 if (!Subjugation._instance.researched) {
@@ -219,26 +220,39 @@ public class SelectionController : MonoBehaviour {
                 Debug.Log("blah");
                 townActionsContainer.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(false);
-                repairActionBtn.gameObject.SetActive(false);
+                repairActionsContainer.SetActive(false);
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(true);
                 mainHumanBaseSubjugateBtn.interactable = (subjugatedHumanTowns == totalHumanTowns);
 
             } else if (selectedObj.tag == "Base") {
                 townActionsContainer.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(false);
-                repairActionBtn.gameObject.SetActive(true);
+                repairActionsContainer.SetActive(true);
+
+                //Set repair buttons as interactable based on health and resources
+                BaseController baseCont = selectedObj.GetComponent<BaseController>();
+
+                //Interactable if missing health is above 20 and enough resources to repair
+                repairActionBtns[0].interactable = (((baseCont.maxHealth - baseCont.health) > 20) && (ResourceStorage._instance.wood > 60 && ResourceStorage._instance.stone > 60));
+
+                //Interactable if missing health is above 50 and enough resources to repair
+                repairActionBtns[1].interactable = (((baseCont.maxHealth - baseCont.health) > 50) && (ResourceStorage._instance.wood > 150 && ResourceStorage._instance.stone > 150));
+
+                //Interactable if any missing and enough resources to repair at least 1 health
+                repairActionBtns[2].interactable = (!baseCont.IsFullHealth() && (ResourceStorage._instance.wood > 3 && ResourceStorage._instance.stone > 3));
+
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
                 //BaseController._instance.ShowCanvas();
             } else if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 townActionsContainer.SetActive(false);
-                repairActionBtn.gameObject.SetActive(false);
+                repairActionsContainer.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(true);
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
                 //BaseController._instance.HideCanvas();
             }
         } else {
             townActionsContainer.SetActive(false);
-            repairActionBtn.gameObject.SetActive(false);
+            repairActionsContainer.SetActive(false);
             resourceActionBtn.gameObject.SetActive(false);
             mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
             //BaseController._instance.HideCanvas();
@@ -248,16 +262,10 @@ public class SelectionController : MonoBehaviour {
     // Sends unit out to execute action
     public void SendUnit(Actions action) {
         if (availableUnits > 0) {
-            if (action == Actions.repair && selectedObj.GetComponent<BaseController>().IsFullHealth()) {
-                PopupController._instance.SetPopupText("Structure already at full health");
-            } else if (action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
-                PopupController._instance.SetPopupText("Not enough resources to repair");
-            } else {
-                availableUnits--;
-                NavMeshHit hit;
-                if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
-                    SpawnUnit(hit.position, selectedObj, action);
-                }
+            availableUnits--;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
+                SpawnUnit(hit.position, selectedObj, action);
             }
         } else {
             PlanAction(action);
@@ -299,7 +307,9 @@ public class SelectionController : MonoBehaviour {
                 case Actions.convert:
                     AddPlannedAction(ActionIconNames.convert);
                     break;
-                case Actions.repair:
+                case Actions.repair20:
+                case Actions.repair50:
+                case Actions.repairFull:
                     AddPlannedAction(ActionIconNames.repair);
                     break;
                 case Actions.subjugate:
@@ -334,12 +344,14 @@ public class SelectionController : MonoBehaviour {
             if (isNightActions) {
                 if (availableUnits > 0) {
                     PlannedAction planned = plannedActions[0];
-                    if (planned.action == Actions.repair && planned.objectForAction.GetComponent<BaseController>().IsFullHealth()) {
+                    if ((planned.action == Actions.repair20 || planned.action == Actions.repair50 || planned.action == Actions.repairFull) && planned.objectForAction.GetComponent<BaseController>().IsFullHealth()) {
                         PopupController._instance.SetPopupText("Structure already at full health. Skipping...");
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
                         plannedActionRemovalIcons.RemoveAt(0);
-                    } else if (planned.action == Actions.repair && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3)) {
+                    } else if ((planned.action == Actions.repair20 && (ResourceStorage._instance.wood < 60 || ResourceStorage._instance.stone < 60))
+                        || (planned.action == Actions.repair50 && (ResourceStorage._instance.wood < 150 || ResourceStorage._instance.stone < 150))
+                        || (planned.action == Actions.repairFull && (ResourceStorage._instance.wood < 3 || ResourceStorage._instance.stone < 3))) {
                         PopupController._instance.SetPopupText("Not enough resources to repair. Skipping...");
                         plannedActions.RemoveAt(0);
                         Destroy(plannedActionRemovalIcons[0]);
@@ -446,7 +458,8 @@ public class SelectionController : MonoBehaviour {
                     "Main Base" + "\n"
                     + "Health: " + BaseController._instance.health + "\n"
                     + "Attack level: " + BaseController._instance.attack + "\n"
-                    + "Defense level: " + BaseController._instance.defense;
+                    + "Defense level: " + BaseController._instance.defense + "\n"
+                    + "Repairing costs 3 wood and 3 stone per health point";
             }
 
             if (selectedObj.tag == "Enemy") {
@@ -515,7 +528,6 @@ public class SelectionController : MonoBehaviour {
     // Change the onClicks of the buttons to either sending a unit out or planning the action
     public void SetActionButtonsOnClick(bool isNight) {
         resourceActionBtn.onClick.RemoveAllListeners();
-        repairActionBtn.onClick.RemoveAllListeners();
         mainHumanBaseSubjugateBtn.onClick.RemoveAllListeners();
 
 
@@ -523,9 +535,15 @@ public class SelectionController : MonoBehaviour {
             btn.onClick.RemoveAllListeners();
         }
 
+        foreach (Button btn in repairActionBtns) {
+            btn.onClick.RemoveAllListeners();
+        }
+
         if (isNight) {
             resourceActionBtn.onClick.AddListener(() => SendUnit(Actions.collect));
-            repairActionBtn.onClick.AddListener(() => SendUnit(Actions.repair));
+            repairActionBtns[0].onClick.AddListener(() => SendUnit(Actions.repair20));
+            repairActionBtns[1].onClick.AddListener(() => SendUnit(Actions.repair50));
+            repairActionBtns[2].onClick.AddListener(() => SendUnit(Actions.repairFull));
             mainHumanBaseSubjugateBtn.onClick.AddListener(() => SendUnit(Actions.subjugate));
             townActionBtns[0].onClick.AddListener(() => SendUnit(Actions.partialFeed));
             townActionBtns[1].onClick.AddListener(() => SendUnit(Actions.fullFeed));
@@ -533,7 +551,9 @@ public class SelectionController : MonoBehaviour {
             townActionBtns[3].onClick.AddListener(() => SendUnit(Actions.subjugate));
         } else {
             resourceActionBtn.onClick.AddListener(() => PlanAction(Actions.collect));
-            repairActionBtn.onClick.AddListener(() => PlanAction(Actions.repair));
+            repairActionBtns[0].onClick.AddListener(() => PlanAction(Actions.repair20));
+            repairActionBtns[1].onClick.AddListener(() => PlanAction(Actions.repair50));
+            repairActionBtns[2].onClick.AddListener(() => PlanAction(Actions.repairFull));
             mainHumanBaseSubjugateBtn.onClick.AddListener(() => PlanAction(Actions.subjugate));
             townActionBtns[0].onClick.AddListener(() => PlanAction(Actions.partialFeed));
             townActionBtns[1].onClick.AddListener(() => PlanAction(Actions.fullFeed));

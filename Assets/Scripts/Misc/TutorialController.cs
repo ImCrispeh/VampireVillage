@@ -60,7 +60,9 @@ public class TutorialController : SelectionController {
             resourceActionBtn.interactable = false;
         }
 
-        repairActionBtn.interactable = false;
+        foreach (Button btn in repairActionBtns) {
+            btn.interactable = false;
+        }
 
         // Deselect object when it is destroyed (e.g. resource)
         if (selectedObj == null && resourceActionBtn.gameObject.activeInHierarchy) {
@@ -102,7 +104,8 @@ public class TutorialController : SelectionController {
         unitBase = cont.unitBase;
         spawnPoint = cont.spawnPoint;
         resourceActionBtn = cont.resourceActionBtn;
-        repairActionBtn = cont.repairActionBtn;
+        repairActionsContainer = cont.repairActionsContainer;
+        repairActionBtns = cont.repairActionBtns;
         mainHumanBaseSubjugateBtn = cont.mainHumanBaseSubjugateBtn;
         townActionsContainer = cont.townActionsContainer;
         townActionBtns = cont.townActionBtns;
@@ -165,7 +168,6 @@ public class TutorialController : SelectionController {
             Timer._instance.UnpauseTimer();
             selectionCont.SetActive(true);
             resourceActionBtn.interactable = true;
-            repairActionBtn.interactable = true;
             Destroy(this.gameObject);
         }
     }
@@ -200,7 +202,6 @@ public class TutorialController : SelectionController {
         selectionCont.SetActive(true);
         techBtn.SetActive(true);
         resourceActionBtn.interactable = true;
-        repairActionBtn.interactable = true;
         Destroy(this.gameObject);
     }
 }
