@@ -29,7 +29,7 @@ public class Timer : MonoBehaviour {
 
         clockFace = GameObject.Find("Clock/Frame").transform.GetChild(0).GetComponent<Image>();
         sunAndMoon = GameObject.Find("Clock/Frame").transform.GetChild(1).GetComponent<RectTransform>();
-        timeT = GameObject.Find("Clock/TimeIndicator").transform.GetChild(0).GetComponent<Text>();
+        timeT = GameObject.Find("Clock/TimeIndicator").transform.GetChild(1).GetComponent<Text>();
     }
 
     void Start () {
