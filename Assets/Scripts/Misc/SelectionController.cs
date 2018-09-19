@@ -164,6 +164,10 @@ public class SelectionController : MonoBehaviour {
 
     // Revert material of previously selected objectoon
     public void DeselectObj() {
+        foreach (cakeslice.Outline outliner in selectedObj.transform.GetComponentsInChildren<cakeslice.Outline>()) {
+            Debug.Log("OUTLINER FOUND AND ENABLED1");
+            outliner.enabled = !outliner.enabled;
+        }
         foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
             foreach (Material mat in rend.materials) {
                 mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1f);
@@ -181,6 +185,11 @@ public class SelectionController : MonoBehaviour {
     // Change material of object to indicate that it is selected
     public void HighlightSelected(RaycastHit hit) {
         selectedObj = hit.transform.gameObject;
+        Debug.Log(selectedObj);///////////////////////DELETE LATER
+        foreach (cakeslice.Outline outliner in selectedObj.transform.GetComponentsInChildren<cakeslice.Outline>()) {
+            Debug.Log("OUTLINER FOUND AND ENABLED1");
+            outliner.enabled = !outliner.enabled;
+        }
         foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
             if (rend.gameObject.GetComponent<NavMeshAgent>() == null) {
                 foreach (Material mat in rend.materials) {

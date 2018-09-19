@@ -44,7 +44,11 @@ namespace cakeslice
 
         private void Awake()
         {
-            Renderer = GetComponent<Renderer>();
+            Renderer = GetComponent<Renderer>();            
+        }
+
+        private void Start() {
+            this.enabled = false;
         }
 
         void OnEnable()
