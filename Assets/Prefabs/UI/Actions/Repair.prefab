@@ -41,9 +41,10 @@ GameObject:
   - component: {fileID: 114352131729228732}
   - component: {fileID: 114198762713253474}
   - component: {fileID: 114790383910086578}
+  - component: {fileID: 114904452363421410}
   m_Layer: 5
   m_Name: Repair
-  m_TagString: Untagged
+  m_TagString: Action
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +216,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 114387849211197710}
   m_OnClick:
     m_PersistentCalls:
@@ -321,6 +322,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114904452363421410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489341846397978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede5f1110a7c83043873ab4a9d400400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!114 &114990238570586392
 MonoBehaviour:
   m_ObjectHideFlags: 1

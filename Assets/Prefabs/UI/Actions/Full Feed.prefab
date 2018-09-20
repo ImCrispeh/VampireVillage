@@ -41,9 +41,10 @@ GameObject:
   - component: {fileID: 114080693919311858}
   - component: {fileID: 114587983811598134}
   - component: {fileID: 114956743773377138}
+  - component: {fileID: 114812810721194504}
   m_Layer: 5
   m_Name: Full Feed
-  m_TagString: Untagged
+  m_TagString: Action
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +120,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 114617383127161382}
   m_OnClick:
     m_PersistentCalls:
@@ -276,6 +277,18 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &114812810721194504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099694762944038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede5f1110a7c83043873ab4a9d400400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!114 &114917926187368804
 MonoBehaviour:
   m_ObjectHideFlags: 1

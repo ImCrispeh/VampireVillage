@@ -60,9 +60,10 @@ GameObject:
   - component: {fileID: 114432414493782944}
   - component: {fileID: 114496510436065228}
   - component: {fileID: 114095796829968860}
+  - component: {fileID: 114006526346978300}
   m_Layer: 5
   m_Name: Collect Wood
-  m_TagString: Untagged
+  m_TagString: Action
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114006526346978300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802086637964466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede5f1110a7c83043873ab4a9d400400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!114 &114095796829968860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,7 +253,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 114355928745161470}
   m_OnClick:
     m_PersistentCalls:
