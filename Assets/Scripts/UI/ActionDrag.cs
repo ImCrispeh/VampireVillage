@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ActionDrag : MonoBehaviour, IDragHandler, IEndDragHandler {
+public class ActionDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
     public Canvas canvas;
+    public Vector2 startPos;
 
     private void Start() {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData) {
+        startPos = transform.localPosition;
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -22,6 +27,7 @@ public class ActionDrag : MonoBehaviour, IDragHandler, IEndDragHandler {
 
         GameObject childAbove = null;
         GameObject childBelow = null;
+        bool isChanged = false;
 
         foreach (GameObject action in actions) {
             if (action != null) {
@@ -30,16 +36,20 @@ public class ActionDrag : MonoBehaviour, IDragHandler, IEndDragHandler {
                         if (childAbove == null) {
                             childAbove = action;
                         } else {
-                            if (Mathf.Abs(action.transform.localPosition.x - transform.localPosition.x) < Mathf.Abs(childAbove.transform.localPosition.x - transform.localPosition.x)) {
-                                childAbove = action;
+                            if (Mathf.Abs(action.transform.localPosition.x - transform.localPosition.x) <= Mathf.Abs(childAbove.transform.localPosition.x - transform.localPosition.x)) {
+                                if (Mathf.Abs(action.transform.localPosition.y - transform.localPosition.y) < Mathf.Abs(childAbove.transform.localPosition.y - transform.localPosition.y)) {
+                                    childAbove = action;
+                                }
                             }
                         }
                     } else {
                         if (childBelow == null) {
                             childBelow = action;
                         } else {
-                            if (Mathf.Abs(action.transform.localPosition.x - transform.localPosition.x) < Mathf.Abs(childBelow.transform.localPosition.x - transform.localPosition.x)) {
-                                childBelow = action;
+                            if (Mathf.Abs(action.transform.localPosition.x - transform.localPosition.x) <= Mathf.Abs(childBelow.transform.localPosition.x - transform.localPosition.x)) {
+                                if (Mathf.Abs(action.transform.localPosition.y - transform.localPosition.y) < Mathf.Abs(childBelow.transform.localPosition.y - transform.localPosition.y)) {
+                                    childBelow = action;
+                                }
                             }
                         }
                     }
@@ -47,18 +57,38 @@ public class ActionDrag : MonoBehaviour, IDragHandler, IEndDragHandler {
             }
         }
 
+        int startIndex = transform.GetSiblingIndex();
+        int changedIndex = transform.GetSiblingIndex();
+
         if (childBelow != null) {
-            if (childBelow.transform.GetSiblingIndex() == 0) {
-                transform.SetSiblingIndex(0);
+            if (childBelow == transform.parent.GetChild(0).gameObject) {
+                Debug.Log("set to first");
+                transform.SetAsFirstSibling();
+                changedIndex = transform.GetSiblingIndex();
+                isChanged = true;
             }
-        } else if (childAbove != null) {
-            if (childAbove.transform.GetSiblingIndex() == transform.parent.childCount - 1) {
-                transform.SetSiblingIndex(transform.parent.childCount - 1);
-            }
-        } else if (childBelow != null && childAbove != null) {
-            transform.SetSiblingIndex(childAbove.transform.GetSiblingIndex() + 1);
         }
 
+        if (childAbove != null && !isChanged) {
+            if (childAbove.transform.GetSiblingIndex() == transform.parent.childCount - 1) {
+                Debug.Log("set to last");
+                transform.SetAsLastSibling();
+                changedIndex = transform.GetSiblingIndex();
+                isChanged = true;
+            }
+        }
+
+        if (childBelow != null && childAbove != null && !isChanged) {
+            Debug.Log("set between 2");
+            transform.SetSiblingIndex(childAbove.transform.GetSiblingIndex() + 1);
+            changedIndex = transform.GetSiblingIndex();
+        }
+
+        if (startIndex == changedIndex) {
+            transform.localPosition = startPos;
+        }
+
+        Debug.Log(transform.parent.childCount);
         name = "changed";
 
         if (childBelow != null) {
