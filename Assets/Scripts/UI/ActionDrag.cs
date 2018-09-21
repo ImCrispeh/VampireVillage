@@ -7,13 +7,22 @@ using UnityEngine.UI;
 public class ActionDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
     public Canvas canvas;
     public Vector2 startPos;
+    public int startingChildrenNumber;
+    public int indexInParent;
+    public Transform parentObj;
 
     private void Start() {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        parentObj = transform.parent;
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
         startPos = transform.localPosition;
+        indexInParent = transform.GetSiblingIndex();
+        startingChildrenNumber = parentObj.childCount;
+        transform.SetParent(parentObj.parent.parent);
+
+        Debug.Log("1st index: " + indexInParent + "/" + (startingChildrenNumber - 1));
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -23,6 +32,13 @@ public class ActionDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
 
     public void OnEndDrag(PointerEventData eventData) {
+        transform.SetParent(parentObj);
+        indexInParent -= (startingChildrenNumber - parentObj.childCount);
+        transform.SetSiblingIndex(indexInParent);
+
+        Debug.Log(startingChildrenNumber);
+        Debug.Log("2nd index: " + indexInParent + "/" + (parentObj.childCount - 1));
+
         GameObject[] actions = GameObject.FindGameObjectsWithTag("Action");
 
         GameObject childAbove = null;
@@ -36,8 +52,8 @@ public class ActionDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                         if (childAbove == null) {
                             childAbove = action;
                         } else {
-                            if (Mathf.Abs(action.transform.localPosition.x - transform.localPosition.x) <= Mathf.Abs(childAbove.transform.localPosition.x - transform.localPosition.x)) {
-                                if (Mathf.Abs(action.transform.localPosition.y - transform.localPosition.y) < Mathf.Abs(childAbove.transform.localPosition.y - transform.localPosition.y)) {
+                            if (Mathf.Abs(action.transform.position.x - transform.position.x) <= Mathf.Abs(childAbove.transform.position.x - transform.position.x)) {
+                                if (Mathf.Abs(action.transform.position.y - transform.position.y) < Mathf.Abs(childAbove.transform.position.y - transform.position.y)) {
                                     childAbove = action;
                                 }
                             }
@@ -46,8 +62,8 @@ public class ActionDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                         if (childBelow == null) {
                             childBelow = action;
                         } else {
-                            if (Mathf.Abs(action.transform.localPosition.x - transform.localPosition.x) <= Mathf.Abs(childBelow.transform.localPosition.x - transform.localPosition.x)) {
-                                if (Mathf.Abs(action.transform.localPosition.y - transform.localPosition.y) < Mathf.Abs(childBelow.transform.localPosition.y - transform.localPosition.y)) {
+                            if (Mathf.Abs(action.transform.position.x - transform.position.x) <= Mathf.Abs(childBelow.transform.position.x - transform.position.x)) {
+                                if (Mathf.Abs(action.transform.position.y - transform.position.y) < Mathf.Abs(childBelow.transform.position.y - transform.position.y)) {
                                     childBelow = action;
                                 }
                             }
@@ -88,18 +104,20 @@ public class ActionDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             transform.localPosition = startPos;
         }
 
-        Debug.Log(transform.parent.childCount);
-        name = "changed";
+        SelectionController cont = SelectionController._instance;
+        SelectionController.PlannedAction tempAction = cont.plannedActions[startIndex];
+        GameObject tempIcon = cont.plannedActionRemovalIcons[startIndex];
 
-        if (childBelow != null) {
-            Debug.Log("Placed above " + childBelow.transform.GetSiblingIndex());
+        cont.plannedActions.RemoveAt(startIndex);
+        cont.plannedActionRemovalIcons.RemoveAt(startIndex);
+
+        if (startIndex < changedIndex) {
+            changedIndex--;
         }
 
-        if (childAbove != null) {
-            Debug.Log("Placed below " + childAbove.transform.GetSiblingIndex());
-        }
+        Debug.Log("Setting to index: " + changedIndex);
 
-        transform.parent.GetComponent<GridLayoutGroup>().CalculateLayoutInputVertical();
-        transform.parent.GetComponent<GridLayoutGroup>().CalculateLayoutInputHorizontal();
+        cont.plannedActions.Insert(changedIndex, tempAction);
+        cont.plannedActionRemovalIcons.Insert(changedIndex, tempIcon);
     }
 }
