@@ -318,12 +318,13 @@ public class SelectionController : MonoBehaviour {
     public void AddPlannedAction(ActionIconNames icon) {
         GameObject newAction;
         newAction = Instantiate(actionIcons[icon], plannedActionsPanel.GetChild(1));
-        newAction.GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
+        newAction.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(RemovePlannedAction);
         plannedActionRemovalIcons.Add(newAction);
     }
 
     public void RemovePlannedAction() {
-        GameObject toRemove = EventSystem.current.currentSelectedGameObject;
+        GameObject toRemove = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
+        Debug.Log(toRemove.name);
         int pos = plannedActionRemovalIcons.IndexOf(toRemove);
         plannedActions.RemoveAt(pos);
         plannedActionRemovalIcons.RemoveAt(pos);
