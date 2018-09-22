@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33163032096575674}
   - component: {fileID: 23378949098833064}
   - component: {fileID: 64424109141600062}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 65872531641407372}
   - component: {fileID: 208046043698032688}
   - component: {fileID: 114465167647957782}
-  m_Layer: 8
-  m_Name: GoldMountainSmall
+  m_Layer: 9
+  m_Name: GoldM
   m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 5, z: 13}
+  m_Size: {x: 13, y: 3, z: 13}
   m_Center: {x: -0.69, y: 0, z: -0.37}
 --- !u!114 &114465167647957782
 MonoBehaviour:
@@ -386,14 +386,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 25
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &208046043698032688
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925864582821438}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 7.5, y: 1, z: 7.5}

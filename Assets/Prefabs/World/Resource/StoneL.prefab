@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 33322011575432272}
   - component: {fileID: 23284430251090650}
   - component: {fileID: 64163023553976390}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 33262372573411676}
   - component: {fileID: 23314170352322250}
   - component: {fileID: 64993578816649244}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,8 +221,8 @@ GameObject:
   - component: {fileID: 208605139409786984}
   - component: {fileID: 114392822587746580}
   - component: {fileID: 65302858730654172}
-  m_Layer: 8
-  m_Name: StoneMountainLarge
+  m_Layer: 9
+  m_Name: StoneL
   m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 33851268824103210}
   - component: {fileID: 23309767163676664}
   - component: {fileID: 64463823634318236}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 33172799725375378}
   - component: {fileID: 23841055277332748}
   - component: {fileID: 64315728984789982}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,7 +1257,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15, y: 10, z: 15}
+  m_Size: {x: 15, y: 3, z: 15}
   m_Center: {x: 2.36, y: 0, z: 0.52}
 --- !u!114 &114089106398285316
 MonoBehaviour:
@@ -1270,7 +1270,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114321734091659190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1282,7 +1287,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114373935377437240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1294,7 +1304,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114392822587746580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1306,7 +1321,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114627560609291178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1318,7 +1338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114763956546915298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1330,7 +1355,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114778978987586362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1342,7 +1372,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114805445031820164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1354,7 +1389,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!114 &114938962781828740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1366,14 +1406,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 100
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &208605139409786984
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637652681610692}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 9.5, y: 1, z: 9.5}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33089361505206238}
   - component: {fileID: 23084606738449660}
   - component: {fileID: 64344755888658866}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33904826691230608}
   - component: {fileID: 23247773572322620}
   - component: {fileID: 64948966921569024}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_13 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,8 +169,8 @@ GameObject:
   - component: {fileID: 65548560962336814}
   - component: {fileID: 208829934754414580}
   - component: {fileID: 114845273456490016}
-  m_Layer: 8
-  m_Name: GoldMountainLarge
+  m_Layer: 9
+  m_Name: GoldL
   m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 33767252772499904}
   - component: {fileID: 23985943908626408}
   - component: {fileID: 64623823342136870}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_13 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 33829795834198392}
   - component: {fileID: 23366728378258026}
   - component: {fileID: 64892691468576320}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MT_Mountain_S_a_13 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,7 +943,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 10, z: 17}
+  m_Size: {x: 20, y: 7, z: 17}
   m_Center: {x: 2.92, y: 0, z: -1.09}
 --- !u!114 &114845273456490016
 MonoBehaviour:
@@ -956,14 +956,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceAmt: 25
+  maxResourceAmt: 0
+  currentResourceAmt: 0
+  resourceCollectionAmt: 0
+  respawnTimer: 0
+  timeToRespawn: 0
+  isRespawning: 0
 --- !u!208 &208829934754414580
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1490653603858792}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 10, y: 1, z: 10}
