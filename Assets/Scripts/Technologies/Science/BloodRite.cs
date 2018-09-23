@@ -51,7 +51,6 @@ public class BloodRite : Technology, IPointerEnterHandler, IPointerExitHandler
         //The effects of the technology which are active once research ends
         //mainBase.defense += 3;
         resources.maxHunger += 100;
-        Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
 
@@ -67,7 +66,9 @@ public class BloodRite : Technology, IPointerEnterHandler, IPointerExitHandler
                 resources.SubtractStone(stoneCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
+            }
+            else {
+                NotEnoughResources();
             }
         }
     }
@@ -75,7 +76,6 @@ public class BloodRite : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void EndResearch()
     {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer)

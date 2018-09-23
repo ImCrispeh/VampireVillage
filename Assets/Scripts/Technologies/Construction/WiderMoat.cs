@@ -42,7 +42,6 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
-        Debug.Log("Added " + technologyName + " to the town");
         Destroy(technologyPosition.Find(requiredTechnology.technologyName).gameObject);
         GameObject tech = Instantiate(technologyObject);
         tech.name = technologyName;
@@ -57,14 +56,15 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
                 resources.SubtractWood(woodCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
+            }
+            else {
+                NotEnoughResources();
             }
         }
     }
 
     public override void EndResearch() {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {

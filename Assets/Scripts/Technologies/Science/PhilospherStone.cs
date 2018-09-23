@@ -67,6 +67,9 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
             }
+            else {
+                NotEnoughResources();
+            }
         }
     }
 

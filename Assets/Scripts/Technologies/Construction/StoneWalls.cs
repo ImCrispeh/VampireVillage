@@ -43,7 +43,6 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 2;
-        Debug.Log("Added " + technologyName + " to the town");
         Destroy(technologyPosition.Find(requiredTechnology.technologyName).gameObject);
         GameObject tech = Instantiate(technologyObject);
         tech.name = technologyName;
@@ -58,18 +57,18 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
                 resources.SubtractWood(woodCost);
                 resources.SubtractStone(stoneCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
+            }
+            else {
+                NotEnoughResources();
             }
         }
     }
 
     public override void EndResearch() {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {
-        //Debug.Log("Mouse has entered " + technologyName);
         ttbName.text = technologyName;
         ttbResearchRequirement.text = "Requirement: " + researchRequirement;
         ttbDescription.text = technologyDescription;
@@ -84,7 +83,6 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
     }
 
     public override void OnPointerExit(PointerEventData pointer) {
-        //Debug.Log("Mouse has exited " + technologyName);
         ttbName.text = "";
         ttbResearchRequirement.text = "";
         ttbDescription.text = "";

@@ -50,7 +50,6 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
     {
         //The effects of the technology which are active once research ends
         resources.hungerDepletionRateModifier *= 0.5f;
-        Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
 
@@ -66,7 +65,9 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
                 resources.SubtractStone(stoneCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
+            }
+            else {
+                NotEnoughResources();
             }
         }
     }
@@ -74,7 +75,6 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
     public override void EndResearch()
     {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer)

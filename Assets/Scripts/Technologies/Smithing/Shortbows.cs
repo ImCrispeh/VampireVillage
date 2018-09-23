@@ -42,7 +42,6 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.attack += 1;
-        Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
 
@@ -55,14 +54,15 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
                 resources.SubtractStone(stoneCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
+            }
+            else {
+                NotEnoughResources();
             }
         }
     }
 
     public override void EndResearch() {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {

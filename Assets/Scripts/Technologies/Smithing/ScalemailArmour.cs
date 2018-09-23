@@ -28,7 +28,6 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         researching = false;
         applyTechnology = false;
         technologyImage = unresearchedImage;
-        //proceedingTechnologyBar.Add(connectingBar);
     }
 
     // Update is called once per frame
@@ -44,7 +43,6 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
-        Debug.Log("Added " + technologyName + " to the town");
         //Instantiate(technologyObject, technologyPosition);
     }
 
@@ -57,14 +55,15 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
                 resources.SubtractStone(stoneCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
+            }
+            else {
+                NotEnoughResources();
             }
         }
     }
 
     public override void EndResearch() {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {

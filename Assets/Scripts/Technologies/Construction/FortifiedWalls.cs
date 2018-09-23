@@ -45,7 +45,6 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
-        Debug.Log("Added " + technologyName + " to the town");
         technologyPosition.Find(requiredTechnology.technologyName).gameObject.name = technologyName;
     }
 
@@ -58,14 +57,15 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
                 resources.SubtractStone(stoneCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
-                Debug.Log("Researching: " + technologyName);
+            }
+            else {
+                NotEnoughResources();
             }
         }
     }
 
     public override void EndResearch() {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer) {

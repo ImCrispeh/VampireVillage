@@ -50,7 +50,6 @@ public class Transmutation : Technology, IPointerEnterHandler, IPointerExitHandl
     {
         //The effects of the technology which are active once research ends
         resources.collectionModifier = 2;
-        Debug.Log("Added " + technologyName + " to the town");
     }
 
     public override void StartResearch()
@@ -67,13 +66,15 @@ public class Transmutation : Technology, IPointerEnterHandler, IPointerExitHandl
                 resources.UpdateResourceText();
                 Debug.Log("Researching: " + technologyName);
             }
+            else {
+                NotEnoughResources();
+            }
         }
     }
 
     public override void EndResearch()
     {
         TechnologyEffect();
-        Debug.Log("Researched: " + technologyName);
     }
 
     public override void OnPointerEnter(PointerEventData pointer)

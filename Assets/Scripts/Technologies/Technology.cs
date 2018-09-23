@@ -35,6 +35,7 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     public virtual RectTransform ttbResearchTimeIcon { get; set; }
     public virtual BaseController mainBase { get; set; }
     public virtual ResourceStorage resources { get; set; }
+    public virtual PopupController popUpController { get; set; }
 
     protected virtual void Start() {
         technologyName = "Placeholder name";
@@ -51,6 +52,7 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
         proceedingTechnologyBar = new List<Image>();
         mainBase = BaseController._instance;
         resources = ResourceStorage._instance;
+        popUpController = PopupController._instance;
         hiddenScale = new Vector3(0, 0, 0);
         shownScale = new Vector3(0.6f, 0.6f, 0.6f);
 
@@ -98,6 +100,9 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
                 }
             }
         }
+    }
+    protected virtual void NotEnoughResources() {
+        popUpController.SetPopupText("Not enough resources");
     }
     public abstract void TechnologyEffect();
     public abstract void StartResearch();

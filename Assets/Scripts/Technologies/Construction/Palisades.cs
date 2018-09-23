@@ -58,7 +58,10 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
                 researching = true;
                 resources.SubtractWood(woodCost);
                 resources.UpdateResourceText();
-            }            
+            }
+            else {
+                NotEnoughResources();
+            }
         }
     }
 
