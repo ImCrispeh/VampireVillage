@@ -72,17 +72,14 @@ public class UnitController : MonoBehaviour {
     public void MoveToAction(GameObject dest) {
         isPerformingAction = true;
         objectForAction = dest;
-        Debug.Log("moving to perform action on, " + dest);
         Move(dest);
     }
 
     // Perform action based on string passed in by button click
     public IEnumerator PerformAction() {
-        Debug.Log("performing action");
         if(objectForAction.ToString().Contains("Wood")){
             Debug.Log("YUREEKA");
         }
-        Debug.Log(objectForAction);
         yield return new WaitForSeconds(2f);
 
         if (objectForAction != null) {
@@ -101,8 +98,14 @@ public class UnitController : MonoBehaviour {
                 case SelectionController.Actions.convert:
                     objectForAction.GetComponent<HumanTownController>().ConvertEffect(this);
                     break;
-                case SelectionController.Actions.repair:
-                    objectForAction.GetComponent<BaseController>().Repair();
+                case SelectionController.Actions.repair20:
+                    objectForAction.GetComponent<BaseController>().Repair(20);
+                    break;
+                case SelectionController.Actions.repair50:
+                    objectForAction.GetComponent<BaseController>().Repair(50);
+                    break;
+                case SelectionController.Actions.repairFull:
+                    objectForAction.GetComponent<BaseController>().Repair(objectForAction.GetComponent<BaseController>().maxHealth);
                     break;
                 case SelectionController.Actions.subjugate:
                     if (objectForAction.GetComponent<HumanTownController>() != null) {
@@ -122,7 +125,6 @@ public class UnitController : MonoBehaviour {
 
     public void ReturnFromAction() {
         isReturning = true;
-        Debug.Log("returning to base");
         Move(spawnPoint);
     }
 }

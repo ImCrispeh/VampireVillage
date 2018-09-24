@@ -25,7 +25,7 @@ public class TechnologyToggle : MonoBehaviour {
         if (SelectionController._instance.selectedObj != null) {
             SelectionController._instance.DeselectObj();
             SelectionController._instance.selectedObj = null;
-            SelectionController._instance.repairActionBtn.gameObject.SetActive(false);
+            SelectionController._instance.repairActionsContainer.SetActive(false);
             SelectionController._instance.resourceActionBtn.gameObject.SetActive(false);
             SelectionController._instance.townActionsContainer.SetActive(false);
             SelectionController._instance.SetObjText();
