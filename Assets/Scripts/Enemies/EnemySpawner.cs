@@ -152,7 +152,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void IncreaseDifficulty() {
-        difficultyMultiplier += 0.25f;
+        difficultyMultiplier += 0.15f;
     }
 
     //disables the unit and they're added to a list, the canvas for the subjugation level is then activated
