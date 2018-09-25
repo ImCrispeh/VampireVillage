@@ -71,6 +71,9 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch()

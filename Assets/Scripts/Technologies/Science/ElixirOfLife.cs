@@ -70,6 +70,9 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch()

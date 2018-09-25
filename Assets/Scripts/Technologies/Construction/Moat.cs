@@ -61,6 +61,9 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch() {

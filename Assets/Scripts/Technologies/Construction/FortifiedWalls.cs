@@ -62,6 +62,9 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch() {

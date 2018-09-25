@@ -81,6 +81,9 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch()

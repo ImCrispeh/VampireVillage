@@ -58,6 +58,9 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch() {

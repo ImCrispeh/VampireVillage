@@ -60,6 +60,9 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch() {

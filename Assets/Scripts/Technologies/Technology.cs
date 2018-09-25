@@ -104,6 +104,9 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     protected virtual void NotEnoughResources() {
         popUpController.SetPopupText("Not enough resources");
     }
+    protected virtual void MissingPrerequisite() {
+        popUpController.SetPopupText("Missing prerequisite technology");
+    }
     public abstract void TechnologyEffect();
     public abstract void StartResearch();
     public abstract void EndResearch();

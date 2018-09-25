@@ -79,6 +79,9 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch()

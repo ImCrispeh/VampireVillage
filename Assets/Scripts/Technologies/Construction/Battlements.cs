@@ -59,6 +59,9 @@ public class Battlements : Technology, IPointerEnterHandler, IPointerExitHandler
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch() {

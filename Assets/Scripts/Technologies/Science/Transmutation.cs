@@ -70,6 +70,9 @@ public class Transmutation : Technology, IPointerEnterHandler, IPointerExitHandl
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch()

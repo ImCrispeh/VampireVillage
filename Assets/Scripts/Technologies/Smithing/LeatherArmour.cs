@@ -60,6 +60,9 @@ public class LeatherArmour : Technology, IPointerEnterHandler, IPointerExitHandl
                 NotEnoughResources();
             }
         }
+        else {
+            MissingPrerequisite();
+        }
     }
 
     public override void EndResearch() {
