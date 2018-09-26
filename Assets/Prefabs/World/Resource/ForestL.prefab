@@ -3129,11 +3129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27343b6aa57dc364e989c4d7cde386c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxResourceAmt: 0
+  maxResourceAmt: 100
   currentResourceAmt: 0
-  resourceCollectionAmt: 0
-  respawnTimer: 0
-  timeToRespawn: 0
+  resourceCollectionAmt: 10
+  respawnTimer: 2
+  timeToRespawn: 2
   isRespawning: 0
 --- !u!208 &208777408095664888
 NavMeshObstacle:

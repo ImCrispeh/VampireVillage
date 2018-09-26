@@ -44,7 +44,7 @@ public class Timer : MonoBehaviour {
     }
 	
 	void Update () {
-        currentTime += (Time.deltaTime / secondsInFullDay) * speed;
+        currentTime += (Time.deltaTime / secondsInFullDay);
         //Debug.Log("Current time: " + currentTime);
         if (currentTime > 1) {
             currentTime = 0;
@@ -110,12 +110,12 @@ public class Timer : MonoBehaviour {
     }
 
     public void PauseTimer() {
-        speed = 0;
+        Time.timeScale = 0;
         isPaused = true;
     }
 
     public void UnpauseTimer() {
-        speed = 1;
+        Time.timeScale = 1;
         isPaused = false;
     }
 

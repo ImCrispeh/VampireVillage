@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
+    public static CameraController _instance;
+
+    public int timeSpeed = 1;
 
     public float panSpeed = 10f;
     private float panBorderTrigger = 10f;
@@ -14,6 +17,14 @@ public class CameraController : MonoBehaviour {
     public float scrollMax;
 
     public Vector3 orginalCameraPos;
+
+    private void Awake() {
+        if (_instance != null && _instance != this) {
+            Destroy(gameObject);
+        } else {
+            _instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -27,22 +38,22 @@ public class CameraController : MonoBehaviour {
 
         if(Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderTrigger)
         {
-            pos.z += panSpeed * Time.deltaTime;
+            pos.z += panSpeed * Time.unscaledDeltaTime * timeSpeed;
         }
 
         else if (Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderTrigger)
         {
-            pos.z -= panSpeed * Time.deltaTime;
+            pos.z -= panSpeed * Time.unscaledDeltaTime * timeSpeed;
         }
 
         else if (Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderTrigger)
         {
-            pos.x += panSpeed * Time.deltaTime;
+            pos.x += panSpeed * Time.unscaledDeltaTime * timeSpeed;
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderTrigger)
         {
-            pos.x -= panSpeed * Time.deltaTime;
+            pos.x -= panSpeed * Time.unscaledDeltaTime * timeSpeed;
         }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -59,5 +70,13 @@ public class CameraController : MonoBehaviour {
         {
             transform.position = orginalCameraPos;
         }
+    }
+
+    public void PauseCamera() {
+        timeSpeed = 0;
+    }
+
+    public void UnpauseCamera() {
+        timeSpeed = 1;
     }
 }

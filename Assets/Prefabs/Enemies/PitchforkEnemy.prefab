@@ -2253,11 +2253,17 @@ MonoBehaviour:
   agent: {fileID: 0}
   isMovingToAttack: 0
   isAttacking: 0
-  health: 20
-  attack: 3
+  health: 10
+  attack: 1
   attackTimer: 0
   timeBetweenAttacks: 3
   town: {fileID: 0}
+  battle1: {fileID: 0}
+  battle2: {fileID: 0}
+  battle3: {fileID: 0}
+  battle4: {fileID: 0}
+  battle5: {fileID: 0}
+  battle6: {fileID: 0}
 --- !u!136 &136090913601127676
 CapsuleCollider:
   m_ObjectHideFlags: 1
