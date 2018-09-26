@@ -14,7 +14,6 @@ public class TechnologyToggle : MonoBehaviour {
         clicked = false;
         scale = new Vector3(1, 1, 1);
         rect = GameObject.Find("Canvas/TechnologyWindow").GetComponent<RectTransform>();
-        //rect = GameObject.Find("Canvas/PANEL/TESTMASK/TechnologyWindow").GetComponent<RectTransform>();
     }
 	
 	// Update is called once per frame
