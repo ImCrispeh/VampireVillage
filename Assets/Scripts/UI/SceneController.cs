@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour {
     public static SceneController Instance { get; set; }
     public GameObject pauseMenu;
     public bool togglePause;
+    public bool togglePseudoPause;
 
     public bool isGameOver;
     public GameObject gameOverScreen;
@@ -32,16 +33,28 @@ public class SceneController : MonoBehaviour {
 	
 	void Update () {
         //checks if we're in the game scene then pauses the game by flipping the bool
-        if (SceneManager.GetActiveScene().buildIndex == 1 && Input.GetKeyDown(KeyCode.Escape) && !isGameOver) {
-            if (!togglePause) {
-                Time.timeScale = 0;
-                pauseMenu.SetActive(true);                
-                togglePause = !togglePause;
+        if (SceneManager.GetActiveScene().buildIndex == 1 && !isGameOver) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                if (!togglePause) {
+                    Timer._instance.PauseTimer();
+                    CameraController._instance.PauseCamera();
+                    pauseMenu.SetActive(true);
+                    togglePause = !togglePause;
+                } else {
+                    Timer._instance.UnpauseTimer();
+                    CameraController._instance.UnpauseCamera();
+                    pauseMenu.SetActive(false);
+                    togglePause = !togglePause;
+                }
             }
-            else {
-                Time.timeScale = 1;
-                pauseMenu.SetActive(false);                
-                togglePause = !togglePause;
+
+            if (Input.GetKeyDown(KeyCode.P)) {
+                if (!togglePseudoPause) {
+                    Timer._instance.PauseTimer();
+                } else {
+                    Timer._instance.UnpauseTimer();
+                }
+                togglePseudoPause = !togglePseudoPause;
             }
         }
 	}
@@ -51,7 +64,8 @@ public class SceneController : MonoBehaviour {
     }
 
     public void ResumeGame() {
-        Time.timeScale = 1;
+        Timer._instance.UnpauseTimer();
+        CameraController._instance.UnpauseCamera();
         pauseMenu.SetActive(false);
         pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
         gameOverScreen.SetActive(false);

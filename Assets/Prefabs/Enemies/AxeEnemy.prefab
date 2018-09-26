@@ -2272,8 +2272,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   isMovingToAttack: 0
   isAttacking: 0
-  health: 20
-  attack: 3
+  health: 10
+  attack: 1
   attackTimer: 0
   timeBetweenAttacks: 3
   town: {fileID: 0}
