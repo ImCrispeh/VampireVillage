@@ -71,6 +71,7 @@ public class SelectionController : MonoBehaviour {
         availableUnits = 1 - spawnPoint.childCount;
         ResourceStorage._instance.UpdateResourceText();
         portraitPlaceholder = GameObject.Find("Canvas/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
+        //portraitPlaceholder = GameObject.Find("Canvas/PANEL/TESTMASK/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
         portraitPlaceholder.enabled = false;
 
         totalHumanTowns = FindObjectsOfType<HumanTownController>().Length;
