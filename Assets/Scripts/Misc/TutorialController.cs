@@ -196,6 +196,7 @@ public class TutorialController : SelectionController {
         }
 
         Timer._instance.UnpauseTimer();
+        DeselectObj();
         selectionCont.SetActive(true);
         techBtn.SetActive(true);
         resourceActionBtn.interactable = true;

@@ -168,13 +168,13 @@ public class SelectionController : MonoBehaviour {
     public void DeselectObj() {
         foreach (cakeslice.Outline outliner in selectedObj.transform.GetComponentsInChildren<cakeslice.Outline>()) {
             Debug.Log("OUTLINER FOUND AND ENABLED1");
-            outliner.enabled = !outliner.enabled;
+            outliner.enabled = false;
         }
-        foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
-            foreach (Material mat in rend.materials) {
-                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1f);
-            }
-        }
+        //foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
+        //    foreach (Material mat in rend.materials) {
+        //        mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1f);
+        //    }
+        //}
         selectedObj = null;
         repairActionsContainer.SetActive(false);
         resourceActionBtn.gameObject.SetActive(false);

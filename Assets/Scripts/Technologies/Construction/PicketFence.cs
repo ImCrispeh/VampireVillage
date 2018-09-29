@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler {
 
@@ -42,6 +43,7 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
+        mainBase.gameObject.GetComponent<NavMeshObstacle>().size = new Vector3(5.5f, 1f, 5.5f);
         GameObject tech = Instantiate(technologyObject);
         tech.name = technologyName;
         tech.transform.SetParent(technologyPosition);
