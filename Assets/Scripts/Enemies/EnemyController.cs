@@ -24,16 +24,19 @@ public class EnemyController : MonoBehaviour {
     public AudioClip battle5;
     public AudioClip battle6;
 
+    private Animator anim;
+
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Start () {
-        
+        anim = GetComponent<Animator>();
     }
 
 	void Update () {
         if (isMovingToAttack) {
+            anim.SetBool("isAttacking", false);
             if (!agent.pathPending) {
                 if (new Vector3(agent.destination.x - transform.position.x, 0f, agent.destination.z - transform.position.z).sqrMagnitude <= agent.stoppingDistance) {
                     if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
@@ -46,6 +49,7 @@ public class EnemyController : MonoBehaviour {
 
         if (isAttacking) {
             attackTimer += Time.deltaTime;
+            anim.SetBool("isAttacking", true);
 
             if (attackTimer >= timeBetweenAttacks) {
                 BaseController._instance.TakeDamage(attack, doesIgnoreDefense);
@@ -75,5 +79,6 @@ public class EnemyController : MonoBehaviour {
         health -= amt;
         health = Mathf.Clamp(health, 0, int.MaxValue);
         return health == 0;
+        anim.SetTrigger("isDead");
     }
 }
