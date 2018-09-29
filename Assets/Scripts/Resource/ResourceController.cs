@@ -14,8 +14,6 @@ public class ResourceController : MonoBehaviour {
 
 	void Start () {
         timeToRespawn = Timer._instance.secondsInFullDay * 5;
-        resourceCollectionAmt = 50;
-        maxResourceAmt = 150;
         currentResourceAmt = maxResourceAmt;
 	}
 	

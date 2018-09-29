@@ -90,10 +90,6 @@ public class TutorialController : SelectionController {
         if (Input.GetMouseButtonDown(0) && EventSystem.current.currentSelectedGameObject == techBtn && currText == tutorialTexts.Length - 2) {
             HideText();
         }
-
-        if (Input.GetKeyDown(KeyCode.A)) {
-            ChangeText();
-        }
     }
 
     public void SetVariables() {
@@ -161,8 +157,9 @@ public class TutorialController : SelectionController {
                 techBtn.SetActive(true);
             }
 
-            // Make it so the final message does not pause the timer (since there is no action to take)
-            Timer._instance.PauseTimer();
+            if (!Timer._instance.isPaused) {
+                Timer._instance.PauseTimer();
+            }
 
         } else {
             Timer._instance.UnpauseTimer();

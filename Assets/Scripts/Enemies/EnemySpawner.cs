@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public int enemiesToSpawn;
     public int heavyEnemiesToSpawn;
+    public int catapultsToSpawn;
     public float spawnTimer;
     public float timeBetweenSpawns;
     public bool isSpawning;
@@ -23,7 +24,6 @@ public class EnemySpawner : MonoBehaviour {
     public float subjugationLimit;
 
     public List<UnitController> units;
-    public ThreatController threatCont;
     public bool beingSubjugated;
     public bool subjugationFinished;
 
@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour {
     private GameObject[] lightEnemies;
     [SerializeField]
     private GameObject[] heavyEnemies;
+    public GameObject catapult;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -113,7 +114,7 @@ public class EnemySpawner : MonoBehaviour {
         }
 
         if (enemiesToSpawn > 0) {
-            if(!bellSounded){
+            if (!bellSounded) {
                 SoundManager.instance.RandomizeSfx(callToArms);
                 bellSounded = true;
             }
@@ -129,6 +130,10 @@ public class EnemySpawner : MonoBehaviour {
                 }
                 spawnTimer -= timeBetweenSpawns;
             }
+        }
+        if (catapultsToSpawn > 0) {
+            SpawnEnemy(catapult, spawnPositions[0]);
+            catapultsToSpawn--;
         } else {
             isSpawning = false;
             bellSounded = false;
@@ -148,11 +153,16 @@ public class EnemySpawner : MonoBehaviour {
     public void SetEnemiesToSpawn() {
         enemiesToSpawn = (int)(1.5 * ThreatController._instance.threatLevel);
         heavyEnemiesToSpawn = ThreatController._instance.threatLevel / 2;
+        if (ThreatController._instance.threatLevel == 5) {
+            catapultsToSpawn = 1;
+        }
         hasSetSpawn = true;
     }
 
     public void IncreaseDifficulty() {
-        difficultyMultiplier += 0.15f;
+        if (difficultyMultiplier < 1.5f) {
+            difficultyMultiplier = Mathf.Clamp(difficultyMultiplier + 0.15f, 0f, 1.5f);
+        }
     }
 
     //disables the unit and they're added to a list, the canvas for the subjugation level is then activated

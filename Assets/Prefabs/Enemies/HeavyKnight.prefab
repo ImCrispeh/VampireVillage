@@ -848,9 +848,10 @@ MonoBehaviour:
   isMovingToAttack: 0
   isAttacking: 0
   health: 15
-  attack: 3
+  attack: 4
   attackTimer: 0
   timeBetweenAttacks: 8
+  doesIgnoreArmour: 0
   town: {fileID: 1278006990840236, guid: 657d388d82cc1764ca9a7cdef0db62b5, type: 2}
   battle1: {fileID: 8300000, guid: 1c5c30d98e9054a4b9067181c1843e0e, type: 3}
   battle2: {fileID: 8300000, guid: 15b6f3881c50cda4e8eed5678c98db24, type: 3}

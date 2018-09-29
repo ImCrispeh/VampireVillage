@@ -33,7 +33,7 @@ public class HumanTownController : MonoBehaviour {
 
         partialFeedThreat = 7.5f;
         fullFeedThreat = 25f;
-        convertThreat = 35f;
+        convertThreat = 30f;
 
         populationBaseRegenRate = 0.5f;
 
