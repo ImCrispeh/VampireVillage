@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114640169755422280}
   m_Layer: 0
   m_Name: Spearman
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,7 +813,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!95 &95944857977052788
 Animator:
@@ -847,10 +847,11 @@ MonoBehaviour:
   agent: {fileID: 0}
   isMovingToAttack: 0
   isAttacking: 0
-  health: 0
-  attack: 0
+  health: 10
+  attack: 2
   attackTimer: 0
-  timeBetweenAttacks: 0
+  timeBetweenAttacks: 3
+  doesIgnoreDefense: 0
   town: {fileID: 0}
   battle1: {fileID: 8300000, guid: 1c5c30d98e9054a4b9067181c1843e0e, type: 3}
   battle2: {fileID: 8300000, guid: 15b6f3881c50cda4e8eed5678c98db24, type: 3}
@@ -865,7 +866,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1086184524877348}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1.8
@@ -944,16 +945,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1086184524877348}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_Radius: 0.1
+  m_Speed: 17.5
+  m_Acceleration: 10
+  avoidancePriority: 75
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

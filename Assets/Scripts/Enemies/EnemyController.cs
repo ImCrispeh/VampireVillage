@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour {
     public int attack;
     public float attackTimer;
     public float timeBetweenAttacks;
+    public bool doesIgnoreDefense;
     public GameObject town;
 
     public AudioClip battle1;
@@ -47,7 +48,7 @@ public class EnemyController : MonoBehaviour {
             attackTimer += Time.deltaTime;
 
             if (attackTimer >= timeBetweenAttacks) {
-                BaseController._instance.TakeDamage(attack);
+                BaseController._instance.TakeDamage(attack, doesIgnoreDefense);
                 attackTimer -= timeBetweenAttacks;
                 SoundManager.instance.RandomizeSfx(battle1, battle2, battle3, battle4, battle5, battle6);
             }
@@ -57,8 +58,8 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void SetStats(float threatLevel, float difficulty) {
-        attack = (int)Math.Round((attack * threatLevel * difficulty), MidpointRounding.AwayFromZero);
-        health = (int)Math.Round((health * threatLevel * difficulty), MidpointRounding.AwayFromZero);
+        attack = (int)Math.Round((attack * (Mathf.Clamp(threatLevel / 1.5f, 1, 3)) * difficulty), MidpointRounding.AwayFromZero);
+        health = (int)Math.Round((health * (Mathf.Clamp(threatLevel / 1.5f, 1, 3)) * difficulty), MidpointRounding.AwayFromZero);
     }
 
     public void MoveToAttack() {

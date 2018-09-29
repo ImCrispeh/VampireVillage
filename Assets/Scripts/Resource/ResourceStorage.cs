@@ -32,9 +32,9 @@ public class ResourceStorage : MonoBehaviour {
 
     void Start () {
         maxHunger = 100f;
-        hungerDepletionRate = 0.01f;
+        hungerDepletionRate = 0.0075f;
         hungerDepletionRateModifier = 1f;
-        hunger = 15f;
+        hunger = 20f;
         UpdateResourceText();
         hungerBar.value = HungerPercentage();
         collectionModifier = 1;
@@ -74,11 +74,13 @@ public class ResourceStorage : MonoBehaviour {
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         hungerBar.value = HungerPercentage();
 
-        if (hunger <= 25f && !hasHungerWarningShown) {
-            hasHungerWarningShown = true;
-            PopupController._instance.SetPopupText("Your hunger is getting low. You will start taking damage if it reaches 0.");
-            for (int i = 0; i < 5; i++) {
-                hungerBarOutlineAnimation.PlayQueued("HungerBarWarning");
+        if (hunger <= 25f) {
+            if (!hasHungerWarningShown) {
+                hasHungerWarningShown = true;
+                PopupController._instance.SetPopupText("Your hunger is getting low. You will start taking damage if it reaches 0.");
+            }
+            if (!hungerBarOutlineAnimation.isPlaying) {
+                hungerBarOutlineAnimation.Play("HungerBarWarning");
             }
         }
 
@@ -120,8 +122,10 @@ public class ResourceStorage : MonoBehaviour {
 
         if (SelectionController._instance != null) {
             units = SelectionController._instance.availableUnits;
+            Debug.Log(units);
         } else {
             units = TutorialController._tutInstance.availableUnits;
+            Debug.Log(units);
         }
 
         resourceText.text =

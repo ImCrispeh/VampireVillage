@@ -88,8 +88,13 @@ public class BaseController : MonoBehaviour {
         healthBar.fillAmount = (float)health / (float)maxHealth;
     }
 
-    public void TakeDamage(int amt) {
-        int damage = Mathf.Clamp(Mathf.RoundToInt(amt - (defense/2)), 1, int.MaxValue);
+    public void TakeDamage(int amt, bool doesIgnoreDefense) {
+        int damage;
+        if (doesIgnoreDefense) {
+            damage = Mathf.Clamp(amt , 1, int.MaxValue);
+        } else {
+            damage = Mathf.Clamp(Mathf.RoundToInt(amt - (defense / 2)), 1, int.MaxValue);
+        }
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
 

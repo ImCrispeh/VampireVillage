@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour {
     public int currentDay;
     private float currentDayTimer;
     public Text speedText;
-    public int speed;
+    public float speed;
     private RectTransform sunAndMoon;
     private Image clockFace;
     private Text timeT;
@@ -35,6 +35,7 @@ public class Timer : MonoBehaviour {
     void Start () {
         timeT.text = "";
 
+        Time.timeScale = 1;
         speed = 1;
 
         humanTowns = new List<HumanTownController>();
@@ -110,24 +111,27 @@ public class Timer : MonoBehaviour {
     }
 
     public void PauseTimer() {
+        speed = Time.timeScale;
         Time.timeScale = 0;
         isPaused = true;
     }
 
     public void UnpauseTimer() {
-        Time.timeScale = 1;
+        Time.timeScale = speed;
         isPaused = false;
     }
 
     public void ToggleSpeed() {
-        if (Time.timeScale == 1) {
-            Time.timeScale = 2;
-        } else if (Time.timeScale == 2) {
-            Time.timeScale = 3;
-        } else {
-            Time.timeScale = 1;
-        }
+        if (!isPaused) {
+            if (Time.timeScale == 1) {
+                Time.timeScale = 2;
+            } else if (Time.timeScale == 2) {
+                Time.timeScale = 3;
+            } else {
+                Time.timeScale = 1;
+            }
 
-        speedText.text = "x" + Time.timeScale;
+            speedText.text = "x" + Time.timeScale;
+        }
     }
 }

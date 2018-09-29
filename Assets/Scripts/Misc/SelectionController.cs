@@ -68,9 +68,9 @@ public class SelectionController : MonoBehaviour {
             actionIcons.Add(icon.iconName, icon.icon);
         }
 
-        availableUnits = 1 - spawnPoint.childCount;
+        availableUnits = maxUnits - spawnPoint.childCount;
         ResourceStorage._instance.UpdateResourceText();
-        portraitPlaceholder = GameObject.Find("Canvas/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
+        portraitPlaceholder = GameObject.Find("Canvas/UI/UIMask/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
         //portraitPlaceholder = GameObject.Find("Canvas/PANEL/TESTMASK/BottomBar/InformationWindow/PortraitPlaceholder").GetComponent<RawImage>();
         portraitPlaceholder.enabled = false;
 
@@ -192,13 +192,13 @@ public class SelectionController : MonoBehaviour {
             Debug.Log("OUTLINER FOUND AND ENABLED1");
             outliner.enabled = !outliner.enabled;
         }
-        foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
-            if (rend.gameObject.GetComponent<NavMeshAgent>() == null) {
-                foreach (Material mat in rend.materials) {
-                    mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0.3f);
-                }
-            }
-        }
+        //foreach (Renderer rend in selectedObj.transform.GetComponentsInChildren<Renderer>()) {
+        //    if (rend.gameObject.GetComponent<NavMeshAgent>() == null) {
+        //        foreach (Material mat in rend.materials) {
+        //            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0.3f);
+        //        }
+        //    }
+        //}
     }
 
     // Brings up action buttons based on what object is selected
@@ -421,7 +421,7 @@ public class SelectionController : MonoBehaviour {
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 selectedObjText.text =
                     selectedObj.tag + "\n"
-                    + selectedObj.GetComponent<ResourceController>().currentResourceAmt + " " + selectedObj.tag + " available";
+                    + selectedObj.GetComponentInChildren<ResourceController>().currentResourceAmt + " " + selectedObj.tag + " available";
             }
 
             if (selectedObj.tag == "HumanTown" && selectedObj.GetComponent<HumanTownController>().beingSubjugated) {
