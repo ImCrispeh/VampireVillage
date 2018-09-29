@@ -15,7 +15,11 @@ public class SoundOn : MonoBehaviour
     public AudioMixer mixer;
     public AudioMixerSnapshot[] snapshots;
     public float[] weights;
-    private bool isNight = true;
+    public bool isNight = true;
+
+    // public static  bool isItNight(){
+    //     return isNight;
+    // }
 
     void OnTriggerExit(Collider other)
     {

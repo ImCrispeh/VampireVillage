@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SceneController : MonoBehaviour {
     public static SceneController Instance { get; set; }
     public GameObject pauseMenu;
     public bool togglePause;
     public bool togglePseudoPause;
+
+    public AudioMixer mixer;
+    public AudioMixerSnapshot[] snapshots;
+    public float[] weights;
 
     public bool isGameOver;
     public GameObject gameOverScreen;
@@ -57,6 +62,18 @@ public class SceneController : MonoBehaviour {
                 togglePseudoPause = !togglePseudoPause;
             }
         }
+
+        if(togglePause){
+            weights[0] = 0.0f;
+            weights[1] = 0.0f;
+            weights[2] = 1.0f;
+            mixer.TransitionToSnapshots(snapshots, weights, 0.0f);
+        }else{
+            weights[0] = 0.5f;
+            weights[1] = 0.5f;
+            weights[2] = 0.0f;
+            mixer.TransitionToSnapshots(snapshots, weights, 0.0f);
+        }
 	}
 
     public void StartGame() {
@@ -70,6 +87,7 @@ public class SceneController : MonoBehaviour {
         pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
         gameOverScreen.SetActive(false);
         togglePause = !togglePause;
+    
     }
 
     public void QuitToMainMenu() {

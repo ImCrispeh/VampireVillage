@@ -1199,6 +1199,15 @@ MonoBehaviour:
   pauseMenu: {fileID: 1245367564}
   togglePause: 0
   togglePseudoPause: 0
+  mixer: {fileID: 24100000, guid: f4b2706786810c74896dd91c7257536e, type: 2}
+  snapshots:
+  - {fileID: 245896011706285736, guid: f4b2706786810c74896dd91c7257536e, type: 2}
+  - {fileID: 245213867381406066, guid: f4b2706786810c74896dd91c7257536e, type: 2}
+  - {fileID: 245299182068812330, guid: f4b2706786810c74896dd91c7257536e, type: 2}
+  weights:
+  - 0
+  - 0
+  - 1
   isGameOver: 0
   gameOverScreen: {fileID: 404135894}
   gameOverText: {fileID: 984549143}
