@@ -78,6 +78,10 @@ public class EnemyController : MonoBehaviour {
     public bool IsDeadAfterDamage(int amt) {
         health -= amt;
 
+        if (health == 0)
+        {
+            anim.SetBool("isDead", true);
+        }
         health = Mathf.Clamp(health, 0, int.MaxValue);
 
         return health == 0;
