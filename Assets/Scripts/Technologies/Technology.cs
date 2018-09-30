@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public virtual string technologyName { get; set; }
@@ -36,6 +37,9 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     public virtual BaseController mainBase { get; set; }
     public virtual ResourceStorage resources { get; set; }
     public virtual PopupController popUpController { get; set; }
+
+    private bool playOnce = true;
+
 
     protected virtual void Start() {
         technologyName = "Placeholder name";
@@ -92,6 +96,12 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
             else {
                 researching = false;
                 researched = true;
+
+                if(playOnce){
+                    SoundManager.instance.TechComplete();
+                    playOnce = false;
+                }
+
                 //proceedingTechnologyBar.fillAmount = 0;
                 foreach (Image unfilled in proceedingTechnologyBar) {
                     if (unfilled != null) {

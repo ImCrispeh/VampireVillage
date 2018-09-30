@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource dayMusic;
     public AudioSource nightMusic;
+    public AudioSource taskCompleted;
 
     public float speed;
     public float maxVolume;
@@ -18,12 +19,13 @@ public class SoundManager : MonoBehaviour
     public float highPitchRange = 1.05f;
     
     public AudioClip firstNight;
+    public AudioClip techComplete;
     //public GameObject sun;
     //public GameObject moon;
     //public List<AudioClip> nightTracks;
     //public List<AudioClip> dayTracks;
     void Start(){
-        PlaySingle(firstNight);
+        RandomMusic(true, firstNight);
     }
 
     void Awake()
@@ -65,6 +67,21 @@ public class SoundManager : MonoBehaviour
 
     }
     public void RandomizeSfx(params AudioClip[] clips)
+    {
+        //Generate a random number between 0 and the length of our array of clips passed in.
+        int randomIndex = Random.Range(0, clips.Length);
+
+        //Choose a random pitch to play back our clip at between our high and low pitch ranges.
+        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+
+        //Set the pitch of the audio source to the randomly chosen pitch.
+        taskCompleted.pitch = randomPitch;
+
+        //Play the clip.
+        taskCompleted.Play();
+    }
+
+    public void TaskCompleted(params AudioClip[] clips)
     {
         //Generate a random number between 0 and the length of our array of clips passed in.
         int randomIndex = Random.Range(0, clips.Length);
@@ -126,5 +143,9 @@ public class SoundManager : MonoBehaviour
 
         audioSource.Stop();
         audioSource.volume = startVolume;
+    }
+
+    public void TechComplete(){
+        TaskCompleted(techComplete);
     }
 }
