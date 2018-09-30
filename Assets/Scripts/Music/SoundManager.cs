@@ -17,11 +17,14 @@ public class SoundManager : MonoBehaviour
     public float lowPitchRange = .95f;              
     public float highPitchRange = 1.05f;
     
-
+    public AudioClip firstNight;
     //public GameObject sun;
     //public GameObject moon;
     //public List<AudioClip> nightTracks;
     //public List<AudioClip> dayTracks;
+    void Start(){
+        PlaySingle(firstNight);
+    }
 
     void Awake()
     {
