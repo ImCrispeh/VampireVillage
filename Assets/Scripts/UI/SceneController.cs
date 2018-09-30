@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour {
     public AudioMixer mixer;
     public AudioMixerSnapshot[] snapshots;
     public float[] weights;
+    public AudioClip gameOver;
 
     public bool isGameOver;
     public GameObject gameOverScreen;
@@ -115,6 +116,9 @@ public class SceneController : MonoBehaviour {
 
     public void EndGame(bool isWin, string message) {
         isGameOver = true;
+
+        SoundManager.instance.PlaySingle(gameOver);
+
         Timer._instance.PauseTimer();
         pauseMenu.SetActive(true);
         pauseMenu.transform.GetChild(0).gameObject.SetActive(false);

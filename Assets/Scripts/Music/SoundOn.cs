@@ -17,9 +17,6 @@ public class SoundOn : MonoBehaviour
     public float[] weights;
     public bool isNight = true;
 
-    // public static  bool isItNight(){
-    //     return isNight;
-    // }
 
     void OnTriggerExit(Collider other)
     {
