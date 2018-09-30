@@ -12,6 +12,7 @@ AudioMixerController:
   - {fileID: 24500006}
   - {fileID: 245896011706285736}
   - {fileID: 245213867381406066}
+  - {fileID: 245299182068812330}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -35,7 +36,7 @@ AudioMixerController:
     - 5b01a5258ef4ddf4b9cbf7a5f9e0f2b7
     name: Music
   m_CurrentViewIndex: 1
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 245299182068812330}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -51,6 +52,7 @@ AudioMixerGroupController:
   m_Pitch: 71155f0e4dbfa8348bc6a17d14aa59d2
   m_Effects:
   - {fileID: 24400004}
+  - {fileID: 244651566447549350}
   m_UserColorIndex: 8
   m_Mute: 0
   m_Solo: 0
@@ -213,6 +215,27 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &244651566447549350
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8776c5b13d28df44a82ccf05bbd3ec72
+  m_EffectName: Pitch Shifter
+  m_MixLevel: 539ec7844727c4842bf24e7d4a544b58
+  m_Parameters:
+  - m_ParameterName: Pitch
+    m_GUID: cd54eddceae9f6447b5029c5d8eb2c82
+  - m_ParameterName: FFT size
+    m_GUID: 08400f5e3b0489e468e33b913865c518
+  - m_ParameterName: Overlap
+    m_GUID: d7b46f3185a3d2f45b157ab1b97e9332
+  - m_ParameterName: Max channels
+    m_GUID: e35bd4152be11ec48a7d3839000dfeea
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &244702909798798498
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -289,6 +312,21 @@ AudioMixerSnapshotController:
     bc5a56284ae060648aa29f15a7991df4: 713
     d6466d09ea375fd4fa3513ddb1499a78: 1033
     005cc48e8c884cf4286ef9e3e7d7023a: 106
+  m_TransitionOverrides: {}
+--- !u!245 &245299182068812330
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Pause
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 02f9c0a351f5fa94bb4057b96fd4619c
+  m_FloatValues:
+    44972996130b4554d9d2434f1ba1f8dc: -10.345207
+    3efc4dc67826f254482a06b01c9ce861: 0
+    d6466d09ea375fd4fa3513ddb1499a78: 1033
+    b890aadc0e0bf7e4187090c93da62a60: -10.345213
+    cd54eddceae9f6447b5029c5d8eb2c82: 0.793
   m_TransitionOverrides: {}
 --- !u!245 &245896011706285736
 AudioMixerSnapshotController:
