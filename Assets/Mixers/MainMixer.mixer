@@ -17,7 +17,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 44972996130b4554d9d2434f1ba1f8dc
+    name: BackgroundVolume
+  - guid: b890aadc0e0bf7e4187090c93da62a60
+    name: MasterVolume
+  - guid: 3efc4dc67826f254482a06b01c9ce861
+    name: SFXvolume
   m_AudioMixerGroupViews:
   - guids:
     - 08bea3e94d60932499a56110599fd826
@@ -29,14 +35,12 @@ AudioMixerController:
     name: View
   - guids:
     - 08bea3e94d60932499a56110599fd826
-    - d9b4739f1f5cc2648b9d99759d813117
     - 814b3334a651af0448d86a52f31be3e4
     - c24ea7aab9a570946998df45a8add823
     - edea1e56faa7215438e44ceba1f3a1a7
     - 5b01a5258ef4ddf4b9cbf7a5f9e0f2b7
-    - 04f112dd79c489a4db7f28b110b403c2
     name: Music
-  m_CurrentViewIndex: 1
+  m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
@@ -90,7 +94,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MenuMisic
+  m_Name: MenuMusic
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c24ea7aab9a570946998df45a8add823
   m_Children: []
@@ -189,7 +193,7 @@ AudioMixerGroupController:
   m_Pitch: 9434bb921fad5cc4aa1079d4482bc05b
   m_Effects:
   - {fileID: 244290291079928424}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 4
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
