@@ -75,10 +75,12 @@ public class SoundManager : MonoBehaviour
         float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
         //Set the pitch of the audio source to the randomly chosen pitch.
-        taskCompleted.pitch = randomPitch;
+        sfxSource.pitch = randomPitch;
+
+        sfxSource.clip = clips[randomIndex];
 
         //Play the clip.
-        taskCompleted.Play();
+        sfxSource.Play();
     }
 
     public void TaskCompleted(params AudioClip[] clips)
@@ -90,13 +92,13 @@ public class SoundManager : MonoBehaviour
         float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
         //Set the pitch of the audio source to the randomly chosen pitch.
-        sfxSource.pitch = randomPitch;
+        taskCompleted.pitch = randomPitch;
 
         //Set the clip to the clip at our randomly chosen index.
-        sfxSource.clip = clips[randomIndex];
+        taskCompleted.clip = clips[randomIndex];
 
         //Play the clip.
-        sfxSource.Play();
+        taskCompleted.Play();
     }
 
     public void StopMusic(bool isNight) {
