@@ -194,7 +194,7 @@ public class TutorialController : SelectionController {
         foreach (GameObject obj in woodTutIndicators) {
             obj.SetActive(false);
         }
-
+        Timer._instance.speed = 1;
         Timer._instance.UnpauseTimer();
         if (selectedObj != null) {
             DeselectObj();
