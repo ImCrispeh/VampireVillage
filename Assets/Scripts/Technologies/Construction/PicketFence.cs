@@ -43,7 +43,13 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
-        mainBase.gameObject.GetComponent<NavMeshObstacle>().size = new Vector3(5.5f, 1f, 5.5f);
+        mainBase.gameObject.GetComponent<NavMeshObstacle>().size = new Vector3(6.5f, 1f, 6.5f);
+        SelectionController._instance.MoveSpawnPoint();
+        foreach (UnitController unit in FindObjectsOfType<UnitController>()) {
+            if (unit.isReturning) {
+                unit.agent.destination = SelectionController._instance.spawnPoint.position;
+            }
+        }
         GameObject tech = Instantiate(technologyObject);
         tech.name = technologyName;
         tech.transform.SetParent(technologyPosition);

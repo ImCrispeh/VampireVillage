@@ -380,6 +380,13 @@ public class SelectionController : MonoBehaviour {
         yield return null;
     }
 
+    public void MoveSpawnPoint() {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
+            spawnPoint.position = hit.position;
+        }
+    }
+
     public void SpawnUnit(Vector3 spawnPos, GameObject objectForAction, Actions action) {
         spawnPoint.position = spawnPos;
         GameObject newUnit = Instantiate(unit, spawnPoint);
