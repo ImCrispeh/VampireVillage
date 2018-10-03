@@ -20,6 +20,9 @@ public class SceneController : MonoBehaviour {
     public GameObject gameOverScreen;
     public Text gameOverText;
 
+    private bool hasSetSoundManager = false;
+    public Slider volumeSlider;
+
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
     }
@@ -39,28 +42,42 @@ public class SceneController : MonoBehaviour {
 	
 	void Update () {
         //checks if we're in the game scene then pauses the game by flipping the bool
+
+        if (!hasSetSoundManager) {
+            if (SceneManager.GetActiveScene().buildIndex == 1) {
+                volumeSlider.onValueChanged.AddListener(FindObjectOfType<VolumeSlider>().SetMusicVolume);
+            }
+        }
+
         if (SceneManager.GetActiveScene().buildIndex == 1 && !isGameOver) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (!togglePause) {
                     Timer._instance.PauseTimer();
                     CameraController._instance.PauseCamera();
                     pauseMenu.SetActive(true);
-                    togglePause = !togglePause;
+                    togglePause = true;
+                    if (TutorialController._tutInstance != null) {
+                        TutorialController._tutInstance.skipBtn.GetComponent<Button>().interactable = false;
+                    }
                 } else {
                     Timer._instance.UnpauseTimer();
                     CameraController._instance.UnpauseCamera();
                     pauseMenu.SetActive(false);
-                    togglePause = !togglePause;
+                    togglePause = false;
+                    if (TutorialController._tutInstance != null) {
+                        TutorialController._tutInstance.skipBtn.GetComponent<Button>().interactable = true;
+                    }
                 }
             }
 
             if (Input.GetKeyDown(KeyCode.P)) {
                 if (!togglePseudoPause) {
                     Timer._instance.PauseTimer();
+                    togglePseudoPause = true;
                 } else {
                     Timer._instance.UnpauseTimer();
+                    togglePseudoPause = false;
                 }
-                togglePseudoPause = !togglePseudoPause;
             }
         }
 
@@ -99,6 +116,7 @@ public class SceneController : MonoBehaviour {
         gameOverScreen.SetActive(false);
         togglePause = !togglePause;
         isGameOver = false;
+        hasSetSoundManager = false;
     }
 
     public void QuitGame() {
@@ -111,6 +129,7 @@ public class SceneController : MonoBehaviour {
         pauseMenu.SetActive(false);
         pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
         gameOverScreen.SetActive(false);
+        hasSetSoundManager = false;
         SceneManager.LoadScene(1);
     }
 
