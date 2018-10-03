@@ -105,7 +105,10 @@ public class SceneController : MonoBehaviour {
         pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
         gameOverScreen.SetActive(false);
         togglePause = !togglePause;
-    
+        if (TutorialController._tutInstance != null) {
+            TutorialController._tutInstance.skipBtn.GetComponent<Button>().interactable = true;
+        }
+
     }
 
     public void QuitToMainMenu() {
