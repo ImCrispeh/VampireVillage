@@ -95,8 +95,8 @@ public class EnemySpawner : MonoBehaviour {
 
         if (heavyEnemiesToSpawn > 0) {
             if(!bellSounded){
-                SoundManager.instance.RandomizeSfx(callToArms);
-                bellSounded = true;
+                //SoundManager.instance.RandomizeSfx(callToArms);
+                //bellSounded = true;
             }
             Debug.Log("heavy: " + heavyEnemiesToSpawn);
             spawnTimer += Time.deltaTime;
@@ -130,21 +130,23 @@ public class EnemySpawner : MonoBehaviour {
                 }
                 spawnTimer -= timeBetweenSpawns;
             }
-        }
-        if (catapultsToSpawn > 0) {
-            SpawnEnemy(catapult, spawnPositions[0]);
-            catapultsToSpawn--;
         } else {
             isSpawning = false;
             bellSounded = false;
             ThreatController._instance.SubtractThreat();
         }
+
+        if (catapultsToSpawn > 0) {
+            SpawnEnemy(catapult, spawnPositions[0]);
+            catapultsToSpawn--;
+        }
     }
 
     public void SpawnEnemy(GameObject enemyType, Transform spawnPos) {
-        GameObject newEnemy = Instantiate(enemyType);
-        newEnemy.transform.position = spawnPos.position;
-        newEnemy.transform.SetParent(spawnPos);
+        GameObject newEnemy = Instantiate(enemyType, spawnPos);
+        newEnemy.transform.localScale = new Vector3(0.1f, 0.125f, 0.1f);
+        //newEnemy.transform.SetParent(spawnPos);
+        //newEnemy.transform.position = spawnPos.position;
         EnemyController enemy = newEnemy.GetComponent<EnemyController>();
         enemy.SetStats(ThreatController._instance.threatLevel, difficultyMultiplier);
         newEnemy.GetComponent<EnemyController>().MoveToAttack();
