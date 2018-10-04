@@ -58,6 +58,14 @@ public class EnemyController : MonoBehaviour {
             }
         }
 
+        if (health <= 0) {
+            attack = 0;
+            isAttacking = false;
+            if (BaseController._instance.enemiesInRange.Contains(this.gameObject)) {
+                BaseController._instance.enemiesInRange.Remove(this.gameObject);
+            }
+        }
+
         this.transform.LookAt(new Vector3(BaseController._instance.transform.position.x, transform.position.y, BaseController._instance.transform.position.z));
     }
 
@@ -78,11 +86,10 @@ public class EnemyController : MonoBehaviour {
     public bool IsDeadAfterDamage(int amt) {
         health -= amt;
 
-        if (health == 0)
-        {
+        health = Mathf.Clamp(health, 0, int.MaxValue);
+        if (health <= 0) {
             anim.SetBool("isDead", true);
         }
-        health = Mathf.Clamp(health, 0, int.MaxValue);
 
         return health == 0;
     }
