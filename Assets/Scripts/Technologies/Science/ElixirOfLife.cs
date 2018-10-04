@@ -23,7 +23,7 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
         researchRequirement = "Philospher Stone";
         woodCost = 100;
         stoneCost = 100;
-        goldCost = 500;
+        goldCost = 300;
         researchTime = 120f;
         researchTimer = researchTime;
         researched = false;
