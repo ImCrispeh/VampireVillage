@@ -20,6 +20,7 @@ public class BaseController : MonoBehaviour {
 
     public List<GameObject> enemiesInRange;
     public GameObject miniCanvas;
+    public Camera mainCamera;
     public Image healthBar;
 
     private void Awake() {
@@ -35,6 +36,7 @@ public class BaseController : MonoBehaviour {
         health = maxHealth;
         enemiesInRange = new List<GameObject>();
         miniCanvas = GameObject.Find("MiniCanvas");
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         healthBar = miniCanvas.transform.Find("HealthBar").GetComponent<Image>();
         //miniCanvas.SetActive(false);
     }
@@ -65,6 +67,10 @@ public class BaseController : MonoBehaviour {
             hasHungerMessagePopped = false;
         }
 	}
+
+    private void LateUpdate() {
+        miniCanvas.transform.forward = mainCamera.transform.forward;
+    }
 
     public void Repair(int amountToRepair) {
         
