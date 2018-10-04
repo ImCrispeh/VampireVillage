@@ -22,6 +22,9 @@ public class BaseController : MonoBehaviour {
     public GameObject miniCanvas;
     public Image healthBar;
 
+    public GameObject[] magic;
+    public Transform magicSpawnPoint;
+
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
@@ -44,7 +47,7 @@ public class BaseController : MonoBehaviour {
             attackTimer += Time.deltaTime;
 
             if (attackTimer >= timeBetweenAttacks) {
-                DealDamage();
+                FireMagic();
                 attackTimer -= timeBetweenAttacks;
             }
         }
@@ -58,7 +61,7 @@ public class BaseController : MonoBehaviour {
             noHungerTimer += Time.deltaTime;
             
             if (noHungerTimer >= timeBetweenNoHungerDmg) {
-                TakeHungerDamage(5);
+                TakeDamage(3, true);
                 noHungerTimer -= timeBetweenNoHungerDmg;
             }
         } else {
@@ -111,40 +114,27 @@ public class BaseController : MonoBehaviour {
         healthBar.fillAmount = (float)health / (float)maxHealth;
     }
 
-    public void TakeHungerDamage(int amt) {
-        health -= amt;
-        health = Mathf.Clamp(health, 0, maxHealth);
-
-        if (SelectionController._instance != null) {
-            SelectionController._instance.SetObjText();
-        } else {
-            TutorialController._tutInstance.SetObjText();
-        }
-
-        if (health == 0) {
-            SceneController.Instance.EndGame(false, "Your colony lost all of its health");
-        }
-
-        healthBar.fillAmount = (float)health / (float)maxHealth;
-    }
-
     public bool IsFullHealth() {
         return health == maxHealth;
     }
 
     // Iteration through list done in reverse to safely remove any dead enemies
-    public void DealDamage() {
+    public void FireMagic() {
         for (int i = enemiesInRange.Count - 1; i >= 0; i--) {
             if (enemiesInRange[i] != null) {
-                if (enemiesInRange[i].GetComponent<EnemyController>().IsDeadAfterDamage(attack)) {
-                    GameObject toDestroy = enemiesInRange[i];
-                    enemiesInRange.RemoveAt(i);
-                    Destroy(toDestroy);
-                    SelectionController._instance.SetObjText();
-                }
+                GameObject newMagic = Instantiate(magic[Random.Range(0, magic.Length - 1)], magicSpawnPoint);
+                newMagic.GetComponent<MagicController>().target = enemiesInRange[i].transform;
             }
         }
         SelectionController._instance.SetObjText();
+    }
+
+    public void DealDamage(GameObject enemy) {
+        if (enemy.GetComponent<EnemyController>().IsDeadAfterDamage(attack)) {
+            enemiesInRange.Remove(enemy);
+            Destroy(enemy);
+            SelectionController._instance.SetObjText();
+        }
     }
 
     public void HideCanvas() {
