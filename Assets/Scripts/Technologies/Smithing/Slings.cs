@@ -18,9 +18,9 @@ public class Slings : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Slings";
         technologyDescription = "Attack + 1" + "\n" + "You make a thing to throw rocks at people";
         researchRequirement = "Spiked Clubs";
-        woodCost = 30;
-        stoneCost = 10;
-        goldCost = 10;
+        woodCost = 50;
+        stoneCost = 20;
+        goldCost = 0;
         researchTime = 15f; 
         researchTimer = researchTime;
         researched = false;

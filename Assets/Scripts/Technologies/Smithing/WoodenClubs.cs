@@ -20,7 +20,7 @@ public class WoodenClubs : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyDescription = "Attack + 1" + "\n" + "You're able to pick the best sticks to use as clubs";
         researchRequirement = "Armoury";
         woodCost = 20;
-        stoneCost = 0;
+        stoneCost = 10;
         goldCost = 0;
         researchTime = 5f;
         researchTimer = researchTime;

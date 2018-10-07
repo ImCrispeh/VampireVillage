@@ -18,8 +18,8 @@ public class Battlements : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Battlements";
         technologyDescription = "Defense + 1" + "\n" + "Battlements are constructed giving your defenders better capabilities";
         researchRequirement = "Fortified Walls";
-        woodCost = 10;
-        stoneCost = 70;
+        woodCost = 30;
+        stoneCost = 60;
         goldCost = 20;
         researchTime = 30f; 
         researchTimer = researchTime;

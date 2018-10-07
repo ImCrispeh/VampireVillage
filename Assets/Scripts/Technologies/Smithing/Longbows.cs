@@ -18,8 +18,8 @@ public class Longbows : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyDescription = "Attack + 1" + "\n" + "You can now forge longer bows to camp further back";
         researchRequirement = "Shortbows";
         woodCost = 80;
-        stoneCost = 0;
-        goldCost = 40;
+        stoneCost = 10;
+        goldCost = 30;
         researchTime = 35f; 
         researchTimer = researchTime;
         researched = false;

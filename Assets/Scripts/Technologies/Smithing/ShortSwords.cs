@@ -18,7 +18,7 @@ public class ShortSwords : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Short Swords";
         technologyDescription = "Attack + 1" + "\n" + "You forge shorts that are relatively short";
         researchRequirement = "Spiked Clubs";
-        woodCost = 20;
+        woodCost = 30;
         stoneCost = 20;
         goldCost = 20;
         researchTime = 15f; 

@@ -19,8 +19,8 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyDescription = "Defense + 1" + "\n" + "The moat is widened increasing its effectiveness";
         researchRequirement = "Moat";
         woodCost = 50;
-        stoneCost = 0;
-        goldCost = 30;
+        stoneCost = 20;
+        goldCost = 10;
         researchTime = 40f; 
         researchTimer = researchTime;
         researched = false;

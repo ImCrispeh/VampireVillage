@@ -22,9 +22,9 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Alchemy";
         technologyDescription = "Create a laboratory";
         researchRequirement = "";
-        woodCost = 80;
-        stoneCost = 10;
-        goldCost = 0;
+        woodCost = 20;
+        stoneCost = 30;
+        goldCost = 30;
         researchTime = 60f;
         researchTimer = researchTime;
         researched = false;

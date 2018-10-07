@@ -19,9 +19,9 @@ public class ScalemailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         technologyName = "Scalemail Armour";
         technologyDescription = "Defense + 1" + "\n" + "You wear the scales of the lizards you have caught";
         researchRequirement = "Chainmail Armour";
-        woodCost = 80;
-        stoneCost = 10;
-        goldCost = 40;
+        woodCost = 40;
+        stoneCost = 20;
+        goldCost = 30;
         researchTime = 30f;
         researchTimer = researchTime;
         researched = false;

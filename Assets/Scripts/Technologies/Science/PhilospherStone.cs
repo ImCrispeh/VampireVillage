@@ -21,9 +21,9 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
         technologyName = "Philospher Stone";
         technologyDescription = "Increase the Hunger bar by 50";
         researchRequirement = "Alchemy";
-        woodCost = 200;
-        stoneCost = 200;
-        goldCost = 200;
+        woodCost = 30;
+        stoneCost = 40;
+        goldCost = 50;
         researchTime = 120f;
         researchTimer = researchTime;
         researched = false;

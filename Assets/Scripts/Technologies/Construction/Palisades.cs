@@ -19,7 +19,7 @@ public class Palisades : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Palisades";
         technologyDescription = "Defense +1" + "\n" + "A palisade is constructed adding to your defenses";
         researchRequirement = "Picket Fence";
-        woodCost = 20;
+        woodCost = 40;
         stoneCost = 0;
         goldCost = 0;
         researchTime = 10f; 

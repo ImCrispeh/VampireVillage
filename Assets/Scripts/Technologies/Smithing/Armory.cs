@@ -19,9 +19,9 @@ public class Armory : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Armoury";
         technologyDescription = "An armoury is constructed allowing you to create new armours and weapons";
         researchRequirement = "";
-        woodCost = 60;
-        stoneCost = 20;
-        goldCost = 0;
+        woodCost = 30;
+        stoneCost = 40;
+        goldCost = 10;
         researchTime = 15f;
         researchTimer = researchTime;
         researched = false;
