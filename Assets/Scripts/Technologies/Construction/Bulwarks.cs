@@ -17,9 +17,9 @@ public class Bulwarks : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Bulwarks";
         technologyDescription = "Defense + 2" + "\n" + "Bulwarks are constructed into your walls increasing your defences";
         researchRequirement = "Fortified Walls";
-        woodCost = 70;
+        woodCost = 50;
         stoneCost = 100;
-        goldCost = 50;
+        goldCost = 40;
         researchTime = 60f; 
         researchTimer = researchTime;
         researched = false;

@@ -17,9 +17,9 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
         technologyName = "Long Swords";
         technologyDescription = "Attack + 1" + "\n" + "You can now forge longer swords for short people";
         researchRequirement = "Spiked Clubs";
-        woodCost = 80;
-        stoneCost = 0;
-        goldCost = 40;
+        woodCost = 30;
+        stoneCost = 50;
+        goldCost = 10;
         researchTime = 30f; 
         researchTimer = researchTime;
         researched = false;

@@ -19,7 +19,7 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
         technologyDescription = "Defense + 2" + "\n" + "A stone wall is constructed adding to your defenses";
         researchRequirement = "Palisades";
         woodCost = 20;
-        stoneCost = 30;
+        stoneCost = 50;
         goldCost = 0;
         researchTime = 15f; 
         researchTimer = researchTime;

@@ -30,9 +30,9 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
         technologyName = "Cloak of Darkness";
         technologyDescription = "A sturdy cloak able to shield you from most of the sunlight";
         researchRequirement = "Soft Mantle";
-        woodCost = 100;
-        stoneCost = 80;
-        goldCost = 120;
+        woodCost = 80;
+        stoneCost = 110;
+        goldCost = 90;
         researchTime = 120f;
         researchTimer = researchTime;
         researched = false;

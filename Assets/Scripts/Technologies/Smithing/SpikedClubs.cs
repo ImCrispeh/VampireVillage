@@ -21,7 +21,7 @@ public class SpikedClubs : Technology, IPointerEnterHandler, IPointerExitHandler
         researchRequirement = "Wooden Clubs";
         woodCost = 30;
         stoneCost = 10;
-        goldCost = 0;
+        goldCost = 10;
         researchTime = 10f; 
         researchTimer = researchTime;
         researched = false;

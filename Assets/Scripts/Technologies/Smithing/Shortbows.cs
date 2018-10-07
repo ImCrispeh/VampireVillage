@@ -18,8 +18,8 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Shortbows";
         technologyDescription = "Attack + 1" + "\n" + "You can now create bows with relatively short range";
         researchRequirement = "Slings";
-        woodCost = 40;
-        stoneCost = 0;
+        woodCost = 60;
+        stoneCost = 10;
         goldCost = 20;
         researchTime = 30f; 
         researchTimer = researchTime;

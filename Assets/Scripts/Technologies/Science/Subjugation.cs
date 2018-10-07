@@ -27,9 +27,9 @@ public class Subjugation : Technology, IPointerEnterHandler, IPointerExitHandler
         technologyName = "Subjugation";
         technologyDescription = "Enables the subjugation action on towns. Subjugated towns provide passive hunger regeneration but also increase minimum threat";
         researchRequirement = "Cloak of darkness";
-        woodCost = 100;
-        stoneCost = 100;
-        goldCost = 100;
+        woodCost = 120;
+        stoneCost = 120;
+        goldCost = 150;
         researchTime = 60f;
         researchTimer = researchTime;
         researched = false;

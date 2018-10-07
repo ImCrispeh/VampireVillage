@@ -21,9 +21,9 @@ public class ElixirOfLife : Technology, IPointerEnterHandler, IPointerExitHandle
         technologyName = "Elixer of Life";
         technologyDescription = "Reduce the hunger rate by half";
         researchRequirement = "Philospher Stone";
-        woodCost = 100;
-        stoneCost = 100;
-        goldCost = 500;
+        woodCost = 60;
+        stoneCost = 60;
+        goldCost = 80;
         researchTime = 120f;
         researchTimer = researchTime;
         researched = false;

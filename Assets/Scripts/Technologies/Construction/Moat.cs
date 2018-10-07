@@ -18,9 +18,9 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
         technologyName = "Moat";
         technologyDescription = "Defense + 1" + "\n" + "A moat is dug adding to your defenses";
         researchRequirement = "Palisades";
-        woodCost = 40;
-        stoneCost = 0;
-        goldCost = 20;
+        woodCost = 30;
+        stoneCost = 10;
+        goldCost = 10;
         researchTime = 20f; 
         researchTimer = researchTime;
         researched = false;
