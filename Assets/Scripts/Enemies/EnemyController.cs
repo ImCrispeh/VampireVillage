@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour {
 
     public int health;
     public int attack;
+    public float movementResetTimer;
     public float attackTimer;
     public float timeBetweenAttacks;
     public bool doesIgnoreDefense;
@@ -36,6 +37,13 @@ public class EnemyController : MonoBehaviour {
 
 	void Update () {
         if (isMovingToAttack) {
+            movementResetTimer += Time.deltaTime;
+
+            //testing if resetting movement destination helps in removing enemies from their "stuck" state
+            if (movementResetTimer >= 3f) {
+                movementResetTimer = 0;
+                MoveToAttack();
+            }
             anim.SetBool("isAttacking", false);
             if (!agent.pathPending) {
                 if (new Vector3(agent.destination.x - transform.position.x, 0f, agent.destination.z - transform.position.z).sqrMagnitude <= agent.stoppingDistance) {
@@ -48,6 +56,9 @@ public class EnemyController : MonoBehaviour {
         }
 
         if (isAttacking) {
+            if (!BaseController._instance.enemiesInRange.Contains(this.gameObject)) {
+                BaseController._instance.enemiesInRange.Add(this.gameObject);
+            }
             attackTimer += Time.deltaTime;
             anim.SetBool("isAttacking", true);
 

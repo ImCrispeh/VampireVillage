@@ -50,8 +50,12 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
                 unit.agent.destination = SelectionController._instance.spawnPoint.position;
             }
         }
-        GameObject tech = Instantiate(technologyObject);
-        tech.name = technologyName;
+
+        foreach (EnemyController enemy in FindObjectsOfType<EnemyController>()) {
+            if (enemy.isMovingToAttack) {
+                enemy.MoveToAttack();
+            }
+        }
         tech.transform.SetParent(technologyPosition);
     }
 
@@ -65,6 +69,11 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
                 researching = true;
                 resources.SubtractWood(woodCost);
                 resources.UpdateResourceText();
+                tech = Instantiate(technologyObject);
+                finalBuiltPosition = tech.transform.position;
+                tech.transform.position = new Vector3(tech.transform.position.x, tech.transform.position.y - tech.GetComponent<Collider>().bounds.size.y, tech.transform.position.z);
+                startBuiltPosition = tech.transform.position;
+                tech.name = technologyName;
             }
             else {
                 NotEnoughResources();

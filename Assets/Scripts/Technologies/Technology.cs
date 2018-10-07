@@ -19,6 +19,8 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     public virtual bool applyTechnology { get; set; }
     public virtual Vector3 hiddenScale { get; set; }
     public virtual Vector3 shownScale { get; set; }
+    public virtual Vector3 finalBuiltPosition { get; set; }
+    public virtual Vector3 startBuiltPosition { get; set; }
 
     public virtual Image technologyImage { get; set; }
     public virtual List<Image> proceedingTechnologyBar { get; set; }
@@ -37,6 +39,7 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
     public virtual BaseController mainBase { get; set; }
     public virtual ResourceStorage resources { get; set; }
     public virtual PopupController popUpController { get; set; }
+    public virtual GameObject tech { get; set; }
 
     private bool playOnce = true;
 
@@ -91,7 +94,10 @@ public abstract class Technology : MonoBehaviour, IPointerEnterHandler, IPointer
             technologyImage.fillAmount = ((researchTime - researchTimer) / researchTime);
             if (researchTimer < researchTime) { //stops you from clicking again and resetting the research
                 researching = true;
-                
+                if (tech != null) {
+                    //goes opposite direction for some reason so positions are switched
+                    tech.transform.position = Vector3.Lerp(finalBuiltPosition, startBuiltPosition, (researchTime - researchTimer)/researchTime);
+                }
             }
             else {
                 researching = false;

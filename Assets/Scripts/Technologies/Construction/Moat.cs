@@ -43,8 +43,6 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
         mainBase.defense += 1;
-        GameObject tech = Instantiate(technologyObject);
-        tech.name = technologyName;
         tech.transform.SetParent(technologyPosition);
     }
 
@@ -56,6 +54,11 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
                 resources.SubtractWood(woodCost);
                 resources.SubtractGold(goldCost);
                 resources.UpdateResourceText();
+                tech = Instantiate(technologyObject);
+                finalBuiltPosition = tech.transform.position;
+                tech.transform.position = new Vector3(tech.transform.position.x, tech.transform.position.y - tech.GetComponent<Collider>().bounds.size.y, tech.transform.position.z);
+                startBuiltPosition = tech.transform.position;
+                tech.name = technologyName;
             }
             else {
                 NotEnoughResources();

@@ -109,6 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4491047282253962}
+  - component: {fileID: 65557238695981482}
   m_Layer: 2
   m_Name: MoatExtended
   m_TagString: Untagged
@@ -631,6 +632,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1070850845685790}
   m_Mesh: {fileID: 4300000, guid: c98a4bfec5acf534b9ec330fc46498eb, type: 3}
+--- !u!65 &65557238695981482
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736872057496046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.19, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114009835204788294
 MonoBehaviour:
   m_ObjectHideFlags: 1

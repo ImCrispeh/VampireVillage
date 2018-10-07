@@ -935,11 +935,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772613400613648}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.56, y: 3.17, z: 1}
-  m_Center: {x: -0.17, y: 3.07, z: 0}
+  m_Size: {x: 5.56, y: 5.95, z: 1}
+  m_Center: {x: -0.17, y: 3.66, z: 0}
 --- !u!208 &208787550412152100
 NavMeshObstacle:
   m_ObjectHideFlags: 1
