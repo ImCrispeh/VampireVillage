@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour {
 
     void Start () {
         anim = GetComponent<Animator>();
+        anim.SetBool("isDead", false);
     }
 
 	void Update () {
@@ -41,8 +42,9 @@ public class EnemyController : MonoBehaviour {
 
             //testing if resetting movement destination helps in removing enemies from their "stuck" state
             if (movementResetTimer >= 5f) {
-                movementResetTimer = 0;
+                agent.ResetPath();
                 MoveToAttack();
+                movementResetTimer = 0;
             }
             anim.SetBool("isAttacking", false);
             if (!agent.pathPending) {
@@ -56,9 +58,13 @@ public class EnemyController : MonoBehaviour {
         }
 
         if (isAttacking) {
+            if (!anim.GetBool("isDead")) {
+                transform.position = Vector3.MoveTowards(transform.position, SelectionController._instance.spawnPoint.position, 15f * Time.deltaTime);
+            }
             if (!BaseController._instance.enemiesInRange.Contains(this.gameObject)) {
                 BaseController._instance.enemiesInRange.Add(this.gameObject);
             }
+
             attackTimer += Time.deltaTime;
             anim.SetBool("isAttacking", true);
 
@@ -99,6 +105,8 @@ public class EnemyController : MonoBehaviour {
 
         health = Mathf.Clamp(health, 0, int.MaxValue);
         if (health <= 0) {
+            isAttacking = false;
+            anim.SetBool("isAttacking", false);
             anim.SetBool("isDead", true);
         }
 

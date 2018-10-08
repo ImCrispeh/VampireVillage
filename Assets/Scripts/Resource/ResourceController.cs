@@ -24,7 +24,9 @@ public class ResourceController : MonoBehaviour {
                 isRespawning = false;
 
                 foreach (Transform child in transform) {
-                    child.gameObject.SetActive(true);
+                    if (!child.gameObject.name.Contains("TutIndicator")) {
+                        child.gameObject.SetActive(true);
+                    }
                 }
 
                 gameObject.layer = LayerMask.NameToLayer("Resource");

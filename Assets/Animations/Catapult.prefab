@@ -442,6 +442,7 @@ MonoBehaviour:
   isAttacking: 0
   health: 20
   attack: 6
+  movementResetTimer: 0
   attackTimer: 0
   timeBetweenAttacks: 10
   doesIgnoreDefense: 0

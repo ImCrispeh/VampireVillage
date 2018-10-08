@@ -54,6 +54,13 @@ public class PicketFence : Technology, IPointerEnterHandler, IPointerExitHandler
         foreach (EnemyController enemy in FindObjectsOfType<EnemyController>()) {
             if (enemy.isMovingToAttack) {
                 enemy.agent.destination = SelectionController._instance.spawnPoint.position;
+                if (enemy.isAttacking) {
+                    enemy.isAttacking = false;
+                }
+
+                if (BaseController._instance.enemiesInRange.Contains(this.gameObject)) {
+                    BaseController._instance.enemiesInRange.Remove(this.gameObject);
+                }
             }
         }
         tech.transform.SetParent(technologyPosition);
