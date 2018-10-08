@@ -45,6 +45,7 @@ public class SceneController : MonoBehaviour {
 
         if (!hasSetSoundManager) {
             if (SceneManager.GetActiveScene().buildIndex == 1) {
+                hasSetSoundManager = true;
                 volumeSlider.onValueChanged.AddListener(FindObjectOfType<VolumeSlider>().SetMusicVolume);
             }
         }
