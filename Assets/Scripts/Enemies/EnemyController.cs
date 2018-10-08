@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour {
             movementResetTimer += Time.deltaTime;
 
             //testing if resetting movement destination helps in removing enemies from their "stuck" state
-            if (movementResetTimer >= 3f) {
+            if (movementResetTimer >= 5f) {
                 movementResetTimer = 0;
                 MoveToAttack();
             }
