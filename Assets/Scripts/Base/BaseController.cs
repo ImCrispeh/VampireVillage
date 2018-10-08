@@ -138,7 +138,7 @@ public class BaseController : MonoBehaviour {
     public void DealDamage(GameObject enemy) {
         if (enemy.GetComponent<EnemyController>().IsDeadAfterDamage(attack)) {
             enemiesInRange.Remove(enemy);
-            Destroy(enemy);
+            Destroy(enemy, 5f);
             SelectionController._instance.SetObjText();
         }
     }
