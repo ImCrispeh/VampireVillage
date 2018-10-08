@@ -61,6 +61,9 @@ public class SceneController : MonoBehaviour {
                         TutorialController._tutInstance.skipBtn.GetComponent<Button>().interactable = false;
                     }
                 } else {
+                    if (!togglePseudoPause) {
+                        Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
+                    }
                     Timer._instance.UnpauseTimer();
                     CameraController._instance.UnpauseCamera();
                     pauseMenu.SetActive(false);
@@ -100,6 +103,9 @@ public class SceneController : MonoBehaviour {
     }
 
     public void ResumeGame() {
+        if (!togglePseudoPause) {
+            Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
+        }
         Timer._instance.UnpauseTimer();
         CameraController._instance.UnpauseCamera();
         pauseMenu.SetActive(false);
