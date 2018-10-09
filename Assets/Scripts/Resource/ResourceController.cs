@@ -13,11 +13,7 @@ public class ResourceController : MonoBehaviour {
     public bool isRespawning;
 
 	void Start () {
-        //timeToRespawn = Timer._instance.secondsInFullDay * 5;
-		if (timeToRespawn == null || timeToRespawn == 0) {
-			timeToRespawn = Timer._instance.secondsInFullDay * 5;
-		}
-
+        //timeToRespawn = Timer._instance.secondsInFullDay * 5;	//keep in case of error
         currentResourceAmt = maxResourceAmt;
 	}
 	
