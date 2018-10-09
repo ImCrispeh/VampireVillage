@@ -33,7 +33,7 @@ public class CloakOfDarkness : Technology, IPointerEnterHandler, IPointerExitHan
         woodCost = 80;
         stoneCost = 110;
         goldCost = 90;
-        researchTime = 120f;
+        researchTime = 30f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

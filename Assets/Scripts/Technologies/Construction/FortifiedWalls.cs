@@ -22,7 +22,7 @@ public class FortifiedWalls : Technology, IPointerEnterHandler, IPointerExitHand
         woodCost = 20;
         stoneCost = 60;
         goldCost = 10;
-        researchTime = 40f; 
+        researchTime = 20f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

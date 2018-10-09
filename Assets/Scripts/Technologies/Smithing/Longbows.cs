@@ -20,7 +20,7 @@ public class Longbows : Technology, IPointerEnterHandler, IPointerExitHandler {
         woodCost = 80;
         stoneCost = 10;
         goldCost = 30;
-        researchTime = 35f; 
+        researchTime = 20f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

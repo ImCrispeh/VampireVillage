@@ -25,7 +25,7 @@ public class Alchemy : Technology, IPointerEnterHandler, IPointerExitHandler
         woodCost = 20;
         stoneCost = 30;
         goldCost = 30;
-        researchTime = 60f;
+        researchTime = 30f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

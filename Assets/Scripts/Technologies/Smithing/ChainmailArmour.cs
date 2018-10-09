@@ -22,7 +22,7 @@ public class ChainmailArmour : Technology, IPointerEnterHandler, IPointerExitHan
         woodCost = 30;
         stoneCost = 30;
         goldCost = 0;
-        researchTime = 30f;
+        researchTime = 10f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

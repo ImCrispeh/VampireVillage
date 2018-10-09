@@ -21,7 +21,7 @@ public class Moat : Technology, IPointerEnterHandler, IPointerExitHandler {
         woodCost = 30;
         stoneCost = 10;
         goldCost = 10;
-        researchTime = 20f; 
+        researchTime = 10f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

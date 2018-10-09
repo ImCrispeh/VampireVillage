@@ -22,7 +22,7 @@ public class Armory : Technology, IPointerEnterHandler, IPointerExitHandler
         woodCost = 30;
         stoneCost = 40;
         goldCost = 10;
-        researchTime = 15f;
+        researchTime = 20f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

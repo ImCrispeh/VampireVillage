@@ -19,12 +19,12 @@ public class BloodRite : Technology, IPointerEnterHandler, IPointerExitHandler
     {
         base.Start();
         technologyName = "Blood Rite";
-        technologyDescription = "Increase the thirst bar by 100";
+        technologyDescription = "Increase the hunger bar by 100";
         researchRequirement = "Philospher Stone";
         woodCost = 70;
         stoneCost = 70;
         goldCost = 50;
-        researchTime = 60f;
+        researchTime = 30f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

@@ -34,7 +34,7 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
         woodCost = 90;
         stoneCost = 70;
         goldCost = 70;
-        researchTime = 120f;
+        researchTime = 30f;
         researchTimer = researchTime;
         researched = false;
         researching = false;

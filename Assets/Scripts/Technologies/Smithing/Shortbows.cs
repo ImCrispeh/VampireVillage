@@ -21,7 +21,7 @@ public class Shortbows : Technology, IPointerEnterHandler, IPointerExitHandler {
         woodCost = 60;
         stoneCost = 10;
         goldCost = 20;
-        researchTime = 30f; 
+        researchTime = 15f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;

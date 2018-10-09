@@ -20,7 +20,7 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
         woodCost = 30;
         stoneCost = 50;
         goldCost = 10;
-        researchTime = 30f; 
+        researchTime = 20f; 
         researchTimer = researchTime;
         researched = false;
         researching = false;
