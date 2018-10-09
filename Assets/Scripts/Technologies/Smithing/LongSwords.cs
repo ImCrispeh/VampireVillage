@@ -15,7 +15,7 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
     protected override void Start () {
         base.Start();
         technologyName = "Long Swords";
-        technologyDescription = "Attack + 1" + "\n" + "You can now forge longer swords for short people";
+        technologyDescription = "Attack + 2" + "\n" + "You can now forge longer swords for short people";
         researchRequirement = "Spiked Clubs";
         woodCost = 30;
         stoneCost = 50;
@@ -39,7 +39,7 @@ public class LongSwords : Technology, IPointerEnterHandler, IPointerExitHandler 
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.attack += 1;
+        mainBase.attack += 2;
         //Instantiate(technologyObject, technologyPosition);
     }
 

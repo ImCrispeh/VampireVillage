@@ -16,7 +16,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
     protected override void Start () {
         base.Start();
         technologyName = "Wider Moat";
-        technologyDescription = "Defense + 1" + "\n" + "The moat is widened increasing its effectiveness";
+        technologyDescription = "Defense + 2" + "\n" + "The moat is widened increasing its effectiveness";
         researchRequirement = "Moat";
         woodCost = 50;
         stoneCost = 20;
@@ -41,7 +41,7 @@ public class WiderMoat : Technology, IPointerEnterHandler, IPointerExitHandler {
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 1;
+        mainBase.defense += 2;
         tech.transform.SetParent(technologyPosition);
     }
 

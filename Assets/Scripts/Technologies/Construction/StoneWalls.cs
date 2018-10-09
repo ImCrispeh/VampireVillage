@@ -16,7 +16,7 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
     protected override void Start () {
         base.Start();
         technologyName = "Stone Walls";
-        technologyDescription = "Defense + 2" + "\n" + "A stone wall is constructed adding to your defenses";
+        technologyDescription = "Defense + 1" + "\n" + "A stone wall is constructed adding to your defenses";
         researchRequirement = "Palisades";
         woodCost = 20;
         stoneCost = 50;
@@ -42,7 +42,7 @@ public class StoneWalls : Technology, IPointerEnterHandler, IPointerExitHandler 
 
     public override void TechnologyEffect() {
         //The effects of the technology which are active once research ends
-        mainBase.defense += 2;
+        mainBase.defense += 1;
         tech.transform.SetParent(technologyPosition);
     }
 
