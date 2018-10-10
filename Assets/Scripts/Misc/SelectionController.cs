@@ -493,37 +493,51 @@ public class SelectionController : MonoBehaviour {
                 if (selectedObj.tag == "Wood") {
                     portraitPlaceholder.enabled = true;
                     PortraitCameraController._instance.following = false;
+                    PortraitCameraController._instance.offset = new Vector3(1, 1, -1);
+                    PortraitCameraController._instance.SetZoom(7);
                     PortraitCameraController._instance.SetPosition(selectedObj.transform);
                 }
                 if (selectedObj.tag == "Stone") {
                     portraitPlaceholder.enabled = true;
                     PortraitCameraController._instance.following = false;
+                    PortraitCameraController._instance.offset = new Vector3(1, 1, -1);
+                    PortraitCameraController._instance.SetZoom(7);
                     PortraitCameraController._instance.SetPosition(selectedObj.transform);
                 }
                 if (selectedObj.tag == "Gold") {
                     portraitPlaceholder.enabled = true;
                     PortraitCameraController._instance.following = false;
+                    PortraitCameraController._instance.offset = new Vector3(1, 1, -1);
+                    PortraitCameraController._instance.SetZoom(7);
                     PortraitCameraController._instance.SetPosition(selectedObj.transform);
                 }
             }
             if (selectedObj.tag == "HumanTown") {
                 portraitPlaceholder.enabled = true;
                 PortraitCameraController._instance.following = false;
+                PortraitCameraController._instance.offset = new Vector3(1, 1, 0);
+                PortraitCameraController._instance.SetZoom(7);
                 PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
             if (selectedObj.tag == "HumanBase") {
                 portraitPlaceholder.enabled = true;
                 PortraitCameraController._instance.following = false;
+                PortraitCameraController._instance.offset = new Vector3(1, 1, 0);
+                PortraitCameraController._instance.SetZoom(7);
                 PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
-            if (selectedObj.tag == "Base") {//is this supposed to be HumanBase? if so, replace it with the if-rule above
+            if (selectedObj.tag == "Base") {//the vampire's village
                 portraitPlaceholder.enabled = true;
                 PortraitCameraController._instance.following = false;
+                PortraitCameraController._instance.offset = new Vector3(0, 4, -5);
+                PortraitCameraController._instance.SetZoom(7);
                 PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
             if (selectedObj.tag == "Enemy") {
                 portraitPlaceholder.enabled = true;
                 PortraitCameraController._instance.following = true;
+                PortraitCameraController._instance.offset = new Vector3(1, 1, 0);
+                PortraitCameraController._instance.SetZoom(2);
                 PortraitCameraController._instance.target = selectedObj.transform;
                 PortraitCameraController._instance.Update();
             }

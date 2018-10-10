@@ -18,7 +18,7 @@ public class PortraitCameraController : MonoBehaviour {
     }
 
     void Start () {
-        offset = new Vector3(0, 7, 5);
+        offset = new Vector3(0, 4, 0);
         following = false;
 	}
 	
@@ -27,6 +27,11 @@ public class PortraitCameraController : MonoBehaviour {
             SetFollow(target);
         }
 	}
+
+    //Sets the size value in the inspector, smaller size means more zoomed in, larger size means more zoomed out
+    public void SetZoom(float zoom) {
+        GetComponent<Camera>().orthographicSize = zoom;
+    }
 
     public void SetPosition(Transform target) {
         transform.position = target.position + offset;
@@ -37,6 +42,6 @@ public class PortraitCameraController : MonoBehaviour {
         if (target != null) {
             transform.position = target.position + offset;
             transform.LookAt(target);
-        }        
+        }
     }
 }
