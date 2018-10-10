@@ -12,6 +12,8 @@ public class HumanTownController : MonoBehaviour {
 
     public float population;
     public float populationBaseRegenRate;
+	public float populationPartialLoss;
+	public float populationFullLoss;
 
     public float subjugationBaseSpeed;
     public float subjugationCalculatedSpeed;
@@ -28,14 +30,14 @@ public class HumanTownController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        partialFeedAmt = 25f;
+        //partialFeedAmt = 25f;
         fullFeedAmt = 100f;
 
-        partialFeedThreat = 7.5f;
-        fullFeedThreat = 25f;
-        convertThreat = 30f;
+        //partialFeedThreat = 7.5f;
+        //fullFeedThreat = 25f;
+        convertThreat = 20f;
 
-        populationBaseRegenRate = 0.5f;
+        //populationBaseRegenRate = 0.5f;
 
         subjugationFinished = false;
         beingSubjugated = false;
@@ -68,20 +70,24 @@ public class HumanTownController : MonoBehaviour {
     public void PartialFeedEffect(UnitController unit) {
         unit.hungerCollected += partialFeedAmt;
         ThreatController._instance.AddThreat(partialFeedThreat);
-        population -= 0.25f;
+		population -= populationPartialLoss;
         population = Mathf.Clamp(population, 0, float.MaxValue);
     }
 
     public void FullFeedEffect(UnitController unit) {
         unit.hungerCollected += fullFeedAmt;
         ThreatController._instance.AddThreat(fullFeedThreat);
-        population--;
+		population -= populationFullLoss;
         population = Mathf.Clamp(population, 0, float.MaxValue);
     }
 
     public void ConvertEffect(UnitController unit) {
         unit.humanConvertCollected++;
-        ThreatController._instance.AddThreat(convertThreat);
+		float threat = convertThreat;
+		if (population < 20) {
+			threat += 10;
+		}
+        ThreatController._instance.AddThreat(threat);
         population--;
         population = Mathf.Clamp(population, 0, float.MaxValue);
     }
