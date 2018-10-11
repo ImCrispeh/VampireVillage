@@ -11,6 +11,7 @@ using UnityEngine.EventSystems;
 public class TutorialController : SelectionController {
     public static TutorialController _tutInstance;
     public int currText;
+    public bool isActive;
     public Image textBackground;
     public GameObject[] tutorialTexts;
     public GameObject[] feedTutIndicators;
@@ -29,6 +30,7 @@ public class TutorialController : SelectionController {
     }
 
     void Start() {
+        isActive = true;
         Timer._instance.PauseTimer();
         techBtn.SetActive(false);
         SetActionButtonsOnClick(true);
@@ -82,6 +84,7 @@ public class TutorialController : SelectionController {
 
         if (Input.GetMouseButtonDown(0) && (EventSystem.current.currentSelectedGameObject == resourceActionBtn.gameObject || EventSystem.current.currentSelectedGameObject == townActionBtns[1].gameObject)) {
             if (availableUnits > 0) {
+                Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
                 Timer._instance.UnpauseTimer();
                 HideText();
             }
@@ -159,17 +162,26 @@ public class TutorialController : SelectionController {
 
             if (!Timer._instance.isPaused) {
                 Timer._instance.PauseTimer();
+                isActive = true;
             }
 
         } else {
             Timer._instance.UnpauseTimer();
             selectionCont.SetActive(true);
             resourceActionBtn.interactable = true;
+            for (int i = feedTutIndicators.Length - 1; i >= 0; i--) {
+                Destroy(feedTutIndicators[i]);
+            }
+
+            for (int i = woodTutIndicators.Length - 1; i >= 0; i--) {
+                Destroy(woodTutIndicators[i]);
+            }
             Destroy(this.gameObject);
         }
     }
 
     public void HideText() {
+        isActive = false;
         if (currText == 0) {
             foreach (GameObject obj in feedTutIndicators) {
                 obj.SetActive(false);
@@ -194,7 +206,7 @@ public class TutorialController : SelectionController {
         foreach (GameObject obj in woodTutIndicators) {
             obj.SetActive(false);
         }
-        Timer._instance.speed = 1;
+        Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
         Timer._instance.UnpauseTimer();
         if (selectedObj != null) {
             DeselectObj();

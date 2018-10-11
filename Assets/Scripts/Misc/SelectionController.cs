@@ -426,34 +426,38 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj != null) {
             selectedObjectPanel.SetActive(true);
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
+                ResourceController resource = selectedObj.GetComponentInChildren<ResourceController>();
                 selectedObjText.text =
                     selectedObj.tag + "\n"
-                    + selectedObj.GetComponentInChildren<ResourceController>().currentResourceAmt + " " + selectedObj.tag + " available" + "\n"
-                    + "(Can collect " + selectedObj.GetComponentInChildren<ResourceController>().resourceCollectionAmt + " at a time)";
+                    + resource.currentResourceAmt + " " + selectedObj.tag + " available" + "\n"
+                    + "Can collect " + resource.resourceCollectionAmt + " at a time" + "\n"
+                    + "Respawns after " + resource.timeToRespawn / Timer._instance.secondsInFullDay + " days";
             }
 
-            if (selectedObj.tag == "HumanTown" && selectedObj.GetComponent<HumanTownController>().beingSubjugated) {
-                Debug.Log("Town selected, yes subjugation");
-                selectedObjText.text =
-                    "Human Town" + "\n"
-                    + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
-                    + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>" + "\n"
-                    + "Subjugation level: " + selectedObj.GetComponent<HumanTownController>().subjugationLevel + "/" + selectedObj.GetComponent<HumanTownController>().subjugationLimit;
-            }
-            else if (selectedObj.tag == "HumanTown" && selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
-                Debug.Log("Town selected, yes subjugation");
-                selectedObjText.text =
-                    "Human Town" + "\n"
-                    + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
-                    + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>" + "\n"
-                    + "<b>Subjugated: provides small regeneration to your hunger</b>";
-            }
-            else if (selectedObj.tag == "HumanTown" && !selectedObj.GetComponent<HumanTownController>().subjugationFinished) {
-                Debug.Log("Town selected, no subjugation");
-                selectedObjText.text =
-                    "Human Town" + "\n"
-                    + "Population: " + (int)selectedObj.GetComponent<HumanTownController>().population + "\n"
-                    + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>";
+            if (selectedObj.tag == "HumanTown") {
+                Debug.Log("test");
+                HumanTownController humanTown = selectedObj.GetComponent<HumanTownController>();
+                if (humanTown.beingSubjugated) {
+                    Debug.Log("Town selected, yes subjugation");
+                    selectedObjText.text =
+                        "Human Town" + "\n"
+                        + "Population: " + (int)humanTown.population + "\n"
+                        + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>" + "\n"
+                        + "Subjugation level: " + humanTown.subjugationLevel + "/" + humanTown.subjugationLimit;
+                } else if (humanTown.subjugationFinished) {
+                    Debug.Log("Town selected, yes subjugation");
+                    selectedObjText.text =
+                        "Human Town" + "\n"
+                        + "Population: " + (int)humanTown.population + "\n"
+                        + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>" + "\n"
+                        + "<b>Subjugated: provides small regeneration to your hunger</b>";
+                } else if (!humanTown.subjugationFinished) {
+                    Debug.Log("Town selected, no subjugation");
+                    selectedObjText.text =
+                        "Human Town" + "\n"
+                        + "Population: " + (int)humanTown.population + "\n"
+                        + "<b>Can feed to restore hunger or kidnap and convert a human. All actions increase threat level</b>";
+                }
             }
 
             if (selectedObj.tag == "HumanBase") {
@@ -473,10 +477,11 @@ public class SelectionController : MonoBehaviour {
             }
 
             if (selectedObj.tag == "Enemy") {
+                EnemyController enemy = selectedObj.GetComponent<EnemyController>();
                 selectedObjText.text =
                     "Enemy" + "\n"
-                    + "Health: " + selectedObj.GetComponent<EnemyController>().health + "\n"
-                    + "Attack level: " + selectedObj.GetComponent<EnemyController>().attack;
+                    + "Health: " + enemy.health + "\n"
+                    + "Attack level: " + enemy.attack;
             }
         } else {
             selectedObjText.text = "";
