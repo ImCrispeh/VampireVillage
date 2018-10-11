@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4533326605621710}
   - component: {fileID: 20988626897069178}
-  - component: {fileID: 81719248769389182}
   m_Layer: 0
   m_Name: MiniMapCamera
   m_TagString: Untagged
@@ -35,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1876599955549666}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -9.49, y: 5, z: 1.57}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1.5, y: 2, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,7 +48,7 @@ Camera:
   m_GameObject: {fileID: 1876599955549666}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -61,12 +60,12 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 1.23
+  near clip plane: -20
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 60
-  m_Depth: -1
+  orthographic size: 140
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -81,10 +80,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &81719248769389182
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1876599955549666}
-  m_Enabled: 1
