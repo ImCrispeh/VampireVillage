@@ -29,7 +29,7 @@ public class SoftMantle : Technology, IPointerEnterHandler, IPointerExitHandler
     {
         base.Start();
         technologyName = "Soft Mantle";
-        technologyDescription = "A soft cloth which lets you perform actions during the day but you still take damage";
+        technologyDescription = "A soft cloth which lets you perform actions during the day but with increased hunger drain";
         researchRequirement = "Transmutation";
         woodCost = 90;
         stoneCost = 70;
