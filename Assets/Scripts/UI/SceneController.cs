@@ -61,7 +61,11 @@ public class SceneController : MonoBehaviour {
                         TutorialController._tutInstance.skipBtn.GetComponent<Button>().interactable = false;
                     }
                 } else {
-                    if (!togglePseudoPause) {
+                    if (TutorialController._tutInstance != null) {
+                        if (!TutorialController._tutInstance.isActive && !togglePseudoPause) {
+                            Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
+                        }
+                    } else if (!togglePseudoPause) {
                         Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
                     }
                     Timer._instance.UnpauseTimer();
@@ -103,9 +107,14 @@ public class SceneController : MonoBehaviour {
     }
 
     public void ResumeGame() {
-        if (!togglePseudoPause) {
+        if (TutorialController._tutInstance != null) {
+            if (!TutorialController._tutInstance.isActive && !togglePseudoPause) {
+                Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
+            }
+        } else if (!togglePseudoPause) {
             Timer._instance.speed = float.Parse(Timer._instance.speedText.text.Replace("x", ""));
         }
+
         Timer._instance.UnpauseTimer();
         CameraController._instance.UnpauseCamera();
         pauseMenu.SetActive(false);
