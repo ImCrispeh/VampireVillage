@@ -19,7 +19,7 @@ public class PhilospherStone : Technology, IPointerEnterHandler, IPointerExitHan
     {
         base.Start();
         technologyName = "Philospher Stone";
-        technologyDescription = "Increase the Hunger bar by 50";
+        technologyDescription = "Increase your hunger bar by a total of 50%";
         researchRequirement = "Alchemy";
         woodCost = 30;
         stoneCost = 40;
