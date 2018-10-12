@@ -25,7 +25,7 @@ public class SelectionController : MonoBehaviour {
     public Button mainHumanBaseSubjugateBtn;
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
-    public TownTooltips townTooltips;
+    public ActionButtonInfo actionButtonInfo;
     public enum Actions { partialFeed, fullFeed, convert, collect, repair20, repair50, repairFull, subjugate };
     public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert, repair, subjugate };
     public List<ActionIcon> actionIconsList;
@@ -76,7 +76,6 @@ public class SelectionController : MonoBehaviour {
         portraitPlaceholder.enabled = false;
 
         totalHumanTowns = FindObjectsOfType<HumanTownController>().Length;
-        townTooltips = townActionsContainer.GetComponent<TownTooltips>();
 
         if (TutorialController._tutInstance != null) {
             TutorialController._tutInstance.SetVariables();
@@ -429,16 +428,16 @@ public class SelectionController : MonoBehaviour {
             selectedObjectPanel.SetActive(true);
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 ResourceController resource = selectedObj.GetComponentInChildren<ResourceController>();
+                actionButtonInfo.setResourceActionInfo(resource);
                 selectedObjText.text =
                     selectedObj.tag + "\n"
                     + resource.currentResourceAmt + " " + selectedObj.tag + " available" + "\n"
-                    + "Can collect " + resource.resourceCollectionAmt + " at a time" + "\n"
                     + "Respawns after " + resource.timeToRespawn / Timer._instance.secondsInFullDay + " days";
             }
 
             if (selectedObj.tag == "HumanTown") {
                 HumanTownController humanTown = selectedObj.GetComponent<HumanTownController>();
-                townTooltips.setTooltips(humanTown);
+                actionButtonInfo.setTownActionInfo(humanTown);
                 if (humanTown.beingSubjugated) {
                     Debug.Log("Town selected, yes subjugation");
                     selectedObjText.text =

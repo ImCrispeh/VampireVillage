@@ -3467,6 +3467,37 @@ Transform:
   m_Father: {fileID: 375262466}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &155895981
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 904
+  m_Height: 508
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &157279385
 GameObject:
   m_ObjectHideFlags: 0
@@ -5874,7 +5905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5810}
+  m_AnchoredPosition: {x: 0, y: 13070}
   m_SizeDelta: {x: 390, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230847032
@@ -15964,7 +15995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &577326417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24179,6 +24210,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 872164840}
   m_Mesh: {fileID: 4300000, guid: 7500496ec0fe31641bc72b646c207b8f, type: 3}
+--- !u!84 &875775859
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 904
+  m_Height: 508
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &876541326
 GameObject:
   m_ObjectHideFlags: 0
@@ -27813,7 +27875,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1049124933}
-  - component: {fileID: 1049124934}
   m_Layer: 0
   m_Name: Town Actions
   m_TagString: Untagged
@@ -27839,20 +27900,6 @@ Transform:
   m_Father: {fileID: 1379041995}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1049124934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1049124932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe7a8a79c282a6439609d788ac0e7d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partialFeed: {fileID: 218377104}
-  fullFeed: {fileID: 805509971}
-  convert: {fileID: 323588993}
 --- !u!1 &1055660925
 GameObject:
   m_ObjectHideFlags: 0
@@ -33903,7 +33950,7 @@ GameObject:
   - component: {fileID: 1347153333}
   - component: {fileID: 1347153332}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33923,11 +33970,11 @@ RectTransform:
   m_Father: {fileID: 1638400608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -2, y: -3.999999}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -9}
   m_SizeDelta: {x: 80, y: 30}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347153332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33961,7 +34008,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Collect 50 of the chosen resource
+  m_Text: Collect x resource
 --- !u!222 &1347153333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34546,6 +34593,7 @@ GameObject:
   - component: {fileID: 1379041995}
   - component: {fileID: 1379041997}
   - component: {fileID: 1379041996}
+  - component: {fileID: 1379041998}
   m_Layer: 5
   m_Name: InformationWindow
   m_TagString: Untagged
@@ -34614,6 +34662,21 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379041994}
   m_CullTransparentMesh: 0
+--- !u!114 &1379041998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1379041994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe7a8a79c282a6439609d788ac0e7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partialFeed: {fileID: 218377104}
+  fullFeed: {fileID: 805509971}
+  convert: {fileID: 323588993}
+  collect: {fileID: 1347153332}
 --- !u!1 &1379170146
 GameObject:
   m_ObjectHideFlags: 0
@@ -37083,8 +37146,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1475067093}
   outlineCamera: {fileID: 1582613541}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1779058390}
-  extraRenderTexture: {fileID: 1809528749}
+  renderTexture: {fileID: 875775859}
+  extraRenderTexture: {fileID: 155895981}
 --- !u!114 &1475067090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38277,7 +38340,7 @@ MonoBehaviour:
   - {fileID: 628454884}
   - {fileID: 1871626166}
   - {fileID: 1002657046}
-  townTooltips: {fileID: 0}
+  actionButtonInfo: {fileID: 1379041998}
   actionIconsList:
   - iconName: 0
     icon: {fileID: 1802086637964466, guid: 2e535a6467f895e4ca47466c43a2599e, type: 2}
@@ -39862,7 +39925,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1779058390}
+  m_TargetTexture: {fileID: 875775859}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -40624,7 +40687,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  townTooltips: {fileID: 0}
+  actionButtonInfo: {fileID: 0}
   actionIconsList: []
   plannedActionRemovalIcons: []
   plannedActionsPanel: {fileID: 0}
@@ -41636,8 +41699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 113, y: 0}
-  m_SizeDelta: {x: 86.5, y: 29.1}
+  m_AnchoredPosition: {x: 113, y: -0}
+  m_SizeDelta: {x: 86.5, y: 22.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638400609
 MonoBehaviour:
@@ -46291,37 +46354,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1776374660}
   m_Mesh: {fileID: 4300000, guid: 6fce5bcb185cc6847937e2dbfd4a06ab, type: 3}
---- !u!84 &1779058390
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 904
-  m_Height: 508
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1782067025
 GameObject:
   m_ObjectHideFlags: 0
@@ -46644,7 +46676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5785}
+  m_AnchoredPosition: {x: 0, y: 13045}
   m_SizeDelta: {x: 390, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791119227
@@ -47191,37 +47223,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1808337459}
   m_Mesh: {fileID: 4300000, guid: 6fce5bcb185cc6847937e2dbfd4a06ab, type: 3}
---- !u!84 &1809528749
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 904
-  m_Height: 508
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1813356327
 GameObject:
   m_ObjectHideFlags: 0
@@ -52139,7 +52140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5835}
+  m_AnchoredPosition: {x: 0, y: 13095}
   m_SizeDelta: {x: 390, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992633701
