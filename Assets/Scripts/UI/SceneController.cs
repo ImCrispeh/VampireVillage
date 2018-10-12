@@ -85,6 +85,7 @@ public class SceneController : MonoBehaviour {
                 } else {
                     Timer._instance.UnpauseTimer();
                     togglePseudoPause = false;
+                    SelectionController._instance.StartCoroutine("ExecutePlannedActions");
                 }
             }
         }

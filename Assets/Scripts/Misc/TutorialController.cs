@@ -109,6 +109,7 @@ public class TutorialController : SelectionController {
         townActionsContainer = cont.townActionsContainer;
         townActionBtns = cont.townActionBtns;
         actionIconsList = cont.actionIconsList;
+        townTooltips = cont.townTooltips;
 
         actionIcons = new Dictionary<ActionIconNames, GameObject>();
 

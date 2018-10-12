@@ -25,6 +25,7 @@ public class SelectionController : MonoBehaviour {
     public Button mainHumanBaseSubjugateBtn;
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
+    public TownTooltips townTooltips;
     public enum Actions { partialFeed, fullFeed, convert, collect, repair20, repair50, repairFull, subjugate };
     public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert, repair, subjugate };
     public List<ActionIcon> actionIconsList;
@@ -75,6 +76,7 @@ public class SelectionController : MonoBehaviour {
         portraitPlaceholder.enabled = false;
 
         totalHumanTowns = FindObjectsOfType<HumanTownController>().Length;
+        townTooltips = townActionsContainer.GetComponent<TownTooltips>();
 
         if (TutorialController._tutInstance != null) {
             TutorialController._tutInstance.SetVariables();
@@ -263,7 +265,7 @@ public class SelectionController : MonoBehaviour {
 
     // Sends unit out to execute action
     public void SendUnit(Actions action) {
-        if (availableUnits > 0) {
+        if (availableUnits > 0 && !SceneController.Instance.togglePseudoPause) {
             availableUnits--;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
@@ -344,7 +346,7 @@ public class SelectionController : MonoBehaviour {
     // Sends units to complete actions in plannedActions list with a small delay between each unit being sent out (just so they don't all spawn at the same time)
     IEnumerator ExecutePlannedActions() {
         while (plannedActions.Count > 0) {
-            if (isNightActions) {
+            if (isNightActions && !SceneController.Instance.togglePseudoPause) {
                 if (availableUnits > 0) {
                     PlannedAction planned = plannedActions[0];
                     BaseController baseCont = planned.objectForAction.GetComponent<BaseController>();
@@ -435,8 +437,8 @@ public class SelectionController : MonoBehaviour {
             }
 
             if (selectedObj.tag == "HumanTown") {
-                Debug.Log("test");
                 HumanTownController humanTown = selectedObj.GetComponent<HumanTownController>();
+                townTooltips.setTooltips(humanTown);
                 if (humanTown.beingSubjugated) {
                     Debug.Log("Town selected, yes subjugation");
                     selectedObjText.text =
