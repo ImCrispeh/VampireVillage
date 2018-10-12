@@ -528,7 +528,7 @@ public class SelectionController : MonoBehaviour {
             if (selectedObj.tag == "HumanBase") {
                 portraitPlaceholder.enabled = true;
                 PortraitCameraController._instance.following = false;
-                PortraitCameraController._instance.offset = new Vector3(1, 1, 0);
+                PortraitCameraController._instance.offset = new Vector3(1, 2, 0);
                 PortraitCameraController._instance.SetZoom(7);
                 PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
