@@ -10,7 +10,10 @@ public class ActionButtonInfo : MonoBehaviour {
     public Text collect;
 
     public void setTownActionInfo(HumanTownController town) {
-        partialFeed.text = "Restores " + town.partialFeedAmt + " hunger";
+		partialFeed.text = "Kill " + town.populationPartialLoss + " to restore " + town.partialFeedAmt + " hunger " + "("
+			+ town.partialFeedThreat + " Threat)";
+		fullFeed.text = "Kill " + town.populationFullLoss + " to restore " + town.fullFeedAmt + " hunger " + "("
+			+ town.fullFeedThreat + " Threat)";
     }
 
     public void setResourceActionInfo(ResourceController resource) {
