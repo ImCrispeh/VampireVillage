@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource dayMusic;
     public AudioSource nightMusic;
     public AudioSource taskCompleted;
+    public AudioSource hunger;
 
     public float speed;
     public float maxVolume;
@@ -82,10 +83,26 @@ public class SoundManager : MonoBehaviour
         //Play the clip.
         sfxSource.Play();
     }
+    public void HungerBeat(params AudioClip[] clips)
+    {
+        //Generate a random number between 0 and the length of our array of clips passed in.
+        int randomIndex = Random.Range(0, clips.Length);
 
-    public void StopSfx(AudioClip clip){
-        sfxSource.clip = clip;
-        sfxSource.Stop();
+        //Choose a random pitch to play back our clip at between our high and low pitch ranges.
+        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+
+        //Set the pitch of the audio source to the randomly chosen pitch.
+        hunger.pitch = randomPitch;
+
+        hunger.clip = clips[randomIndex];
+
+        //Play the clip.
+        hunger.Play();
+    }
+
+    public void StopHunger(AudioClip clip){
+        hunger.clip = clip;
+        hunger.Stop();
     }
 
     public void TaskCompleted(params AudioClip[] clips)

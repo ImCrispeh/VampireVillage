@@ -902,7 +902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 14.600021}
+  m_AnchoredPosition: {x: 0, y: 14.600037}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &33943384
@@ -5874,7 +5874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20070}
+  m_AnchoredPosition: {x: 0, y: 24770}
   m_SizeDelta: {x: 390, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230847032
@@ -24285,6 +24285,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!84 &882775802
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1024
+  m_Height: 768
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &884099351
 GameObject:
   m_ObjectHideFlags: 0
@@ -27267,7 +27298,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 5, y: -5}
-  m_SizeDelta: {x: 135.8, y: 21.663443}
+  m_SizeDelta: {x: 135.8, y: 21.875}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1024208333
 MonoBehaviour:
@@ -30723,37 +30754,6 @@ Transform:
   m_Father: {fileID: 1987300023}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1178720039
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 517
-  m_Height: 291
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1179135171
 GameObject:
   m_ObjectHideFlags: 0
@@ -33433,7 +33433,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 5, y: -142.1}
-  m_SizeDelta: {x: 74.27466, y: 245}
+  m_SizeDelta: {x: 75, y: 245}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1297662129
 MonoBehaviour:
@@ -37164,8 +37164,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1475067093}
   outlineCamera: {fileID: 1582613541}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1639098655}
-  extraRenderTexture: {fileID: 1178720039}
+  renderTexture: {fileID: 1548728136}
+  extraRenderTexture: {fileID: 882775802}
 --- !u!114 &1475067090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39272,6 +39272,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545390850}
   m_Mesh: {fileID: 4300000, guid: 6fce5bcb185cc6847937e2dbfd4a06ab, type: 3}
+--- !u!84 &1548728136
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1024
+  m_Height: 768
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1552909381
 GameObject:
   m_ObjectHideFlags: 0
@@ -39943,7 +39974,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1639098655}
+  m_TargetTexture: {fileID: 1548728136}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -40478,7 +40509,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -40.940002}
-  m_SizeDelta: {x: 84.27466, y: 269.6}
+  m_SizeDelta: {x: 85, y: 269.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1600308932
 MonoBehaviour:
@@ -41942,37 +41973,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1639022289}
   m_Mesh: {fileID: 4300000, guid: 32b4aefcf9814f84cb276b9886875a0b, type: 3}
---- !u!84 &1639098655
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 517
-  m_Height: 291
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1647254701
 GameObject:
   m_ObjectHideFlags: 0
@@ -42558,8 +42558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 79.27466, y: -5}
-  m_SizeDelta: {x: 74.27466, y: 13.6}
+  m_AnchoredPosition: {x: 80, y: -5}
+  m_SizeDelta: {x: 75, y: 13.6}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1662423365
 MonoBehaviour:
@@ -44176,6 +44176,8 @@ MonoBehaviour:
   clicked: 0
   rect: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  openTechTree: {fileID: 8300000, guid: 823bd7e7844421c438edd201c398a61e, type: 3}
+  closeTechTree: {fileID: 8300000, guid: 1b0d7988ea2889d4ea5a6573be9b50cc, type: 3}
 --- !u!114 &1714175152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45792,6 +45794,7 @@ GameObject:
   - component: {fileID: 1775261039}
   - component: {fileID: 1775261045}
   - component: {fileID: 1775261046}
+  - component: {fileID: 1775261047}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -46198,6 +46201,7 @@ MonoBehaviour:
   dayMusic: {fileID: 1775261040}
   nightMusic: {fileID: 1775261039}
   taskCompleted: {fileID: 1775261045}
+  hunger: {fileID: 1775261047}
   speed: 0.1
   maxVolume: 1
   sfxSource: {fileID: 1775261041}
@@ -46326,6 +46330,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: f4b2706786810c74896dd91c7257536e, type: 2}
+--- !u!82 &1775261047
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1775261038}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243163488481138170, guid: f4b2706786810c74896dd91c7257536e,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1776374660
 GameObject:
   m_ObjectHideFlags: 0
@@ -46725,7 +46825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20045}
+  m_AnchoredPosition: {x: 0, y: 24745}
   m_SizeDelta: {x: 390, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791119227
@@ -46802,7 +46902,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 513.8, y: 0}
-  m_SizeDelta: {x: 145.8, y: 31.663445}
+  m_SizeDelta: {x: 145.8, y: 31.875}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1791438754
 MonoBehaviour:
@@ -52189,7 +52289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20095}
+  m_AnchoredPosition: {x: 0, y: 24795}
   m_SizeDelta: {x: 390, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992633701

@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class TechnologyToggle : MonoBehaviour {
 
     public bool clicked;
     public RectTransform rect;
     public Vector3 scale;
+
+    public AudioClip openTechTree;
+    public AudioClip closeTechTree;
 
 	// Use this for initialization
 	void Start () {
@@ -35,10 +39,16 @@ public class TechnologyToggle : MonoBehaviour {
         clicked = !clicked;
         if (!clicked) {
             SelectionController._instance.isTechnologyOpen = false;
+
+            SoundManager.instance.RandomizeSfx(closeTechTree);
+
             rect.localScale = new Vector3(0, 0, 0);
         }
         else {
             SelectionController._instance.isTechnologyOpen = true;
+
+            SoundManager.instance.RandomizeSfx(openTechTree);
+
             rect.localScale = scale;
         }
     }

@@ -3,7 +3,10 @@ guid: 8b95b7f4ca8fc474bb3a449cdd608433
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rect: {instanceID: 0}
+  - openTechTree: {fileID: 8300000, guid: 823bd7e7844421c438edd201c398a61e, type: 3}
+  - closeTechTree: {fileID: 8300000, guid: 1b0d7988ea2889d4ea5a6573be9b50cc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

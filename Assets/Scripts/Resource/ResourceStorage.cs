@@ -54,7 +54,7 @@ public class ResourceStorage : MonoBehaviour {
         hunger += amt;
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         if (hunger > 25f) {
-            SoundManager.instance.StopSfx(hungerLowAudio);
+            SoundManager.instance.StopHunger(hungerLowAudio);
             hasHungerWarningShown = false;
         }
         hungerBar.value = HungerPercentage();
@@ -81,7 +81,7 @@ public class ResourceStorage : MonoBehaviour {
         if (hunger <= 25f) {
             if (!hasHungerWarningShown) {
                 hasHungerWarningShown = true;
-                SoundManager.instance.RandomizeSfx(hungerLowAudio);
+                SoundManager.instance.HungerBeat(hungerLowAudio);
                 PopupController._instance.SetPopupText("Your hunger is getting low. You will start taking damage if it reaches 0.");
             }
             if (!hungerBarOutlineAnimation.isPlaying) {
