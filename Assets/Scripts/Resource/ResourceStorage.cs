@@ -13,8 +13,11 @@ public class ResourceStorage : MonoBehaviour {
     public int gold;
     public int collectionModifier;
 
+	public Timer timerScript;
     public float hungerDepletionRate;
     public float hungerDepletionRateModifier;
+	public float numberOfDays;
+	public float dayMultiplier;
 
     public Text resourceText;
     public Slider hungerBar;
@@ -34,6 +37,7 @@ public class ResourceStorage : MonoBehaviour {
         maxHunger = 100f;
         hungerDepletionRate = 0.0075f;
         hungerDepletionRateModifier = 1f;
+		dayMultiplier = 2;
         hunger = 20f;
         UpdateResourceText();
         hungerBar.value = HungerPercentage();
@@ -58,9 +62,10 @@ public class ResourceStorage : MonoBehaviour {
 
     public void SubtractHunger() {
         if (SelectionController._instance != null) {
+			CalculateHungerModifier();
             if (SoftMantle._instance.applyTechnology && !CloakOfDarkness._instance.applyTechnology) {
                 if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && SelectionController._instance.availableUnits < SelectionController._instance.maxUnits) {
-                    hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits * 2;
+					hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits * 2;
                 } else {
                     hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits;
                 }
@@ -88,6 +93,15 @@ public class ResourceStorage : MonoBehaviour {
             BaseController._instance.isHungerEmpty = true;
         }
     }
+
+	private void CalculateHungerModifier() {
+		numberOfDays = timerScript.currentDay;
+		if (numberOfDays >= 20) {
+			hungerDepletionRateModifier = 1.5f;
+		} else {
+			hungerDepletionRateModifier = 1 + numberOfDays / 40;
+		}
+	}
 
     public float HungerPercentage() {
         return hunger / maxHunger;
