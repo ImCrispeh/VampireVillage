@@ -83,6 +83,11 @@ public class SoundManager : MonoBehaviour
         sfxSource.Play();
     }
 
+    public void StopSfx(AudioClip clip){
+        sfxSource.clip = clip;
+        sfxSource.Stop();
+    }
+
     public void TaskCompleted(params AudioClip[] clips)
     {
         //Generate a random number between 0 and the length of our array of clips passed in.

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class ResourceStorage : MonoBehaviour {
     public static ResourceStorage _instance;
@@ -15,6 +16,8 @@ public class ResourceStorage : MonoBehaviour {
 
     public float hungerDepletionRate;
     public float hungerDepletionRateModifier;
+
+    public AudioClip hungerLowAudio;
 
     public Text resourceText;
     public Slider hungerBar;
@@ -51,6 +54,7 @@ public class ResourceStorage : MonoBehaviour {
         hunger += amt;
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         if (hunger > 25f) {
+            SoundManager.instance.StopSfx(hungerLowAudio);
             hasHungerWarningShown = false;
         }
         hungerBar.value = HungerPercentage();
@@ -77,6 +81,7 @@ public class ResourceStorage : MonoBehaviour {
         if (hunger <= 25f) {
             if (!hasHungerWarningShown) {
                 hasHungerWarningShown = true;
+                SoundManager.instance.RandomizeSfx(hungerLowAudio);
                 PopupController._instance.SetPopupText("Your hunger is getting low. You will start taking damage if it reaches 0.");
             }
             if (!hungerBarOutlineAnimation.isPlaying) {
