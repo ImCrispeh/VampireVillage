@@ -14,7 +14,10 @@ public class ResourceStorage : MonoBehaviour {
     public int collectionModifier;
 
     public float hungerDepletionRate;
-    public float hungerDepletionRateModifier;
+	public float hungerDepletionRateModifier;
+	public float numberOfDays;
+	public float dayMultiplier;
+	public float unitMultiplier;
 
     public Text resourceText;
     public Slider hungerBar;
@@ -33,7 +36,9 @@ public class ResourceStorage : MonoBehaviour {
     void Start () {
         maxHunger = 100f;
         hungerDepletionRate = 0.0075f;
-        hungerDepletionRateModifier = 1f;
+		hungerDepletionRateModifier = 1f;
+		dayMultiplier = 2;
+		unitMultiplier = 1;
         hunger = 20f;
         UpdateResourceText();
         hungerBar.value = HungerPercentage();
@@ -58,17 +63,19 @@ public class ResourceStorage : MonoBehaviour {
 
     public void SubtractHunger() {
         if (SelectionController._instance != null) {
+			CalculateUnitModifier();
+			CalculateDayModifier();
             if (SoftMantle._instance.applyTechnology && !CloakOfDarkness._instance.applyTechnology) {
                 if ((Timer._instance.currentTime <= 0.75f && Timer._instance.currentTime >= 0.25f) && SelectionController._instance.availableUnits < SelectionController._instance.maxUnits) {
-                    hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits * 2;
+					hunger -= hungerDepletionRate * hungerDepletionRateModifier * unitMultiplier* dayMultiplier * 2;
                 } else {
-                    hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits;
+					hunger -= hungerDepletionRate * hungerDepletionRateModifier * unitMultiplier * dayMultiplier;
                 }
             } else {
-                hunger -= hungerDepletionRate * hungerDepletionRateModifier * SelectionController._instance.maxUnits;
+				hunger -= hungerDepletionRate * hungerDepletionRateModifier * unitMultiplier * dayMultiplier;
             }
         } else {
-            hunger -= hungerDepletionRate * hungerDepletionRateModifier;
+			hunger -= hungerDepletionRate * hungerDepletionRateModifier * unitMultiplier;
         }
 
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
@@ -88,6 +95,26 @@ public class ResourceStorage : MonoBehaviour {
             BaseController._instance.isHungerEmpty = true;
         }
     }
+
+	private void CalculateUnitModifier() {
+		if (SelectionController._instance.maxUnits <= 7) {
+			unitMultiplier = 1 + (SelectionController._instance.maxUnits - 2) / 10;
+			//Debug.Log (SelectionController._instance.maxUnits + " Unit:" + unitMultiplier);
+		} else {
+			unitMultiplier = 1.5f;
+		}
+	}
+
+	private void CalculateDayModifier() {
+		if (Timer._instance.currentDay <= 6) {
+			dayMultiplier = 3;
+		} else if (Timer._instance.currentDay <= 20) {
+			dayMultiplier = 1 + Timer._instance.currentDay / 2;
+		} else {
+			dayMultiplier = 11f;
+		}
+		//Debug.Log (Timer._instance.currentDay + " Day:" + dayMultiplier);
+	}
 
     public float HungerPercentage() {
         return hunger / maxHunger;

@@ -25,6 +25,7 @@ public class SelectionController : MonoBehaviour {
     public Button mainHumanBaseSubjugateBtn;
     public GameObject townActionsContainer;
     public List<Button> townActionBtns;
+    public ActionButtonInfo actionButtonInfo;
     public enum Actions { partialFeed, fullFeed, convert, collect, repair20, repair50, repairFull, subjugate };
     public enum ActionIconNames { collectWood, collectStone, collectGold, partialFeed, fullFeed, convert, repair, subjugate };
     public List<ActionIcon> actionIconsList;
@@ -263,7 +264,7 @@ public class SelectionController : MonoBehaviour {
 
     // Sends unit out to execute action
     public void SendUnit(Actions action) {
-        if (availableUnits > 0) {
+        if (availableUnits > 0 && !SceneController.Instance.togglePseudoPause) {
             availableUnits--;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
@@ -344,7 +345,7 @@ public class SelectionController : MonoBehaviour {
     // Sends units to complete actions in plannedActions list with a small delay between each unit being sent out (just so they don't all spawn at the same time)
     IEnumerator ExecutePlannedActions() {
         while (plannedActions.Count > 0) {
-            if (isNightActions) {
+            if (isNightActions && !SceneController.Instance.togglePseudoPause) {
                 if (availableUnits > 0) {
                     PlannedAction planned = plannedActions[0];
                     BaseController baseCont = planned.objectForAction.GetComponent<BaseController>();
@@ -427,16 +428,16 @@ public class SelectionController : MonoBehaviour {
             selectedObjectPanel.SetActive(true);
             if (selectedObj.layer == LayerMask.NameToLayer("Resource")) {
                 ResourceController resource = selectedObj.GetComponentInChildren<ResourceController>();
+                actionButtonInfo.setResourceActionInfo(resource);
                 selectedObjText.text =
                     selectedObj.tag + "\n"
                     + resource.currentResourceAmt + " " + selectedObj.tag + " available" + "\n"
-                    + "Can collect " + resource.resourceCollectionAmt + " at a time" + "\n"
                     + "Respawns after " + resource.timeToRespawn / Timer._instance.secondsInFullDay + " days";
             }
 
             if (selectedObj.tag == "HumanTown") {
-                Debug.Log("test");
                 HumanTownController humanTown = selectedObj.GetComponent<HumanTownController>();
+                actionButtonInfo.setTownActionInfo(humanTown);
                 if (humanTown.beingSubjugated) {
                     Debug.Log("Town selected, yes subjugation");
                     selectedObjText.text =
@@ -527,7 +528,7 @@ public class SelectionController : MonoBehaviour {
             if (selectedObj.tag == "HumanBase") {
                 portraitPlaceholder.enabled = true;
                 PortraitCameraController._instance.following = false;
-                PortraitCameraController._instance.offset = new Vector3(1, 1, 0);
+                PortraitCameraController._instance.offset = new Vector3(1, 2, 0);
                 PortraitCameraController._instance.SetZoom(7);
                 PortraitCameraController._instance.SetPosition(selectedObj.transform);
             }
