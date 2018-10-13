@@ -106,7 +106,9 @@ public class ResourceStorage : MonoBehaviour {
 	}
 
 	private void CalculateDayModifier() {
-		if (Timer._instance.currentDay <= 20) {
+		if (Timer._instance.currentDay <= 6) {
+			dayMultiplier = 3;
+		} else if (Timer._instance.currentDay <= 20) {
 			dayMultiplier = 1 + Timer._instance.currentDay / 2;
 		} else {
 			dayMultiplier = 11f;
