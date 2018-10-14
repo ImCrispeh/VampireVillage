@@ -54,7 +54,7 @@ public class ResourceStorage : MonoBehaviour {
         hunger += amt;
         hunger = Mathf.Clamp(hunger, 0f, maxHunger);
         if (hunger > 25f) {
-            SoundManager.instance.StopHunger(hungerLowAudio);
+            SoundManager.instance.StopHunger();
             hasHungerWarningShown = false;
         }
         hungerBar.value = HungerPercentage();

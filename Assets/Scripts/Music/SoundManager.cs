@@ -21,6 +21,7 @@ public class SoundManager : MonoBehaviour
     
     public AudioClip firstNight;
     public AudioClip techComplete;
+    public AudioClip gameOverTrack;
     //public GameObject sun;
     //public GameObject moon;
     //public List<AudioClip> nightTracks;
@@ -100,8 +101,8 @@ public class SoundManager : MonoBehaviour
         hunger.Play();
     }
 
-    public void StopHunger(AudioClip clip){
-        hunger.clip = clip;
+    public void StopHunger(){
+        
         hunger.Stop();
     }
 
@@ -171,5 +172,17 @@ public class SoundManager : MonoBehaviour
 
     public void TechComplete(){
         TaskCompleted(techComplete);
+    }
+
+    public void GameOver(){
+
+        PlaySingle(gameOverTrack);
+        StopHunger(); 
+        StopBackgroundMusic(nightMusic);   
+        StopBackgroundMusic(dayMusic);
+    }
+
+    public void StopBackgroundMusic(AudioSource audioSource){
+        audioSource.Stop();
     }
 }
