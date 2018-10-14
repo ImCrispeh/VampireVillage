@@ -24,8 +24,6 @@ public class SceneController : MonoBehaviour {
     public Slider musicSlider;
     public Slider sfxSlider;
 
-    private List<Button> nonSceneButtons;
-
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
     }
