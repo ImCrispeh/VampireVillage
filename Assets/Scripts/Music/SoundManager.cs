@@ -22,6 +22,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip firstNight;
     public AudioClip techComplete;
     public AudioClip gameOverTrack;
+    public AudioClip resourceCollected;
     //public GameObject sun;
     //public GameObject moon;
     //public List<AudioClip> nightTracks;
@@ -184,5 +185,9 @@ public class SoundManager : MonoBehaviour
 
     public void StopBackgroundMusic(AudioSource audioSource){
         audioSource.Stop();
+    }
+
+    public void ResourceCollected(){
+        RandomizeSfx(resourceCollected);
     }
 }

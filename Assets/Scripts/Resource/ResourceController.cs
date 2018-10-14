@@ -40,12 +40,15 @@ public class ResourceController : MonoBehaviour {
         switch(tag) {
             case "Wood":
                 unit.woodCollected += resourceCollectionAmt;
+                SoundManager.instance.ResourceCollected();
                 break;
             case "Stone":
                 unit.stoneCollected += resourceCollectionAmt;
+                SoundManager.instance.ResourceCollected();
                 break;
             case "Gold":
                 unit.goldCollected += resourceCollectionAmt;
+                SoundManager.instance.ResourceCollected();
                 break;
             default:
                 break;
