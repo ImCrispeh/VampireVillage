@@ -24,6 +24,8 @@ public class SceneController : MonoBehaviour {
     public Slider musicSlider;
     public Slider sfxSlider;
 
+    private List<Button> nonSceneButtons;
+
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
     }
@@ -42,8 +44,6 @@ public class SceneController : MonoBehaviour {
 	}
 	
 	void Update () {
-        //checks if we're in the game scene then pauses the game by flipping the bool
-
         if (!hasSetSoundManager) {
             if (SceneManager.GetActiveScene().buildIndex == 1) {
                 hasSetSoundManager = true;
@@ -52,6 +52,8 @@ public class SceneController : MonoBehaviour {
             }
         }
 
+        //checks if we're in the game scene then pauses the game by flipping the bool
+
         if (SceneManager.GetActiveScene().buildIndex == 1 && !isGameOver) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (!togglePause) {
@@ -59,6 +61,7 @@ public class SceneController : MonoBehaviour {
                     CameraController._instance.PauseCamera();
                     pauseMenu.SetActive(true);
                     togglePause = true;
+
                     if (TutorialController._tutInstance != null) {
                         TutorialController._tutInstance.skipBtn.GetComponent<Button>().interactable = false;
                     }

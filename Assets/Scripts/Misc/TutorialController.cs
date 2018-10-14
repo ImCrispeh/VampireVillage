@@ -40,8 +40,7 @@ public class TutorialController : SelectionController {
         if (Input.GetMouseButtonDown(0)) {
             Select();
         }
-
-        if (currText == 0 && availableUnits > 0) {
+        if (currText == 0 && availableUnits > 0 && !SceneController.Instance.togglePause) {
             townActionBtns[0].interactable = false;
             townActionBtns[1].interactable = true;
             townActionBtns[2].interactable = false;
@@ -52,7 +51,7 @@ public class TutorialController : SelectionController {
             }
         }
 
-        if (currText == 2 && availableUnits > 0) {
+        if (currText == 2 && availableUnits > 0 && !SceneController.Instance.togglePause) {
             if (selectedObj != null) {
                 if (selectedObj.tag == "Wood") {
                     resourceActionBtn.interactable = true;

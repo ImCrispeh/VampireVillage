@@ -207,11 +207,17 @@ public class SelectionController : MonoBehaviour {
         if (selectedObj != null) {
             if (selectedObj.tag == "HumanTown") {
                 HumanTownController town = selectedObj.GetComponent<HumanTownController>();
-                foreach (Button btn in townActionBtns) {
-                    btn.interactable = (town.population > 0);
+                if (!SceneController.Instance.togglePause) {
+                    foreach (Button btn in townActionBtns) {
+                        btn.interactable = (town.population > 0);
+                    }
+                } else {
+                    foreach (Button btn in townActionBtns) {
+                        btn.interactable = false;
+                    }
                 }
 
-                if (town.population <= 0) {
+                    if (town.population <= 0) {
                     PopupController._instance.SetPopupText("No population to perform actions on");
                 }
 
@@ -219,11 +225,15 @@ public class SelectionController : MonoBehaviour {
                 repairActionsContainer.SetActive(false);
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
                 townActionsContainer.SetActive(true);
-                if (!Subjugation._instance.researched) {
-                    townActionBtns[3].interactable = false;
-                } else if (Subjugation._instance.researched && !town.subjugationFinished) {
-                    townActionBtns[3].interactable = true;
-                } else if (Subjugation._instance.researched && town.subjugationFinished) {
+                if (!SceneController.Instance.togglePause) {
+                    if (!Subjugation._instance.researched) {
+                        townActionBtns[3].interactable = false;
+                    } else if (Subjugation._instance.researched && !town.subjugationFinished) {
+                        townActionBtns[3].interactable = true;
+                    } else if (Subjugation._instance.researched && town.subjugationFinished) {
+                        townActionBtns[3].interactable = false;
+                    }
+                } else {
                     townActionBtns[3].interactable = false;
                 }
                 //BaseController._instance.HideCanvas();
@@ -233,15 +243,24 @@ public class SelectionController : MonoBehaviour {
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionsContainer.SetActive(false);
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(true);
-                mainHumanBaseSubjugateBtn.interactable = (subjugatedHumanTowns == totalHumanTowns);
+                if (!SceneController.Instance.togglePause) {
+                    mainHumanBaseSubjugateBtn.interactable = (subjugatedHumanTowns == totalHumanTowns);
+                } else {
+                    mainHumanBaseSubjugateBtn.interactable = false;
+                }
 
             } else if (selectedObj.tag == "Base") {
                 townActionsContainer.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(false);
                 repairActionsContainer.SetActive(true);
-
-                foreach (Button btn in repairActionBtns) {
-                    btn.interactable = (!selectedObj.GetComponent<BaseController>().IsFullHealth() && (ResourceStorage._instance.wood >= 3 && ResourceStorage._instance.stone >= 3));
+                if (!SceneController.Instance.togglePause) {
+                    foreach (Button btn in repairActionBtns) {
+                        btn.interactable = (!selectedObj.GetComponent<BaseController>().IsFullHealth() && (ResourceStorage._instance.wood >= 3 && ResourceStorage._instance.stone >= 3));
+                    }
+                } else {
+                    foreach (Button btn in repairActionBtns) {
+                        btn.interactable = false;
+                    }
                 }
 
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
@@ -251,7 +270,12 @@ public class SelectionController : MonoBehaviour {
                 repairActionsContainer.SetActive(false);
                 resourceActionBtn.gameObject.SetActive(true);
                 mainHumanBaseSubjugateBtn.gameObject.SetActive(false);
-                //BaseController._instance.HideCanvas();
+                if (!SceneController.Instance.togglePause) {
+                    resourceActionBtn.interactable = true;
+                } else {
+                    resourceActionBtn.interactable = false;
+                }
+                    //BaseController._instance.HideCanvas();
             }
         } else {
             townActionsContainer.SetActive(false);
@@ -264,7 +288,7 @@ public class SelectionController : MonoBehaviour {
 
     // Sends unit out to execute action
     public void SendUnit(Actions action) {
-        if (availableUnits > 0 && !SceneController.Instance.togglePseudoPause) {
+        if (availableUnits > 0 && !SceneController.Instance.togglePseudoPause && !SceneController.Instance.togglePause) {
             availableUnits--;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(spawnPoint.position, out hit, 10f, NavMesh.AllAreas)) {
@@ -334,18 +358,20 @@ public class SelectionController : MonoBehaviour {
     }
 
     public void RemovePlannedAction() {
-        GameObject toRemove = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
-        Debug.Log(toRemove.name);
-        int pos = plannedActionRemovalIcons.IndexOf(toRemove);
-        plannedActions.RemoveAt(pos);
-        plannedActionRemovalIcons.RemoveAt(pos);
-        Destroy(toRemove);
+        if (!SceneController.Instance.togglePause) {
+            GameObject toRemove = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
+            Debug.Log(toRemove.name);
+            int pos = plannedActionRemovalIcons.IndexOf(toRemove);
+            plannedActions.RemoveAt(pos);
+            plannedActionRemovalIcons.RemoveAt(pos);
+            Destroy(toRemove);
+        }
     }
 
     // Sends units to complete actions in plannedActions list with a small delay between each unit being sent out (just so they don't all spawn at the same time)
     IEnumerator ExecutePlannedActions() {
         while (plannedActions.Count > 0) {
-            if (isNightActions && !SceneController.Instance.togglePseudoPause) {
+            if (isNightActions && !SceneController.Instance.togglePseudoPause && !SceneController.Instance.togglePause) {
                 if (availableUnits > 0) {
                     PlannedAction planned = plannedActions[0];
                     BaseController baseCont = planned.objectForAction.GetComponent<BaseController>();
