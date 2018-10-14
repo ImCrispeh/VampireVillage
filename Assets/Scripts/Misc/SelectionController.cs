@@ -465,16 +465,17 @@ public class SelectionController : MonoBehaviour {
                 selectedObjText.text =
                     "Main Human Base" + "\n"
                     + "Will send out attacks against you based on your level of threat" + "\n"
-                    + "<b>Can be subjugated after all towns are subjugated</b>";
+                    + "<b>Can be subjugated after all towns are subjugated</b>" + "\n"
+                    +"<b>Base repair cost: 3 wood and 3 stone per health point</b>";
             }
 
             if (selectedObj.tag == "Base") {
+                actionButtonInfo.setRepairActionInfo();
                 selectedObjText.text =
                     "Main Base" + "\n"
                     + "Health: " + BaseController._instance.health + "\n"
                     + "Attack level: " + BaseController._instance.attack + "\n"
-                    + "Defense level: " + BaseController._instance.defense + "\n"
-                    + "<b>Repairing costs 3 wood and 3 stone per health point</b>";
+                    + "Defense level: " + BaseController._instance.defense + "\n";
             }
 
             if (selectedObj.tag == "Enemy") {

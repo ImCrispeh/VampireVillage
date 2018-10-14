@@ -75,25 +75,30 @@ public class BaseController : MonoBehaviour {
         miniCanvas.transform.forward = mainCamera.transform.forward;
     }
 
-    public void Repair(int amountToRepair) {
+    public int CalculateRepair(int amountToRepair, bool toRepair) {
         
         if (maxHealth - health < amountToRepair) {
             amountToRepair = maxHealth - health;
         }
 
         if (ResourceStorage._instance.wood > amountToRepair * 3 && ResourceStorage._instance.stone > amountToRepair * 3) {
-            health += amountToRepair;
-            ResourceStorage._instance.SubtractWood(amountToRepair * 3);
-            ResourceStorage._instance.SubtractStone(amountToRepair * 3);
+            //Do nothing
         } else {
             amountToRepair = (int)Mathf.Floor((Mathf.Min(ResourceStorage._instance.wood, ResourceStorage._instance.stone) / 3));
-            health += amountToRepair;
-            ResourceStorage._instance.SubtractWood(amountToRepair * 3);
-            ResourceStorage._instance.SubtractStone(amountToRepair * 3);
         }
 
-        SelectionController._instance.SetObjText();
+        if (toRepair) {
+            Repair(amountToRepair);
+        }
 
+        return amountToRepair;
+    }
+
+    public void Repair(int amountToRepair) {
+        health += amountToRepair;
+        ResourceStorage._instance.SubtractWood(amountToRepair * 3);
+        ResourceStorage._instance.SubtractStone(amountToRepair * 3);
+        SelectionController._instance.SetObjText();
         healthBar.fillAmount = (float)health / (float)maxHealth;
     }
 

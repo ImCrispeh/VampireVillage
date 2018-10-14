@@ -11,6 +11,7 @@ public class ResourceController : MonoBehaviour {
     public float timeToRespawn;
 
     public bool isRespawning;
+    public AudioClip collectionClip;
 
 	void Start () {
         //timeToRespawn = Timer._instance.secondsInFullDay * 5;	//keep in case of error
@@ -51,6 +52,7 @@ public class ResourceController : MonoBehaviour {
                 break;
         }
 
+        SoundManager.instance.ResourceCollected(collectionClip);
         currentResourceAmt -= resourceCollectionAmt;
 
         if (currentResourceAmt <= 0) {

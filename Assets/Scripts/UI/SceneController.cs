@@ -14,14 +14,15 @@ public class SceneController : MonoBehaviour {
     public AudioMixer mixer;
     public AudioMixerSnapshot[] snapshots;
     public float[] weights;
-    public AudioClip gameOver;
 
     public bool isGameOver;
+    private bool hasPlayed = false;
     public GameObject gameOverScreen;
     public Text gameOverText;
 
     private bool hasSetSoundManager = false;
-    public Slider volumeSlider;
+    public Slider musicSlider;
+    public Slider sfxSlider;
 
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
@@ -46,7 +47,8 @@ public class SceneController : MonoBehaviour {
         if (!hasSetSoundManager) {
             if (SceneManager.GetActiveScene().buildIndex == 1) {
                 hasSetSoundManager = true;
-                volumeSlider.onValueChanged.AddListener(FindObjectOfType<VolumeSlider>().SetMusicVolume);
+                musicSlider.onValueChanged.AddListener(SoundManager.instance.SetMusicVolume);
+                sfxSlider.onValueChanged.AddListener(SoundManager.instance.SetSfxVolume);
             }
         }
 
@@ -88,6 +90,7 @@ public class SceneController : MonoBehaviour {
                     SelectionController._instance.StartCoroutine("ExecutePlannedActions");
                 }
             }
+
         }
 
         if(togglePause){
@@ -101,7 +104,15 @@ public class SceneController : MonoBehaviour {
             weights[2] = 0.0f;
             mixer.TransitionToSnapshots(snapshots, weights, 0.0f);
         }
-	}
+
+        if(isGameOver){
+            if(!hasPlayed){
+                hasPlayed = true;
+                SoundManager.instance.GameOver();
+            }
+        }
+    }
+	
 
     public void StartGame() {
         SceneManager.LoadSceneAsync(1);
@@ -156,7 +167,6 @@ public class SceneController : MonoBehaviour {
     public void EndGame(bool isWin, string message) {
         isGameOver = true;
 
-        SoundManager.instance.PlaySingle(gameOver);
 
         Timer._instance.PauseTimer();
         pauseMenu.SetActive(true);

@@ -99,13 +99,13 @@ public class UnitController : MonoBehaviour {
                     objectForAction.GetComponent<HumanTownController>().ConvertEffect(this);
                     break;
                 case SelectionController.Actions.repair20:
-                    objectForAction.GetComponent<BaseController>().Repair(20);
+                    objectForAction.GetComponent<BaseController>().CalculateRepair(20, true);
                     break;
                 case SelectionController.Actions.repair50:
-                    objectForAction.GetComponent<BaseController>().Repair(50);
+                    objectForAction.GetComponent<BaseController>().CalculateRepair(50, true);
                     break;
                 case SelectionController.Actions.repairFull:
-                    objectForAction.GetComponent<BaseController>().Repair(objectForAction.GetComponent<BaseController>().maxHealth);
+                    objectForAction.GetComponent<BaseController>().CalculateRepair(objectForAction.GetComponent<BaseController>().maxHealth, true);
                     break;
                 case SelectionController.Actions.subjugate:
                     if (objectForAction.GetComponent<HumanTownController>() != null) {

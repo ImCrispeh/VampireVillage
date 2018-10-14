@@ -28,6 +28,8 @@ public class HumanTownController : MonoBehaviour {
     public Image subjugationBar;
     public Camera mainCamera;
 
+    public AudioClip collectionClip;
+
     // Use this for initialization
     void Start () {
         //partialFeedAmt = 25f;
@@ -72,6 +74,7 @@ public class HumanTownController : MonoBehaviour {
         ThreatController._instance.AddThreat(partialFeedThreat);
 		population -= populationPartialLoss;
         population = Mathf.Clamp(population, 0, float.MaxValue);
+        SoundManager.instance.ResourceCollected(collectionClip);
     }
 
     public void FullFeedEffect(UnitController unit) {
@@ -79,6 +82,7 @@ public class HumanTownController : MonoBehaviour {
         ThreatController._instance.AddThreat(fullFeedThreat);
 		population -= populationFullLoss;
         population = Mathf.Clamp(population, 0, float.MaxValue);
+        SoundManager.instance.ResourceCollected(collectionClip);
     }
 
     public void ConvertEffect(UnitController unit) {

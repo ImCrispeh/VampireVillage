@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource dayMusic;
     public AudioSource nightMusic;
     public AudioSource taskCompleted;
+    public AudioSource hunger;
 
     public float speed;
     public float maxVolume;
@@ -20,6 +21,7 @@ public class SoundManager : MonoBehaviour
     
     public AudioClip firstNight;
     public AudioClip techComplete;
+    public AudioClip gameOverTrack;
     //public GameObject sun;
     //public GameObject moon;
     //public List<AudioClip> nightTracks;
@@ -81,6 +83,27 @@ public class SoundManager : MonoBehaviour
 
         //Play the clip.
         sfxSource.Play();
+    }
+    public void HungerBeat(params AudioClip[] clips)
+    {
+        //Generate a random number between 0 and the length of our array of clips passed in.
+        int randomIndex = Random.Range(0, clips.Length);
+
+        //Choose a random pitch to play back our clip at between our high and low pitch ranges.
+        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+
+        //Set the pitch of the audio source to the randomly chosen pitch.
+        hunger.pitch = randomPitch;
+
+        hunger.clip = clips[randomIndex];
+
+        //Play the clip.
+        hunger.Play();
+    }
+
+    public void StopHunger(){
+        
+        hunger.Stop();
     }
 
     public void TaskCompleted(params AudioClip[] clips)
@@ -149,5 +172,33 @@ public class SoundManager : MonoBehaviour
 
     public void TechComplete(){
         TaskCompleted(techComplete);
+    }
+
+    public void GameOver(){
+
+        PlaySingle(gameOverTrack);
+        StopHunger(); 
+        StopBackgroundMusic(nightMusic);   
+        StopBackgroundMusic(dayMusic);
+    }
+
+    public void StopBackgroundMusic(AudioSource audioSource){
+        audioSource.Stop();
+    }
+
+    public void ResourceCollected(AudioClip collectionClip){
+        RandomizeSfx(collectionClip);
+    }
+
+    public void SetMusicVolume(float volume) {
+        musicSource.volume = volume;
+        dayMusic.volume = volume;
+        nightMusic.volume = volume;
+    }
+
+    public void SetSfxVolume(float volume) {
+        taskCompleted.volume = volume;
+        hunger.volume = volume;
+        sfxSource.volume = volume;
     }
 }
